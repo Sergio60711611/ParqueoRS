@@ -21,6 +21,17 @@ Route::get('/', function () {
 Route::get('/inicio/login',"App\Http\Controllers\loginController@create");
 Route::get('/administrador/home',"App\Http\Controllers\homeController@create");
 
+Route::get('/administrador/clientes',"App\Http\Controllers\clientesController@createLista");
+Route::get('/administrador/agregarCliente',"App\Http\Controllers\clientesController@createAgregar");
+Route::get('/administrador/editarCliente/{id}',"App\Http\Controllers\clientesController@createEditar");
+Route::get('/administrador/borrarCliente/{id}',"App\Http\Controllers\clientesController@createborrar");
+
+Route::get('/administrador/vehiculos','App\Http\Controllers\vehiculoController@createLista');
+Route::get('/administrador/agregarVehiculo','App\Http\Controllers\vehiculoController@createAgregar');
+Route::get('/administrador/borrarVehiculo/{id}','App\Http\Controllers\vehiculoController@createborrar');
+
+Route::get('/administrador/mapeoParqueo',"App\Http\Controllers\parqueoController@createLista");
+
 //backend
 Route::get('/cliente',"App\Http\Controllers\clienteController@obtenercliente"); //para tener todos los registros y mostrarlos
 Route::post('/clientecreado',"App\Http\Controllers\clienteController@store"); //crear un registro
