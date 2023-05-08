@@ -4,80 +4,71 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Parqueo;
+use App\Models\Vehiculo;
+use App\Models\Cliente;
+use App\Models\Sitio;
+use App\Models\Ingreso;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\BD;
 use \administracionparqueo;
-
+use DateTime;
+use Carbon\Carbon;
 class parqueoController extends Controller
 {
-    public function obtenerparqueo(){
-        return Parqueo::all();
+    public function createLista(){
+        $sitios = Sitio::all();
+        return view('administrador.mapeoParqueo', compact('sitios'));
     }
-    
-    public function create()
-    {
-        return view('horario.register');
-    }
-
-   
-    public function store(Request $request)
-    {
-       $validation= $request->validate([
-
-            //'cantidad_sitios' => 'required | numeric',
-            //'fecha_inicio' => 'required | date_format:Y/m/d',
-            //'fecha_fin' => 'required |  date_format:Y/m/d',
-            //'hora_inicio' => 'required |  date_format: H:i:s',
-            //'hora_fin' => 'required  | date_format: H:i:s',
-
-            'cantidad_sitios' => 'required | numeric',
-            'fecha_inicio' => 'required' ,
-            'fecha_fin' => 'required' ,
-            'hora_inicio' => 'required',
-            'hora_fin' => 'required',
-        ]);
-
-        $parqueo=new Parqueo();
-        $parqueo->cantidad_sitios = $request->cantidad_sitios;
-        $parqueo->fecha_inicio = $request->fecha_inicio;
-        $parqueo->fecha_fin = $request->fecha_fin;
-        $parqueo->hora_inicio = $request->hora_inicio;
-        $parqueo->hora_fin = $request->hora_fin;
+    public function createAgregarIngreso(){
         
-        $parqueo->save();
-    
-        return 'Store';
+        $now = Carbon::now(); 
+        $now->format('d/m/Y H:i');
+        $idSitio = 0;
+        $sitios = Sitio::all();
+        return view('administrador.agregarIngreso', compact('now', 'idSitio', 'sitios'));
     }
+    public function aumentarSitio(Request $request){
+        $parqueo = new parqueo();
+        $parqueo = parqueo::findOrFail(1);
+        //$cantSitios = $parqueo->get('cantidad_sitios');
+        $cantSitios= $parqueo->sum('cantidad_sitios');
+        $cantSitios = $cantSitios+1;
 
-    
-    public function show($id)
-    {
-        $parqueo=Parqueo::find($id);
-        return $parqueo;
-    }
-
-  
-    public function update(Request $request, $id)
-    {
-        $parqueo = Parqueo::findOrFail($request->id);
-        $parqueo->cantidad_sitios = $request->cantidad_sitios;
-        $parqueo->fecha_inicio = $request->fecha_inicio;
-        $parqueo->fecha_fin = $request->fecha_fin;
-        $parqueo->hora_inicio = $request->hora_inicio;
-        $parqueo->hora_fin = $request->hora_fin;
-
-
+        $parqueo->cantidad_sitios = $cantSitios;
         $parqueo->save();
 
-        return "actualizado";
+        $sitio=new sitio();
 
+        $sitio->estado = "Libre";
+        $sitio->id_parqueo = 1;
+        $sitio->id_cliente = 1;
+        $sitio->save();
+
+        return redirect('/administrador/mapeoParqueo');
     }
- 
 
-    public function destroy($id)
-    {
-        $Parqueo = Parqueo::destroy($id);
+    public function storeIngreso(Request $request)
+    {   
+        $sitio = new Sitio();
+        $sitio = Sitio::findOrFail($request->id_sitio);
+        //$cantSitios = $parqueo->get('cantidad_sitios');
+        $sitio ->estado = "Ocupado";
+        $sitio ->save();
 
-        return $Parqueo;
+
+        $sitio2 = Sitio::findOrFail($request->id_sitio);
+        $now = Carbon::now(); 
+            $now->format('Y/m/dTH:i');
+        if($sitio2->estado == "Libre"){
+            $ingreso = new Ingreso();
+            $ingreso->fecha_hora_ingreso = $now;
+            $ingreso->fecha_hora_salida_estimada = $request->fecha_hora_salida_estimada;
+            $ingreso->id_sitio = $request->id_sitio;
+            $ingreso->save();
+        }else{
+            
+        }
+        return redirect('/administrador/mapeoParqueo');
     }
 }
 
