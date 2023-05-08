@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//FE
+Route::get('/inicio/login',"App\Http\Controllers\loginController@create");
 
 //backend
 Route::get('/cliente',"App\Http\Controllers\clienteController@obtenercliente"); //para tener todos los registros y mostrarlos
