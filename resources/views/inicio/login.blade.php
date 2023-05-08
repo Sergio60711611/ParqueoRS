@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Login</title>
-	<link rel="stylesheet" type="text/css" href="{{ asset('/css/loginstyle.css') }}">
+	<link rel="stylesheet" type="text/css" href="https://parqueors-production.up.railway.app/css/loginstyle.css">
 	
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
@@ -41,6 +41,6 @@
             </form>
         </div>
     </div>
-    <script type="text/javascript" src="{{ asset('/js/login.js') }}"></script>
+    <script type="text/javascript" src="https://parqueors-production.up.railway.app/js/login.js"></script>
 </body>
 </html>
