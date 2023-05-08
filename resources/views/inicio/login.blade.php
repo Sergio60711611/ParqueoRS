@@ -15,7 +15,7 @@
 			<img src="{{ asset('/img/mujerauto.svg') }}">
 		</div>
 		<div class="login-content">
-			<form action="aqui va la funcion de donde botara cuando aprete login">
+			<form action="/administrador/home">
 				<img src="{{ asset('/img/avatar.svg') }}">
 				<h2 class="title">Bienvenido</h2>
            		<div class="input-div one">
