@@ -40,7 +40,7 @@ class clienteController extends Controller
         
         $cliente->save();
     
-        return 'Store';
+        return '/administrador/clientes';
     }
 
     
