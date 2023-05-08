@@ -192,7 +192,7 @@
                                     <div class="card-header">
                                         <h4>Nuevo Cliente</h4>
                                     </div>
-                                    <form action="/store" method="POST" role="form">
+                                    <form action="/clientecreado" method="POST" role="form">
                                     {{csrf_field()}}
                                         <div class="card-body" >
                                         <div class="form-group">
