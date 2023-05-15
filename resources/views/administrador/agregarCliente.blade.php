@@ -114,12 +114,6 @@
                                 <p>Asignar espacio</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-podcast"></i>
-                                <p>Agregar Sitio</p>
-                                </a>
-                            </li>
                             </ul>
                         </li>
 
