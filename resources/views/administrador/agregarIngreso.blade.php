@@ -203,7 +203,7 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-4">
                                                 <label class=""  for="meeting-time">Fecha/Hora Ingreso</label>
-                                                <input type="datetime-local" class="form-control" name="fecha_hora_ingreso" value="{{$now}}" min="2023-04-29T00:00" disabled>
+                                                <input type="datetime-local" class="form-control" name="fecha_hora_ingreso" value="{{$now}}" min="2023-04-29T00:00">
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label class="">Fecha/Hora Salida Estimada</label>
