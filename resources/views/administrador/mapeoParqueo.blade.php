@@ -239,7 +239,7 @@
                                             <center>
                                             <h2>{{$sitiosMapeo->id}}</h2>
                                                     <button class="btn btn-info" data-toggle="modal" style="width: 64px; height: 114px; background-color:#FFFFFF; border-color:#FFFFFF;">
-                                                            <img src="{{ asset('/img/parqueo4.png') }}" style="width: 64px; height:114px; margin-left:-10px" alt="">
+                                                            <img src="{{ asset('/img/Parqueo4.png') }}" style="width: 64px; height:114px; margin-left:-10px" alt="">
                                                     </button>
                                             </center>
                                         </div>
