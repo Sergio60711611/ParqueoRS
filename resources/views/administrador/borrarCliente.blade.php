@@ -194,7 +194,7 @@
                                 <div class="card-header">
                                     <h3 class="card-title">¿Esta seguro de eliminar este registro?</h3>
                                 </div>
-                            <form action="/cliente/{id}" method="delete" role="form">
+                            <form action="{{url ('/delete', $cliente->id)}}" method="POST" role="form">
                                     @csrf
                                     @method('delete')
                                 <div class="card-body">

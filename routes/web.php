@@ -31,6 +31,18 @@ Route::get('/administrador/agregarVehiculo','App\Http\Controllers\vehiculoContro
 Route::get('/administrador/borrarVehiculo/{id}','App\Http\Controllers\vehiculoController@createborrar');
 
 Route::get('/administrador/mapeoParqueo',"App\Http\Controllers\parqueoController@createLista");
+Route::get('/administrador/createAgregarIngreso',"App\Http\Controllers\parqueoController@createAgregarIngreso");
+
+//b
+Route::post('/store',"App\Http\Controllers\clientesController@store");
+Route::put('/update/{id}',"App\Http\Controllers\clientesController@update");
+Route::delete('/delete/{id}',"App\Http\Controllers\clientesController@delete");
+
+Route::post('/storeVehiculo','App\Http\Controllers\vehiculoController@store');
+Route::delete('/delete/{id}','App\Http\Controllers\vehiculoController@delete');
+
+Route::post('/aumentarSitio','App\Http\Controllers\parqueoController@aumentarSitio');
+Route::post('/storeIngreso','App\Http\Controllers\parqueoController@storeIngreso');
 
 //backend
 Route::get('/cliente',"App\Http\Controllers\clienteController@obtenercliente"); //para tener todos los registros y mostrarlos
