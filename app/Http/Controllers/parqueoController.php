@@ -90,6 +90,8 @@ class parqueoController extends Controller
         //$cantSitios = $parqueo->get('cantidad_sitios');
         $sitio ->estado = "Libre";
         $sitio ->save();
+
+        $ingresodelete= Ingreso::destroy($idIngresoNum);
         return redirect('/administrador/mapeoParqueo');
     }
 }
