@@ -227,7 +227,7 @@
                                         <div class="col-2">
                                             <center>
                                             <h2>{{$sitiosMapeo->id}}</h2>
-                                                <button class="btn btn-success" style="width: 64px; height: 114px; background-color:#53A790; border-color:#53A790;" data-toggle="modal">
+                                                <button type="button" class="btn btn-success" style="width: 64px; height: 114px; background-color:#53A790; border-color:#53A790;" data-toggle="modal">
                                                 <p>Libre</p>
                                             </button>
                                             </center>
@@ -237,9 +237,36 @@
                                         <div class="col-2">
                                             <center>
                                             <h2>{{$sitiosMapeo->id}}</h2>
-                                                    <button class="btn btn-info" data-toggle="modal" style="width: 64px; height: 114px; background-color:#FFFFFF; border-color:#FFFFFF;">
+                                                    <a href= "#"data-toggle="modal" data-target="#ingresarRegistro{{$sitiosMapeo->id}}"style="width: 64px; height: 114px; background-color:#FFFFFF; border-color:#FFFFFF;">
                                                             <img src="{{ asset('/img/Parqueo4.png') }}" style="width: 64px; height:114px; margin-left:-10px" alt="">
-                                                    </button>
+                                                    </a>
+                                                    <div class="modal fade" id="ingresarRegistro{{$sitiosMapeo->id}}"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header" style="background-color:#31747D;">
+                                                                <h5 class="modal-title" id="exampleModalLongTitle" >Cuniculo N°{{$sitiosMapeo->id}}</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form action="/storeSalida" method="POST" role="form">
+                                                                {{csrf_field()}}
+                                                                    <div class="card-body" >
+                                                                    <div class="form-group">
+                                                                        <label class="">¿Desea registrar la salida de este vehiculo?</label>
+                                                                        <input type="text" class="form-control" name="id_sitio" id = "id_sitio" value="{{$sitiosMapeo->id}}"></input>
+                                                                    </div>
+                                                                    <div class="form-group2">
+                                                                        <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
+                                                                        <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
+                                                                    </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </center>
                                         </div>
                                     @endif
@@ -279,6 +306,10 @@ body {
 h2{
     font-family: 'Poppins', sans-serif;
     color: #324855;
+}
+h5{
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
 }
 img {
     width: 20%;

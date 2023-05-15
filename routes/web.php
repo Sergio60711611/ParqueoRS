@@ -43,6 +43,7 @@ Route::delete('/delete/{id}','App\Http\Controllers\vehiculoController@delete');
 
 Route::post('/aumentarSitio','App\Http\Controllers\parqueoController@aumentarSitio');
 Route::post('/storeIngreso','App\Http\Controllers\parqueoController@storeIngreso');
+Route::post('/storeSalida','App\Http\Controllers\parqueoController@storeSalida');
 
 //backend
 Route::get('/cliente',"App\Http\Controllers\clienteController@obtenercliente"); //para tener todos los registros y mostrarlos
