@@ -224,18 +224,17 @@
                                 <div class="row">
                                 @foreach($sitios as $sitiosMapeo)
                                     @if($sitiosMapeo->estado == "Libre")
-                                        <div class="col">
+                                        <div class="col-2">
                                             <center>
                                             <h2>{{$sitiosMapeo->id}}</h2>
                                                 <button class="btn btn-success" style="width: 64px; height: 114px; background-color:#53A790; border-color:#53A790;" data-toggle="modal">
                                                 <p>Libre</p>
                                             </button>
                                             </center>
-                                        </div>
-                                    
+                                        </div>                                  
                                     @endif
                                     @if($sitiosMapeo->estado == "Ocupado")
-                                        <div class="col">
+                                        <div class="col-2">
                                             <center>
                                             <h2>{{$sitiosMapeo->id}}</h2>
                                                     <button class="btn btn-info" data-toggle="modal" style="width: 64px; height: 114px; background-color:#FFFFFF; border-color:#FFFFFF;">
@@ -245,7 +244,7 @@
                                         </div>
                                     @endif
                                     @if($sitiosMapeo->estado == "Reservado")
-                                        <div class="col">
+                                        <div class="col-2">
                                             <center>
                                             <h2>{{$sitiosMapeo->id}}</h2>
                                                     <button class="btn btn-info" data-toggle="modal" style="width: 64px; height: 114px; background-color:#FFFFFF; border-color:#FFFFFF;">
