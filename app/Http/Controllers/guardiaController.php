@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGuardiaTable extends Migration
+class CreateHorarioTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateGuardiaTable extends Migration
      */
     public function up()
     {
-        Schema::create('guardia', function (Blueprint $table) {
+        Schema::create('horario', function (Blueprint $table) {
             $table->id();
-            $table->ipAddress('nombre');
-            $table->ipAddress('apellido');
-            $table->ipAddress('direccion');
-            $table->integer('celular');
-            $table->ipAddress('correo_electronico');
-            $table->integer('ci')->unique();
-            $table->ipAddress('password');
+           // $table->integer('cantidad_sitios');
+            $table->time('hora_inicio');
+            $table->time('hora_fin');
+            $table->date('dia');
             $table->foreignId('id_parqueo')
                   ->constrained('parqueo')
                   ->cascadeOnUpdate()
@@ -37,6 +34,6 @@ class CreateGuardiaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('guardia');
+        Schema::dropIfExists('parqueo');
     }
 }
