@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTurnoTable extends Migration
+class CreateTipoPlanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,16 @@ class CreateTurnoTable extends Migration
      */
     public function up()
     {
-        Schema::create('turno', function (Blueprint $table) {
+        Schema::create('tipoplan', function (Blueprint $table) {
             $table->id();
-            $table->date('dia_semana');
+            $table->string('nombre');
             $table->time('hora_inicio');
             $table->time('hora_fin');
+            $table->integer(precio);
+            $table->foreignId('id_reserva')
+                    ->constrained('reserva')
+                    ->cascadeOnUpdate()
+                    ->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -29,6 +34,6 @@ class CreateTurnoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('turno');
+        Schema::dropIfExists('tipoplan');
     }
 }

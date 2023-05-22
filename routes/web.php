@@ -69,3 +69,21 @@ Route::post('/horario_emergenciacreado',"App\Http\Controllers\horario_emergencia
 Route::get('/horario_emergencia/{id}','App\Http\Controllers\horario_emergenciaController@show'); //para mostrarlos los registros
 Route::put('/horario_emergencia/{id}','App\Http\Controllers\horario_emergenciaController@update'); //actualizar un registro
 Route::delete('/horario_emergencia/{id}','App\Http\Controllers\horario_emergenciaController@destroy'); //borrar un registro
+
+Route::get('/sitio_emergencia',"App\Http\Controllers\sitio_emergenciaController@obtenerparqueo"); //para tener todos los registros y mostrarlos
+Route::post('/sitio_emergenciacreado',"App\Http\Controllers\sitio_emergenciaController@store"); //crear un registro
+Route::get('/sitio_emergencia/{id}','App\Http\Controllers\sitio_emergenciaController@show'); //para mostrarlos los registros
+Route::put('/sitio_emergencia/{id}','App\Http\Controllers\sitio_emergenciaController@update'); //actualizar un registro
+Route::delete('/sitio_emergencia/{id}','App\Http\Controllers\sitio_emergenciaController@destroy'); //borrar un registro
+
+Route::get('/contrato',"App\Http\Controllers\contratoController@obtenerparqueo"); //para tener todos los registros y mostrarlos
+Route::post('/contratocreado',"App\Http\Controllers\contratoController@store"); //crear un registro
+Route::get('/contrato/{id}','App\Http\Controllers\contratoController@show'); //para mostrarlos los registros
+Route::put('/contrato/{id}','App\Http\Controllers\contratoController@update'); //actualizar un registro
+Route::delete('/contrato/{id}','App\Http\Controllers\contratoController@destroy'); //borrar un registro
+
+Route::get('/ingreso_no_logueados',"App\Http\Controllers\ingreso_no_logueadosController@obtenerparqueo"); //para tener todos los registros y mostrarlos
+Route::post('/ingreso_no_logueadoscreado',"App\Http\Controllers\ingreso_no_logueadosController@store"); //crear un registro
+Route::get('/ingreso_no_logueados/{id}','App\Http\Controllers\ingreso_no_logueadosController@show'); //para mostrarlos los registros
+Route::put('/ingreso_no_logueados/{id}','App\Http\Controllers\ingreso_no_logueadosController@update'); //actualizar un registro
+Route::delete('/ingreso_no_logueados/{id}','App\Http\Controllers\ingreso_no_logueadosController@destroy'); //borrar un registro

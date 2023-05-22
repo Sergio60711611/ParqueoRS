@@ -15,6 +15,14 @@ class CreateHorarioEmergenciaTable extends Migration
     {
         Schema::create('_horario_emergencia', function (Blueprint $table) {
             $table->id();
+            $table->date('fecha_actual');
+            $table->time('hora_inicio');
+            $table->time('hora_cierre');
+            $table->string('mensaje');
+            $table->foreignId('id_parqueo')
+                  ->constrained('parqueo')
+                  ->cascadeOnUpdate()
+                  ->cascadeOnDelete();
             $table->timestamps();
         });
     }

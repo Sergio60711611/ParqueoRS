@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMensajeTable extends Migration
+class CreateSitioEmergenciaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateMensajeTable extends Migration
      */
     public function up()
     {
-        Schema::create('mensaje', function (Blueprint $table) {
+        Schema::create('_sitio_emergencia', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('fecha_hora_envio');
-            $table->string('mensaje');
-            $table->foreignId('id_reclamo')
-                  ->constrained('reclamo')
+            $table->integer('sitio');
+            $table->String('estado');
+            $table->foreignId('id_parqueo')
+                  ->constrained('parqueo')
                   ->cascadeOnUpdate()
                   ->cascadeOnDelete();
             $table->timestamps();
@@ -32,6 +32,6 @@ class CreateMensajeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mensaje');
+        Schema::dropIfExists('_sitio_emergencia');
     }
 }

@@ -20,6 +20,7 @@ class CreateClienteTable extends Migration
             $table->integer('ci')->unique();
             $table->string('correo');
             $table->integer('celular');
+            $table->integer('password');
             $table->timestamps();
         });
     }

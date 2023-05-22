@@ -16,7 +16,6 @@ class CreateSalidaTable extends Migration
         Schema::create('salida', function (Blueprint $table) {
             $table->id();
             $table->dateTime('fecha_hora_salida');
-            $table->decimal('monto_pagar', $precision = 8, $scale = 2);
             $table->foreignId('id_ingreso')
                   ->constrained('ingreso')
                   ->cascadeOnUpdate()

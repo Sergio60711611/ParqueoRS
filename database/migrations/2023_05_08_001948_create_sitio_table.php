@@ -15,7 +15,8 @@ class CreateSitioTable extends Migration
     {
         Schema::create('sitio', function (Blueprint $table) {
             $table->id();
-            $table->ipAddress('estado');
+            $table->int('nro');
+            $table->string('estado');
             $table->foreignId('id_parqueo')
                   ->constrained('parqueo')
                   ->cascadeOnUpdate()

@@ -26,6 +26,10 @@ class CreateGuardiaTable extends Migration
                   ->constrained('parqueo')
                   ->cascadeOnUpdate()
                   ->cascadeOnDelete();
+            $table->foreignId('id_contrato')
+                  ->constrained('contrato')
+                  ->cascadeOnUpdate()
+                  ->cascadeOnDelete();
             $table->timestamps();
         });
     }

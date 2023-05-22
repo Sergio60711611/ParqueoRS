@@ -49,7 +49,6 @@ class ocupaController extends Controller
     {
         $reserva = Reserva::findOrFail($request->id);
         $reserva->fecha_ingreso = $request->fecha_ingreso;
-        $reserva->estado = $request->estado;
         $reserva->id_cliente = $request->id_cliente;
         $reserva->id_vehiculo = $request->id_vehiculo;
         $reserva->id_sitio = $request->id_sitio;
