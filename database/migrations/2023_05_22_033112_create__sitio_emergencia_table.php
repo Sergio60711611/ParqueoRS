@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTieneTable extends Migration
+class CreateSitioEmergenciaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateTieneTable extends Migration
      */
     public function up()
     {
-        Schema::create('tiene', function (Blueprint $table) {
-            $table->foreignId('id_guardia')
-                  ->constrained('guardia')
-                  ->cascadeOnUpdate()
-                  ->cascadeOnDelete();
-            $table->foreignId('id_turno')
-                  ->constrained('turno')
+        Schema::create('_sitio_emergencia', function (Blueprint $table) {
+            $table->id();
+            $table->integer('sitio');
+            $table->String('estado');
+            $table->foreignId('id_parqueo')
+                  ->constrained('parqueo')
                   ->cascadeOnUpdate()
                   ->cascadeOnDelete();
             $table->timestamps();
@@ -33,6 +32,6 @@ class CreateTieneTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tiene');
+        Schema::dropIfExists('_sitio_emergencia');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReclamoTable extends Migration
+class CreateHorarioTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateReclamoTable extends Migration
      */
     public function up()
     {
-        Schema::create('reclamo', function (Blueprint $table) {
+        Schema::create('horario', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('fecha_hora_reclamo');
-            $table->string('descripcion');
-            $table->foreignId('id_cliente')
-                  ->constrained('cliente')
+           // $table->integer('cantidad_sitios');
+            $table->time('hora_inicio');
+            $table->time('hora_fin');
+            $table->date('dia');
+            $table->foreignId('id_parqueo')
+                  ->constrained('parqueo')
                   ->cascadeOnUpdate()
                   ->cascadeOnDelete();
             $table->timestamps();
@@ -32,6 +34,6 @@ class CreateReclamoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reclamo');
+        Schema::dropIfExists('parqueo');
     }
 }

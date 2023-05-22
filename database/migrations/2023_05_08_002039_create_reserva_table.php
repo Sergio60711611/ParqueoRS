@@ -27,7 +27,10 @@ class CreateReservaTable extends Migration
                   ->constrained('sitio')
                   ->cascadeOnUpdate()
                   ->cascadeOnDelete();
-            $table->date('fecha_entrada');
+            $table->date('fecha_ingreso');
+            $table->time('hora_ingreso');
+            $table->int('duracion');
+            $table->time('hora_salida');
             $table->timestamps();
         });
     }
