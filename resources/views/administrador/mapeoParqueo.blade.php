@@ -13,6 +13,7 @@
         <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/v4-shims.js"></script> 
         <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/fontawesome.js"> </script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+        <!-- Botton circle style -->
     </head>
     <body class="hold-transition sidebar-mini">
         <div class="wrapper">
@@ -176,12 +177,77 @@
             <div class="container-xl">
                 <div class="table-title">
                      <div class="row">
-                            <div class="col-sm-8"><h2><b>Mapeo del parqueo</b></h2></div>
+                            <div class="col-sm-10"><h2><b>Mapeo del parqueo</b></h2></div>
+                            <div class="row"><h1><h2></h2></h1></div>
+                            <a class="btn btn-info btn-circle m-1" data-toggle="modal" data-target="#ingresarIn" style="background-color:#2A4858; border-color:#2A4858;"><i class="fa fa-plus"></i></a>
+                        <!--Modal Añadir espacio-->
+                            <div class="modal fade" id="ingresarIn"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="background-color:#2A4858; border-color:#2A4858;">
+                                            <h5 class="modal-title" id="exampleModalLongTitle" >Añadir espacio</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="/aumentarSitio" method="POST" role="form">
+                                            {{csrf_field()}}
+                                                <div class="card-body" >
+                                                <div class="form-group">
+                                                    <label class="">¿Desea agregar un espacio a su parqueo?</label>
+                                                </div>
+                                                <div class="form-group2">
+                                                    <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
+                                                    <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
+                                                </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!--Fin Modal Añadir espacio-->
+                        <a class="btn btn-info btn-circle m-1" data-toggle="modal" data-target="#ingresarEl" style="background-color:#2A4858; border-color:#2A4858;"><i class="fa fa-trash"></i></a>
+                        <!--Modal Añadir espacio-->
+                            <div class="modal fade" id="ingresarEl"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="background-color:#2A4858; border-color:#2A4858;">
+                                            <h5 class="modal-title" id="exampleModalLongTitle" >Eliminar espacio</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="#" method="POST" role="form">
+                                            {{csrf_field()}}
+                                                <div class="card-body" >
+                                                <div class="form-group">
+                                                    <label class="">¿Desea eliminar un espacio de su parqueo?</label>
+                                                </div>
+                                                <div class="form-group2">
+                                                    <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
+                                                    <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
+                                                </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!--Fin Modal Añadir espacio-->
+                        
+                <div class="row">
+                        <div class="col-sm-6"></div>
+                        <div class="col-sm-6">
+                       </div>
+                </div>
                      </div>
                 </div>
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-12"> 
+                            <div class="col-md-12">
                                 <!--ModalIngresarEspacio
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" style="background-color:#324855; border-color:#324855">Agregar Espacio</button>
                                 Modal 
@@ -238,7 +304,7 @@
                                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header" style="background-color:#31747D;">
-                                                                <h5 class="modal-title" id="exampleModalLongTitle" >Cuniculo N°{{$sitiosMapeo->id}}</h5>
+                                                                <h5 class="modal-title" id="exampleModalLongTitle" >Cuviculo N°{{$sitiosMapeo->id}}</h5>
                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                                 </button>
@@ -312,6 +378,19 @@ img {
     margin-left: 81%;
     margin-bottom: -1%;
 }
+.btn-circle {
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  padding: 0;
+  border-radius: 50%;
+}
+.btn-circle i {
+  position: relative;
+  top: -1px;
+}
+
 .content-wrapper{
     background-color:#D9D9D9;
     padding: 20px;

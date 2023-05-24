@@ -28,7 +28,7 @@ class parqueoController extends Controller
         $sitios = Sitio::all();
         return view('administrador.agregarIngreso', compact('now', 'idSitio', 'sitios'));
     }
-    public function aumentarSitio(Request $request){
+    public function aumentarSitio(){
         $parqueo = new parqueo();
         $parqueo = parqueo::findOrFail(1);
         //$cantSitios = $parqueo->get('cantidad_sitios');
