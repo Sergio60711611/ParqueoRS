@@ -114,12 +114,6 @@
                                 <p>Asignar espacio</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-podcast"></i>
-                                <p>Agregar Sitio</p>
-                                </a>
-                            </li>
                             </ul>
                         </li>
 
@@ -192,7 +186,7 @@
                                     <div class="card-header">
                                         <h4>Nuevo Cliente</h4>
                                     </div>
-                                    <form action="/clientecreado" method="POST" role="form">
+                                    <form action="/store" method="POST" role="form">
                                     {{csrf_field()}}
                                         <div class="card-body" >
                                         <div class="form-group">
