@@ -115,12 +115,6 @@
                                 <p>Asignar espacio</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-podcast"></i>
-                                <p>Agregar Sitio</p>
-                                </a>
-                            </li>
                             </ul>
                         </li>
 
@@ -212,7 +206,6 @@
                                         <td class = text-center>{{$cliente->celular}}</td>
                                     <td class = text-center>
                                             <a href= "{{url ('/administrador/editarCliente', $cliente)}}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"style="color:#2A4858">edit</i></a>
-                                            <a href= "#" class="car" title="car" data-toggle="tooltip"><i class="material-icons" style="color:#2A4858">car</i></a>
                                             <a href="{{url ('/administrador/borrarCliente', $cliente)}}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons"style="color:#2A4858">delete</i></a>
                                     </td>
                                     </tr>

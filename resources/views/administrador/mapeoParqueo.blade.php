@@ -13,6 +13,7 @@
         <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/v4-shims.js"></script> 
         <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/fontawesome.js"> </script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+        <!-- Botton circle style -->
     </head>
     <body class="hold-transition sidebar-mini">
         <div class="wrapper">
@@ -115,12 +116,6 @@
                                 <p>Asignar espacio</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-podcast"></i>
-                                <p>Agregar Sitio</p>
-                                </a>
-                            </li>
                             </ul>
                         </li>
 
@@ -182,12 +177,77 @@
             <div class="container-xl">
                 <div class="table-title">
                      <div class="row">
-                            <div class="col-sm-8"><h2><b>Mapeo del parqueo</b></h2></div>
+                            <div class="col-sm-10"><h2><b>Mapeo del parqueo</b></h2></div>
+                            <div class="row"><h1><h2></h2></h1></div>
+                            <a class="btn btn-info btn-circle m-1" data-toggle="modal" data-target="#ingresarIn" style="background-color:#2A4858; border-color:#2A4858;"><i class="fa fa-plus"></i></a>
+                        <!--Modal Añadir espacio-->
+                            <div class="modal fade" id="ingresarIn"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="background-color:#2A4858; border-color:#2A4858;">
+                                            <h5 class="modal-title" id="exampleModalLongTitle" >Añadir espacio</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="/aumentarSitio" method="POST" role="form">
+                                            {{csrf_field()}}
+                                                <div class="card-body" >
+                                                <div class="form-group">
+                                                    <label class="">¿Desea agregar un espacio a su parqueo?</label>
+                                                </div>
+                                                <div class="form-group2">
+                                                    <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
+                                                    <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
+                                                </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!--Fin Modal Añadir espacio-->
+                        <a class="btn btn-info btn-circle m-1" data-toggle="modal" data-target="#ingresarEl" style="background-color:#2A4858; border-color:#2A4858;"><i class="fa fa-trash"></i></a>
+                        <!--Modal Añadir espacio-->
+                            <div class="modal fade" id="ingresarEl"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="background-color:#2A4858; border-color:#2A4858;">
+                                            <h5 class="modal-title" id="exampleModalLongTitle" >Eliminar espacio</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="#" method="POST" role="form">
+                                            {{csrf_field()}}
+                                                <div class="card-body" >
+                                                <div class="form-group">
+                                                    <label class="">¿Desea eliminar un espacio de su parqueo?</label>
+                                                </div>
+                                                <div class="form-group2">
+                                                    <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
+                                                    <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
+                                                </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!--Fin Modal Añadir espacio-->
+                        
+                <div class="row">
+                        <div class="col-sm-6"></div>
+                        <div class="col-sm-6">
+                       </div>
+                </div>
                      </div>
                 </div>
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-12"> 
+                            <div class="col-md-12">
                                 <!--ModalIngresarEspacio
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" style="background-color:#324855; border-color:#324855">Agregar Espacio</button>
                                 Modal 
@@ -224,28 +284,54 @@
                                 <div class="row">
                                 @foreach($sitios as $sitiosMapeo)
                                     @if($sitiosMapeo->estado == "Libre")
-                                        <div class="col">
+                                        <div class="col-2">
                                             <center>
                                             <h2>{{$sitiosMapeo->id}}</h2>
-                                                <button class="btn btn-success" style="width: 64px; height: 114px; background-color:#53A790; border-color:#53A790;" data-toggle="modal">
+                                                <button type="button" class="btn btn-success" style="width: 64px; height: 114px; background-color:#53A790; border-color:#53A790;" data-toggle="modal">
                                                 <p>Libre</p>
                                             </button>
                                             </center>
-                                        </div>
-                                    
+                                        </div>                                  
                                     @endif
                                     @if($sitiosMapeo->estado == "Ocupado")
-                                        <div class="col">
+                                        <div class="col-2">
                                             <center>
                                             <h2>{{$sitiosMapeo->id}}</h2>
-                                                    <button class="btn btn-info" data-toggle="modal" style="width: 64px; height: 114px; background-color:#FFFFFF; border-color:#FFFFFF;">
-                                                            <img src="{{ asset('/img/parqueo4.png') }}" style="width: 64px; height:114px; margin-left:-10px" alt="">
-                                                    </button>
+                                                    <a href= "#"data-toggle="modal" data-target="#ingresarRegistro{{$sitiosMapeo->id}}"style="width: 64px; height: 114px; background-color:#FFFFFF; border-color:#FFFFFF;">
+                                                            <img src="{{ asset('/img/Parqueo4.png') }}" style="width: 64px; height:114px; margin-left:-10px" alt="">
+                                                    </a>
+                                                    <div class="modal fade" id="ingresarRegistro{{$sitiosMapeo->id}}"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header" style="background-color:#31747D;">
+                                                                <h5 class="modal-title" id="exampleModalLongTitle" >Cuviculo N°{{$sitiosMapeo->id}}</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form action="/storeSalida" method="POST" role="form">
+                                                                {{csrf_field()}}
+                                                                    <div class="card-body" >
+                                                                    <div class="form-group">
+                                                                        <label class="">¿Desea registrar la salida de este vehiculo?</label>
+                                                                        <input type="text" class="form-control" name="id_sitio" id = "id_sitio" value="{{$sitiosMapeo->id}}"></input>
+                                                                    </div>
+                                                                    <div class="form-group2">
+                                                                        <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
+                                                                        <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
+                                                                    </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </center>
                                         </div>
                                     @endif
                                     @if($sitiosMapeo->estado == "Reservado")
-                                        <div class="col">
+                                        <div class="col-2">
                                             <center>
                                             <h2>{{$sitiosMapeo->id}}</h2>
                                                     <button class="btn btn-info" data-toggle="modal" style="width: 64px; height: 114px; background-color:#FFFFFF; border-color:#FFFFFF;">
@@ -281,6 +367,10 @@ h2{
     font-family: 'Poppins', sans-serif;
     color: #324855;
 }
+h5{
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+}
 img {
     width: 20%;
     height:auto;
@@ -288,6 +378,19 @@ img {
     margin-left: 81%;
     margin-bottom: -1%;
 }
+.btn-circle {
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  padding: 0;
+  border-radius: 50%;
+}
+.btn-circle i {
+  position: relative;
+  top: -1px;
+}
+
 .content-wrapper{
     background-color:#D9D9D9;
     padding: 20px;

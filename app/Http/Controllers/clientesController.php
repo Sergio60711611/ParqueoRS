@@ -38,6 +38,7 @@ class clientesController extends Controller
             'ci' => 'required|numeric| digits_between:6,10 ',
             'correo' => 'required |email',
             'celular' => 'required |numeric| digits:8',
+            'password' => 'required|confirmed|min:6',
         ]);
 
         $cliente=new Cliente();
@@ -46,6 +47,7 @@ class clientesController extends Controller
         $cliente->correo = $request->correo;
         $cliente->celular = $request->celular;
         $cliente->ci = $request->ci;
+        $cliente->password = $request->password;
         
         $cliente->save();
         return redirect('/administrador/clientes');

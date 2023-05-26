@@ -79,7 +79,7 @@ class vehiculoController extends Controller
     }
     public function delete($id){
         $vehiculo = Vehiculo::destroy($id);
-        //return redirect('/administrador/clientes');
+        return redirect('/administrador/vehiculos');
         //return $Cliente;
     }
 }

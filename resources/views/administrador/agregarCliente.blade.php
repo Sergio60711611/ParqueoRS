@@ -224,6 +224,19 @@
                                                 <p1 class="error-message">{{ $message }}</p1>
                                             @enderror
                                         </div>
+                                        <div class="form-group">
+                                            <label for="password">Password</label>
+                                                <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">        
+                                                @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">Confirm Password</label>
+                                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" required autocomplete="current-password">
+                                        </div>
                                         <div class="form-group2">
                                             <button  type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#53A790; border-color:#53A790;">Guardar</button>
                                             <a href="/administrador/clientes" class="btn btn-default" style="background-color:#53A790;border-color:#53A790;color:#FFFFFF;">Cancelar</a>
