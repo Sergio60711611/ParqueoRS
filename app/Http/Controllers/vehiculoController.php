@@ -11,7 +11,7 @@ use \administracionparqueo;
 
 class vehiculoController extends Controller
 {       
-        public function createLista(){
+    public function createLista(){
         $listav = Vehiculo::all();
         $idClientesv = $listav->pluck('id_cliente');
 
@@ -29,14 +29,30 @@ class vehiculoController extends Controller
         }
         return view('administrador.vehiculos', compact('listav', 'collection'));
     }
+    public function createListaCliente($id){
+        $cliente = Cliente::where('id', $id)->get();
+        $idcliente = $cliente->pluck('id');
+        $cicliente = $cliente->pluck('ci');
+
+        $listavCliente = Vehiculo::where('id_cliente', $id)->get();
+
+        return view('administrador.vehiculosCliente', compact('listavCliente','cicliente','idcliente'));
+    }
     public function createAgregar(){
         return view('administrador.agregarVehiculo');
+    }
+    public function createAgregarCliente($id){
+        $cliente = Cliente::where('id', $id)->get();
+        $cicliente = $cliente->pluck('ci');
+
+        return view('administrador.agregarVehiculoCliente',compact('id','cicliente'));
     }
     public function createBorrar($id){
         $vehiculo = Vehiculo::find($id);
 
         $clienteBorrar = Cliente::where('id', $vehiculo->id_cliente)->get();
         $cicliente = $clienteBorrar->pluck('ci');
+        $ciclienteNum = $cicliente->implode(" ");
 
         return view('administrador.borrarVehiculo', compact('vehiculo', 'cicliente'));
     }
@@ -44,10 +60,13 @@ class vehiculoController extends Controller
     {
         $ciCliente = $request->ci;
         $cliente = Cliente::where('ci', $ciCliente)->get();
-        $idcliente = $cliente->pluck('id');
-        $idclienteNum = $idcliente->implode(" ");
-
+        
         if(empty($cliente)){
+            return redirect('/administrador/vehiculos')->with('msjdelete', 'No existe un cliente con id : ('.$ciCliente.')');
+        }else{
+            $idcliente = $cliente->pluck('id');
+            $idclienteNum = $idcliente->implode(" ");
+
             $validation= $request->validate([
 
                 'marca' => 'required | min:3 | max: 30',
@@ -55,7 +74,6 @@ class vehiculoController extends Controller
                 'placa' => 'required | min:3 | max: 7',
                 'color' => 'required | min:3 | max: 30',
             ]);
-    
             $vehiculo=new vehiculo();
             $vehiculo->marca = $request->marca;
             $vehiculo->modelo = $request->modelo;
@@ -65,9 +83,6 @@ class vehiculoController extends Controller
             
             $vehiculo->save();
             return redirect('/administrador/vehiculos')->with('message', 'Felicitaciones .! Vehiculo Registrado Correctamente ...');
-
-        }else{
-            return redirect('/administrador/vehiculos')->with('msjdelete', 'No existe un cliente con id : ('.$ciCliente.')');
         }
     }
     public function delete($id){

@@ -225,7 +225,7 @@
                                             </a>
                                     </td>
                                     <td>
-                                        <a href="#" class="edit" title="Edit" data-toggle="tooltip">
+                                        <a href="{{url ('/administrador/vehiculosCliente', $cliente)}}" class="edit" title="Edit" data-toggle="tooltip">
                                             <i class="fas fa-car" style="color:#2A4858"></i>
                                         </a>
                                     </td>

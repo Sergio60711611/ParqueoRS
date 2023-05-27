@@ -180,15 +180,22 @@
                     <div class="table-responsive">
                         <div class="table-wrapper">
                             <div class="table-title">
+                            @php 
+                                    $counter = 1;
+                                    $collection = collect($cicliente);
+                                    $numColl = $collection->first();
+                                    $collec = collect($idcliente);
+                                    $numCo = $collec->first();
+                            @endphp
                                 <div class="row">
-                                    <div class="col-sm-8"><h2><b>Lista de Vehiculos</b></h2></div>
+                                    <div class="col-sm-8"><h2><b>Lista de Vehiculos del Cliente con ci: {{$numColl}}</b></h2></div>
                                 </div>
+                                <a href="{{url ('/administrador/agregarVehiculoCliente', $numCo)}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" style="background-color:#53A790; border-color:#53A790;">Agregar Automovil</a>
                             </div>
                             <table class="table table-bordered">
                             <thead>
                                     <tr>
                                         <th class = text-center >#</th>
-                                        <th class = text-center >CI Dueño</th>
                                         <th class = text-center >Marca</th>
                                         <th class = text-center >Modelo</th>
                                         <th class = text-center >Placa</th>
@@ -196,19 +203,14 @@
                                         <th class = text-center >Acciones</th>
                                     </tr>
                                 </thead>
-                                @php 
-                                    $counter = 1;
-                                    $collection = collect($collection);
-                                    $numColl = $collection->shift();
-                                @endphp
-                                @foreach($listav as $vehiculo)
+                                @foreach($listavCliente as $vehiculo)
                                     <tr>
                                         <td class = text-center>{{$counter}}</td>
                                         @php 
                                             $counter=$counter +1; 
                                             
                                         @endphp
-                                        <td class = text-center>{{$numColl}}</td>
+                                        <td class = text-center>{{$vehiculo->marca}}</td>
                                         <td class = text-center>{{$vehiculo->marca}}</td>
                                         <td class = text-center>{{$vehiculo->modelo}}</td>
                                         <td class = text-center>{{$vehiculo->placa}}</td>

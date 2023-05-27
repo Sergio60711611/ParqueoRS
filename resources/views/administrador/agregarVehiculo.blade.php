@@ -192,11 +192,11 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="">CI Dueño*</label>
-                                                <input type="text" class="form-control" name="ci" placeholder="Ingrese el CI del dueño del vehiculo"></input>
+                                                <input type="text" class="form-control" name="ci" placeholder="Ingrese el CI del dueño del vehiculo" value="{{ old('ci') }}"></input>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="">Marca*</label>
-                                                <input type="text" class="form-control" name="marca" placeholder="Ingrese la placa del vehiculo"></input>
+                                                <input type="text" class="form-control" name="marca" placeholder="Ingrese la placa del vehiculo" value="{{ old('marca') }}"></input>
                                                 @error('marca')
                                                 <p1 class="error-message">{{ $message }}</p1>
                                                 @enderror
@@ -205,21 +205,21 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-4">
                                                 <label for="">Modelo*</label>
-                                                <input type="text" class="form-control" name="modelo" placeholder="Ingrese el modelo del vehiculo"></input>
+                                                <input type="text" class="form-control" name="modelo" placeholder="Ingrese el modelo del vehiculo" value="{{ old('modelo') }}"></input>
                                                 @error('modelo')
                                                 <p1 class="error-message">{{ $message }}</p1>
                                                 @enderror
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="">Placa*</label>
-                                                <input type="text" class="form-control" name="placa" placeholder="Ingrese la marca del vehiculo"></input>
+                                                <input type="text" class="form-control" name="placa" placeholder="Ingrese la marca del vehiculo" value="{{ old('placa') }}" ></input>
                                                 @error('placa')
                                                 <p1 class="error-message">{{ $message }}</p1>
                                                 @enderror
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="">Color*</label>
-                                                <input type="text" class="form-control" name="color" placeholder="Ingrese el color del vehiculo"></input>
+                                                <input type="text" class="form-control" name="color" placeholder="Ingrese el color del vehiculo" value="{{ old('color') }}"></input>
                                                 @error('color')
                                                 <p1 class="error-message">{{ $message }}</p1>
                                                 @enderror

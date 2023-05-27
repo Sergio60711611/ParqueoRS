@@ -26,6 +26,8 @@ Route::get('/administrador/agregarCliente',"App\Http\Controllers\clientesControl
 Route::get('/administrador/editarCliente/{id}',"App\Http\Controllers\clientesController@createEditar");
 Route::get('/administrador/borrarCliente/{id}',"App\Http\Controllers\clientesController@createborrar");
 
+Route::get('/administrador/vehiculosCliente/{id}/','App\Http\Controllers\vehiculoController@createListaCliente');
+Route::get('/administrador/agregarVehiculoCliente/{id}/','App\Http\Controllers\vehiculoController@createAgregarCliente');
 Route::get('/administrador/vehiculos','App\Http\Controllers\vehiculoController@createLista');
 Route::get('/administrador/agregarVehiculo','App\Http\Controllers\vehiculoController@createAgregar');
 Route::get('/administrador/borrarVehiculo/{id}','App\Http\Controllers\vehiculoController@createborrar');
@@ -46,11 +48,6 @@ Route::post('/storeIngreso','App\Http\Controllers\parqueoController@storeIngreso
 Route::post('/storeSalida','App\Http\Controllers\parqueoController@storeSalida');
 
 //backend
-Route::get('/cliente',"App\Http\Controllers\clienteController@obtenercliente"); //para tener todos los registros y mostrarlos
-Route::post('/clientecreado',"App\Http\Controllers\clienteController@store"); //crear un registro
-Route::get('/cliente/{id}','App\Http\Controllers\clienteController@show'); //para mostrarlos los registros
-Route::put('/cliente/{id}','App\Http\Controllers\clienteController@update'); //actualizar un registro
-Route::delete('/cliente/{id}','App\Http\Controllers\clienteController@destroy'); //borrar un registro
 
 Route::get('/reserva',"App\Http\Controllers\ocupaController@obtenerreserva"); //para tener todos los registros y mostrarlos
 Route::post('/reservacreado',"App\Http\Controllers\ocupaController@store"); //crear un registro
