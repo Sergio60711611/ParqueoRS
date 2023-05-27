@@ -209,6 +209,10 @@
                                             
                                         @endphp
                                         <td class = text-center>{{$numColl}}</td>
+                                        @php 
+                                            $collection = collect($collection); 
+                                            $numColl = $collection->shift();
+                                        @endphp
                                         <td class = text-center>{{$vehiculo->marca}}</td>
                                         <td class = text-center>{{$vehiculo->modelo}}</td>
                                         <td class = text-center>{{$vehiculo->placa}}</td>
