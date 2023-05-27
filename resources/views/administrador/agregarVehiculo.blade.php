@@ -227,7 +227,7 @@
                                         </div>
                                         <div class="form-group2">
                                             <button  type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#53A790; border-color:#53A790;">Guardar</button>
-                                            <a href="/administrador/clientes" class="btn btn-default" style="background-color:#53A790;border-color:#53A790;color:#FFFFFF;">Cancelar</a>
+                                            <a href="/administrador/vehiculos" class="btn btn-default" style="background-color:#53A790;border-color:#53A790;color:#FFFFFF;">Cancelar</a>
                                         </div>
                                         <img src="{{ asset('/img/parqueo8.png') }}">
                                         </div>
@@ -284,31 +284,3 @@
     }
 </style>
 </html>
-
-
-<script>
-    $('#btn_guardar').click(function () {
-        var nombres = $('#nombres').val();
-        var apellidos = $('#apellidos').val();
-        var ci = $('#ci').val();
-        var correo = $('#correo').val();
-        var celular = $('#celular').val();
-
-        if(nombres == ""){
-            alert('Debe de llenar el campo de Nombres');
-            $('#nombres').focus();
-        }else if(apellidos == ""){
-            alert('Debe de llenar el campo de Apellidos');
-            $('#apellidos').focus();
-        }else if(ci == ""){
-            alert('Debe de llenar el campo de CI');
-            $('#ci').focus();
-        }else if(correo == ""){
-            alert('Debe de llenar el campo de Correo');
-            $('#correo').focus();
-        }else if(celular == ""){
-            alert('Debe de llenar el campo de Celular');
-            $('#celular').focus();
-        }
-    });
-</script>

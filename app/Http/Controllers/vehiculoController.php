@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\BD;
 use \administracionparqueo;
 
 class vehiculoController extends Controller
-{
+{       
         public function createLista(){
-        $listav = Vehiculo::all(); 
+        $listav = Vehiculo::all();
         $idClientesv = $listav->pluck('id_cliente');
 
         $listaClientes = Cliente::all();
@@ -27,7 +27,6 @@ class vehiculoController extends Controller
                 }
             }
         }
-        //if($listaClientes){echo $collection;echo $listav;}
         return view('administrador.vehiculos', compact('listav', 'collection'));
     }
     public function createAgregar(){
@@ -48,38 +47,31 @@ class vehiculoController extends Controller
         $idcliente = $cliente->pluck('id');
         $idclienteNum = $idcliente->implode(" ");
 
-        if($cliente){
-            echo "Cliente hay";
-            echo $cliente;
-            echo $idcliente;
-            echo $idclienteNum;
+        if(empty($cliente)){
+            $validation= $request->validate([
+
+                'marca' => 'required | min:3 | max: 30',
+                'modelo' => 'required | min:3 | max: 30',
+                'placa' => 'required | min:3 | max: 7',
+                'color' => 'required | min:3 | max: 30',
+            ]);
+    
+            $vehiculo=new vehiculo();
+            $vehiculo->marca = $request->marca;
+            $vehiculo->modelo = $request->modelo;
+            $vehiculo->placa = $request->placa;
+            $vehiculo->color = $request->color;
+            $vehiculo->id_cliente = $idclienteNum;
+            
+            $vehiculo->save();
+            return redirect('/administrador/vehiculos')->with('message', 'Felicitaciones .! Vehiculo Registrado Correctamente ...');
 
         }else{
-            echo "Cliente No hay";
+            return redirect('/administrador/vehiculos')->with('msjdelete', 'No existe un cliente con id : ('.$ciCliente.')');
         }
-
-        $validation= $request->validate([
-
-            'marca' => 'required | min:3 | max: 30',
-            'modelo' => 'required | min:3 | max: 30',
-            'placa' => 'required | min:3 | max: 7',
-            'color' => 'required | min:3 | max: 30',
-        ]);
-
-        $vehiculo=new vehiculo();
-        $vehiculo->marca = $request->marca;
-        $vehiculo->modelo = $request->modelo;
-        $vehiculo->placa = $request->placa;
-        $vehiculo->color = $request->color;
-        //$vehiculo->id_cliente = "1";
-        $vehiculo->id_cliente = $idclienteNum;
-        
-        $vehiculo->save();
-        return redirect('/administrador/agregarVehiculo');
     }
     public function delete($id){
         $vehiculo = Vehiculo::destroy($id);
-        return redirect('/administrador/vehiculos');
-        //return $Cliente;
+        return redirect('/administrador/vehiculos')->with('msjdelete', 'El Vehiculo fue eliminado correctamente');
     }
 }

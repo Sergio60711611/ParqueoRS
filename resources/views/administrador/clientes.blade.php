@@ -13,6 +13,8 @@
         <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/v4-shims.js"></script> 
         <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/fontawesome.js"> </script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+        <!-- Icono car -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     </head>
     <body class="hold-transition sidebar-mini">
         <div class="wrapper">
@@ -174,7 +176,7 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <div class="container">
-                
+            @include('administrador.msj')
             <!--INICIO CRUD -->
                 <div class="container-xl">
                     <div class="table-responsive">
@@ -193,20 +195,39 @@
                                         <th class = text-center >CI</th>
                                         <th class = text-center >Correo</th>
                                         <th class = text-center >Celular</th>
+                                        <th class = text-center >Contraseña</th>
                                         <th class = text-center >Acciones</th>
+                                        <th class = text-center ></th>
                                     </tr>
                                 </thead>
+                                @php 
+                                    $counter2 = 1;
+                                @endphp                                
                                 @foreach($lista as $cliente)
                                     <tr>
-                                        <td class = text-center>{{$cliente->id}}</td>
+                                        <td class = text-center>{{$counter2}}</td>
+                                        @php 
+                                            $counter2=$counter2 +1; 
+                                            
+                                        @endphp
                                         <td class = text-center>{{$cliente->nombres}}</td>
                                         <td class = text-center>{{$cliente->apellidos}}</td>
                                         <td class = text-center>{{$cliente->ci}}</td>
                                         <td class = text-center>{{$cliente->correo}}</td>
                                         <td class = text-center>{{$cliente->celular}}</td>
+                                        <td class = text-center>{{$cliente->password}}</td>
                                     <td class = text-center>
-                                            <a href= "{{url ('/administrador/editarCliente', $cliente)}}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"style="color:#2A4858">edit</i></a>
-                                            <a href="{{url ('/administrador/borrarCliente', $cliente)}}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons"style="color:#2A4858">delete</i></a>
+                                            <a href= "{{url ('/administrador/editarCliente', $cliente)}}" class="edit" title="Edit" data-toggle="tooltip">
+                                                <i class="material-icons"style="color:#2A4858">edit</i>
+                                            </a>
+                                            <a href="{{url ('/administrador/borrarCliente', $cliente)}}" class="delete" title="Delete" data-toggle="tooltip">
+                                                <i class="material-icons"style="color:#2A4858">delete</i>
+                                            </a>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="edit" title="Edit" data-toggle="tooltip">
+                                            <i class="fas fa-car" style="color:#2A4858"></i>
+                                        </a>
                                     </td>
                                     </tr>
                                 @endforeach

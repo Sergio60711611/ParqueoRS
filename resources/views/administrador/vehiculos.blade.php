@@ -174,7 +174,7 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <div class="container">
-                
+            @include('administrador.msj') 
             <!--INICIO CRUD -->
                 <div class="container-xl">
                     <div class="table-responsive">
@@ -182,7 +182,7 @@
                             <div class="table-title">
                                 <div class="row">
                                     <div class="col-sm-8"><h2><b>Lista de Vehiculos</b></h2></div>
-                                </div>
+                               p </div>
                             </div>
                             <table class="table table-bordered">
                             <thead>
@@ -193,13 +193,14 @@
                                         <th class = text-center >Modelo</th>
                                         <th class = text-center >Placa</th>
                                         <th class = text-center >Color</th>
+                                        <th class = text-center >Acciones</th>
                                     </tr>
                                 </thead>
                                 @php 
                                     $counter = 1;
                                     $collection = collect($collection);
                                     $numColl = $collection->shift();
-                                @endphp
+                                @endph
                                 @foreach($listav as $vehiculo)
                                     <tr>
                                         <td class = text-center>{{$counter}}</td>

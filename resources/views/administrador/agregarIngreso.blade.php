@@ -266,25 +266,3 @@
     }
 </style>
 </html>
-
-
-<script>
-    $('#btn_guardar').click(function () {
-
-        //var idIngresado =$('#id_sitio').val();
-
-        //if(idIngresado == 1){
-          //  alert('El Sitio esta ocupado');
-        //}
-
-        //var fechaSalida = $('#fecha_hora_salida_estimada').val();
-
-        //if(fechaSalida == ""){
-            //alert('Debe de llenar este campo');
-          //  $('#fecha_hora_salida_estimada').focus();
-        //}else if(idIngresado == ""){
-            //alert('Debe de llenar este campo');
-          //  $('#id_sitio').focus();
-        //}
-    });
-</script>

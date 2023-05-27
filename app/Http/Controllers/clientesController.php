@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cliente;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\BD;
 use \administracionparqueo;
 
@@ -50,7 +51,7 @@ class clientesController extends Controller
         $cliente->password = $request->password;
         
         $cliente->save();
-        return redirect('/administrador/clientes');
+        return redirect('/administrador/clientes')->with('message', 'Felicitaciones .! Cliente Registrado Correctamente ...');
     }
     public function update(Request $request,$id)
     {
@@ -72,12 +73,12 @@ class clientesController extends Controller
 
 
         $cliente->save();
-        return redirect('/administrador/clientes');
+        return redirect('/administrador/clientes')->with('msjupdate', 'El cliente con ci ('.$request->ci.') Fue actualizado Correctamente.');
     }
     public function delete($id)
     {
         $Cliente = Cliente::destroy($id);
-        return redirect('/administrador/clientes');
+        return redirect('/administrador/clientes')->with('msjdelete', 'El cliente fue eliminado Correctamente.');
         //return $Cliente;
     }
 }

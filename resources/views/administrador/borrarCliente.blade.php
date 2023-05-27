@@ -213,6 +213,10 @@
                                         <input type="text" class="form-control" id="celular" name="celular" value="{{$cliente->celular}}" disabled>
                                     </div>
                                     <div class="form-group">
+                                        <label for="">Contraseña</label>
+                                        <input type="password" class="form-control" id="password" name="password" value="{{$cliente->password}}" disabled>
+                                    </div>
+                                    <div class="form-group">
                                         <button class="btn btn-danger" id="btn_borrar" style="background-color:#53A790; border-color:#53A790;" >Borrar</button>
                                         <a href="/administrador/clientes" class="btn btn-default" style="background-color:#53A790;border-color:#53A790;color:#FFFFFF;">Cancelar</a>
                                     </div>

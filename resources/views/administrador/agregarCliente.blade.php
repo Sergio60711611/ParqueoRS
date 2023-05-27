@@ -191,42 +191,42 @@
                                         <div class="card-body" >
                                         <div class="form-group">
                                             <label for="">Nombres*</label>
-                                            <input type="text" class="form-control" name="nombres" placeholder="Ingrese su(s) nombre(s)" value="{{ old('nombres') }}"></input>
+                                            <input type="text" class="form-control" name="nombres" placeholder="Ingrese su(s) nombre(s)"></input>
                                             @error('nombres')
                                                 <p1 class="error-message">{{ $message }}</p1>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="">Apellidos*</label>
-                                            <input type="text" class="form-control" name="apellidos" placeholder="Ingrese su(s) apellido(s)" value="{{ old('apellidos') }}"></input>
+                                            <input type="text" class="form-control" name="apellidos" placeholder="Ingrese su(s) apellido(s)"></input>
                                             @error('apellidos')
                                                 <p1 class="error-message">{{ $message }}</p1>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="">CI*</label>
-                                            <input type="text" class="form-control" name="ci" placeholder="Ingrese su ci" value="{{ old('ci') }}"></input>
+                                            <input type="text" class="form-control" name="ci" placeholder="Ingrese su ci"></input>
                                             @error('ci')
                                                 <p1 class="error-message">{{ $message }}</p1>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="">Correo*</label>
-                                            <input type="text" class="form-control" name="correo" placeholder="Ingrese su correo electronico" value="{{ old('correo') }}"></input>
+                                            <input type="text" class="form-control" name="correo" placeholder="Ingrese su correo electronico"></input>
                                             @error('correo')
                                                 <p1 class="error-message">{{ $message }}</p1>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="">Celular*</label>
-                                            <input type="text" class="form-control" name="celular" placeholder="Ingrese su celular" value="{{ old('celular') }}"></input>
+                                            <input type="text" class="form-control" name="celular" placeholder="Ingrese su celular"></input>
                                             @error('celular')
                                                 <p1 class="error-message">{{ $message }}</p1>
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="password">Password</label>
-                                                <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">        
+                                            <label for="password">Contraseña</label>
+                                                <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Ingrese su contraseña">        
                                                 @error('password')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -234,8 +234,8 @@
                                                 @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="password">Confirm Password</label>
-                                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" required autocomplete="current-password">
+                                            <label for="password">Confirmar contraseña</label>
+                                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" required autocomplete="current-password" placeholder="Repita su contraseña">
                                         </div>
                                         <div class="form-group2">
                                             <button  type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#53A790; border-color:#53A790;">Guardar</button>
