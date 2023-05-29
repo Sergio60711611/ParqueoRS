@@ -46,8 +46,18 @@ class parqueoController extends Controller
     public function quitarSitio(){
         $cantSitios  = Sitio::max('nro_sitio');
 
-        $Sitio = Sitio::destroy($cantSitios);
-        return redirect('/administrador/mapeoParqueo');
+        $sitioaElim = Sitio::where('nro_sitio', $cantSitios)->get();
+        $estadoSitio = $sitioaElim->pluck('estado');
+        $estadoSitio = $estadoSitio->implode(" ");
+
+        if($estadoSitio == "Libre"){
+            $Sitio = Sitio::destroy($cantSitios);
+            return redirect('/administrador/mapeoParqueo')->with('message', 'Sitio eliminado correctamente');
+        }else if($estadoSitio == "Ocupado"){
+            return redirect('/administrador/mapeoParqueo')->with('msjdelete', 'El sitio: '.$cantSitios.' se encuentra ocupado.');
+        }else if($estadoSitio == "Reservado"){
+            return redirect('/administrador/mapeoParqueo')->with('msjdelete', 'El sitio: '.$cantSitios.' se encuentra Reservado.');
+        } 
     }
 
     public function storeIngreso(Request $request)
@@ -76,20 +86,18 @@ class parqueoController extends Controller
     {   $idSitio = $request->id_sitio;
         $ingreso = Ingreso::where('id_sitio', $idSitio)->get();
         $idIngreso = $ingreso->pluck('id');
-        $idIngresoNum = $idIngreso->implode(" ");
+        $idIngresoNum = intval($idIngreso->first());
 
         $now = Carbon::now(); 
             $now->format('Y/m/dTH:i');
 
         $salida = new Salida();
         $salida -> fecha_hora_salida = $now;
-        $salida -> monto_pagar = 0;
         $salida -> id_ingreso = $idIngresoNum;
         $salida ->save();
 
         $sitio = new Sitio();
         $sitio = Sitio::findOrFail($request->id_sitio);
-        //$cantSitios = $parqueo->get('cantidad_sitios');
         $sitio ->estado = "Libre";
         $sitio ->save();
 

@@ -162,6 +162,7 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper" style="background-color:#D9D9D9; padding: 20px;">
+            @include('administrador.msj')
             <div class="container-xl">
                 <div class="table-title">
                      <div class="row">
