@@ -44,6 +44,7 @@ Route::post('/storeVehiculo','App\Http\Controllers\vehiculoController@store');
 Route::delete('/delete/{id}','App\Http\Controllers\vehiculoController@delete');
 
 Route::post('/aumentarSitio','App\Http\Controllers\parqueoController@aumentarSitio');
+Route::post('/quitarSitio','App\Http\Controllers\parqueoController@quitarSitio');
 Route::post('/storeIngreso','App\Http\Controllers\parqueoController@storeIngreso');
 Route::post('/storeSalida','App\Http\Controllers\parqueoController@storeSalida');
 

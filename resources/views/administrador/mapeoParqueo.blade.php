@@ -66,12 +66,6 @@
                                 <p>Lista de Clientes</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="/administrador/agregarCliente" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-user-plus"></i>
-                                <p>Agregar Cliente</p>
-                                </a>
-                            </li>
                             </ul>
                         </li>
 
@@ -86,12 +80,6 @@
                                 <a href="/administrador/vehiculos" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
                                 <i class="nav-icon fas fa-car"></i>
                                 <p>Lista de automoviles</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/administrador/agregarVehiculo" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-plus-circle"></i>
-                                <p>Agregar Automovil</p>
                                 </a>
                             </li>
                             </ul>
@@ -220,7 +208,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="#" method="POST" role="form">
+                                            <form action="/quitarSitio" method="POST" role="form">
                                             {{csrf_field()}}
                                                 <div class="card-body" >
                                                 <div class="form-group">
@@ -286,7 +274,7 @@
                                     @if($sitiosMapeo->estado == "Libre")
                                         <div class="col-2">
                                             <center>
-                                            <h2>{{$sitiosMapeo->id}}</h2>
+                                            <h2>{{$sitiosMapeo->nro_sitio}}</h2>
                                                 <button type="button" class="btn btn-success" style="width: 64px; height: 114px; background-color:#53A790; border-color:#53A790;" data-toggle="modal">
                                                 <p>Libre</p>
                                             </button>
@@ -296,7 +284,7 @@
                                     @if($sitiosMapeo->estado == "Ocupado")
                                         <div class="col-2">
                                             <center>
-                                            <h2>{{$sitiosMapeo->id}}</h2>
+                                            <h2>{{$sitiosMapeo->nro_sitio}}</h2>
                                                     <a href= "#"data-toggle="modal" data-target="#ingresarRegistro{{$sitiosMapeo->id}}"style="width: 64px; height: 114px; background-color:#FFFFFF; border-color:#FFFFFF;">
                                                             <img src="{{ asset('/img/Parqueo4.png') }}" style="width: 64px; height:114px; margin-left:-10px" alt="">
                                                     </a>
@@ -333,7 +321,7 @@
                                     @if($sitiosMapeo->estado == "Reservado")
                                         <div class="col-2">
                                             <center>
-                                            <h2>{{$sitiosMapeo->id}}</h2>
+                                            <h2>{{$sitiosMapeo->nro_sitio}}</h2>
                                                     <button class="btn btn-info" data-toggle="modal" style="width: 64px; height: 114px; background-color:#FFFFFF; border-color:#FFFFFF;">
                                                             <img src="{{ asset('/img/parqueo6.png') }}" style="width: 64px; height:114px; margin-left:-10px" alt="">
                                                     </button>

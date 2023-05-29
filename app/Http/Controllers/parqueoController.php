@@ -29,22 +29,24 @@ class parqueoController extends Controller
         return view('administrador.agregarIngreso', compact('now', 'idSitio', 'sitios'));
     }
     public function aumentarSitio(){
-        $parqueo = new parqueo();
-        $parqueo = parqueo::findOrFail(1);
-        //$cantSitios = $parqueo->get('cantidad_sitios');
-        $cantSitios= $parqueo->sum('cantidad_sitios');
+        $cantSitios  = Sitio::max('nro_sitio');
         $cantSitios = $cantSitios+1;
-
-        $parqueo->cantidad_sitios = $cantSitios;
-        $parqueo->save();
 
         $sitio=new sitio();
 
+        $sitio->id = $cantSitios;
+        $sitio->nro_sitio = $cantSitios;
         $sitio->estado = "Libre";
         $sitio->id_parqueo = 1;
         $sitio->id_cliente = 1;
         $sitio->save();
 
+        return redirect('/administrador/mapeoParqueo');
+    }
+    public function quitarSitio(){
+        $cantSitios  = Sitio::max('nro_sitio');
+
+        $Sitio = Sitio::destroy($cantSitios);
         return redirect('/administrador/mapeoParqueo');
     }
 

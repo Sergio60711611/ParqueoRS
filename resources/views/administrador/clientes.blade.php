@@ -67,12 +67,6 @@
                                 <p>Lista de Clientes</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="/administrador/agregarCliente" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-user-plus"></i>
-                                <p>Agregar Cliente</p>
-                                </a>
-                            </li>
                             </ul>
                         </li>
 
@@ -87,12 +81,6 @@
                                 <a href="/administrador/vehiculos" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
                                 <i class="nav-icon fas fa-car"></i>
                                 <p>Lista de automoviles</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/administrador/agregarVehiculo" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-plus-circle"></i>
-                                <p>Agregar Automovil</p>
                                 </a>
                             </li>
                             </ul>
@@ -185,6 +173,7 @@
                                 <div class="row">
                                     <div class="col-sm-8"><h2><b>Lista de Clientes</b></h2></div>
                                 </div>
+                                <a href="/administrador/agregarCliente" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" style="background-color:#53A790; border-color:#53A790;">Agregar Cliente</a>
                             </div>
                             <table class="table table-bordered">
                             <thead>
@@ -210,10 +199,10 @@
                                             $counter2=$counter2 +1; 
                                             
                                         @endphp
-                                        <td class = text-center>{{$cliente->nombres}}</td>
-                                        <td class = text-center>{{$cliente->apellidos}}</td>
+                                        <td class = text-center>{{$cliente->nombre}}</td>
+                                        <td class = text-center>{{$cliente->apellido}}</td>
                                         <td class = text-center>{{$cliente->ci}}</td>
-                                        <td class = text-center>{{$cliente->correo}}</td>
+                                        <td class = text-center>{{$cliente->correo_electronico}}</td>
                                         <td class = text-center>{{$cliente->celular}}</td>
                                         <td class = text-center>{{$cliente->password}}</td>
                                     <td class = text-center>

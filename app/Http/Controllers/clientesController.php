@@ -34,18 +34,18 @@ class clientesController extends Controller
     {
         $validation= $request->validate([
 
-            'nombres' => 'required | min:3 | max: 30',
-            'apellidos' => 'required | min:3 | max: 30',
+            'nombre' => 'required | min:3 | max: 30',
+            'apellido' => 'required | min:3 | max: 30',
             'ci' => 'required|numeric| digits_between:6,10 ',
-            'correo' => 'required |email',
+            'correo_electronico' => 'required |email',
             'celular' => 'required |numeric| digits:8',
             'password' => 'required|confirmed|min:6',
         ]);
 
         $cliente=new Cliente();
-        $cliente->nombres = $request->nombres;
-        $cliente->apellidos = $request->apellidos;
-        $cliente->correo = $request->correo;
+        $cliente->nombre = $request->nombre;
+        $cliente->apellido = $request->apellido;
+        $cliente->correo_electronico = $request->correo_electronico;
         $cliente->celular = $request->celular;
         $cliente->ci = $request->ci;
         $cliente->password = $request->password;

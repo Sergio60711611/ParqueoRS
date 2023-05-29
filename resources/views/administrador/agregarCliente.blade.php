@@ -64,12 +64,6 @@
                                 <p>Lista de Clientes</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="/administrador/agregarCliente" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-user-plus"></i>
-                                <p>Agregar Cliente</p>
-                                </a>
-                            </li>
                             </ul>
                         </li>
 
@@ -84,12 +78,6 @@
                                 <a href="/administrador/vehiculos" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
                                 <i class="nav-icon fas fa-car"></i>
                                 <p>Lista de automoviles</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/administrador/agregarVehiculo" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-plus-circle"></i>
-                                <p>Agregar Automovil</p>
                                 </a>
                             </li>
                             </ul>
@@ -191,14 +179,14 @@
                                         <div class="card-body" >
                                         <div class="form-group">
                                             <label for="">Nombres*</label>
-                                            <input type="text" class="form-control" name="nombres" placeholder="Ingrese su(s) nombre(s)" value="{{ old('nombres') }}"></input>
+                                            <input type="text" class="form-control" name="nombre" placeholder="Ingrese su(s) nombre(s)" value="{{ old('nombre') }}"></input>
                                             @error('nombres')
                                                 <p1 class="error-message">{{ $message }}</p1>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="">Apellidos*</label>
-                                            <input type="text" class="form-control" name="apellidos" placeholder="Ingrese su(s) apellido(s)" value="{{ old('apellidos') }}"></input>
+                                            <input type="text" class="form-control" name="apellido" placeholder="Ingrese su(s) apellido(s)" value="{{ old('apellido') }}"></input>
                                             @error('apellidos')
                                                 <p1 class="error-message">{{ $message }}</p1>
                                             @enderror
@@ -212,7 +200,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="">Correo*</label>
-                                            <input type="text" class="form-control" name="correo" placeholder="Ingrese su correo electronico" value="{{ old('correo') }}"></input>
+                                            <input type="text" class="form-control" name="correo_electronico" placeholder="Ingrese su correo electronico" value="{{ old('correo_electronico') }}"></input>
                                             @error('correo')
                                                 <p1 class="error-message">{{ $message }}</p1>
                                             @enderror

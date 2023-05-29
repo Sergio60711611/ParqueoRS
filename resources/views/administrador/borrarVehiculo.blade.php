@@ -65,12 +65,6 @@
                                 <p>Lista de Clientes</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="/administrador/agregarCliente" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-user-plus"></i>
-                                <p>Agregar Cliente</p>
-                                </a>
-                            </li>
                             </ul>
                         </li>
 
@@ -85,12 +79,6 @@
                                 <a href="/administrador/vehiculos" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
                                 <i class="nav-icon fas fa-car"></i>
                                 <p>Lista de automoviles</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/administrador/agregarVehiculo" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-plus-circle"></i>
-                                <p>Agregar Automovil</p>
                                 </a>
                             </li>
                             </ul>
