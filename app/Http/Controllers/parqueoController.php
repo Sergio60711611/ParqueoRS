@@ -18,15 +18,20 @@ class parqueoController extends Controller
 {
     public function createLista(){
         $sitios = Sitio::all();
-        return view('administrador.mapeoParqueo', compact('sitios'));
+
+        //Ingreso var now,isSitio,sitios
+        $now = Carbon::now(); 
+        $now->format('d/m/Y H:i');
+
+        return view('administrador.mapeoParqueo', compact('now', 'sitios'));
     }
     public function createAgregarIngreso(){
         
-        $now = Carbon::now(); 
-        $now->format('d/m/Y H:i');
-        $idSitio = 0;
-        $sitios = Sitio::all();
-        return view('administrador.agregarIngreso', compact('now', 'idSitio', 'sitios'));
+        //$now = Carbon::now(); 
+        //$now->format('d/m/Y H:i');
+        //$idSitio = 0;
+        //$sitios = Sitio::all();
+        //return view('administrador.agregarIngreso', compact('now', 'idSitio', 'sitios'));
     }
     public function aumentarSitio(){
         $cantSitios  = Sitio::max('nro_sitio');
@@ -62,25 +67,43 @@ class parqueoController extends Controller
 
     public function storeIngreso(Request $request)
     {   
-        $sitio2 = Sitio::findOrFail($request->id_sitio);
         $now = Carbon::now(); 
-            $now->format('Y/m/dTH:i');
-        
-        if($sitio2->estado == "Libre"){
+        $now->format('Y/m/dTH:i');
+
+        $estado = $request->input('opcion');
+
+        //$sitio2 = Sitio::findOrFail($request->id_sitio);
+        $vehiculo = Vehiculo::where('placa', $request->placaVehiculo)->get();
+        $idVehiculo = $vehiculo->pluck('id');
+        $idVehiculo = $idVehiculo->first();
+
+        if($estado == "Ocupado"){
+           if(empty($idVehiculo)){
+            return redirect('/administrador/mapeoParqueo')->with('msjdelete', 'No existe un vehiculo registrado con la placa: '.$request->placaVehiculo.'');
+           }else{
             $ingreso = new Ingreso();
             $ingreso->fecha_hora_ingreso = $now;
-            $ingreso->fecha_hora_salida_estimada = $request->fecha_hora_salida_estimada;
             $ingreso->id_sitio = $request->id_sitio;
+            $ingreso->id_vehiculo = $idVehiculo;
             $ingreso->save();
-        }else{
-            
+
+            $sitio = new Sitio();
+            $sitio = Sitio::findOrFail($request->id_sitio);
+            $sitio ->estado = "Ocupado";
+            $sitio ->save();
+            return redirect('/administrador/mapeoParqueo')->with('message', 'Ingreso Registrado. Se ha modificado el estado del cuviculo N°'.$request->id_sitio.' a: "Ocupado"');
+           }
+        }else if($estado == "Reservado"){
+            if(empty($idVehiculo)){
+                return redirect('/administrador/mapeoParqueo')->with('msjdelete', 'No existe un vehiculo registrado con la placa: '.$request->placaVehiculo.'');
+            }else{
+                $sitio = new Sitio();
+                $sitio = Sitio::findOrFail($request->id_sitio);
+                $sitio ->estado = "Reservado";
+                $sitio ->save();
+                return redirect('/administrador/mapeoParqueo')->with('message', 'Ingreso Registrado. Se ha modificado el estado del cuviculo N°'.$request->id_sitio.' a: "Reservado"');
+            }
         }
-        $sitio = new Sitio();
-        $sitio = Sitio::findOrFail($request->id_sitio);
-        //$cantSitios = $parqueo->get('cantidad_sitios');
-        $sitio ->estado = "Ocupado";
-        $sitio ->save();
-        return redirect('/administrador/mapeoParqueo');
     }
     public function storeSalida(Request $request)
     {   $idSitio = $request->id_sitio;
@@ -95,6 +118,7 @@ class parqueoController extends Controller
         $salida -> fecha_hora_salida = $now;
         $salida -> id_ingreso = $idIngresoNum;
         $salida ->save();
+        //$hora = date_default_timezone_set('America/La_Paz');
 
         $sitio = new Sitio();
         $sitio = Sitio::findOrFail($request->id_sitio);

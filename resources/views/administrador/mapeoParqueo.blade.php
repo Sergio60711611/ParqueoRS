@@ -276,9 +276,70 @@
                                         <div class="col-2">
                                             <center>
                                             <h2>{{$sitiosMapeo->nro_sitio}}</h2>
-                                                <button type="button" class="btn btn-success" style="width: 64px; height: 114px; background-color:#53A790; border-color:#53A790;" data-toggle="modal">
+                                             <!--Modal Ingresar Espacio-->
+                                             <a href= "#"data-toggle="modal" data-target="#ingresarRegistro{{$sitiosMapeo->id}}" class="btn btn-success" style="width: 64px; height: 114px; background-color:#53A790; border-color:#53A790;">
                                                 <p>Libre</p>
-                                            </button>
+                                            </a>
+                                                    <div class="modal fade" id="ingresarRegistro{{$sitiosMapeo->id}}"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header" style="background-color:#31747D;">
+                                                                <h5 class="modal-title" id="exampleModalLongTitle" >Cuviculo N°{{$sitiosMapeo->id}}</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form action="/storeIngreso" method="POST" role="form">
+                                                                {{csrf_field()}}
+                                                                    <div class="card-body" >
+                                                                        <div style="text-align: right;">
+                                                                        <label class="" style="text-right">Registre el nuevo estado de este sitio</label>
+                                                                        </div>
+                                                                        <p></p>
+                                                                        <div class="form-group" style="text-align: left;">
+                                                                            <label for="opcion">Selecciona el nuevo estado:</label>
+                                                                            <select class="form-control" id="opcion" name="opcion">
+                                                                                <option value="Ocupado">Ocupado</option>
+                                                                                <option value="Reservado">Reservado</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group" style="text-align: left;">
+                                                                            <input type="hidden" class="form-control" name="id_sitio" id = "id_sitio" value="{{$sitiosMapeo->id}}"></input>
+                                                                        </div>
+                                                                        <div class="form-group" style="text-align: left;">
+                                                                            <label for="meeting-time">Fecha/Hora Ingreso</label>
+                                                                            <input type="datetime-local" class="form-control" name="fecha_hora_ingreso" value="{{$now}}" min="2023-04-29T00:00" disabled>
+                                                                        </div>
+                                                                        <div class="form-group" style="text-align: left;">
+                                                                            <label for="">Placa*</label>
+                                                                            <input type="text" class="form-control" name="placaVehiculo" placeholder="Ingrese la placa del vehiculo que ingresara" value="{{ old('placa') }}" ></input>
+                                                                        </div>
+                                                                        <!--<div class="form-group" style="text-align: left;">
+                                                                            Inicio Botones desplegable
+                                                                            <label for="">Seleccione el nuevo estado</label>
+                                                                            <div class="btn-group">
+                                                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                    Opciones <span class="caret"></span>
+                                                                                </button>
+                                                                                <div class="dropdown-menu">
+                                                                                    <button class="dropdown-item" type="submit" name="opcion" value="opcion1">Reserva</button>
+                                                                                    <button class="dropdown-item" type="submit" name="opcion" value="opcion2">Ingreso</button>
+                                                                                </div>
+                                                                            </div>
+                                                                            Fin Botones desplegables
+                                                                        </div>-->
+                                                                    <div class="form-group2">
+                                                                        <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
+                                                                        <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
+                                                                    </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--FIN Modal Ingresar Espacio-->
                                             </center>
                                         </div>                                  
                                     @endif
@@ -286,6 +347,7 @@
                                         <div class="col-2">
                                             <center>
                                             <h2>{{$sitiosMapeo->nro_sitio}}</h2>
+                                                    <!--Modal Ingresar Espacio-->
                                                     <a href= "#"data-toggle="modal" data-target="#ingresarRegistro{{$sitiosMapeo->id}}"style="width: 64px; height: 114px; background-color:#FFFFFF; border-color:#FFFFFF;">
                                                             <img src="{{ asset('/img/Parqueo4.png') }}" style="width: 64px; height:114px; margin-left:-10px" alt="">
                                                     </a>
@@ -316,6 +378,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <!--FIN Modal Ingresar Espacio-->
                                             </center>
                                         </div>
                                     @endif
