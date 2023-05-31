@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIngresoNoLogueadosTable extends Migration
+class CreateReservaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateIngresoNoLogueadosTable extends Migration
      */
     public function up()
     {
-        Schema::create('_ingreso_no_logueados', function (Blueprint $table) {
+        Schema::create('reserva', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('fecha_hora_ingreso');
-            $table->String('nombre');
-            $table->String('apellido');
-            $table->integer('ci')->unique();
-            $table->integer('placa')->unique();
-            $table->integer('monto');
-            $table->integer('cantidad_horas');
-            $table->time('hora_salida');
+            $table->datetime('reserva_ingreso');
+            $table->datetime('reserva_salida');
+            $table->integer('cantidad_de_horas');
+            $table->string('estado');
+            $table->foreignId('id_cliente')
+                  ->constrained('cliente')
+                  ->cascadeOnUpdate()
+                  ->cascadeOnDelete();
             $table->foreignId('id_sitio')
                   ->constrained('sitio')
                   ->cascadeOnUpdate()
@@ -38,6 +38,6 @@ class CreateIngresoNoLogueadosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_ingreso_no_logueados');
+        Schema::dropIfExists('reserva');
     }
 }

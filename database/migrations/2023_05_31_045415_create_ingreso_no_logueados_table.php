@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIngresoTable extends Migration
+class CreateIngresoNoLogueadosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,25 +13,24 @@ class CreateIngresoTable extends Migration
      */
     public function up()
     {
-        Schema::create('ingreso', function (Blueprint $table) {
+        Schema::create('ingreso_no_logueados', function (Blueprint $table) {
             $table->id();
             $table->dateTime('fecha_hora_ingreso');
+            $table->String('nombre');
+            $table->String('apellido');
+            $table->integer('ci')->unique();
+            $table->integer('placa')->unique();
+            $table->integer('monto');
+            $table->integer('cantidad_horas');
+            $table->time('hora_salida');
             $table->foreignId('id_sitio')
                   ->constrained('sitio')
                   ->cascadeOnUpdate()
                   ->cascadeOnDelete();
-            $table->foreignId('id_salida')
-                  ->constrained('salida')
+            /*$table->foreignId('id_salida_no_logueados')
+                  ->constrained('salida_no_logueados')
                   ->cascadeOnUpdate()
-                  ->cascadeOnDelete();
-            $table->foreignId('id_vehiculo')
-                  ->constrained('vehiculo')
-                  ->cascadeOnUpdate()
-                  ->cascadeOnDelete();   
-            $table->foreignId('id_sitEmer')
-                  ->constrained('sitio_emergencia')
-                  ->cascadeOnUpdate()
-                  ->cascadeOnDelete();
+                  ->cascadeOnDelete();*/
             $table->timestamps();
         });
     }
@@ -43,6 +42,6 @@ class CreateIngresoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ingreso');
+        Schema::dropIfExists('ingreso_no_logueados');
     }
 }

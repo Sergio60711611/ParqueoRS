@@ -13,12 +13,12 @@ class CreateTipoPlanTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipoplan', function (Blueprint $table) {
+        Schema::create('tipo_plan', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
             $table->time('hora_inicio');
             $table->time('hora_fin');
-            $table->integer(precio);
+            $table->integer('precio');
             $table->foreignId('id_reserva')
                     ->constrained('reserva')
                     ->cascadeOnUpdate()
@@ -34,6 +34,6 @@ class CreateTipoPlanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipoplan');
+        Schema::dropIfExists('tipo_plan');
     }
 }
