@@ -18,6 +18,7 @@ class CreateAnunciosTable extends Migration
             $table->string('titulo');
             $table->string('comunicado');
             $table->datetime('emitido');
+            $table->datetime('vencimiento');
             $table->timestamps();
         });
     }
