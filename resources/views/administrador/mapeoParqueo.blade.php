@@ -293,6 +293,17 @@
                                                                 <form action="/storeIngreso" method="POST" role="form">
                                                                 {{csrf_field()}}
                                                                     <div class="card-body" >
+                                                                    <!--Botones de calendario-->
+                                                                    <div class = "container Botones">
+                                                                        <a href= "{{url ('/administrador/reserva/calendario', $sitiosMapeo->id)}}" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
+                                                                            Ver Calendario  <i class="nav-icon fas fa-calendar-alt"></i>
+                                                                        </a>
+                                                                        <a href= "#" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
+                                                                            Lista de reservas  <i class="nav-icon fas fa-list-alt"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                    <!--Fin Botones de calendario-->
+                                                                    <hr>
                                                                         <div style="text-align: right;">
                                                                         <label class="" style="text-right">Registre el nuevo estado de este sitio</label>
                                                                         </div>

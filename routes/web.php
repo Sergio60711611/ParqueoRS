@@ -35,6 +35,9 @@ Route::get('/administrador/borrarVehiculo/{id}','App\Http\Controllers\vehiculoCo
 Route::get('/administrador/mapeoParqueo',"App\Http\Controllers\parqueoController@createLista");
 Route::get('/administrador/createAgregarIngreso',"App\Http\Controllers\parqueoController@createAgregarIngreso");
 
+Route::get('/administrador/reserva/calendario/{id}','App\Http\Controllers\eventoController@createCalendar');
+//vistaControl
+Route::get('/show/{id}','App\Http\Controllers\eventoController@show');
 //b
 Route::post('/store',"App\Http\Controllers\clientesController@store");
 Route::put('/update/{id}',"App\Http\Controllers\clientesController@update");
@@ -47,6 +50,10 @@ Route::post('/aumentarSitio','App\Http\Controllers\parqueoController@aumentarSit
 Route::post('/quitarSitio','App\Http\Controllers\parqueoController@quitarSitio');
 Route::post('/storeIngreso','App\Http\Controllers\parqueoController@storeIngreso');
 Route::post('/storeSalida','App\Http\Controllers\parqueoController@storeSalida');
+
+Route::post('/storeReservaDiaria','App\Http\Controllers\reservaController@storeDiario');
+Route::post('/storeMesDia','App\Http\Controllers\reservaController@storeMesDia');
+//Route::get('/storeEvento','App\Http\Controllers\eventoController@store');
 
 //backend
 
