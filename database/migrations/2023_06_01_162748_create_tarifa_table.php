@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateParqueoTable extends Migration
+class CreateTarifaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateParqueoTable extends Migration
      */
     public function up()
     {
-        Schema::create('parqueo', function (Blueprint $table) {
+        Schema::create('tarifa', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre_parqueo');
-            $table->string('direccion_parqueo');
+            $table->integer('horas');
+            $table->decimal('precio');
+            $table->foreignId('id_parqueo')
+            ->constrained('parqueo')
+            ->cascadeOnUpdate()
+            ->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ class CreateParqueoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parqueo');
+        Schema::dropIfExists('tarifa');
     }
 }
