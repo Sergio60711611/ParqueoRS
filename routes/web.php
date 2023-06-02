@@ -18,8 +18,10 @@ Route::get('/', function () {
 });
 
 //FE
-Route::get('/inicio/login',"App\Http\Controllers\loginController@create");
 Route::get('/administrador/home',"App\Http\Controllers\homeController@create");
+Route::get('/inicio/loginUser',"App\Http\Controllers\loginController@createLoginUser");
+Route::get('/inicio/loginGuardia',"App\Http\Controllers\loginController@createLoginGuardia");
+Route::get('/inicio/loginAdmin',"App\Http\Controllers\loginController@createLoginAdmin");
 
 Route::get('/administrador/clientes',"App\Http\Controllers\clientesController@createLista");
 Route::get('/administrador/agregarCliente',"App\Http\Controllers\clientesController@createAgregar");
@@ -39,6 +41,9 @@ Route::get('/administrador/reserva/calendario/{id}','App\Http\Controllers\evento
 //vistaControl
 Route::get('/show/{id}','App\Http\Controllers\eventoController@show');
 //b
+Route::post('/inicioSesion',"App\Http\Controllers\loginController@inicioSesion");
+Route::post('/storeClienteVehiculo',"App\Http\Controllers\loginController@storeClienteVehiculo");
+
 Route::post('/store',"App\Http\Controllers\clientesController@store");
 Route::put('/update/{id}',"App\Http\Controllers\clientesController@update");
 Route::delete('/deletec/{id}',"App\Http\Controllers\clientesController@delete");

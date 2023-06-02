@@ -81,7 +81,7 @@
         </div>
         <div class="form-container sign-in-container">
         <form action="/inicioSesion" method="POST" role="form">
-                <h1>Iniciar Sesion Cliente</h1>
+                <h1>Iniciar Sesion Guardia</h1>
                 <div class="social-container">
                     <a href="/inicio/loginUser" class="social" title="Usuario">
 						<ion-icon name="person-outline"></ion-icon>
@@ -95,7 +95,7 @@
                 </div>
                 <span>Seleccion tu tipo de usuario</span>
                     {{csrf_field()}}
-                    <input type="hidden" id="rol" name="rol" value="Cliente"></input>
+                    <input type="hidden" id="rol" name="rol" value="Guardia"></input>
                     <input type="text" placeholder="CI" id="ciSesion" name="ciSesion"></input>
                         @error('ciSesion')
                             <p1 class="error-message">{{ $message }}</p1>
