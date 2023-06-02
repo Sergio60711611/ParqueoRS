@@ -99,39 +99,6 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
-                                <!--ModalIngresarEspacio
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" style="background-color:#324855; border-color:#324855">Agregar Espacio</button>
-                                Modal 
-                                    <div class="modal fade" id="exampleModalCenter"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLongTitle">Agregar Espacio</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form action="/aumentarSitio" method="POST" role="form">
-                                                        {{csrf_field()}}
-                                                            <div class="card-body" >
-                                                            <div class="form-group">
-                                                                <label for="">Estado</label>
-                                                                <input type="text" class="form-control" name="estado" value="Libre" disabled></input>
-                                                            </div>
-                                                            <div class="form-group2">
-                                                                <button  type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#53A790; border-color:#53A790;">Guardar</button>
-                                                            </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                ModalIngresarEspacioFin-->
                                 <div class="row">
                                 @foreach($sitios as $sitiosMapeo)
                                     @if($sitiosMapeo->estado == "Libre")
@@ -167,15 +134,10 @@
                                                                     <!--Fin Botones de calendario-->
                                                                     <hr>
                                                                         <div style="text-align: right;">
-                                                                        <label class="" style="text-right">Registre el nuevo estado de este sitio</label>
+                                                                        <label class="" style="text-right">Registre el ingreso a este sitio</label>
                                                                         </div>
-                                                                        <p></p>
                                                                         <div class="form-group" style="text-align: left;">
-                                                                            <label for="opcion">Selecciona el nuevo estado:</label>
-                                                                            <select class="form-control" id="opcion" name="opcion">
-                                                                                <option value="Ocupado">Ocupado</option>
-                                                                                <option value="Reservado">Reservado</option>
-                                                                            </select>
+                                                                            <input type="hidden" class="form-control" name="estado" id = "estado" value="Ocupado"></input>
                                                                         </div>
                                                                         <div class="form-group" style="text-align: left;">
                                                                             <input type="hidden" class="form-control" name="id_sitio" id = "id_sitio" value="{{$sitiosMapeo->id}}"></input>
@@ -188,20 +150,6 @@
                                                                             <label for="">Placa*</label>
                                                                             <input type="text" class="form-control" name="placaVehiculo" placeholder="Ingrese la placa del vehiculo que ingresara" value="{{ old('placa') }}" ></input>
                                                                         </div>
-                                                                        <!--<div class="form-group" style="text-align: left;">
-                                                                            Inicio Botones desplegable
-                                                                            <label for="">Seleccione el nuevo estado</label>
-                                                                            <div class="btn-group">
-                                                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                                    Opciones <span class="caret"></span>
-                                                                                </button>
-                                                                                <div class="dropdown-menu">
-                                                                                    <button class="dropdown-item" type="submit" name="opcion" value="opcion1">Reserva</button>
-                                                                                    <button class="dropdown-item" type="submit" name="opcion" value="opcion2">Ingreso</button>
-                                                                                </div>
-                                                                            </div>
-                                                                            Fin Botones desplegables
-                                                                        </div>-->
                                                                     <div class="form-group2">
                                                                         <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
                                                                         <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
