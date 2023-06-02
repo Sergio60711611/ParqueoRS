@@ -19,6 +19,10 @@ class CreateAnunciosTable extends Migration
             $table->string('comunicado');
             $table->datetime('emitido');
             $table->datetime('vencimiento');
+            $table->foreignId('id_parqueo')
+            ->constrained('parqueo')
+            ->cascadeOnUpdate()
+            ->cascadeOnDelete();
             $table->timestamps();
         });
     }

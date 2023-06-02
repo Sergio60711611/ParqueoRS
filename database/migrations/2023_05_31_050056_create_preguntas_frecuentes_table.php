@@ -18,6 +18,10 @@ class CreatePreguntasFrecuentesTable extends Migration
             $table->string('pregunta');
             $table->string('respuesta');
             $table->datetime('emitido');
+            $table->foreignId('id_parqueo')
+            ->constrained('parqueo')
+            ->cascadeOnUpdate()
+            ->cascadeOnDelete();
             $table->timestamps();
         });
     }
