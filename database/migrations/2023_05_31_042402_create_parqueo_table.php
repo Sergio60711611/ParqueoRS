@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDeuda extends Migration
+class CreateParqueoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateDeuda extends Migration
      */
     public function up()
     {
-        Schema::create('deuda', function (Blueprint $table) {
+        Schema::create('parqueo', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha_notificacion');
-            $table->float('monto_pendiente');
-            $table->foreignId('id_cliente')
-            ->constrained('cliente')
-            ->cascadeOnUpdate()
-            ->cascadeOnDelete();
+            $table->string('nombre_parqueo');
+            $table->string('direccion_parqueo');
+            $table->timestamps();
         });
     }
 
@@ -31,6 +28,6 @@ class CreateDeuda extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('deuda');
+        Schema::dropIfExists('parqueo');
     }
 }

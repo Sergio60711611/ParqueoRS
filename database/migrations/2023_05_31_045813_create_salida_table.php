@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateParqueoTable extends Migration
+class CreateSalidaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class CreateParqueoTable extends Migration
      */
     public function up()
     {
-        Schema::create('parqueo', function (Blueprint $table) {
+        Schema::create('salida', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('estado_salida');
+            $table->dateTime('fecha_hora_salida');
+            $table->foreignId('id_ingreso')
+                  ->constrained('ingreso')
+                  ->cascadeOnUpdate()
+                  ->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -27,6 +32,6 @@ class CreateParqueoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parqueo');
+        Schema::dropIfExists('salida');
     }
 }

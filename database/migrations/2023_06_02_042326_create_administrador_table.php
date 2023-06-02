@@ -15,13 +15,13 @@ class CreateAdministradorTable extends Migration
     {
         Schema::create('administrador', function (Blueprint $table) {
             $table->id();
-            $table->ipAddress('nombre');
-            $table->ipAddress('apellido');
-            $table->ipAddress('direccion');
-            $table->integer('celular');
-            $table->ipAddress('correo_electronico');
+            $table->string('nombre');
+            $table->string('apellido');
+            $table->string('direccion');
+            $table->string('celular');
+            $table->string('correo_electronico');
             $table->integer('ci')->unique();
-            $table->ipAddress('password');
+            $table->string('password');            
             $table->foreignId('id_parqueo')
                   ->constrained('parqueo')
                   ->cascadeOnUpdate()

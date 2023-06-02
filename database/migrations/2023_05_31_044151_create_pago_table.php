@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEventoTable extends Migration
+class CreatePagoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,12 @@ class CreateEventoTable extends Migration
      */
     public function up()
     {
-        Schema::create('evento', function (Blueprint $table) {
+        Schema::create('pago', function (Blueprint $table) {
             $table->id();
-            $table->string('title',255);
-            $table->text('description');
-            $table->string('color',20);
-            $table->string('textColor',20);
-            $table->dateTime('start');
-            $table->dateTime('end');
-            $table->foreignId('id_calendario')
-                  ->constrained('calendario')
+            $table->date('fecha_pago');
+            $table->decimal('monto_pagado', $precision = 8, $scale = 2);
+            $table->foreignId('id_reserva')
+                  ->constrained('reserva')
                   ->cascadeOnUpdate()
                   ->cascadeOnDelete();
             $table->timestamps();
@@ -36,6 +32,6 @@ class CreateEventoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('evento');
+        Schema::dropIfExists('pago');
     }
 }

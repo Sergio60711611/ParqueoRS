@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContratoTable extends Migration
+class CreateTarifaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateContratoTable extends Migration
      */
     public function up()
     {
-        Schema::create('contrato', function (Blueprint $table) {
+        Schema::create('tarifa', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha_inicio');
-            $table->date('fecha_fin');
+            $table->integer('horas');
+            $table->decimal('precio');
+            $table->foreignId('id_parqueo')
+            ->constrained('parqueo')
+            ->cascadeOnUpdate()
+            ->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ class CreateContratoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contrato');
+        Schema::dropIfExists('tarifa');
     }
 }
