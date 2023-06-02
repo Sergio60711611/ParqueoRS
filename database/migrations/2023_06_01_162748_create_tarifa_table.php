@@ -16,7 +16,7 @@ class CreateTarifaTable extends Migration
         Schema::create('tarifa', function (Blueprint $table) {
             $table->id();
             $table->integer('horas');
-            $table->decimal('precio');
+            $table->decimal('precio', $precision = 8, $scale = 2);
             $table->foreignId('id_parqueo')
             ->constrained('parqueo')
             ->cascadeOnUpdate()

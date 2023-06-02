@@ -20,7 +20,7 @@ class CreateIngresoNoLogueadosTable extends Migration
             $table->String('apellido');
             $table->integer('ci')->unique();
             $table->integer('placa')->unique();
-            $table->integer('monto');
+            $table->decimal('monto', $precision = 8, $scale = 2);
             $table->integer('cantidad_horas');
             $table->time('hora_salida');
             $table->foreignId('id_sitio')

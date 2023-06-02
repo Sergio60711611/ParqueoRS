@@ -20,10 +20,8 @@ class CreateIngresoTable extends Migration
                       ->constrained('sitio')
                       ->cascadeOnUpdate()
                       ->cascadeOnDelete();
-                $table->foreignId('id_sitio_emergencia')
-                      ->constrained('sitio_emergencia')
-                      ->cascadeOnUpdate()
-                      ->cascadeOnDelete()->nullable();
+                $table->unsignedBigInteger('id_sitio_emergencia')->nullable();
+                $table->foreign('id_sitio_emergencia')->references('id')->on('sitio_emergencia');
                 $table->foreignId('id_vehiculo')
                       ->constrained('vehiculo')
                       ->cascadeOnUpdate()

@@ -19,7 +19,7 @@ class CreatePlanMensualTable extends Migration
             $table->string('dias_validez');
             $table->time('hora_inicio');
             $table->time('hora_fin');
-            $table->decimal('precio_plan');
+            $table->decimal('precio_plan', $precision = 8, $scale = 2);
             $table->foreignId('id_parqueo')
             ->constrained('parqueo')
             ->cascadeOnUpdate()

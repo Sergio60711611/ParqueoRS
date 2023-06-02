@@ -16,7 +16,8 @@ class CreateDeudaTable extends Migration
         Schema::create('deuda', function (Blueprint $table) {
             $table->id();
             $table->date('fecha_notificacion');
-            $table->float('monto_pendiente');
+            $table->float('monto_pendiente', $precision = 8, $scale = 2);
+            $table->integer('horas');
             $table->foreignId('id_reserva')
             ->constrained('reserva')
             ->cascadeOnUpdate()
