@@ -27,10 +27,6 @@ class CreateIngresoNoLogueadosTable extends Migration
                   ->constrained('sitio')
                   ->cascadeOnUpdate()
                   ->cascadeOnDelete();
-            /*$table->foreignId('id_salida_no_logueados')
-                  ->constrained('salida_no_logueados')
-                  ->cascadeOnUpdate()
-                  ->cascadeOnDelete();*/
             $table->timestamps();
         });
     }

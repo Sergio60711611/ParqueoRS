@@ -15,6 +15,7 @@ class CreateSalidaTable extends Migration
     {
         Schema::create('salida', function (Blueprint $table) {
             $table->id();
+            $table->string('estado_salida');
             $table->dateTime('fecha_hora_salida');
             $table->foreignId('id_ingreso')
                   ->constrained('ingreso')

@@ -23,15 +23,11 @@ class CreateIngresoTable extends Migration
                 $table->foreignId('id_sitio_emergencia')
                       ->constrained('sitio_emergencia')
                       ->cascadeOnUpdate()
-                      ->cascadeOnDelete();
+                      ->cascadeOnDelete()->nullable();
                 $table->foreignId('id_vehiculo')
                       ->constrained('vehiculo')
                       ->cascadeOnUpdate()
                       ->cascadeOnDelete();
-                /*$table->foreignId('id_salida')
-                      ->constrained('salida')
-                      ->cascadeOnUpdate()
-                      ->cascadeOnDelete();*/
                 $table->timestamps();
         });
     }

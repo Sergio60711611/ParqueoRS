@@ -17,7 +17,7 @@ class CreateVehiculoTable extends Migration
             $table->id();
             $table->string('marca');
             $table->string('modelo');
-            $table->integer('placa')->unique();
+            $table->string('placa')->unique();
             $table->string('color');
             $table->foreignId('id_cliente')
                   ->constrained('cliente')
