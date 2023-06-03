@@ -154,7 +154,7 @@ button:active {
 }
 
 button:focus {
-    outline: :none;
+    outline: none;
 }
 
 button.ghost {

@@ -74,16 +74,16 @@ class loginController extends Controller
                 $vehiculo->save();
 
                 session()->flash('alert2', 'Felicitaciones cliente creado correctamente:)');
-                return redirect('/inicio/login');
+                return redirect('/inicio/loginUser');
             }else{
                 // Envía un mensaje flash
                 session()->flash('alert', 'Ya existe un vehiculo registrado con la placa : ('.$request->placa.')');
-                return redirect('/inicio/login');
+                return redirect('/inicio/loginUser');
             }
         }else{
             // Envía un mensaje flash
             session()->flash('alert', 'Ya existe un cliente con id : ('.$ciCliente.')');
-            return redirect('/inicio/login');
+            return redirect('/inicio/loginUser');
         }
 
     }
