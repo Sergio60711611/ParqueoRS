@@ -16,20 +16,16 @@
     </head>
     <body class="hold-transition sidebar-mini">
     @include('navbar')
-
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper" style="background-color:#D9D9D9;  padding: 20px;">
-            <div class="content-wrapper">
-                <div class="container p-3 my-3 border">
-                    <div class= "container">
-                        <h2>Bienvenido a </h2>
-                        <h2>Radiador Springs</h2>
-                        <img class="fondo" src="{{ asset('/img/parqueo10.png') }}">
-                    </div>
+                <div class="container container-blanco">
+                    <!-- Contenido dentro del container -->
+                            <h2>Bienvenido a </h2>
+                            <h2>Radiador Springs</h2>
+                            <img class="fondo" src="{{ asset('/img/parqueo10.png') }}">
                 </div>
             </div>
             <!-- /.content-wrapper -->
-        </div>
         
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -68,6 +64,13 @@ img {
 .container{
     background-color: #FFFFFF;
     padding:0px;
+}
+.container-blanco {
+    width: 95%;
+    height: 95%;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 20px;
 }
 </style>
 </html>

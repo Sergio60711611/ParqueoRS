@@ -12,18 +12,33 @@ use Carbon\Carbon;
 
 class reservaController extends Controller
 {  
-    public function createListaCliente($id){
+    public function createLista(){
         $lista = Reserva::all();
-        return view('administrador.reservaCliente', compact('lista'));
+        $listaClientes = Cliente::all();
+        
+        $collection = collect([]);
+        foreach($lista as $listaReserva){
+            foreach($listaClientes as $listaCli){
+                if($listaReserva->id_cliente == $listaCli->id){
+                    $collection = $collection->push($listaCli->ci);
+                    $collectionFinal = collect($collection);
+                }
+            }
+        }
+
+        return view('administrador.reservas', compact('lista','collection'));
+    }
+    public function createListaCliente($id){
+        $listaRe= Reserva::where('id_cliente', $id)->get();
+        $ciCli= Cliente::where('id', $id)->get();
+        $ciCli= $ciCli->pluck('ci');
+
+        return view('administrador.reservaCliente', compact('listaRe','id','ciCli'));
     }
     public function createListaSitio($id){
         $listaReservaSitio= Reserva::where('id_sitio', $id)->get();
-
-        //$idClientesv = $listaReservaSitio->pluck('id_cliente');
-
         $listaClientes = Cliente::all();
-        //$ciClientes= $listaClientes->pluck('id','ci');
-
+        
         $collection = collect([]);
         foreach($listaReservaSitio as $listaReserva){
             foreach($listaClientes as $listaCli){

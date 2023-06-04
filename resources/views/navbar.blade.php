@@ -80,6 +80,12 @@
                                 <p>Mapeo del parqueo</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="/administrador/reservas" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
+                                <i class="nav-icon fas fa-list"></i>
+                                <p>Lista de Reservas</p>
+                                </a>
+                            </li>
                             </ul>
                         </li>
 
@@ -99,21 +105,6 @@
                             <a href="#" class="nav-link active" style="background-color: #395261; color:#FFFFFF; font-size:14px">
                                 <i class="nav-icon far fa-clock"></i>
                                 <p>Horario de emergencia</p>
-                                </a>
-                            </li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
-                            <i class="nav-icon fas fa-calendar-alt"></i>
-                            <p>Reservar <i class="right fas fa-angle-left"></i></p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-plus-circle"></i>
-                                <p>Agregar reserva</p>
                                 </a>
                             </li>
                             </ul>

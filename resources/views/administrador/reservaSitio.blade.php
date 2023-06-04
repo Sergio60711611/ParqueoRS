@@ -54,6 +54,7 @@
                                             $counter=$counter +1;
 
                                             $fecha_timestamp = strtotime($reserva->fecha_salida);
+                                            $fecha_timestamp2 = strtotime($reserva->fecha_ingreso);
                                             $ahora_timestamp = time();
 
                                             if ($fecha_timestamp < $ahora_timestamp) {
@@ -61,11 +62,16 @@
                                                 <td class = text-center>Finalizado</td>
                                                 @php
                                                 //echo "La fecha ya ha pasado.";
-                                            } else {
+                                            } else if($fecha_timestamp2 > $ahora_timestamp){
+                                                @endphp
+                                                <td class = text-center>Sin iniciar</td>
+                                                @php
+                                                //echo "La fecha Inicio aun no ha llegado.";
+                                            }else{
                                                 @endphp
                                                 <td class = text-center>En Curso</td>
                                                 @php
-                                                //echo "La fecha aún no ha llegado.";
+                                                //echo "La fecha Fin aún no ha llegado.";
                                             }                                               
                                         @endphp
                                         <td class = text>Fecha Ingreso:{{$reserva->fecha_ingreso}}

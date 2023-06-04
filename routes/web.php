@@ -41,8 +41,9 @@ Route::get('/administrador/reserva/calendario/{id}','App\Http\Controllers\evento
 
 Route::get('/administrador/reservaSitio/{id}/','App\Http\Controllers\reservaController@createListaSitio');
 Route::get('/administrador/reservasCliente/{id}/','App\Http\Controllers\reservaController@createListaCliente');
+Route::get('/administrador/reservas','App\Http\Controllers\reservaController@createLista');
 //vistaControl
-Route::get('/show/{id}','App\Http\Controllers\eventoController@show');
+//Route::get('/show/{id}','App\Http\Controllers\eventoController@show');
 //b
 Route::post('/inicioSesion',"App\Http\Controllers\loginController@inicioSesion");
 Route::post('/storeClienteVehiculo',"App\Http\Controllers\loginController@storeClienteVehiculo");
