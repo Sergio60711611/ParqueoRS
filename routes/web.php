@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 //FE
 Route::get('/administrador/home',"App\Http\Controllers\homeController@create");
+Route::get('/cliente/{id}/home',"App\Http\Controllers\homeController@createCliente");
+
 Route::get('/inicio/loginUser',"App\Http\Controllers\loginController@createLoginUser");
 Route::get('/inicio/loginGuardia',"App\Http\Controllers\loginController@createLoginGuardia");
 Route::get('/inicio/loginAdmin',"App\Http\Controllers\loginController@createLoginAdmin");
@@ -33,6 +35,9 @@ Route::get('/administrador/agregarVehiculoCliente/{id}/','App\Http\Controllers\v
 Route::get('/administrador/vehiculos','App\Http\Controllers\vehiculoController@createLista');
 Route::get('/administrador/agregarVehiculo','App\Http\Controllers\vehiculoController@createAgregar');
 Route::get('/administrador/borrarVehiculo/{id}','App\Http\Controllers\vehiculoController@createborrar');
+Route::get('/cliente/{id}/vehiculos/','App\Http\Controllers\vehiculoController@createListaClienteCli');
+Route::get('/cliente/{id}/agregarVehiculo/','App\Http\Controllers\vehiculoController@createAgregarClienteCli');
+Route::get('/cliente/{idCli}/borrarVehiculo/{id}','App\Http\Controllers\vehiculoController@createborrarCli');
 
 Route::get('/administrador/mapeoParqueo',"App\Http\Controllers\parqueoController@createLista");
 Route::get('/administrador/createAgregarIngreso',"App\Http\Controllers\parqueoController@createAgregarIngreso");
@@ -54,6 +59,8 @@ Route::delete('/deletec/{id}',"App\Http\Controllers\clientesController@delete");
 
 Route::post('/storeVehiculo','App\Http\Controllers\vehiculoController@store');
 Route::delete('/delete/{id}','App\Http\Controllers\vehiculoController@delete');
+Route::post('/storeVehiculoCli','App\Http\Controllers\vehiculoController@storeCli');
+Route::delete('/deleteVCli/{id}/{idCli}','App\Http\Controllers\vehiculoController@deleteVCli');
 
 Route::post('/aumentarSitio','App\Http\Controllers\parqueoController@aumentarSitio');
 Route::post('/quitarSitio','App\Http\Controllers\parqueoController@quitarSitio');
