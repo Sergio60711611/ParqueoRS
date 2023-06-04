@@ -17,7 +17,6 @@ class CreateGuardiaTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('apellido');
-            $table->string('direccion');
             $table->string('celular');
             $table->string('turno');
             $table->string('correo_electronico');
