@@ -26,6 +26,15 @@ class parqueoController extends Controller
 
         return view('administrador.mapeoParqueo', compact('now', 'sitios'));
     }
+    public function createListaCli($id){
+        $sitios = Sitio::all();
+
+        $now = Carbon::now(); 
+        $now->format('d/m/Y H:i');
+        $cliente = Cliente::find($id);
+
+        return view('cliente.mapeoParqueo', compact('now', 'sitios','cliente'));
+    }
 
     public function aumentarSitio(){
         $cantSitios  = Sitio::max('nro_sitio');

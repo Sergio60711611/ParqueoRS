@@ -59,21 +59,31 @@
 
 
                         <li class="nav-item">
+                            <a href="#" class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 5px;">
+                            <i class="nav-icon fas fa-list"></i>
+                            <p>Mis Reservas<i class="right fas fa-angle-left"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
+                                <i class="nav-icon fas fa-list-alt"></i>
+                                <p>Lista de reservas</p>
+                                </a>
+                            </li>
+                            </ul>
+                        </li>
+
+
+                        <li class="nav-item">
                             <a href="#" class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
                             <i class="nav-icon fab fa-product-hunt"></i>
                             <p>Parqueo <i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
+                                <a href="{{url ('/cliente/'. $id2 .'/mapeoParqueo')}}" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
                                 <i class="nav-icon fas fa-map"></i>
                                 <p>Mapeo del parqueo</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-list"></i>
-                                <p>Lista de Reservas</p>
                                 </a>
                             </li>
                             </ul>
@@ -102,8 +112,8 @@
                         
                         <li class="nav-item">
                             <a href="/" class="nav-link active" style="background-color: #FD968E; color:#324855; margin-top: 3px;">
-                            <i class="material-icons">exit_to_app</i>
-                            <p>Cerrar Sesion<i class="right fas fa-angle-left"></i></p>
+                            <i class="nav-icon fas fa-sign-out-alt"></i>
+                            <p>Cerrar Sesion</p>
                             </a>
                             
                         </li>

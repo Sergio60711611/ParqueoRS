@@ -41,6 +41,7 @@ Route::get('/cliente/{idCli}/borrarVehiculo/{id}','App\Http\Controllers\vehiculo
 
 Route::get('/administrador/mapeoParqueo',"App\Http\Controllers\parqueoController@createLista");
 Route::get('/administrador/createAgregarIngreso',"App\Http\Controllers\parqueoController@createAgregarIngreso");
+Route::get('/cliente/{id}/mapeoParqueo',"App\Http\Controllers\parqueoController@createListaCli");
 
 Route::get('/administrador/reserva/calendario/{id}','App\Http\Controllers\eventoController@createCalendar');
 
