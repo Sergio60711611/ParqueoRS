@@ -70,7 +70,7 @@
 </script>
     </head>
     <body class="hold-transition sidebar-mini">
-    @include('navbar')
+    @include('administrador.navbar')
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">

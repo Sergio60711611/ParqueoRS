@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     </head>
     <body class="hold-transition sidebar-mini">
-    @include('navbar')
+    @include('administrador.navbar')
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
