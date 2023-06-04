@@ -59,12 +59,12 @@ class vehiculoController extends Controller
     public function store(Request $request)
     {
         $ciCliente = $request->ci;
-        $cliente = Cliente::where('ci', $ciCliente)->get();
+        $clientes = Cliente::where('ci', $ciCliente)->get();
         
-        if(empty($cliente)){
+        if(count($clientes) === 0){
             return redirect('/administrador/vehiculos')->with('msjdelete', 'No existe un cliente con id : ('.$ciCliente.')');
         }else{
-            $idcliente = $cliente->pluck('id');
+            $idcliente = $clientes->pluck('id');
             $idclienteNum = $idcliente->implode(" ");
 
             $validation= $request->validate([

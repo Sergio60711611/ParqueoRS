@@ -32,26 +32,33 @@ class clientesController extends Controller
     }
     public function store(Request $request)
     {
-        $validation= $request->validate([
-
-            'nombre' => 'required | min:3 | max: 30',
-            'apellido' => 'required | min:3 | max: 30',
-            'ci' => 'required|numeric| digits_between:6,10 ',
-            'correo_electronico' => 'required |email',
-            'celular' => 'required |numeric| digits:8',
-            'password' => 'required|confirmed|min:6',
-        ]);
-
-        $cliente=new Cliente();
-        $cliente->nombre = $request->nombre;
-        $cliente->apellido = $request->apellido;
-        $cliente->correo_electronico = $request->correo_electronico;
-        $cliente->celular = $request->celular;
-        $cliente->ci = $request->ci;
-        $cliente->password = $request->password;
+        $ciCliente = $request->ci;
+        $clientes = Cliente::where('ci', $ciCliente)->get();
         
-        $cliente->save();
-        return redirect('/administrador/clientes')->with('message', 'Felicitaciones .! Cliente Registrado Correctamente ...');
+        if(count($clientes) === 0){            
+            $validation= $request->validate([
+
+                'nombre' => 'required | min:3 | max: 30',
+                'apellido' => 'required | min:3 | max: 30',
+                'ci' => 'required|numeric| digits_between:6,10 ',
+                'correo_electronico' => 'required |email',
+                'celular' => 'required |numeric| digits:8',
+                'password' => 'required|confirmed|min:6',
+            ]);
+
+            $cliente=new Cliente();
+            $cliente->nombre = $request->nombre;
+            $cliente->apellido = $request->apellido;
+            $cliente->correo_electronico = $request->correo_electronico;
+            $cliente->celular = $request->celular;
+            $cliente->ci = $request->ci;
+            $cliente->password = $request->password;
+            
+            $cliente->save();
+            return redirect('/administrador/clientes')->with('message', 'Felicitaciones .! Cliente Registrado Correctamente ...');
+        }else{
+            return redirect('/administrador/clientes')->with('msjdelete', 'Ya existe un cliente con id : ('.$ciCliente.')');
+        }
     }
     public function update(Request $request,$id)
     {

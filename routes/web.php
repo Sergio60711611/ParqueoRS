@@ -38,6 +38,9 @@ Route::get('/administrador/mapeoParqueo',"App\Http\Controllers\parqueoController
 Route::get('/administrador/createAgregarIngreso',"App\Http\Controllers\parqueoController@createAgregarIngreso");
 
 Route::get('/administrador/reserva/calendario/{id}','App\Http\Controllers\eventoController@createCalendar');
+
+Route::get('/administrador/reservaSitio/{id}/','App\Http\Controllers\reservaController@createListaSitio');
+Route::get('/administrador/reservasCliente/{id}/','App\Http\Controllers\reservaController@createListaCliente');
 //vistaControl
 Route::get('/show/{id}','App\Http\Controllers\eventoController@show');
 //b
@@ -57,7 +60,9 @@ Route::post('/storeIngreso','App\Http\Controllers\parqueoController@storeIngreso
 Route::post('/storeSalida','App\Http\Controllers\parqueoController@storeSalida');
 
 Route::post('/storeReservaDiaria','App\Http\Controllers\reservaController@storeDiario');
-Route::post('/storeMesDia','App\Http\Controllers\reservaController@storeMesDia');
+Route::post('/storeSemana','App\Http\Controllers\reservaController@storeSemana');
+Route::post('/storeMesLV','App\Http\Controllers\reservaController@storeMesLV');
+Route::post('/storeMesS','App\Http\Controllers\reservaController@storeMesS');
 //Route::get('/storeEvento','App\Http\Controllers\eventoController@store');
 
 //backend
