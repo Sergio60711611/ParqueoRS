@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePagoTable extends Migration
+class CreateSitioTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreatePagoTable extends Migration
      */
     public function up()
     {
-        Schema::create('pago', function (Blueprint $table) {
+        Schema::create('sitio', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('fechaHora_pago');
-            $table->decimal('monto_pago', $precision = 8, $scale = 2);
-            $table->foreignId('id_cliente')
-                  ->constrained('cliente')
-                  ->cascadeOnUpdate()
-                  ->cascadeOnDelete();
+            $table->integer('nro_sitio');
+            $table->string('estado');
+            $table->foreignId('id_parqueo')
+            ->constrained('parqueo')
+            ->cascadeOnUpdate()
+            ->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreatePagoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pago');
+        Schema::dropIfExists('sitio');
     }
 }

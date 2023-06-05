@@ -13,7 +13,7 @@ class CreateIngresoNoLogueadosTable extends Migration
      */
     public function up()
     {
-        Schema::create('_ingreso_no_logueados', function (Blueprint $table) {
+        Schema::create('ingreso_no_logueados', function (Blueprint $table) {
             $table->id();
             $table->dateTime('fecha_hora_ingreso');
             $table->String('nombre');
@@ -38,6 +38,6 @@ class CreateIngresoNoLogueadosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_ingreso_no_logueados');
+        Schema::dropIfExists('ingreso_no_logueados');
     }
 }

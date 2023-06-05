@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSitioTable extends Migration
+class CreateSitioEmergenciaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,18 @@ class CreateSitioTable extends Migration
      */
     public function up()
     {
-        Schema::create('sitio', function (Blueprint $table) {
+        Schema::create('sitio_emergencia', function (Blueprint $table) {
             $table->id();
-            $table->int('nro');
-            $table->string('estado');
+            $table->integer('nro_sitioE');
+            $table->string('estadoE');
             $table->foreignId('id_parqueo')
-                  ->constrained('parqueo')
-                  ->cascadeOnUpdate()
-                  ->cascadeOnDelete();
+            ->constrained('parqueo')
+            ->cascadeOnUpdate()
+            ->cascadeOnDelete();
             $table->foreignId('id_cliente')
-                  ->constrained('cliente')
-                  ->cascadeOnUpdate()
-                  ->cascadeOnDelete();
+            ->constrained('cliente')
+            ->cascadeOnUpdate()
+            ->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -36,6 +36,6 @@ class CreateSitioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sitio');
+        Schema::dropIfExists('sitio_emergencia');
     }
 }

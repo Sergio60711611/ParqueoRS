@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHorarioEmergenciaTable extends Migration
+class CreateVehiculoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateHorarioEmergenciaTable extends Migration
      */
     public function up()
     {
-        Schema::create('_horario_emergencia', function (Blueprint $table) {
+        Schema::create('vehiculo', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha_actual');
-            $table->time('hora_inicio');
-            $table->time('hora_cierre');
-            $table->string('mensaje');
-            $table->foreignId('id_parqueo')
-                  ->constrained('parqueo')
+            $table->string('marca');
+            $table->string('modelo');
+            $table->string('placa')->unique();
+            $table->string('color');
+            $table->foreignId('id_cliente')
+                  ->constrained('cliente')
                   ->cascadeOnUpdate()
                   ->cascadeOnDelete();
             $table->timestamps();
@@ -34,6 +34,6 @@ class CreateHorarioEmergenciaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_horario_emergencia');
+        Schema::dropIfExists('vehiculo');
     }
 }

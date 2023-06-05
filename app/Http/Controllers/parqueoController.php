@@ -43,7 +43,7 @@ class parqueoController extends Controller
         $sitio->nro_sitio = $cantSitios;
         $sitio->estado = "Libre";
         $sitio->id_parqueo = 1;
-        //$sitio->id_cliente = 1;
+        $sitio->id_cliente = 1;
         $sitio->save();
 
         return redirect('/administrador/mapeoParqueo');

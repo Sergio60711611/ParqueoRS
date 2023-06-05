@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVehiculoTable extends Migration
+class CreateContratoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,16 @@ class CreateVehiculoTable extends Migration
      */
     public function up()
     {
-        Schema::create('vehiculo', function (Blueprint $table) {
+        Schema::create('contrato', function (Blueprint $table) {
             $table->id();
-            $table->string('marca');
-            $table->string('modelo');
-            $table->integer('placa')->unique();
-            $table->string('color');
-            $table->foreignId('id_cliente')
-                  ->constrained('cliente')
+            $table->date('fecha_inicio');
+            $table->date('fecha_fin');
+            $table->foreignId('id_tipo_turno')
+                  ->constrained('tipo_turno')
+                  ->cascadeOnUpdate()
+                  ->cascadeOnDelete();
+            $table->foreignId('id_guardia')
+                  ->constrained('guardia')
                   ->cascadeOnUpdate()
                   ->cascadeOnDelete();
             $table->timestamps();
@@ -34,6 +36,6 @@ class CreateVehiculoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vehiculo');
+        Schema::dropIfExists('contrato');
     }
 }

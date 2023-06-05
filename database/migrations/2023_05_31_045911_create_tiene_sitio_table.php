@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTipoPlanTable extends Migration
+class CreateTieneSitioTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateTipoPlanTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipoplan', function (Blueprint $table) {
+        Schema::create('tiene_sitio', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->time('hora_inicio');
-            $table->time('hora_fin');
-            $table->integer(precio);
             $table->foreignId('id_reserva')
-                    ->constrained('reserva')
-                    ->cascadeOnUpdate()
-                    ->cascadeOnDelete();
+            ->constrained('reserva')
+            ->cascadeOnUpdate()
+            ->cascadeOnDelete();
+             $table->foreignId('id_sitio')
+            ->constrained('sitio')
+            ->cascadeOnUpdate()
+            ->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ class CreateTipoPlanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipoplan');
+        Schema::dropIfExists('tiene_sitio');
     }
 }

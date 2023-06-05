@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSalidaTable extends Migration
+class CreateClienteTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateSalidaTable extends Migration
      */
     public function up()
     {
-        Schema::create('salida', function (Blueprint $table) {
+        Schema::create('cliente', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('fecha_hora_salida');
-            $table->foreignId('id_ingreso')
-                  ->constrained('ingreso')
-                  ->cascadeOnUpdate()
-                  ->cascadeOnDelete();
+            $table->string('nombre');
+            $table->string('apellido');
+            $table->string('correo_electronico');
+            $table->integer('celular');
+            $table->string('password');
+            $table->integer('ci')->unique();
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ class CreateSalidaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('salida');
+        Schema::dropIfExists('cliente');
     }
 }

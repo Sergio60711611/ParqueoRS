@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDiasTable extends Migration
+class CreatePreguntasFrecuentesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateDiasTable extends Migration
      */
     public function up()
     {
-        Schema::create('dias', function (Blueprint $table) {
+        Schema::create('preguntas_frecuentes', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('estado');
-            $table->foreignId('id_plan')
-                    ->constrained('tipoplan')
-                    ->cascadeOnUpdate()
-                    ->cascadeOnDelete();
+            $table->string('pregunta');
+            $table->string('respuesta');
+            $table->datetime('emitido');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateDiasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dias');
+        Schema::dropIfExists('preguntas_frecuentes');
     }
 }
