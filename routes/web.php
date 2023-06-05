@@ -36,6 +36,9 @@ Route::get('/administrador/borrarVehiculo/{id}','App\Http\Controllers\vehiculoCo
 
 Route::get('/administrador/mapeoParqueo',"App\Http\Controllers\parqueoController@createLista");
 Route::get('/administrador/createAgregarIngreso',"App\Http\Controllers\parqueoController@createAgregarIngreso");
+//pagoscontrollers
+Route::get('/administrador/pagos',"App\Http\Controllers\PagosController@PController");
+Route::get('/administrador/pagoslista',"App\Http\Controllers\PagosController@ListaPagos");
 
 Route::get('/administrador/reserva/calendario/{id}','App\Http\Controllers\eventoController@createCalendar');
 //vistaControl

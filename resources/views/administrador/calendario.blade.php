@@ -107,6 +107,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
+                                    */aca cambio para pagos /storeReservaDiaria por /administrador/pagos*/
                                         <form action="/storeReservaDiaria" method="POST" role="form">
                                         {{csrf_field()}}
                                             <div class="card-body" >
@@ -134,7 +135,9 @@
                                                 </div>-->
                                                 <hr>
                                             <div class="form-group2">
+                                                
                                                 <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
+                                        
                                                 <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
                                             </div>
                                             </div>
@@ -154,6 +157,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
+                                    */aca cambio para pagos /storeMesDias por /administrador/pagos*/
                                     <form action="/storeMesDia" method="POST" role="form">
                                     {{csrf_field()}}
                                         <div class="card-body" >

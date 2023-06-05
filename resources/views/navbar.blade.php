@@ -90,6 +90,22 @@
                         </li>
 
                         <li class="nav-item">
+                            <a href="#" class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
+                            <i class="material-icons">credit_card</i>
+                            <p>Pagos <i class="right fas fa-angle-left"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/administrador/pagoslista" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
+                                <i class="nav-icon fas fa-map"></i>
+                                <p>Historial de Pagos</p>
+                                </a>
+                            </li>
+                            
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
                             <a href="#" class="nav-link active" style="background-color: #F9FA85; color:#324855;  margin-top: 3px;">
                             <i class="nav-icon fas fa-clock"></i>
                             <p>Horario <i class="right fas fa-angle-left"></i></p>
