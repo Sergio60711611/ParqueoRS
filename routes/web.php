@@ -35,6 +35,22 @@ Route::get('/administrador/borrarVehiculo/{id}','App\Http\Controllers\vehiculoCo
 Route::get('/administrador/mapeoParqueo',"App\Http\Controllers\parqueoController@createLista");
 Route::get('/administrador/createAgregarIngreso',"App\Http\Controllers\parqueoController@createAgregarIngreso");
 
+Route::get('/administrador/info',"App\Http\Controllers\InfoClienteController@see");
+Route::get('/administrador/info/consultas',"App\Http\Controllers\InfoClienteController@seeConsultas");
+Route::get('/administrador/info/anuncios',"App\Http\Controllers\InfoClienteController@seeAnuncios");
+Route::get('/administrador/info/preguntas', "App\Http\Controllers\InfoClienteController@seePreguntas");
+Route::get('/administrador/info/horarios', "App\Http\Controllers\InfoClienteController@seeHorarios");
+
+Route::get('/administrador/anuncios',"App\Http\Controllers\AnuncioController@createLista");
+Route::get('/administrador/agregarAnuncio',"App\Http\Controllers\AnuncioController@createAgregar");
+Route::get('/administrador/editarAnuncio/{id}',"App\Http\Controllers\AnuncioController@createEditar");
+Route::get('/administrador/borrarAnuncio/{id}',"App\Http\Controllers\AnuncioController@createborrar");
+
+Route::get('/administrador/preguntas',"App\Http\Controllers\PreguntasFrecuentesController@createLista");
+Route::get('/administrador/agregarPreguntas',"App\Http\Controllers\PreguntasFrecuentesController@createAgregar");
+Route::get('/administrador/editarPreguntas/{id}',"App\Http\Controllers\PreguntasFrecuentesController@createEditar");
+Route::get('/administrador/borrarPreguntas/{id}',"App\Http\Controllers\PreguntasFrecuentesController@createborrar");
+
 //b
 Route::post('/store',"App\Http\Controllers\clientesController@store");
 Route::put('/update/{id}',"App\Http\Controllers\clientesController@update");
@@ -104,3 +120,14 @@ Route::post('/ingreso_no_logueadoscreado',"App\Http\Controllers\ingreso_no_logue
 Route::get('/ingreso_no_logueados/{id}','App\Http\Controllers\ingreso_no_logueadosController@show'); //para mostrarlos los registros
 Route::put('/ingreso_no_logueados/{id}','App\Http\Controllers\ingreso_no_logueadosController@update'); //actualizar un registro
 Route::delete('/ingreso_no_logueados/{id}','App\Http\Controllers\ingreso_no_logueadosController@destroy'); //borrar un registro
+
+Route::get('/anuncios', "App\Http\Controllers\InfoClienteController@getAnuncios");
+Route::get('/preguntas', "App\Http\Controllers\InfoClienteController@getPreguntas");
+
+Route::post('/createAnuncio',"App\Http\Controllers\AnuncioController@store");
+Route::put('/updateAnuncio/{id}',"App\Http\Controllers\AnuncioController@update");
+Route::delete('/deleteAnuncio/{id}',"App\Http\Controllers\AnuncioController@delete");
+
+Route::post('/createPregunta',"App\Http\Controllers\PreguntasFrecuentesController@store");
+Route::put('/updatePregunta/{id}',"App\Http\Controllers\PreguntasFrecuentesController@update");
+Route::delete('/deletePregunta/{id}',"App\Http\Controllers\PreguntasFrecuentesController@delete");
