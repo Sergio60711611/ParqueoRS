@@ -51,6 +51,8 @@ Route::get('/administrador/agregarPreguntas',"App\Http\Controllers\PreguntasFrec
 Route::get('/administrador/editarPreguntas/{id}',"App\Http\Controllers\PreguntasFrecuentesController@createEditar");
 Route::get('/administrador/borrarPreguntas/{id}',"App\Http\Controllers\PreguntasFrecuentesController@createborrar");
 
+Route::get('/administrador/reclamos', "App\Http\Controllers\clamosController@create")->name('reclamos.create');
+Route::post('/administrador/reclamos', "App\Http\Controllers\clamosController@store")->name('reclamos.store');
 //b
 Route::post('/store',"App\Http\Controllers\clientesController@store");
 Route::put('/update/{id}',"App\Http\Controllers\clientesController@update");

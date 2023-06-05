@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
-<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <head>
-        <meta charset="utf-8">
+    <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Radiador Springs</title>
         <!-- Google Font: Source Sans Pro -->
@@ -14,9 +14,9 @@
         <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/fontawesome.js"> </script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
     </head>
-    <body class="hold-transition sidebar-mini">
+    <body class="hold-transition sidebar-mini" style="background-color:#D9D9D9 ">
         <div class="wrapper">
-                <!--MENU-INICIO-->
+            <!--MENU-INICIO-->
                 <!-- inicio-navbar -->
                 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
                 <!-- Left navbar links -->
@@ -137,6 +137,7 @@
                             </li>
                             </ul>
                         </li>
+
                         <li class="nav-item">
                             <a href="#" class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
                             <i class="nav-icon fas fa-calendar-alt"></i>
@@ -144,19 +145,14 @@
                             </a>
                             <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
+                                <a href="/administrador/reserva" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
                                 <i class="nav-icon fas fa-plus-circle"></i>
                                 <p>Agregar reserva</p>
                                 </a>
                             </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="/administrador/info"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
-                            <i class="nav-icon fas fa-phone-alt"></i>
-                            <p>Ayuda</p>
-                            </a>
-                        </li>
+
                         </ul>
                     </nav>
                     <!-- fin-sidebar-menu -->
@@ -174,147 +170,93 @@
                 <!-- fin-control-sidebar -->
                 <!--MENU-FIN-->
 
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
-                <div class="container p-3 my-3 border">
-                    <div class= "container">
-                        <h2>¿Cómo podemos ayudarte?</h2>
-                        <div class="box">
-                        <ul>
-                        <li><a class="dropdown-item" href="#">
-                        <i class="nav-icon far fa-calendar-plus"></i>
-                        <span class="text">Mis Reservas</span>
-                        </a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/administrador/info/horarios">
-                        <i class="nav-icon far fa-clock"></i>
-                        <span class="text">Horario de Atención/Tarifas</span>
-                        </a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/administrador/info/anuncios">
-                        <i class="nav-icon fa fa-bullhorn"></i>
-                        <span class="text">Anuncios</span>
-                        </a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">
-                        <i class="nav-icon fas fa-user"></i>
-                        <span class="text">Mi perfil</span>
-                        </a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/administrador/info/preguntas">
-                        <i class="nav-icon fas fa-question-circle"></i>
-                        <span class="text">Preguntas Frecuentes</span>
-                        </a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/administrador/reclamos">
-                        <i class="nav-icon far fa-envelope"></i>
-                        <span class="text">Buzon de Sugerencias/Reclamos</span>
-                        </a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="https://t.me/RADIADORSPRINGS_bot">
-                        <i class="nav-icon fas fa-ellipsis-h"></i>
-                        <span class="text">Otras consultas</span>
-                        </a></li>
-                        </ul>
-                        </div>
-                        <div class="box">
-                        <img src="{{ asset('/img/apoyo.png') }}" >
-                        <h1>Esperamos que esto sea de ayuda</h1>
-                        </div>
+        <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper" style="background-color:#D9D9D9; padding: 20px;">
+                <div class="container-xl">
+                <div class="table-title">
+                     <div class="row">
+                            <div class="col-sm-8"><h2><b>Buzon de Sugerencias/Reclamos</b></h2></div>
+                     </div>
                 </div>
-            </div>
-            <!-- /.content-wrapper -->
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>Sugerencia/Reclamos</h4>
+                                    </div>
+                                    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+<form action="{{ route('reclamos.store') }}" method="POST">
+    @csrf
+
+    <div class="card-body" >
+        <div class="form-row">
+        
+    </div>
+
+    
+
+    <div class="form-group">
+        <label for="mensaje">Mensaje:</label>
+        <textarea name="mensaje" id="mensaje" placeholder="Escriba su mensaje de reclamos/sugerencias "class="form-control" rows="5" required></textarea>
+    </div>
+
+    <div class="form-group2">
+    <button  type="submit" class="btn btn-primary" id="btn_enviar" style="background-color:#53A790; border-color:#53A790;">Enviar</button>
+    </div>
+    </div>
+        <img src="{{ asset('/img/sugerencias.png') }}">
+    </div>
+</form>
+        <!-- /.content-wrapper -->
         </div>
         
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <!-- Bootstrap 4 -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
         <!-- AdminLTE App -->
         <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
-
+        
     </body>
-
 <style>
-body {
-    color: #566787;
-    font-family: 'Poppins', sans-serif;
-    background-color: #D9D9D9; 
-    height:auto;
-}
-li{
-    list-style:none
-}
-h2{
-    color: #324855;
-    font-family: "Poppins";
-    font-weight: 700;
-    font-size: 2.5vw;
-    margin-left: 20vw;
-    margin-top: 2vw;
-    font-style: normal;
-    line-height: 3.75vw;
-    height: 3.75vw;
-    
-}
-.dropdown-item {
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-}
-.nav-icon {
-  margin-right: 5px; 
-}
-
-.text {
-  font-size: 16px; 
-  width: 34.83vw; 
-    height: 2.17vw; 
-    left: 36.42vw; 
-    top: 19.5vw; 
-   font-family: 'Poppins';
-   font-style: normal;
-   font-weight: 300;
-   line-height: 2.5vw; 
-   color: #000000;
-}
-.box {
-  display: inline-block;
-  width: 35vw; 
-  height: auto;
-  text-align: center;
-}
-.box img {
-  display: block;
-  margin: 0 auto;
-  width: 50%;
-  height: 50%;
-  left: 902px;
-  top: 216px;
-  margin-top:1%;
-}
-
-.box h1 {
-  text-align: center;
-  color: #324855;
-  width: 100%;
-    height: 1vw;
-    left: 22vw;
-    top: 10vw;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 1.5vw;
-    line-height: 3.6vw;
-}
-.content-wrapper{
-    background-color: #D9D9D9;
-    margin-top: 2.5vw;
-}
-.container{
-    background-color: #FFFFFF;
-    padding:0px;
-}
-
+    .container-xl{
+        width: auto;
+        background: #ffff;
+        padding: 40px;
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        border-radius: 10px;
+        margin-top: 1%;
+    }
+    h2{
+        font-family: 'Poppins', sans-serif;
+        color: #324855;
+    }
+    .card{
+        margin-top: 5px;
+        border: 5px solid #53A790;
+        border-radius : 15px;
+        margin-bottom: 0%;
+    }
+    .card-header{
+        background-color:#53A790;
+        color: #ffffff;
+    }
+    img {
+        width: 35%;
+        height:auto;
+        margin-top: -4%;
+        margin-left: 35%;
+        margin-bottom: -1%;
+    }
+    input{
+        margin-top: -1%;
+    }
 </style>
 </html>
