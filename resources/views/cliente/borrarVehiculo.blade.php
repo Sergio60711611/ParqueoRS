@@ -16,9 +16,26 @@
     
     </head>
     <body class="hold-transition sidebar-mini" style="background-color:#D9D9D9">
-    @include('administrador.navbar')
+    @php
+        $id = $cliente['id'];
+        $nombre = $cliente['nombre'];    
+        $apellido = $cliente['apellido'];
+        $correo = $cliente['correo_electronico'];
+        $celular = $cliente['celular'];
+        $password = $cliente['password'];
+        $ci = $cliente['ci'];
+    @endphp
+
+    @include('cliente.navbar', ['id' => $id])
+    <aside class="control-sidebar control-sidebar-dark">
+        <div class="p-3">
+        <h5>Cliente: </h5>
+        <p>Esta es la vista para el usuario de apellido : {{$apellido}}</p>
+        </div>
+    </aside>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper" style="background-color:#D9D9D9; padding: 20px;">
+        @include('cliente.msj')
             <div class="container-xl">
                 <div class="table-title">
                      <div class="row">
@@ -34,7 +51,7 @@
                                 <div class="card-header">
                                     <h3 class="card-title">¿Esta seguro de eliminar este registro?</h3>
                                 </div>
-                            <form action="{{url ('/delete', $vehiculo->id)}}" method="POST" role="form">
+                            <form action="{{url ('/deleteVCli/'.$vehiculo->id.'/'.$id.'')}}" method="POST" role="form">
                                     @csrf
                                     @method('delete')
                                 <div class="card-body">
@@ -64,15 +81,12 @@
                                 </div>
                                     <div class="form-group">
                                         <button class="btn btn-danger" id="btn_borrar" style="background-color:#53A790; border-color:#53A790;" >Borrar</button>
-                                        <a href="/administrador/vehiculos" class="btn btn-default" style="background-color:#53A790;border-color:#53A790;color:#FFFFFF;">Cancelar</a>
+                                        <a href="{{url ('/cliente/'. $id .'/vehiculos')}}" class="btn btn-default" style="background-color:#53A790;border-color:#53A790;color:#FFFFFF;">Cancelar</a>
                                     </div>
                                     <img src="{{ asset('/img/parqueo3.jpg') }}">
                                 </div>
                                 </form>
                             </div>
-
-
-
                         </div>
                         <div class="col-md-6"></div>
                     </div>

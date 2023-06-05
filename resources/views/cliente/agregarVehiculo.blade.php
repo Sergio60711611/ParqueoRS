@@ -15,12 +15,32 @@
         <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
     </head>
     <body class="hold-transition sidebar-mini" style="background-color:#D9D9D9 ">
-    @include('administrador.navbar')
+    @php
+        $id = $cliente['id'];
+        $nombre = $cliente['nombre'];    
+        $apellido = $cliente['apellido'];
+        $correo = $cliente['correo_electronico'];
+        $celular = $cliente['celular'];
+        $password = $cliente['password'];
+        $ci = $cliente['ci'];
+    @endphp
 
+    @include('cliente.navbar', ['id' => $id])
+    <aside class="control-sidebar control-sidebar-dark">
+        <div class="p-3">
+        <h5>Cliente: </h5>
+        <p>Esta es la vista para el usuario de apellido : {{$apellido}}</p>
+        </div>
+    </aside>
         <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper" style="background-color:#D9D9D9; padding: 20px;">
                 <div class="container-xl">
+                @include('cliente.msj') 
                 <div class="table-title">
+                @php
+                    $collection = collect($cicliente);
+                    $numColl = $collection->first();
+                @endphp
                      <div class="row">
                             <div class="col-sm-8"><h2><b>Agregar Vehiculo</b></h2></div>
                      </div>
@@ -33,17 +53,19 @@
                                     <div class="card-header">
                                         <h4>Nuevo Vehiculo</h4>
                                     </div>
-                                    <form action="/storeVehiculo" method="POST" role="form">
+                                    <form action="/storeVehiculoCli" method="POST" role="form">
                                     {{csrf_field()}}
                                         <div class="card-body" >
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="">CI Dueño*</label>
-                                                <input type="text" class="form-control" name="ci" placeholder="Ingrese el CI del dueño del vehiculo" value="{{ old('ci') }}"></input>
+                                                <input type="text" class="form-control" value="{{$numColl}}" disabled></input>
+                                                <input type="hidden" class="form-control" name="ci" value="{{$numColl}}"></input>
+                                                <input type="hidden" class="form-control" name="id" value="{{$id}}"></input>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="">Marca*</label>
-                                                <input type="text" class="form-control" name="marca" placeholder="Ingrese la placa del vehiculo" value="{{ old('marca') }}"></input>
+                                                <input type="text" class="form-control" name="marca" placeholder="Ingrese la placa su vehiculo" value="{{ old('marca') }}"></input>
                                                 @error('marca')
                                                 <p1 class="error-message">{{ $message }}</p1>
                                                 @enderror
@@ -52,21 +74,21 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-4">
                                                 <label for="">Modelo*</label>
-                                                <input type="text" class="form-control" name="modelo" placeholder="Ingrese el modelo del vehiculo" value="{{ old('modelo') }}"></input>
+                                                <input type="text" class="form-control" name="modelo" placeholder="Ingrese el modelo de su vehiculo" value="{{ old('modelo') }}"></input>
                                                 @error('modelo')
                                                 <p1 class="error-message">{{ $message }}</p1>
                                                 @enderror
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="">Placa*</label>
-                                                <input type="text" class="form-control" name="placa" placeholder="Ingrese la marca del vehiculo" value="{{ old('placa') }}" ></input>
+                                                <input type="text" class="form-control" name="placa" placeholder="Ingrese la marca de su vehiculo" value="{{ old('placa') }}" ></input>
                                                 @error('placa')
                                                 <p1 class="error-message">{{ $message }}</p1>
                                                 @enderror
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="">Color*</label>
-                                                <input type="text" class="form-control" name="color" placeholder="Ingrese el color del vehiculo" value="{{ old('color') }}"></input>
+                                                <input type="text" class="form-control" name="color" placeholder="Ingrese el color de su vehiculo" value="{{ old('color') }}"></input>
                                                 @error('color')
                                                 <p1 class="error-message">{{ $message }}</p1>
                                                 @enderror
@@ -74,7 +96,7 @@
                                         </div>
                                         <div class="form-group2">
                                             <button  type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#53A790; border-color:#53A790;">Guardar</button>
-                                            <a href="/administrador/vehiculos" class="btn btn-default" style="background-color:#53A790;border-color:#53A790;color:#FFFFFF;">Cancelar</a>
+                                            <a href="{{url ('/cliente/'. $id .'/vehiculos')}}" class="btn btn-default" style="background-color:#53A790;border-color:#53A790;color:#FFFFFF;">Cancelar</a>
                                         </div>
                                         <img src="{{ asset('/img/parqueo8.png') }}">
                                         </div>

@@ -109,7 +109,15 @@ class loginController extends Controller
                 $difference = $passwordcliente->diff($passSesions);
 
                 if($difference->isEmpty()){
-                    return redirect('/administrador/home');
+                    //"{{url ('/cliente/'. $id2 .'/home')}}"
+                    //$clientesId = Cliente::where('ci', $ciSesions)->get();
+                    $idCli = $clientesCi->pluck('id');
+                    $idCli = $idCli->first();
+
+                    $cliente = Cliente::find($idCli);
+                    
+                    return redirect('/cliente/'.($idCli).'/home')->with(compact('cliente'));
+                    //return redirect('/administrador/home');
                 }else{
                     session()->flash('alert', 'Contraseña incorrecta. Vuelve a intentarlo');
                     return redirect('/inicio/loginUser');
@@ -158,6 +166,5 @@ class loginController extends Controller
                 }
             }
         }
-        //return view('inicio.loginAdmin');
     }
 }

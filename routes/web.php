@@ -19,6 +19,10 @@ Route::get('/', function () {
 
 //FE
 Route::get('/administrador/home',"App\Http\Controllers\homeController@create");
+Route::get('/cliente/{id}/home',"App\Http\Controllers\homeController@createCliente");
+Route::get('/cliente/{id}/perfil',"App\Http\Controllers\clientesController@perfil");
+Route::get('/cliente/{id}/editarPerfil',"App\Http\Controllers\clientesController@createEditarCli");
+
 Route::get('/inicio/loginUser',"App\Http\Controllers\loginController@createLoginUser");
 Route::get('/inicio/loginGuardia',"App\Http\Controllers\loginController@createLoginGuardia");
 Route::get('/inicio/loginAdmin',"App\Http\Controllers\loginController@createLoginAdmin");
@@ -33,6 +37,9 @@ Route::get('/administrador/agregarVehiculoCliente/{id}/','App\Http\Controllers\v
 Route::get('/administrador/vehiculos','App\Http\Controllers\vehiculoController@createLista');
 Route::get('/administrador/agregarVehiculo','App\Http\Controllers\vehiculoController@createAgregar');
 Route::get('/administrador/borrarVehiculo/{id}','App\Http\Controllers\vehiculoController@createborrar');
+Route::get('/cliente/{id}/vehiculos/','App\Http\Controllers\vehiculoController@createListaClienteCli');
+Route::get('/cliente/{id}/agregarVehiculo/','App\Http\Controllers\vehiculoController@createAgregarClienteCli');
+Route::get('/cliente/{idCli}/borrarVehiculo/{id}','App\Http\Controllers\vehiculoController@createborrarCli');
 
 Route::get('/administrador/mapeoParqueo',"App\Http\Controllers\parqueoController@createLista");
 Route::get('/administrador/createAgregarIngreso',"App\Http\Controllers\parqueoController@createAgregarIngreso");
@@ -40,7 +47,14 @@ Route::get('/administrador/createAgregarIngreso',"App\Http\Controllers\parqueoCo
 Route::get('/administrador/pagos',"App\Http\Controllers\PagosController@PController");
 Route::get('/administrador/pagoslista',"App\Http\Controllers\PagosController@ListaPagos");
 
+Route::get('/cliente/{id}/mapeoParqueo',"App\Http\Controllers\parqueoController@createListaCli");
+
 Route::get('/administrador/reserva/calendario/{id}','App\Http\Controllers\eventoController@createCalendar');
+
+Route::get('/administrador/reservaSitio/{id}/','App\Http\Controllers\reservaController@createListaSitio');
+Route::get('/administrador/reservasCliente/{id}/','App\Http\Controllers\reservaController@createListaCliente');
+Route::get('/administrador/reservas','App\Http\Controllers\reservaController@createLista');
+Route::get('/cliente/{id}/reservas/','App\Http\Controllers\reservaController@createListaCli');
 //vistaControl
 Route::get('/show/{id}','App\Http\Controllers\eventoController@show');
 //b
@@ -50,9 +64,12 @@ Route::post('/storeClienteVehiculo',"App\Http\Controllers\loginController@storeC
 Route::post('/store',"App\Http\Controllers\clientesController@store");
 Route::put('/update/{id}',"App\Http\Controllers\clientesController@update");
 Route::delete('/deletec/{id}',"App\Http\Controllers\clientesController@delete");
+Route::put('/updateCli/{id}',"App\Http\Controllers\clientesController@updateCli");
 
 Route::post('/storeVehiculo','App\Http\Controllers\vehiculoController@store');
 Route::delete('/delete/{id}','App\Http\Controllers\vehiculoController@delete');
+Route::post('/storeVehiculoCli','App\Http\Controllers\vehiculoController@storeCli');
+Route::delete('/deleteVCli/{id}/{idCli}','App\Http\Controllers\vehiculoController@deleteVCli');
 
 Route::post('/aumentarSitio','App\Http\Controllers\parqueoController@aumentarSitio');
 Route::post('/quitarSitio','App\Http\Controllers\parqueoController@quitarSitio');
@@ -60,7 +77,9 @@ Route::post('/storeIngreso','App\Http\Controllers\parqueoController@storeIngreso
 Route::post('/storeSalida','App\Http\Controllers\parqueoController@storeSalida');
 
 Route::post('/storeReservaDiaria','App\Http\Controllers\reservaController@storeDiario');
-Route::post('/storeMesDia','App\Http\Controllers\reservaController@storeMesDia');
+Route::post('/storeSemana','App\Http\Controllers\reservaController@storeSemana');
+Route::post('/storeMesLV','App\Http\Controllers\reservaController@storeMesLV');
+Route::post('/storeMesS','App\Http\Controllers\reservaController@storeMesS');
 //Route::get('/storeEvento','App\Http\Controllers\eventoController@store');
 
 //backend

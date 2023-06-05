@@ -15,15 +15,17 @@ class CreateIngresoTable extends Migration
     {
         Schema::create('ingreso', function (Blueprint $table) {
                 $table->id();
+                $table->string('estado_ingreso');
                 $table->dateTime('fecha_hora_ingreso');
                 $table->foreignId('id_sitio')
                       ->constrained('sitio')
                       ->cascadeOnUpdate()
                       ->cascadeOnDelete();
                 $table->foreignId('id_sitio_emergencia')
+                      ->nullable()
                       ->constrained('sitio_emergencia')
                       ->cascadeOnUpdate()
-                      ->cascadeOnDelete()->nullable();
+                      ->cascadeOnDelete();
                 $table->foreignId('id_vehiculo')
                       ->constrained('vehiculo')
                       ->cascadeOnUpdate()

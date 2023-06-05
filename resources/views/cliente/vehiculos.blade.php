@@ -13,74 +13,67 @@
         <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/v4-shims.js"></script> 
         <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/fontawesome.js"> </script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
-        <!-- Icono car -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     </head>
     <body class="hold-transition sidebar-mini">
-    @include('administrador.navbar')
+    @php
+        $id = $cliente['id'];
+        $nombre = $cliente['nombre'];    
+        $apellido = $cliente['apellido'];
+        $correo = $cliente['correo_electronico'];
+        $celular = $cliente['celular'];
+        $password = $cliente['password'];
+        $ci = $cliente['ci'];
+    @endphp
+
+    @include('cliente.navbar', ['id' => $id])
+    <aside class="control-sidebar control-sidebar-dark">
+        <div class="p-3">
+        <h5>Cliente: </h5>
+        <p>Esta es la vista para el usuario de apellido : {{$apellido}}</p>
+        </div>
+    </aside>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <div class="container">
-            @include('administrador.msj')
+            @include('cliente.msj') 
             <!--INICIO CRUD -->
                 <div class="container-xl">
                     <div class="table-responsive">
                         <div class="table-wrapper">
                             <div class="table-title">
+                            @php 
+                                    $counter = 1;
+                            @endphp
                                 <div class="row">
-                                    <div class="col-sm-8"><h2><b>Lista de Clientes</b></h2></div>
+                                    <div class="col-sm-8"><h2><b>Lista de Mis Vehiculos Registrados</b></h2></div>
                                 </div>
-                                <a href="/administrador/agregarCliente" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" style="background-color:#53A790; border-color:#53A790;">Agregar Cliente</a>
+                                <a href="{{url ('/cliente/'.$id.'/agregarVehiculo')}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" style="background-color:#53A790; border-color:#53A790;">Agregar Automovil</a>
                             </div>
                             <table class="table table-bordered">
                             <thead>
                                     <tr>
                                         <th class = text-center >#</th>
-                                        <th class = text-center >Nombres</th>
-                                        <th class = text-center >Apellidos</th>
-                                        <th class = text-center >CI</th>
-                                        <th class = text-center >Correo</th>
-                                        <th class = text-center >Celular</th>
-                                        <th class = text-center >Contraseña</th>
+                                        <th class = text-center >Marca</th>
+                                        <th class = text-center >Modelo</th>
+                                        <th class = text-center >Placa</th>
+                                        <th class = text-center >Color</th>
                                         <th class = text-center >Acciones</th>
-                                        <th class = text-center ></th>
-                                        <th class = text-center ></th>
                                     </tr>
                                 </thead>
-                                @php 
-                                    $counter2 = 1;
-                                @endphp                                
-                                @foreach($lista as $cliente)
+                                @foreach($listavCliente as $vehiculo)
                                     <tr>
-                                        <td class = text-center>{{$counter2}}</td>
+                                        <td class = text-center>{{$counter}}</td>
                                         @php 
-                                            $counter2=$counter2 +1; 
+                                            $counter=$counter +1; 
                                             
                                         @endphp
-                                        <td class = text-center>{{$cliente->nombre}}</td>
-                                        <td class = text-center>{{$cliente->apellido}}</td>
-                                        <td class = text-center>{{$cliente->ci}}</td>
-                                        <td class = text-center>{{$cliente->correo_electronico}}</td>
-                                        <td class = text-center>{{$cliente->celular}}</td>
-                                        <td class = text-center>{{$cliente->password}}</td>
-                                    <td class = text-center>
-                                            <a href= "{{url ('/administrador/editarCliente', $cliente)}}" class="edit" title="Edit" data-toggle="tooltip">
-                                                <i class="material-icons"style="color:#2A4858">edit</i>
-                                            </a>
-                                            <a href="{{url ('/administrador/borrarCliente', $cliente)}}" class="delete" title="Delete" data-toggle="tooltip">
-                                                <i class="material-icons"style="color:#2A4858">delete</i>
-                                            </a>
-                                    </td>
-                                    <td>
-                                        <a href="{{url ('/administrador/vehiculosCliente', $cliente)}}" class="edit" title="Vehiculos" data-toggle="tooltip">
-                                            <i class="fas fa-car" style="color:#2A4858"></i>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="{{url ('/administrador/reservasCliente', $cliente)}}" class="edit" title="Reservas" data-toggle="tooltip">
-                                            <i class="fas fa-list" style="color:#2A4858"></i>
-                                        </a>
+                                        <td class = text-center>{{$vehiculo->marca}}</td>
+                                        <td class = text-center>{{$vehiculo->modelo}}</td>
+                                        <td class = text-center>{{$vehiculo->placa}}</td>
+                                        <td class = text-center>{{$vehiculo->color}}</td>
+                                        <td class = text-center>
+                                            <a href= "{{url ('/cliente/'.$id.'/borrarVehiculo/'.$vehiculo->id.'')}}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons"style="color:#2A4858">delete</i></a>
                                     </td>
                                     </tr>
                                 @endforeach

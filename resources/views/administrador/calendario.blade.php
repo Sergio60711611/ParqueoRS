@@ -70,7 +70,7 @@
 </script>
     </head>
     <body class="hold-transition sidebar-mini">
-    @include('navbar')
+    @include('administrador.navbar')
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -90,9 +90,11 @@
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal1">Plan Diario</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal2">Plan Mes Dia</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal3">Plan Mes Noche</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal4">Plan Mes Completo</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal2">Plan SEMANA</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal3">Plan Mes LUN-VIE</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal4">Plan Mes SABADO</a>
+                                <!--<a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal5">Plan Mes 24 hrs</a>-->
                             </div>
                             </div>
 
@@ -113,11 +115,11 @@
                                             <div class="card-body" >
                                                 <div class="form-group" style="text-align: left;">
                                                     <label for="meeting-time">Fecha Ingreso:</label>
-                                                    <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso" min="{{ $now->format('Y-m-d') }}" value="{{ $now->format('Y-m-d') }}"></input>
+                                                    <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso" value="{{ $now->format('Y-m-d') }}"></input>
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <label for="">Hora Ingreso:</label>
-                                                    <input type="time" class="form-control" name="hora_ingreso" id="hora_ingreso" min="{{ $now->format('H:i') }}" value="{{ $now->format('H:i') }}"></input>
+                                                    <input type="time" class="form-control" name="hora_ingreso" id="hora_ingreso" value="{{ $now->format('H:i') }}"></input>
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <label for="">Horas reservadas:</label>
@@ -151,14 +153,13 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="modal2Label">Plan Mes Dia</h5>
+                                    <h5 class="modal-title" id="modal2Label">Plan SEMANA LUN-SAB</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    */aca cambio para pagos /storeMesDias por /administrador/pagos*/
-                                    <form action="/storeMesDia" method="POST" role="form">
+                                    <form action="/storeSemana" method="POST" role="form">
                                     {{csrf_field()}}
                                         <div class="card-body" >
                                             <div class="form-group" style="text-align: left;">
@@ -196,13 +197,41 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="modal3Label">Plan Mes Noche</h5>
+                                    <h5 class="modal-title" id="modal3Label">Plan Mes LUN-VIE</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    Contenido del Modal 3
+                                <form action="/storeMesLV" method="POST" role="form">
+                                    {{csrf_field()}}
+                                        <div class="card-body" >
+                                            <div class="form-group" style="text-align: left;">
+                                                <label for="meeting-time">Fecha Inicio de Plan:</label>
+                                                <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso" min="{{ $now->format('Y-m-d') }}" value="{{ $now->format('Y-m-d') }}"></input>
+                                            </div>
+                                            <div class="form-group" style="text-align: left;">
+                                                <label for="">Hora Ingreso los dias del plan:</label>
+                                                <input type="time" class="form-control" name="hora_ingreso" id="hora_ingreso" min="{{ $now->format('H:i') }}" value="{{ $now->format('H:i') }}"></input>
+                                            </div>
+                                            <div class="form-group" style="text-align: left;">
+                                                <label for="">Horas reservadas:</label>
+                                                <input type="number" class="form-control" name="horas" id="horas" min="1" max="24" step="1" ></input>
+                                            </div>
+                                            <div class="form-group" style="text-align: left;">
+                                                <label for="">CI Cliente:</label>
+                                                <input type="text" class="form-control" name="ciCliente" id="ciCliente"></input>
+                                            </div>
+                                            <div class="form-group" style="text-align: left;">
+                                                <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
+                                            </div>
+                                            <hr>
+                                        <div class="form-group2">
+                                            <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
+                                            <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
+                                        </div>
+                                        </div>
+                                    </form>
                                 </div>
                                 </div>
                             </div>
@@ -212,14 +241,90 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="modal4Label">Plan Mes Completo</h5>
+                                    <h5 class="modal-title" id="modal4Label">Plan Mes SABADO</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    Contenido del Modal 4
+                                <form action="/storeMesS" method="POST" role="form">
+                                    {{csrf_field()}}
+                                        <div class="card-body" >
+                                            <div class="form-group" style="text-align: left;">
+                                                <label for="meeting-time">Fecha Inicio de Plan:</label>
+                                                <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso" min="{{ $now->format('Y-m-d') }}" value="{{ $now->format('Y-m-d') }}"></input>
+                                            </div>
+                                            <div class="form-group" style="text-align: left;">
+                                                <label for="">Hora Ingreso los dias del plan:</label>
+                                                <input type="time" class="form-control" name="hora_ingreso" id="hora_ingreso" min="{{ $now->format('H:i') }}" value="{{ $now->format('H:i') }}"></input>
+                                            </div>
+                                            <div class="form-group" style="text-align: left;">
+                                                <label for="">Horas reservadas:</label>
+                                                <input type="number" class="form-control" name="horas" id="horas" min="1" max="24" step="1" ></input>
+                                            </div>
+                                            <div class="form-group" style="text-align: left;">
+                                                <label for="">CI Cliente:</label>
+                                                <input type="text" class="form-control" name="ciCliente" id="ciCliente"></input>
+                                            </div>
+                                            <div class="form-group" style="text-align: left;">
+                                                <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
+                                            </div>
+                                            <hr>
+                                        <div class="form-group2">
+                                            <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
+                                            <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
+                                        </div>
+                                        </div>
+                                    </form>
                                 </div>
+                                </div>
+                            </div>
+                            </div>
+
+                            <!--PLAN MES 24 HRS-->
+                            <div class="modal fade" id="modal5" tabindex="-1" role="dialog" aria-labelledby="modal5Label" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modal5Label">Plan Mes 24 hrs</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/storeReservaDiaria" method="POST" role="form">
+                                        {{csrf_field()}}
+                                            <div class="card-body" >
+                                                <div class="form-group" style="text-align: left;">
+                                                    <label for="meeting-time">Fecha Ingreso:</label>
+                                                    <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso" min="{{ $now->format('Y-m-d') }}" value="{{ $now->format('Y-m-d') }}"></input>
+                                                </div>
+                                                <div class="form-group" style="text-align: left;">
+                                                    <label for="">Hora Ingreso:</label>
+                                                    <input type="time" class="form-control" name="hora_ingreso" id="hora_ingreso" min="{{ $now->format('H:i') }}" value="{{ $now->format('H:i') }}"></input>
+                                                </div>
+                                                <div class="form-group" style="text-align: left;">
+                                                    <label for="">Horas reservadas:</label>
+                                                    <input type="number" class="form-control" name="horas" id="horas" min="1" max="24" step="1" ></input>
+                                                </div>
+                                                <div class="form-group" style="text-align: left;">
+                                                    <label for="">CI Cliente:</label>
+                                                    <input type="text" class="form-control" name="ciCliente" id="ciCliente"></input>
+                                                </div>
+                                                <div class="form-group" style="text-align: left;">
+                                                    <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
+                                                </div>
+                                                <!--<div class="form-group" style="text-align: left;">
+                                                    <input type="hidden" class="form-control" name="plan" id = "plan" value="Diario"></input>
+                                                </div>-->
+                                                <hr>
+                                            <div class="form-group2">
+                                                <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
+                                                <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
+                                            </div>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                             </div>
