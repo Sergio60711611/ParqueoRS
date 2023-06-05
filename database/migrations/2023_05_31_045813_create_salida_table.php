@@ -17,6 +17,8 @@ class CreateSalidaTable extends Migration
             $table->id();
             $table->string('estado_salida');
             $table->dateTime('fecha_hora_salida');
+            $table->decimal('pago', 10, 2)
+                ->nullable();
             $table->foreignId('id_ingreso')
                   ->constrained('ingreso')
                   ->cascadeOnUpdate()
