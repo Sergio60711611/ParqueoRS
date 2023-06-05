@@ -178,7 +178,7 @@
                     <div class="boxDiv">
                     <div class="box">
                     <img src="{{ asset('/img/openClose.png') }}" >
-                    <h1>Tarifas Diarias</h1>
+                    <h1>Horarios de Atencion</h1>
                    <table class="table"  
                    style="border-collapse: collapse;
                    max-width: 50%;"
