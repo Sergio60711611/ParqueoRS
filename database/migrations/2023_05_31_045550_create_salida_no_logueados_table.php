@@ -18,6 +18,7 @@ class CreateSalidaNoLogueadosTable extends Migration
             $table->dateTime('fecha_hora_salida');
             $table->decimal('monto_excedido', $precision = 8, $scale = 2);
             $table->time('horas_exedidas');
+            $table->string('estado_salida');
             $table->foreignId('id_ingreso_no_logueados')
                   ->constrained('ingreso_no_logueados')
                   ->cascadeOnUpdate()

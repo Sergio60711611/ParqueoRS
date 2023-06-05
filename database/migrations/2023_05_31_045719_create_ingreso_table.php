@@ -16,6 +16,7 @@ class CreateIngresoTable extends Migration
         Schema::create('ingreso', function (Blueprint $table) {
                 $table->id();
                 $table->dateTime('fecha_hora_ingreso');
+                $table->string('estado_ingreso');
                 $table->foreignId('id_sitio')
                       ->constrained('sitio')
                       ->cascadeOnUpdate()

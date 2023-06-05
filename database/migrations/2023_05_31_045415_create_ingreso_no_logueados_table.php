@@ -18,11 +18,12 @@ class CreateIngresoNoLogueadosTable extends Migration
             $table->dateTime('fecha_hora_ingreso');
             $table->String('nombre');
             $table->String('apellido');
-            $table->integer('ci')->unique();
-            $table->integer('placa')->unique();
+            $table->integer('ci')->unique()->nullable();;
+            $table->integer('placa')->unique()->nullable();;
             $table->decimal('monto', $precision = 8, $scale = 2);
             $table->integer('cantidad_horas');
             $table->time('hora_salida');
+            $table->string('estado_ingreso');
             $table->foreignId('id_sitio')
                   ->constrained('sitio')
                   ->cascadeOnUpdate()
