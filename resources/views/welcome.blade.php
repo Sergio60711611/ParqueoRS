@@ -19,7 +19,7 @@
           <a href="#"><i class="uil uil-home"></i> Inicio</a>
           {{-- <a href="#"><i class="uil uil-compass"></i> Explore</a> --}}
           <a href="#seccion" class="btn">Acerca de</a>
-          {{-- <a href="#"><i class="uil uil-info-circle"></i> About</a>--}}
+          <a href="/ayudaprecios"><i class="uil uil-info-circle"></i> Precios</a>
           <a href="/inicio/loginUser"><i class="uil uil-document-layout-left"></i> Iniciar Sesion</a>
           <a href="/administrador/home"><i class="uil uil-envelope"></i> Registrarse</a>
       

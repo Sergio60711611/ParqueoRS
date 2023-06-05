@@ -47,6 +47,8 @@ Route::get('/administrador/createAgregarIngreso',"App\Http\Controllers\parqueoCo
 Route::get('/administrador/pagos',"App\Http\Controllers\PagosController@PController");
 Route::get('/administrador/pagoslista',"App\Http\Controllers\PagosController@ListaPagos");
 
+Route::get('/ayudaprecios',"App\Http\Controllers\ayudaController@AController");
+
 Route::get('/cliente/{id}/mapeoParqueo',"App\Http\Controllers\parqueoController@createListaCli");
 
 Route::get('/administrador/reserva/calendario/{id}','App\Http\Controllers\eventoController@createCalendar');
