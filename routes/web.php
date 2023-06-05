@@ -20,6 +20,8 @@ Route::get('/', function () {
 //FE
 Route::get('/administrador/home',"App\Http\Controllers\homeController@create");
 Route::get('/cliente/{id}/home',"App\Http\Controllers\homeController@createCliente");
+Route::get('/cliente/{id}/perfil',"App\Http\Controllers\clientesController@perfil");
+Route::get('/cliente/{id}/editarPerfil',"App\Http\Controllers\clientesController@createEditarCli");
 
 Route::get('/inicio/loginUser',"App\Http\Controllers\loginController@createLoginUser");
 Route::get('/inicio/loginGuardia',"App\Http\Controllers\loginController@createLoginGuardia");
@@ -48,6 +50,7 @@ Route::get('/administrador/reserva/calendario/{id}','App\Http\Controllers\evento
 Route::get('/administrador/reservaSitio/{id}/','App\Http\Controllers\reservaController@createListaSitio');
 Route::get('/administrador/reservasCliente/{id}/','App\Http\Controllers\reservaController@createListaCliente');
 Route::get('/administrador/reservas','App\Http\Controllers\reservaController@createLista');
+Route::get('/cliente/{id}/reservas/','App\Http\Controllers\reservaController@createListaCli');
 //vistaControl
 //Route::get('/show/{id}','App\Http\Controllers\eventoController@show');
 //b
@@ -57,6 +60,7 @@ Route::post('/storeClienteVehiculo',"App\Http\Controllers\loginController@storeC
 Route::post('/store',"App\Http\Controllers\clientesController@store");
 Route::put('/update/{id}',"App\Http\Controllers\clientesController@update");
 Route::delete('/deletec/{id}',"App\Http\Controllers\clientesController@delete");
+Route::put('/updateCli/{id}',"App\Http\Controllers\clientesController@updateCli");
 
 Route::post('/storeVehiculo','App\Http\Controllers\vehiculoController@store');
 Route::delete('/delete/{id}','App\Http\Controllers\vehiculoController@delete');

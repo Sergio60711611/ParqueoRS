@@ -46,35 +46,50 @@
                                     $counter = 1;
                             @endphp
                                 <div class="row">
-                                    <div class="col-sm-8"><h2><b>Lista de Mis Vehiculos Registrados</b></h2></div>
+                                    <div class="col-sm-8"><h2><b>Lista de Mis Reservas</b></h2></div>
                                 </div>
-                                <a href="{{url ('/cliente/'.$id.'/agregarVehiculo')}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" style="background-color:#53A790; border-color:#53A790;">Agregar Automovil</a>
                             </div>
                             <table class="table table-bordered">
                             <thead>
                                     <tr>
                                         <th class = text-center >#</th>
-                                        <th class = text-center >Marca</th>
-                                        <th class = text-center >Modelo</th>
-                                        <th class = text-center >Placa</th>
-                                        <th class = text-center >Color</th>
-                                        <th class = text-center >Acciones</th>
+                                        <th class = text-center >Estado</th>
+                                        <th class = text-center >Detalles</th>
                                     </tr>
                                 </thead>
-                                @foreach($listavCliente as $vehiculo)
+                                @foreach($lista as $reserva)
                                     <tr>
                                         <td class = text-center>{{$counter}}</td>
                                         @php 
-                                            $counter=$counter +1; 
-                                            
+                                            $counter=$counter +1;
+
+                                            $fecha_timestamp = strtotime($reserva->fecha_salida);
+                                            $fecha_timestamp2 = strtotime($reserva->fecha_ingreso);
+                                            $ahora_timestamp = time();
+
+                                            if ($fecha_timestamp < $ahora_timestamp) {
+                                                @endphp
+                                                <td class = text-center>Finalizado</td>
+                                                @php
+                                                //echo "La fecha ya ha pasado.";
+                                            } else if($fecha_timestamp2 > $ahora_timestamp){
+                                                @endphp
+                                                <td class = text-center>Sin iniciar</td>
+                                                @php
+                                                //echo "La fecha Inicio aun no ha llegado.";
+                                            }else{
+                                                @endphp
+                                                <td class = text-center>En Curso</td>
+                                                @php
+                                                //echo "La fecha Fin aún no ha llegado.";
+                                            }                                               
                                         @endphp
-                                        <td class = text-center>{{$vehiculo->marca}}</td>
-                                        <td class = text-center>{{$vehiculo->modelo}}</td>
-                                        <td class = text-center>{{$vehiculo->placa}}</td>
-                                        <td class = text-center>{{$vehiculo->color}}</td>
-                                        <td class = text-center>
-                                            <a href= "{{url ('/cliente/'.$id.'/borrarVehiculo/'.$vehiculo->id.'')}}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons"style="color:#2A4858">delete</i></a>
-                                    </td>
+                                            <td class = text>Fecha Ingreso:{{$reserva->fecha_ingreso}}
+                                            <br class = text>Hora Ingreso:{{$reserva->hora_ingreso}}
+                                            <br class = text>Fecha Salida:{{$reserva->fecha_salida}}
+                                            <br class = text>Hora Salida:{{$reserva->hora_salida}}
+                                            <br class = text>Cantidad de horas diarias:{{$reserva->cantidad_de_horas}}
+                                            <br class = text>Cantidad de dias reservados:{{$reserva->dias}}</td>
                                     </tr>
                                 @endforeach
                             </table>

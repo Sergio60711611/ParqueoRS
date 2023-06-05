@@ -35,6 +35,7 @@ class reservaController extends Controller
 
         return view('administrador.reservaCliente', compact('listaRe','id','ciCli'));
     }
+
     public function createListaSitio($id){
         $listaReservaSitio= Reserva::where('id_sitio', $id)->get();
         $listaClientes = Cliente::all();
@@ -49,6 +50,13 @@ class reservaController extends Controller
             }
         }
         return view('administrador.reservaSitio', compact('listaReservaSitio','collection','id'));
+    }
+    public function createListaCli($id){
+        $cliente = Cliente::find($id);
+
+        $lista = Reserva::where('id_cliente', $id)->get();
+
+        return view('cliente.reservas', compact('lista','cliente'));
     }
     public function storeDiario(Request $request)
     {

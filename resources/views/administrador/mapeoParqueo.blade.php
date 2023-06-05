@@ -219,6 +219,17 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
+                                                                <!--Botones de calendario-->
+                                                            <div class = "container Botones">
+                                                                        <a href= "{{url ('/administrador/reserva/calendario', $sitiosMapeo->id)}}" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
+                                                                            Ver Calendario  <i class="nav-icon fas fa-calendar-alt"></i>
+                                                                        </a>
+                                                                        <a href= "{{url ('/administrador/reservaSitio', $sitiosMapeo->id)}}" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
+                                                                            Lista de reservas  <i class="nav-icon fas fa-list-alt"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                    <!--Fin Botones de calendario-->
+                                                                    <hr>
                                                                 <form action="/storeSalida" method="POST" role="form">
                                                                 {{csrf_field()}}
                                                                     <div class="card-body" >
@@ -265,6 +276,17 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
+                                                                <!--Botones de calendario-->
+                                                            <div class = "container Botones">
+                                                                        <a href= "{{url ('/administrador/reserva/calendario', $sitiosMapeo->id)}}" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
+                                                                            Ver Calendario  <i class="nav-icon fas fa-calendar-alt"></i>
+                                                                        </a>
+                                                                        <a href= "{{url ('/administrador/reservaSitio', $sitiosMapeo->id)}}" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
+                                                                            Lista de reservas  <i class="nav-icon fas fa-list-alt"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                    <!--Fin Botones de calendario-->
+                                                                    <hr>
                                                                 <form action="/storeSalida" method="POST" role="form">
                                                                 {{csrf_field()}}
                                                                     <div class="card-body" >
