@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Evento;
+use App\Models\Reserva;
 use Carbon\Carbon;
 class eventoController extends Controller
 {
@@ -103,6 +104,9 @@ class eventoController extends Controller
         $now = Carbon::now(); 
         $now->format('d/m/Y');
 
-        return view('administrador.calendario', compact('id','now'));
+        $idreserva  = Reserva::max('id');
+        $idreserva = $idreserva+1;
+
+        return view('administrador.calendario', compact('id','now','idreserva'));
     }
 }

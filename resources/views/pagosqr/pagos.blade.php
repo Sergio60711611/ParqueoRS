@@ -17,6 +17,10 @@
     <body class="hold-transition sidebar-mini">
     @include('navbar')
 
+    @php
+        $costo = $horas *2;
+    @endphp
+
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper" style="background-color:#D9D9D9;  padding: 20px;">
             
@@ -25,9 +29,10 @@
                     LLegó la hora de Pagar
                     </div>
                     <div class="informacion">
-                        <h4>Espacio N°</h4>
-                        <a>aqui aparece el tiempo que se quedara<a>
-                        <h4>Costo</h4>
+                        <h4>Espacio N° '{{$espacio}}'</h4>
+                        <a>Horas : {{$horas}}</a><br>
+                        <a>Plan : {{$plan}}</a>
+                        <h4>Costo : {{$costo}}</h4>
                     </div>
                     <div class="escanea">
                     Escanea y Paga Desde tu Celular
