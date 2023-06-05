@@ -44,7 +44,20 @@ Route::get('/cliente/{idCli}/borrarVehiculo/{id}','App\Http\Controllers\vehiculo
 Route::get('/administrador/mapeoParqueo',"App\Http\Controllers\parqueoController@createLista");
 Route::get('/administrador/createAgregarIngreso',"App\Http\Controllers\parqueoController@createAgregarIngreso");
 //pagoscontrollers
-Route::get('/administrador/pagos',"App\Http\Controllers\PagosController@PController");
+Route::get('/administrador/pagos2',"App\Http\Controllers\PagosController@PController");
+Route::get('/administrador/pagos', function () {
+    return view('pagosqr.pagos');
+})->name('pagosqr.pagos');
+
+Route::get('/administrador/pagos', function () {
+    $plan = request()->query('plan');
+    $espacio = request()->query('espacio');
+    $horas = request()->query('horas');
+    $reserva = request()->query('reserva');
+
+    return view('pagosqr.pagos', compact('plan', 'espacio', 'horas', 'reserva'));
+})->name('pagosqr.pagos');
+
 Route::get('/administrador/pagoslista',"App\Http\Controllers\PagosController@ListaPagos");
 
 Route::get('/cliente/{id}/mapeoParqueo',"App\Http\Controllers\parqueoController@createListaCli");

@@ -112,7 +112,11 @@ class reservaController extends Controller
                 $horaNueva = $horaIngreso->addHours($horas);
                 $horaFormateada = $horaNueva->format('H:i');
 
+                $idreserva  = Reserva::max('id');
+                $idreserva = $idreserva+1;
+                
                 $reserva=new Reserva();
+                $reserva->id = $request->$idreserva;
                 $reserva->fecha_ingreso = $request->fecha_ingreso;
                 $reserva->fecha_salida = $request->fecha_ingreso;
                 $reserva->hora_ingreso = $request->hora_ingreso;

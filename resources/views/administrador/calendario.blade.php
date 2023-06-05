@@ -109,8 +109,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                    */aca cambio para pagos /storeReservaDiaria por /administrador/pagos*/
-                                        <form action="/storeReservaDiaria" method="POST" role="form">
+                                    <form action="/storeReservaDiaria" id="formulario1" method="POST" role="form">
                                         {{csrf_field()}}
                                             <div class="card-body" >
                                                 <div class="form-group" style="text-align: left;">
@@ -123,7 +122,17 @@
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <label for="">Horas reservadas:</label>
-                                                    <input type="number" class="form-control" name="horas" id="horas" min="1" max="24" step="1" ></input>
+                                                    <input type="number" class="form-control" name="horas" id="horas" min="1" max="24" step="1" onkeyup="copyValue()"></input>
+                                                    @php
+    $hrs = 0;
+@endphp
+
+<script>
+    function copyValue() {
+        var input1Value = document.getElementById("horas").value;
+        document.getElementById("hrs").value = input1Value;
+    }
+</script>
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <label for="">CI Cliente:</label>
@@ -132,20 +141,40 @@
                                                 <div class="form-group" style="text-align: left;">
                                                     <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
                                                 </div>
-                                                <!--<div class="form-group" style="text-align: left;">
-                                                    <input type="hidden" class="form-control" name="plan" id = "plan" value="Diario"></input>
-                                                </div>-->
                                                 <hr>
                                             <div class="form-group2">
-                                                
-                                                <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
-                                        
+                                                <button type="submit" form="formulario1" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
                                                 <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
                                             </div>
                                             </div>
                                         </form>
+                                        @php
+                                                $idReservaS = $idreserva;
+                                            @endphp
+                                        <script>
+                                            function abrirNuevaVentana() {
+                                                //window.open("{{ route('pagosqr.pagos') }}", "_blank");
+                                                var input1Value = document.getElementById("horas").value;
+                                                var hrs = input1Value;
+                                                
+                                                window.open("{{ route('pagosqr.pagos') }}?plan=" + encodeURIComponent('Diario') + "&espacio=" + encodeURIComponent({{ $idDeSitio }}) + "&horas=" + encodeURIComponent(hrs) + "&reserva=" + encodeURIComponent('3'), "_blank");
+                                            }
+                                        </script>
+                                        <script>
+    function abrirNuevaVentana() {
+        var input1Value = document.getElementById("horas").value;
+        var hrs = input1Value;
+
+        var url = "{{ route('pagosqr.pagos') }}?plan=" + encodeURIComponent('Diario') + "&espacio=" + encodeURIComponent({{ $idDeSitio }}) + "&horas=" + encodeURIComponent(hrs) + "&reserva=" + encodeURIComponent('1');
+
+        window.open(url, "_blank");
+    }
+</script>
+
+                                        <div style="text-align: left;">
+                                            <button class="btn btn-primary" onclick="abrirNuevaVentana()">Ir a Pagar</button>
+                                        </div>
                                     </div>
-                                </div>
                             </div>
                             </div>
 
