@@ -52,7 +52,7 @@ Route::get('/administrador/reservasCliente/{id}/','App\Http\Controllers\reservaC
 Route::get('/administrador/reservas','App\Http\Controllers\reservaController@createLista');
 Route::get('/cliente/{id}/reservas/','App\Http\Controllers\reservaController@createListaCli');
 //vistaControl
-//Route::get('/show/{id}','App\Http\Controllers\eventoController@show');
+Route::get('/show/{id}','App\Http\Controllers\eventoController@show');
 //b
 Route::post('/inicioSesion',"App\Http\Controllers\loginController@inicioSesion");
 Route::post('/storeClienteVehiculo',"App\Http\Controllers\loginController@storeClienteVehiculo");

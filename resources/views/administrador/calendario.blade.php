@@ -114,11 +114,11 @@
                                             <div class="card-body" >
                                                 <div class="form-group" style="text-align: left;">
                                                     <label for="meeting-time">Fecha Ingreso:</label>
-                                                    <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso" min="{{ $now->format('Y-m-d') }}" value="{{ $now->format('Y-m-d') }}"></input>
+                                                    <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso" value="{{ $now->format('Y-m-d') }}"></input>
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <label for="">Hora Ingreso:</label>
-                                                    <input type="time" class="form-control" name="hora_ingreso" id="hora_ingreso" min="{{ $now->format('H:i') }}" value="{{ $now->format('H:i') }}"></input>
+                                                    <input type="time" class="form-control" name="hora_ingreso" id="hora_ingreso" value="{{ $now->format('H:i') }}"></input>
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <label for="">Horas reservadas:</label>
