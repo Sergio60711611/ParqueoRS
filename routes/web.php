@@ -68,6 +68,7 @@ Route::get('/cliente/{id}/info/consultas',"App\Http\Controllers\InfoClienteContr
 Route::get('/cliente/{id}/info/anuncios',"App\Http\Controllers\InfoClienteController@seeAnuncios");
 Route::get('/cliente/{id}/info/preguntas', "App\Http\Controllers\InfoClienteController@seePreguntas");
 Route::get('/cliente/{id}/info/horarios', "App\Http\Controllers\InfoClienteController@seeHorarios");
+Route::get('/cliente/{id}/info/reservas', "App\Http\Controllers\InfoClienteController@seeReservas");
 
 Route::get('/administrador/anuncios',"App\Http\Controllers\AnuncioController@createLista");
 Route::get('/administrador/agregarAnuncio',"App\Http\Controllers\AnuncioController@createAgregar");
@@ -79,8 +80,8 @@ Route::get('/administrador/agregarPreguntas',"App\Http\Controllers\PreguntasFrec
 Route::get('/administrador/editarPreguntas/{id}',"App\Http\Controllers\PreguntasFrecuentesController@createEditar");
 Route::get('/administrador/borrarPreguntas/{id}',"App\Http\Controllers\PreguntasFrecuentesController@createborrar");
 
-Route::get('/administrador/reclamos', "App\Http\Controllers\clamosController@create")->name('reclamos.create');
-Route::post('/administrador/reclamos', "App\Http\Controllers\clamosController@store")->name('reclamos.store');
+Route::get('/cliente/{id}/info/reclamos', "App\Http\Controllers\clamosController@create")->name('reclamos.create');
+Route::post('/cliente/info/reclamos', "App\Http\Controllers\clamosController@store")->name('reclamos.store');
 Route::get('/cliente/{id}/mapeoParqueo',"App\Http\Controllers\parqueoController@createListaCli");
 
 Route::get('/administrador/reserva/calendario/{id}','App\Http\Controllers\eventoController@createCalendar');
@@ -176,6 +177,7 @@ Route::delete('/ingreso_no_logueados/{id}','App\Http\Controllers\ingreso_no_logu
 
 Route::get('/anuncios', "App\Http\Controllers\InfoClienteController@getAnuncios");
 Route::get('/preguntas', "App\Http\Controllers\InfoClienteController@getPreguntas");
+Route::get('/reservaInfo', "App\Http\Controllers\InfoClienteController@getReservas");
 
 Route::post('/createAnuncio',"App\Http\Controllers\AnuncioController@store");
 Route::put('/updateAnuncio/{id}',"App\Http\Controllers\AnuncioController@update");

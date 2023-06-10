@@ -24,7 +24,7 @@
         $password = $cliente['password'];
         $ci = $cliente['ci'];
     @endphp
-
+    <div id="cliente-info" data-id="{{ $id }}"></div>
     @include('cliente.navbar', ['id' => $id])
     <aside class="control-sidebar control-sidebar-dark">
         <div class="p-3">
@@ -37,15 +37,15 @@
             @include('cliente.msj') 
                 <div class="container container-blanco">
                     <!-- Contenido dentro del container -->
-                    <h2>Anuncios</h2>
+                    <h2>Mis Reservas</h2>
                    
                     <div class="tabs">
-        <button  class="tab" onclick="showCurrent()">Anuncios Vigentes</button>
-        <button class="tab" onclick="showPast()">Anuncios No Vigentes</button>
+        <button  class="tab" onclick="showCurrent()">Reservas Actuales</button>
+        <button class="tab" onclick="showPast()">Reservas Anteriores</button>
     </div>
    <div></div>
-    <div id="currentAnuncios" style="display: none;"></div>
-    <div id="pastAnuncios" style="display: none;"></div>
+   <div id="currentReservas"></div>
+<div id="pastReservas"></div>
     </div>
            </div>
        </div>
@@ -59,91 +59,119 @@
    <!-- AdminLTE App -->
    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
    <script>
-        var anuncios; // Declarar la variable anuncios fuera de la función de éxito de la solicitud AJAX
-        
-        $(document).ready(function() {
-            $.ajax({
-                url: "/anuncios",
-                method: "GET",
-                success: function(response) {
-                    anuncios = response;
-                    console.log(anuncios);
-                    showCurrent(); // Mostrar los anuncios actuales por defecto
-                },
-                error: function(xhr, status, error) {
-                    console.log("Error:", error);
-                }
+ var reservas;
+
+$(document).ready(function() {
+    var clienteId = parseInt(document.getElementById("cliente-info").dataset.id);
+    console.log(clienteId);
+    showReservas(clienteId);
+});
+
+function showReservas(id) {
+    $.ajax({
+        url: "/reservaInfo",
+        method: "GET",
+        data: { id_cliente: id },
+        success: function(response) {
+            reservas = response.filter(function(reserva) {
+                return parseInt(reserva.id_cliente) === id;
             });
-        });
-        
-        function showCurrent() {
-            var currentAnuncios = document.getElementById("currentAnuncios");
-            var pastAnuncios = document.getElementById("pastAnuncios");
-            
-            currentAnuncios.innerHTML = "";
-            pastAnuncios.innerHTML = "";
-            
-            var currentDate = new Date();
-            
-            anuncios.forEach(function(anuncio) {
-                var vencimientoDate = new Date(anuncio.vencimiento);
-                
-                if (vencimientoDate >= currentDate) {
-                    var card = createCard(anuncio);
-                    currentAnuncios.appendChild(card);
-                } else {
-                    var card = createCard(anuncio);
-                    pastAnuncios.appendChild(card);
-                }
-            });
-            
-            currentAnuncios.style.display = "block";
-            pastAnuncios.style.display = "none";
+            console.log(reservas);
+            showCurrent();
+        },
+        error: function(xhr, status, error) {
+            console.log("Error:", error);
         }
-        
-        function showPast() {
-            var currentAnuncios = document.getElementById("currentAnuncios");
-            var pastAnuncios = document.getElementById("pastAnuncios");
-            
-            currentAnuncios.innerHTML = "";
-            pastAnuncios.innerHTML = "";
-            
-            var currentDate = new Date();
-            
-            anuncios.forEach(function(anuncio) {
-                var vencimientoDate = new Date(anuncio.vencimiento);
-                
-                if (vencimientoDate < currentDate) {
-                    var card = createCard(anuncio);
-                    pastAnuncios.appendChild(card);
-                }
-            });
-            
-            currentAnuncios.style.display = "none";
-            pastAnuncios.style.display = "block";
+    });
+}
+
+function showCurrent() {
+    if (reservas) {
+        var currentReservas = document.getElementById("currentReservas");
+    var pastReservas = document.getElementById("pastReservas");
+
+    currentReservas.innerHTML = "";
+    pastReservas.innerHTML = "";
+
+    var currentDate = new Date();
+
+    for (var i = 0; i < reservas.length; i++) {
+        var reserva = reservas[i];
+        var salidaDate = new Date(reserva.fecha_salida + " " + reserva.hora_salida);
+
+        if (salidaDate >= currentDate) {
+            var card = createCard(reserva);
+            currentReservas.appendChild(card);
+        } else {
+            var card = createCard(reserva);
+            pastReservas.appendChild(card);
         }
-        
-        function createCard(anuncio) {
-            var card = document.createElement("div");
-            card.className = "card";
-            
-            var title = document.createElement("h3");
-            title.textContent = anuncio.titulo;
-            title.classList.add("card-meta", "card-meta-emitted");
-            
-            var comunicado = document.createElement("p");
-           comunicado.innerHTML = "<strong>Descripción:</strong> " + anuncio.comunicado;
-            
-           var emitido = document.createElement("p");
-           var fecha = new Date(anuncio.emitido);
-           var options = { year: 'numeric', month: 'long', day: 'numeric' };
-           emitido.innerHTML = "<strong>Emitido:</strong> " + fecha.toLocaleDateString(undefined, options);
-            
-            card.appendChild(title);
-            card.appendChild(comunicado);
-            card.appendChild(emitido);
-            return card;
+    }
+
+    currentReservas.style.display = "block";
+    pastReservas.style.display = "none";
+    } else {
+        console.log("No se han cargado las reservas.");
+    }
+}
+
+function showPast() {
+    var currentReservas = document.getElementById("currentReservas");
+    var pastReservas = document.getElementById("pastReservas");
+
+    currentReservas.innerHTML = "";
+    pastReservas.innerHTML = "";
+
+    var currentDate = new Date();
+
+    for (var i = 0; i < reservas.length; i++) {
+        var reserva = reservas[i];
+        var salidaDate = new Date(reserva.fecha_salida + " " + reserva.hora_salida);
+
+        if (salidaDate < currentDate) {
+            var card = createCard(reserva);
+            pastReservas.appendChild(card);
         }
+    }
+
+    currentReservas.style.display = "none";
+    pastReservas.style.display = "block";
+}
+
+function createCard(reserva) {
+    var card = document.createElement("div");
+    card.className = "card";
+
+    var title = document.createElement("h3");
+    title.textContent = "Reserva";
+    title.classList.add("card-meta", "card-meta-emitted");
+
+    var espacio = document.createElement("p");
+    espacio.innerHTML = "<strong>Espacio Nro:</strong> " + reserva.id_sitio;
+
+    var horario = document.createElement("p");
+    horario.innerHTML = "<strong>Horario:</strong> " + reserva.hora_ingreso + "-" + reserva.hora_salida;
+
+    var fechaIngreso = document.createElement("p");
+    fechaIngreso.innerHTML = "<strong>Fecha ingreso:</strong> " + reserva.fecha_ingreso;
+
+    var fechaSalida = document.createElement("p");
+    fechaSalida.innerHTML = "<strong>Fecha salida:</strong> " + reserva.fecha_salida;
+
+    var duracion = document.createElement("p");
+    duracion.innerHTML = "<strong>Duración:</strong> " + reserva.cantidad_de_horas + " hora(s)";
+
+    card.appendChild(title);
+    card.appendChild(espacio);
+    card.appendChild(horario);
+    card.appendChild(fechaIngreso);
+    card.appendChild(fechaSalida);
+    card.appendChild(duracion);
+
+    return card;
+}
+
+
     </script>
 
 </body>
