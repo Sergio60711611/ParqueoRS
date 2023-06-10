@@ -42,53 +42,27 @@
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        
-                        <li class="nav-item ">
-                            <a href="#" class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 5px; padding-left: 23px;">
+
+                        <li class="nav-item">
+                            <a href="{{url ('/cliente/'. $id2 .'/home')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
+                            <i class="fas fa-home mr-2"></i>
+                            <p>Home</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{url ('/cliente/'. $id2 .'/perfil')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
                             <i class="fas fa-user-circle mr-2"></i>
-                            <p class="text-left">Mi Perfil<i class="right fas fa-angle-left"></i></p>
+                            <p>Mi Perfil</p>
                             </a>
-                            <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{url ('/cliente/'. $id2 .'/perfil')}}" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-id-card"></i>
-                                <p>Mi Perfil</p>
-                                </a>
-                            </li>
-                            </ul>
                         </li>
-                        
+
                         <li class="nav-item">
-                            <a href="#" class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 5px;">
+                            <a href="{{url ('/cliente/'. $id2 .'/vehiculos')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
                             <i class="nav-icon fas fa-car"></i>
-                            <p>Mis Automoviles<i class="right fas fa-angle-left"></i></p>
+                            <p>Mis Automoviles</p>
                             </a>
-                            <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{url ('/cliente/'. $id2 .'/vehiculos')}}" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-car"></i>
-                                <p>Lista de automoviles</p>
-                                </a>
-                            </li>
-                            </ul>
                         </li>
-
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 5px;">
-                            <i class="nav-icon fas fa-list"></i>
-                            <p>Mis Reservas<i class="right fas fa-angle-left"></i></p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{url ('/cliente/'. $id2 .'/reservas')}}" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-list-alt"></i>
-                                <p>Lista de reservas</p>
-                                </a>
-                            </li>
-                            </ul>
-                        </li>
-
 
                         <li class="nav-item">
                             <a href="#" class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
@@ -102,7 +76,35 @@
                                 <p>Mapeo del parqueo</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{url ('/cliente/'. $id2 .'/mapeoParqueo')}}" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
+                                <i class="nav-icon fas fa-car"></i>
+                                <p>Mis Sitios</p>
+                                </a>
+                            </li>
                             </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{url ('/cliente/'. $id2 .'/vehiculos')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
+                            <i class="nav-icon fas fa-credit-card"></i>
+                            <p>Pagos</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{url ('/cliente/'. $id2 .'/reservas')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
+                            <i class="nav-icon fas  fa-calendar-check"></i>
+                            <p>Mis Reservas</p>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a href="{{url ('/cliente/'. $id2 .'/info')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
+                            <i class="nav-icon fas fa-question"></i>
+                            <p>Ayuda</p>
+                            </a>
                         </li>
 
                         <li class="nav-item">
@@ -112,6 +114,7 @@
                             </a>
                             
                         </li>
+
 
                         </ul>
                     </nav>

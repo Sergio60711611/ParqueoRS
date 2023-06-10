@@ -22,7 +22,24 @@
                     <!-- Contenido dentro del container -->
                             <h2>Bienvenido a </h2>
                             <h2>Radiador Springs</h2>
+                            <div class="box">
+                            <table 
+                               class="table"  
+                               style="border-collapse: collapse;
+                                       max-width: 50%;"
+                                >
+                            
+                                @foreach($lista as $horario)
+                                    <tr>
+                                        <td style="border: none;" class = text-center>{{$horario->dia_horario}}</td>
+                                        <td style="border: none;" class = text-center>{{ substr($horario->hora_inicio, 0, 5) }} - {{ substr($horario->hora_fin, 0, 5) }}</td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                            </div>
+                            <div class="box">
                             <img class="fondo" src="{{ asset('/img/parqueo10.png') }}">
+                            </div>
                 </div>
             </div>
             <!-- /.content-wrapper -->
@@ -47,7 +64,7 @@ h2{
     color: #324855;
     font-family: "Poppins";
     font-weight: bold;
-    font-size: 5vw;
+    font-size: 4vw;
     margin-left: 3vw;
     margin-top: 2vw;
 }
@@ -55,6 +72,13 @@ img {
     width: 100%;
     height:auto;
     margin-top: -19vw;
+    
+}
+.box {
+  display: inline-block;
+  width: 35vw; 
+  height: auto;
+  text-align: center;
 }
 .content-wrapper{
     background-color: #D9D9D9;
@@ -71,6 +95,30 @@ img {
     background-color: #ffffff;
     border: 1px solid #ffffff;
     padding: 20px;
+}
+table {
+  width: auto;
+  max-width: 90%;
+  margin: 0 auto;
+  margin-bottom:5px;
+  margin-top:3vw;
+  border-collapse: collapse;
+}
+
+table td, table th {
+  padding: 3px;
+  text-align: center;
+  font-size: 17px;
+  color: black;
+}
+
+table th {
+  background-color: #f1f1f1;
+  font-weight: bold;
+}
+
+table td {
+  border: 1px solid #ccc;
 }
 </style>
 </html>

@@ -17,7 +17,7 @@
         <div class="nav-items">
           <i class="uil uil-times nav-close-btn"></i>
           <a href="#"><i class="uil uil-home"></i> Inicio</a>
-          {{-- <a href="#"><i class="uil uil-compass"></i> Explore</a> --}}
+          {{-- <a href="#"><i class="uil uil-compass"></i> Explorar</a> --}}
           <a href="#seccion" class="btn">Acerca de</a>
           <a href="/ayudaprecios"><i class="uil uil-info-circle"></i> Precios</a>
           <a href="/inicio/loginUser"><i class="uil uil-document-layout-left"></i> Iniciar Sesion</a>
@@ -41,43 +41,43 @@
         <div class="swiper-slide">
           <img src=".\img\inicio3.jpg" alt="">
           <div class="text-content">
-            <h2 class="title">!Bienvenido <span>Season</span></h2>
+            <h2 class="title">!Bienvenido <span>Sesion</span></h2>
             <p>Tu destino confiable para el estacionamiento perfecto! 
                 Nos enorgullece brindarte un servicio excepcional y la tranquilidad de saber que tu 
                 vehículo está en buenas manos.</p>
-            <button class="read-btn">Read More <i class="uil uil-arrow-right"></i></button>
+            <button class="read-btn">Lee Mas <i class="uil uil-arrow-right"></i></button>
           </div>
         </div>
         <div class="swiper-slide dark-layer">
           <img src=".\img\inicio2.jpg" alt="">
           <div class="text-content">
-            <h2 class="title">Elije tu lugar <span>Season</span></h2>
+            <h2 class="title">Elije tu lugar <span>Sesion</span></h2>
             <p>Con nuestra ubicación estratégica y espacios bien diseñados, te ofrecemos la comodidad 
                 que necesitas para tus actividades diarias. Ya sea que vengas a hacer compras, a trabajar 
                 o a explorar la ciudad, nuestro parqueo está aquí para hacer tu experiencia más fácil y segura.</p>
-            <button class="read-btn">Read More <i class="uil uil-arrow-right"></i></button>
+            <button class="read-btn">Lee Mas <i class="uil uil-arrow-right"></i></button>
           </div>
         </div>
         <div class="swiper-slide dark-layer">
           <img src=".\img\inicio4.jpg" alt="">
           <div class="text-content">
-            <h2 class="title">Seguridad <span>Season</span></h2>
+            <h2 class="title">Seguridad <span>Sesion</span></h2>
             <p>Contamos con un equipo amable y profesional que está listo para asistirte en todo momento. Nuestras
                  instalaciones están equipadas con medidas de seguridad avanzadas, incluyendo sistemas de vigilancia 
                  y personal dedicado, para que puedas tener total tranquilidad mientras disfrutas de tus actividades.</p>
-            <button class="read-btn">Read More <i class="uil uil-arrow-right"></i></button>
+            <button class="read-btn">Lee Mas<i class="uil uil-arrow-right"></i></button>
           </div>
         </div>
         <div class="swiper-slide">
           <img src=".\img\inicio5.jpg" alt="">
           <div class="text-content">
-            <h2 class="title">Muy Pronto <span>Season</span></h2>
+            <h2 class="title">Muy Pronto <span>Sesion</span></h2>
             <p>"¡Atrévete a pedalear! Próximamente, ofreceremos espacios para bicicletas en nuestro parqueo.
                  Promovemos un estilo de vida activo y sustentable, brindándote opciones seguras y convenientes
                   para estacionar tu bicicleta. ¡Pronto podrás disfrutar de la libertad de moverte en dos ruedas 
                   mientras cuidas el medio ambiente! ¡Mantente atento a nuestras actualizaciones y únete al movimiento
                    ciclista en nuestro parqueo!"</p>
-            <button class="read-btn">Read More <i class="uil uil-arrow-right"></i></button>
+            <button class="read-btn">Lee Mas<i class="uil uil-arrow-right"></i></button>
           </div>
         </div>
       </div>

@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 //FE
 Route::get('/administrador/home',"App\Http\Controllers\homeController@create");
+Route::get('/guardia/{id}/home',"App\Http\Controllers\homeController@createGuardia");
 Route::get('/cliente/{id}/home',"App\Http\Controllers\homeController@createCliente");
 Route::get('/cliente/{id}/perfil',"App\Http\Controllers\clientesController@perfil");
 Route::get('/cliente/{id}/editarPerfil',"App\Http\Controllers\clientesController@createEditarCli");
@@ -62,11 +63,11 @@ Route::get('/administrador/pagoslista',"App\Http\Controllers\PagosController@Lis
 
 Route::get('/ayudaprecios',"App\Http\Controllers\ayudaController@AController");
 
-Route::get('/administrador/info',"App\Http\Controllers\InfoClienteController@see");
-Route::get('/administrador/info/consultas',"App\Http\Controllers\InfoClienteController@seeConsultas");
-Route::get('/administrador/info/anuncios',"App\Http\Controllers\InfoClienteController@seeAnuncios");
-Route::get('/administrador/info/preguntas', "App\Http\Controllers\InfoClienteController@seePreguntas");
-Route::get('/administrador/info/horarios', "App\Http\Controllers\InfoClienteController@seeHorarios");
+Route::get('/cliente/{id}/info',"App\Http\Controllers\InfoClienteController@see");
+Route::get('/cliente/{id}/info/consultas',"App\Http\Controllers\InfoClienteController@seeConsultas");
+Route::get('/cliente/{id}/info/anuncios',"App\Http\Controllers\InfoClienteController@seeAnuncios");
+Route::get('/cliente/{id}/info/preguntas', "App\Http\Controllers\InfoClienteController@seePreguntas");
+Route::get('/cliente/{id}/info/horarios', "App\Http\Controllers\InfoClienteController@seeHorarios");
 
 Route::get('/administrador/anuncios',"App\Http\Controllers\AnuncioController@createLista");
 Route::get('/administrador/agregarAnuncio',"App\Http\Controllers\AnuncioController@createAgregar");

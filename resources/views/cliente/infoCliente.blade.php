@@ -196,7 +196,7 @@
                         <span class="text">Anuncios</span>
                         </a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">
+                        <li><a class="dropdown-item" href="{{url ('/cliente/'. $id2 .'/perfil')}}">
                         <i class="nav-icon fas fa-user"></i>
                         <span class="text">Mi perfil</span>
                         </a></li>

@@ -5,26 +5,28 @@ use App\Models\Anuncios;
 use App\Models\Tarifa;
 use App\Models\Horario;
 use Illuminate\Http\Request;
+use App\Models\Cliente;
 use App\Models\PlanMensual;
 use App\Models\PreguntasFrecuentes;
 
 class InfoClienteController extends Controller
 {
-    public function see()
+    public function see($id)
     {
-        return view('administrador.infoCliente');
+        $cliente = Cliente::find($id);   
+        return view('cliente.infoCliente', compact('cliente'));
     }
     public function seeConsultas()
     {
-        return view('administrador.consultas');
+        return view('cliente.consultas');
     }
     public function seeAnuncios()
     {
-        return view('administrador.anuncios');
+        return view('cliente.anuncios');
     }
     public function seePreguntas()
     {
-        return view('administrador.preguntasFrecuentes');
+        return view('cliente.preguntasFrecuentes');
     }
     
     public function getPreguntas(Request $request)
@@ -49,7 +51,7 @@ class InfoClienteController extends Controller
     $lista1 = PlanMensual::all();
     $lista2 = Tarifa::all();
     $lista3 = Horario::all();
-    return view('administrador.horarioInfo', compact('lista1', 'lista2','lista3'));
+    return view('cliente.horarioInfo', compact('lista1', 'lista2','lista3'));
 }
 
 

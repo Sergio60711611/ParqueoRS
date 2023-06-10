@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="\css\loginstyle.css">
     <title>Registro Inicio</title>
     
-</head>
+</head> 
 <body>
 <div class="container" id="container">
         <div class="form-container sign-up-container">
