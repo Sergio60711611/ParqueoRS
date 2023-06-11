@@ -74,11 +74,15 @@ Route::get('/administrador/anuncios',"App\Http\Controllers\AnuncioController@cre
 Route::get('/administrador/agregarAnuncio',"App\Http\Controllers\AnuncioController@createAgregar");
 Route::get('/administrador/editarAnuncio/{id}',"App\Http\Controllers\AnuncioController@createEditar");
 Route::get('/administrador/borrarAnuncio/{id}',"App\Http\Controllers\AnuncioController@createborrar");
+Route::get('/guardia/{id}/anuncios',"App\Http\Controllers\AnuncioController@createListaG");
+Route::get('/guardia/{id}/agregarAnuncio',"App\Http\Controllers\AnuncioController@createAgregarG");
 
 Route::get('/administrador/preguntas',"App\Http\Controllers\PreguntasFrecuentesController@createLista");
 Route::get('/administrador/agregarPreguntas',"App\Http\Controllers\PreguntasFrecuentesController@createAgregar");
 Route::get('/administrador/editarPreguntas/{id}',"App\Http\Controllers\PreguntasFrecuentesController@createEditar");
 Route::get('/administrador/borrarPreguntas/{id}',"App\Http\Controllers\PreguntasFrecuentesController@createborrar");
+Route::get('/guardia/{id}/preguntas',"App\Http\Controllers\PreguntasFrecuentesController@createListaG");
+Route::get('/guardia/{id}/agregarPreguntas',"App\Http\Controllers\PreguntasFrecuentesController@createAgregarG");
 
 Route::get('/cliente/{id}/info/reclamos', "App\Http\Controllers\clamosController@create")->name('reclamos.create');
 Route::post('/cliente/info/reclamos', "App\Http\Controllers\clamosController@store")->name('reclamos.store');
@@ -180,9 +184,11 @@ Route::get('/preguntas', "App\Http\Controllers\InfoClienteController@getPregunta
 Route::get('/reservaInfo', "App\Http\Controllers\InfoClienteController@getReservas");
 
 Route::post('/createAnuncio',"App\Http\Controllers\AnuncioController@store");
+Route::post('/guardia/{id}/createAnuncioG',"App\Http\Controllers\AnuncioController@storeG");
 Route::put('/updateAnuncio/{id}',"App\Http\Controllers\AnuncioController@update");
 Route::delete('/deleteAnuncio/{id}',"App\Http\Controllers\AnuncioController@delete");
 
 Route::post('/createPregunta',"App\Http\Controllers\PreguntasFrecuentesController@store");
+Route::post('/guardia/createPreguntaG',"App\Http\Controllers\PreguntasFrecuentesController@storeG")->name('createPreguntaG');
 Route::put('/updatePregunta/{id}',"App\Http\Controllers\PreguntasFrecuentesController@update");
 Route::delete('/deletePregunta/{id}',"App\Http\Controllers\PreguntasFrecuentesController@delete");

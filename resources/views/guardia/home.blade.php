@@ -16,25 +16,26 @@
     </head>
     <body class="hold-transition sidebar-mini">
     @php
-        $id = $cliente['id'];
-        $nombre = $cliente['nombre'];    
-        $apellido = $cliente['apellido'];
-        $correo = $cliente['correo_electronico'];
-        $celular = $cliente['celular'];
-        $password = $cliente['password'];
-        $ci = $cliente['ci'];
+        $id = $guardia['id'];
+        $nombre = $guardia['nombre'];    
+        $apellido = $guardia['apellido'];
+        $correo = $guardia['correo_electronico'];
+        $celular = $guardia['celular'];
+        $turno=$guardia['turno'];
+        $password = $guardia['password'];
+        $ci = $guardia['ci'];
     @endphp
 
-    @include('cliente.navbar', ['id' => $id])
+    @include('guardia.navbar', ['id' => $id])
     <aside class="control-sidebar control-sidebar-dark">
         <div class="p-3">
-        <h5>Cliente: </h5>
-        <p>Esta es la vista para el usuario de apellido : {{$apellido}}</p>
+        <h5>Guardia: </h5>
+        <p>Esta es la vista para el guardia de apellido : {{$apellido}}</p>
         </div>
     </aside>
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper" style="background-color:#D9D9D9;  padding: 20px;">
-            @include('cliente.msj') 
+           @include('cliente.msj')
                 <div class="container container-blanco">
                     <!-- Contenido dentro del container -->
                             <h2>Bienvenido a </h2>

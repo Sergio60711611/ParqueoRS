@@ -1,4 +1,4 @@
-<!---msj de niño registrado correctamente -->
+<!---msj de cliente registrado correctamente -->
 @if(Session::has('message'))
   <div class="col-lg-12" id="msj">
     <div class="alert alert-success alert-success-style1 alert-success-stylenone">

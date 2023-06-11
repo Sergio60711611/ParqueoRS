@@ -44,7 +44,7 @@
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                         <li class="nav-item">
-                            <a href="{{url ('/cliente/'. $id2 .'/home')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
+                            <a href="{{url ('/guardia/'. $id2 .'/home')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
                             <i class="fas fa-home mr-2"></i>
                             <p>Home</p>
                             </a>
@@ -54,13 +54,6 @@
                             <a href="{{url ('/cliente/'. $id2 .'/perfil')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
                             <i class="fas fa-user-circle mr-2"></i>
                             <p>Mi Perfil</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{url ('/cliente/'. $id2 .'/vehiculos')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
-                            <i class="nav-icon fas fa-car"></i>
-                            <p>Mis Automoviles</p>
                             </a>
                         </li>
 
@@ -89,17 +82,25 @@
                         <li class="nav-item">
                             <a href="{{url ('/cliente/'. $id2 .'/reservas')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
                             <i class="nav-icon fas  fa-calendar-check"></i>
-                            <p>Mis Reservas</p>
+                            <p>Reservas</p>
                             </a>
                         </li>
 
 
                         <li class="nav-item">
-                            <a href="{{url ('/cliente/'. $id2 .'/info')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
+                            <a href="{{url ('/guardia/'. $id2 .'/preguntas')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
                             <i class="nav-icon fas fa-question"></i>
-                            <p>Ayuda</p>
+                            <p>Preguntas</p>
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a href="{{url ('/cliente/'. $id2 .'/info')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
+                            <i class="nav-icon fas fa-bullhorn"></i>
+                            <p>anuncios</p>
+                            </a>
+                        </li>
+
 
                         <li class="nav-item">
                             <a href="/" class="nav-link active" style="background-color: #FD968E; color:#324855; margin-top: 3px;">
