@@ -97,7 +97,7 @@
                         <li class="nav-item">
                             <a href="{{url ('/cliente/'. $id2 .'/info')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
                             <i class="nav-icon fas fa-bullhorn"></i>
-                            <p>anuncios</p>
+                            <p>Anuncios</p>
                             </a>
                         </li>
 

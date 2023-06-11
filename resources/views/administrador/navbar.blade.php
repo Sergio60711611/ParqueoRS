@@ -36,37 +36,32 @@
                     <!-- inicio-sidebar-menu -->
                     <nav class="mt-2">
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                       
                         <li class="nav-item">
-                            <a href="#" class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 5px;">
-                            <i class="nav-icon fas fa-user"></i>
-                            <p>Clientes<i class="right fas fa-angle-left"></i></p>
+                            <a href="/administrador/home"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
+                            <i class="fas fa-home mr-2"></i>
+                            <p>Home</p>
                             </a>
-                            <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="/administrador/clientes" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>Lista de Clientes</p>
-                                </a>
-                            </li>
-                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/administrador/clientes"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
+                            <i class="fas fa-security"></i>
+                            <p>Guardias</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/administrador/clientes"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
+                            <i class="fas fa-users mr-2"></i>
+                            <p>Clientes</p>
+                            </a>
                         </li>
 
-                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 5px;">
-                            <i class="nav-icon fas fa-car"></i>
-                            <p>Automoviles<i class="right fas fa-angle-left"></i></p>
+                            <a href="/administrador/vehiculos"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
+                            <i class="fas fa-car mr-2"></i>
+                            <p>Automoviles</p>
                             </a>
-                            <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="/administrador/vehiculos" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-car"></i>
-                                <p>Lista de automoviles</p>
-                                </a>
-                            </li>
-                            </ul>
                         </li>
-
 
                         <li class="nav-item">
                             <a href="#" class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
@@ -88,7 +83,39 @@
                             </li>
                             </ul>
                         </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active" style="background-color: #F9FA85; color:#324855;  margin-top: 3px;">
+                            <i class="nav-icon fas fa-clock"></i>
+                            <p>Horario <i class="right fas fa-angle-left"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                            <a href="#" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
+                                <i class="nav-icon far fa-clock"></i>
+                                <p>Horario Normal</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                            <a href="#" class="nav-link active" style="background-color: #395261; color:#FFFFFF; font-size:14px">
+                                <i class="nav-icon fas  fa-exclamation"></i>
+                                <p>Horario de emergencia</p>
+                                </a>
+                            </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/administrador/preguntas"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
+                            <i class="nav-icon fas fa-question"></i>
+                            <p>Preguntas</p>
+                            </a>
+                        </li>
 
+                        <li class="nav-item">
+                            <a href="/administrador/anuncios"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
+                            <i class="nav-icon fas fa-bullhorn"></i>
+                            <p>Anuncios</p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
                             <i class="nav-icon far fa-credit-card"></i>
@@ -101,31 +128,14 @@
                                 <p>Historial de Pagos</p>
                                 </a>
                             </li>
-                            
                             </ul>
                         </li>
-
                         <li class="nav-item">
-                            <a href="#" class="nav-link active" style="background-color: #F9FA85; color:#324855;  margin-top: 3px;">
-                            <i class="nav-icon fas fa-clock"></i>
-                            <p>Horario <i class="right fas fa-angle-left"></i></p>
+                            <a href="/administrador/anuncios"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
+                            <i class="nav-icon fas fa-bullhorn"></i>
+                            <p>Reportes<u/p>
                             </a>
-                            <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                            <a href="#" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-plus-circle"></i>
-                                <p>Agregar Horario</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                            <a href="#" class="nav-link active" style="background-color: #395261; color:#FFFFFF; font-size:14px">
-                                <i class="nav-icon far fa-clock"></i>
-                                <p>Horario de emergencia</p>
-                                </a>
-                            </li>
-                            </ul>
                         </li>
-                        
                         <li class="nav-item">
                             <a href=".." class="nav-link active" style="background-color: #FD968E; color:#324855; margin-top: 3px;">
                             <i class="nav-icon fas fa-sign-out-alt"></i>
