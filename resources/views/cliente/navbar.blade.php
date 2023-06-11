@@ -26,7 +26,6 @@
                 <!-- fin-navbar -->
                 <!-- inicio-main-sidebar-container -->
                 @php
-                        //$id2 = isset($id);
                         $id2 = $id; 
                 @endphp
                 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color:#324855">
@@ -86,7 +85,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{url ('/cliente/'. $id2 .'/vehiculos')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
+                            <a href="{{url ('/cliente/'. $id2 .'/vehiculos')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: -3px;">
                             <i class="nav-icon fas fa-credit-card"></i>
                             <p>Pagos</p>
                             </a>
@@ -94,7 +93,7 @@
 
                         <li class="nav-item">
                             <a href="{{url ('/cliente/'. $id2 .'/reservas')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
-                            <i class="nav-icon fas  fa-calendar-check"></i>
+                            <i class="nav-icon fas fa-calendar-check"></i>
                             <p>Mis Reservas</p>
                             </a>
                         </li>

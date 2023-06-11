@@ -216,7 +216,7 @@ class parqueoController extends Controller
 
                 $salida->estado_salida = "Finalizado";
                 $salida->fecha_hora_salida = $now;
-                $salida->pago = $pago;
+                //$salida->pago = $pago;
 
                 $ingreso->estado_ingreso = "Finalizado";
 
@@ -280,5 +280,3 @@ class parqueoController extends Controller
         }
     }
 }
-
-

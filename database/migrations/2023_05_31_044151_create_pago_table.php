@@ -18,9 +18,14 @@ class CreatePagoTable extends Migration
             $table->date('fecha_pago');
             $table->decimal('monto_pagado', $precision = 8, $scale = 2);
             $table->foreignId('id_reserva')
+                  ->nullable()
                   ->constrained('reserva')
                   ->cascadeOnUpdate()
                   ->cascadeOnDelete();
+            $table->foreignId('id_sitio')
+                    ->constrained('sitio')
+                    ->cascadeOnUpdate()
+                    ->cascadeOnDelete();
             $table->timestamps();
         });
     }

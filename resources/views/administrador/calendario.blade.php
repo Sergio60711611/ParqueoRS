@@ -43,12 +43,13 @@
             const calendarEl = document.getElementById('calendar');
             const calendar = new Calendar(calendarEl, {
             plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin, rrulePlugin],
+            timeZone: 'America/La_Paz',
             headerToolbar: {
                 left: 'prev,next today',
                 center: 'title',
                 right: 'dayGridMonth,timeGridWeek,timeGridDay,list'
             },
-            locale: 'es',
+                locale: 'es',
             businessHours: [
                 {
                 daysOfWeek: [1, 2, 3, 4, 5], // Días de la semana (Lunes a Viernes)
@@ -60,14 +61,14 @@
                 endTime: '13:00' // Hora de fin hábil
                 }
             ],
-                events: "/show/"+{{$idDeSitio}}
+                events: "/show/"+{{$idDeSitio}},
 
             });
             calendar.render();
+            
 
         });
         </script>
-</script>
     </head>
     <body class="hold-transition sidebar-mini">
     @include('administrador.navbar')
@@ -84,20 +85,24 @@
                         <div class="col-sm-4" style="text-align: right;">
                         <!---->
                             <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Seleccionar opción
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:#324855; border-color:#324855">
+                                Reservar
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal1">Plan Diario</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal2">Plan SEMANA</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal3">Plan Mes LUN-VIE</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal4">Plan Mes SABADO</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal3">Plan Mes Dia</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal4">Plan Mes Tarde</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal5">Plan Mes Noche</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal6">Plan Mes Nocturno</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal7">Plan Mes Completo</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal8">Plan Mes 24/5</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal9">Plan Mes Sabatico</a>
                                 <!--<a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal5">Plan Mes 24 hrs</a>-->
                             </div>
                             </div>
-
                             <!-- Modales -->
                             <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modal1Label" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -111,7 +116,7 @@
                                     <div class="modal-body">
                                     <form action="/storeReservaDiaria" id="formulario1" method="POST" role="form">
                                         {{csrf_field()}}
-                                            <div class="card-body" >
+                                            <div class="card-body">
                                                 <div class="form-group" style="text-align: left;">
                                                     <label for="meeting-time">Fecha Ingreso:</label>
                                                     <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso" value="{{ $now->format('Y-m-d') }}"></input>
@@ -122,17 +127,16 @@
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <label for="">Horas reservadas:</label>
-                                                    <input type="number" class="form-control" name="horas" id="horas" min="1" max="24" step="1" onkeyup="copyValue()"></input>
+                                                    <input type="number" class="form-control" name="horas1" id="horas1" min="1" max="24" step="1" onkeyup="copyValue()"></input>
                                                     @php
-    $hrs = 0;
-@endphp
-
-<script>
-    function copyValue() {
-        var input1Value = document.getElementById("horas").value;
-        document.getElementById("hrs").value = input1Value;
-    }
-</script>
+                                                        $hrs = 0;
+                                                    @endphp
+                                                    <script>
+                                                        function copyValue() {
+                                                            var input1Value = document.getElementById("horas1").value;
+                                                            document.getElementById("hrs").value = input1Value;
+                                                        }
+                                                    </script>
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <label for="">CI Cliente:</label>
@@ -141,40 +145,25 @@
                                                 <div class="form-group" style="text-align: left;">
                                                     <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
                                                 </div>
-                                                <hr>
                                             <div class="form-group2">
                                                 <button type="submit" form="formulario1" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
                                                 <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
                                             </div>
                                             </div>
                                         </form>
-                                        @php
-                                                $idReservaS = $idreserva;
-                                            @endphp
                                         <script>
-                                            function abrirNuevaVentana() {
-                                                //window.open("{{ route('pagosqr.pagos') }}", "_blank");
-                                                var input1Value = document.getElementById("horas").value;
+                                            function abrirNuevaVentana1() {
+                                                var input1Value = document.getElementById("horas1").value;
                                                 var hrs = input1Value;
                                                 
-                                                window.open("{{ route('pagosqr.pagos') }}?plan=" + encodeURIComponent('Diario') + "&espacio=" + encodeURIComponent({{ $idDeSitio }}) + "&horas=" + encodeURIComponent(hrs) + "&reserva=" + encodeURIComponent('3'), "_blank");
+                                                window.open("{{ route('pagosqr.pagos') }}?plan=" + encodeURIComponent('Diario') + "&espacio=" + encodeURIComponent({{ $idDeSitio }}) + "&horas=" + encodeURIComponent(hrs) + "&reserva=" + encodeURIComponent({{$idreserva}})+ "&costo=" + encodeURIComponent('6'), "_blank");
                                             }
                                         </script>
-                                        <script>
-    function abrirNuevaVentana() {
-        var input1Value = document.getElementById("horas").value;
-        var hrs = input1Value;
-
-        var url = "{{ route('pagosqr.pagos') }}?plan=" + encodeURIComponent('Diario') + "&espacio=" + encodeURIComponent({{ $idDeSitio }}) + "&horas=" + encodeURIComponent(hrs) + "&reserva=" + encodeURIComponent('1');
-
-        window.open(url, "_blank");
-    }
-</script>
-
                                         <div style="text-align: left;">
-                                            <button class="btn btn-primary" onclick="abrirNuevaVentana()">Ir a Pagar</button>
+                                            <button class="btn btn-primary" onclick="abrirNuevaVentana1()" style="background-color:#324855; border-color:#324855">Ir a Pagar</button>
                                         </div>
                                     </div>
+                            </div>
                             </div>
                             </div>
 
@@ -200,8 +189,17 @@
                                                 <input type="time" class="form-control" name="hora_ingreso" id="hora_ingreso" min="{{ $now->format('H:i') }}" value="{{ $now->format('H:i') }}"></input>
                                             </div>
                                             <div class="form-group" style="text-align: left;">
-                                                <label for="">Horas reservadas:</label>
-                                                <input type="number" class="form-control" name="horas" id="horas" min="1" max="24" step="1" ></input>
+                                            <label for="">Horas reservadas:</label>
+                                                <input type="number" class="form-control" name="horas2" id="horas2" min="1" max="24" step="1" onkeyup="copyValue()"></input>
+                                                @php
+                                                    $hrs2 = 0;
+                                                @endphp
+                                                <script>
+                                                    function copyValue() {
+                                                        var input2Value = document.getElementById("horas2").value;
+                                                        document.getElementById("hrs2").value = input2Value;
+                                                    }
+                                                </script>
                                             </div>
                                             <div class="form-group" style="text-align: left;">
                                                 <label for="">CI Cliente:</label>
@@ -217,6 +215,17 @@
                                         </div>
                                         </div>
                                     </form>
+                                    <script>
+                                        function abrirNuevaVentana2() {
+                                            var input2Value = document.getElementById("horas2").value;
+                                            var hrs2 = input2Value;
+                                            
+                                            window.open("{{ route('pagosqr.pagos') }}?plan=" + encodeURIComponent('SEMANA LUN-SAB') + "&espacio=" + encodeURIComponent({{ $idDeSitio }}) + "&horas=" + encodeURIComponent(hrs2) + "&reserva=" + encodeURIComponent({{$idreserva}})+ "&costo=" + encodeURIComponent('30'), "_blank");
+                                        }
+                                    </script>
+                                    <div style="text-align: left;">
+                                            <button class="btn btn-primary" onclick="abrirNuevaVentana2()" style="background-color:#324855; border-color:#324855">Ir a Pagar</button>
+                                    </div>
                                 </div>
                                 </div>
                             </div>
@@ -226,26 +235,34 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="modal3Label">Plan Mes LUN-VIE</h5>
+                                    <h5 class="modal-title" id="modal3Label">Plan Mes Dia</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                <form action="/storeMesLV" method="POST" role="form">
+                                <form action="/storeMesDia" method="POST" role="form">
                                     {{csrf_field()}}
                                         <div class="card-body" >
                                             <div class="form-group" style="text-align: left;">
                                                 <label for="meeting-time">Fecha Inicio de Plan:</label>
                                                 <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso" min="{{ $now->format('Y-m-d') }}" value="{{ $now->format('Y-m-d') }}"></input>
                                             </div>
+                                            <div class="row">
+                                            <div class="col-md-6">
                                             <div class="form-group" style="text-align: left;">
-                                                <label for="">Hora Ingreso los dias del plan:</label>
-                                                <input type="time" class="form-control" name="hora_ingreso" id="hora_ingreso" min="{{ $now->format('H:i') }}" value="{{ $now->format('H:i') }}"></input>
+                                                <label for="">Hora ingreso:</label>
+                                                <input type="time" class="form-control"value="06:00" disabled></input>
+                                                <input type="hidden" class="form-control" name="hora_ingreso" id="hora_ingreso" value="06:00"></input>
                                             </div>
+                                            </div>
+                                            <div class="col-md-6">
                                             <div class="form-group" style="text-align: left;">
-                                                <label for="">Horas reservadas:</label>
-                                                <input type="number" class="form-control" name="horas" id="horas" min="1" max="24" step="1" ></input>
+                                                <label for="">Hora salida:</label>
+                                                <input type="time" class="form-control"value="11:00" disabled></input>
+                                                <input type="hidden" class="form-control" name="hora_salida" id="hora_salida" value="11:00" ></input>
+                                            </div>
+                                            </div>
                                             </div>
                                             <div class="form-group" style="text-align: left;">
                                                 <label for="">CI Cliente:</label>
@@ -261,6 +278,14 @@
                                         </div>
                                         </div>
                                     </form>
+                                    <script>
+                                        function abrirNuevaVentana3() {
+                                            window.open("{{ route('pagosqr.pagos') }}?plan=" + encodeURIComponent('Mes Dia (06:00AM - 11:00AM)') + "&espacio=" + encodeURIComponent({{ $idDeSitio }}) + "&horas=" + encodeURIComponent('1') + "&reserva=" + encodeURIComponent({{$idreserva}})+ "&costo=" + encodeURIComponent('570'), "_blank");
+                                        }
+                                    </script>
+                                    <div style="text-align: left;">
+                                            <button class="btn btn-primary" onclick="abrirNuevaVentana3()" style="background-color:#324855; border-color:#324855">Ir a Pagar</button>
+                                    </div>
                                 </div>
                                 </div>
                             </div>
@@ -270,26 +295,34 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="modal4Label">Plan Mes SABADO</h5>
+                                    <h5 class="modal-title" id="modal4Label">Plan Mes Tarde</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                <form action="/storeMesS" method="POST" role="form">
+                                <form action="/storeMesTarde" method="POST" role="form">
                                     {{csrf_field()}}
                                         <div class="card-body" >
                                             <div class="form-group" style="text-align: left;">
                                                 <label for="meeting-time">Fecha Inicio de Plan:</label>
                                                 <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso" min="{{ $now->format('Y-m-d') }}" value="{{ $now->format('Y-m-d') }}"></input>
                                             </div>
+                                            <div class="row">
+                                            <div class="col-md-6">
                                             <div class="form-group" style="text-align: left;">
-                                                <label for="">Hora Ingreso los dias del plan:</label>
-                                                <input type="time" class="form-control" name="hora_ingreso" id="hora_ingreso" min="{{ $now->format('H:i') }}" value="{{ $now->format('H:i') }}"></input>
+                                                <label for="">Hora ingreso:</label>
+                                                <input type="time" class="form-control"value="11:00" disabled></input>
+                                                <input type="hidden" class="form-control" name="hora_ingreso" id="hora_ingreso" value="11:00"></input>
                                             </div>
+                                            </div>
+                                            <div class="col-md-6">
                                             <div class="form-group" style="text-align: left;">
-                                                <label for="">Horas reservadas:</label>
-                                                <input type="number" class="form-control" name="horas" id="horas" min="1" max="24" step="1" ></input>
+                                                <label for="">Hora salida:</label>
+                                                <input type="time" class="form-control"value="17:00" disabled></input>
+                                                <input type="hidden" class="form-control" name="hora_salida" id="hora_salida" value="17:00" ></input>
+                                            </div>
+                                            </div>
                                             </div>
                                             <div class="form-group" style="text-align: left;">
                                                 <label for="">CI Cliente:</label>
@@ -305,36 +338,52 @@
                                         </div>
                                         </div>
                                     </form>
+                                    <script>
+                                        function abrirNuevaVentana4() {
+                                            window.open("{{ route('pagosqr.pagos') }}?plan=" + encodeURIComponent('Mes Tarde (11:00AM - 05:00PM)') + "&espacio=" + encodeURIComponent({{ $idDeSitio }}) + "&horas=" + encodeURIComponent('1') + "&reserva=" + encodeURIComponent({{$idreserva}})+ "&costo=" + encodeURIComponent('680'), "_blank");
+                                        }
+                                    </script>
+                                    <div style="text-align: left;">
+                                            <button class="btn btn-primary" onclick="abrirNuevaVentana4()" style="background-color:#324855; border-color:#324855">Ir a Pagar</button>
+                                    </div>
                                 </div>
                                 </div>
                             </div>
                             </div>
 
-                            <!--PLAN MES 24 HRS-->
+                            <!--PLAN MES Noche-->
                             <div class="modal fade" id="modal5" tabindex="-1" role="dialog" aria-labelledby="modal5Label" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="modal5Label">Plan Mes 24 hrs</h5>
+                                        <h5 class="modal-title" id="modal5Label">Plan Mes Noche</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/storeReservaDiaria" method="POST" role="form">
+                                        <form action="/storeMesNoche" method="POST" role="form">
                                         {{csrf_field()}}
                                             <div class="card-body" >
                                                 <div class="form-group" style="text-align: left;">
                                                     <label for="meeting-time">Fecha Ingreso:</label>
                                                     <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso" min="{{ $now->format('Y-m-d') }}" value="{{ $now->format('Y-m-d') }}"></input>
                                                 </div>
+                                                <div class="row">
+                                                <div class="col-md-6">
                                                 <div class="form-group" style="text-align: left;">
-                                                    <label for="">Hora Ingreso:</label>
-                                                    <input type="time" class="form-control" name="hora_ingreso" id="hora_ingreso" min="{{ $now->format('H:i') }}" value="{{ $now->format('H:i') }}"></input>
+                                                    <label for="">Hora ingreso:</label>
+                                                    <input type="time" class="form-control"value="17:00" disabled></input>
+                                                    <input type="hidden" class="form-control" name="hora_ingreso" id="hora_ingreso" value="17:00"></input>
                                                 </div>
+                                                </div>
+                                                <div class="col-md-6">
                                                 <div class="form-group" style="text-align: left;">
-                                                    <label for="">Horas reservadas:</label>
-                                                    <input type="number" class="form-control" name="horas" id="horas" min="1" max="24" step="1" ></input>
+                                                    <label for="">Hora salida:</label>
+                                                    <input type="time" class="form-control"value="22:00" disabled></input>
+                                                    <input type="hidden" class="form-control" name="hora_salida" id="hora_salida" value="22:00" ></input>
+                                                </div>
+                                                </div>
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <label for="">CI Cliente:</label>
@@ -343,9 +392,6 @@
                                                 <div class="form-group" style="text-align: left;">
                                                     <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
                                                 </div>
-                                                <!--<div class="form-group" style="text-align: left;">
-                                                    <input type="hidden" class="form-control" name="plan" id = "plan" value="Diario"></input>
-                                                </div>-->
                                                 <hr>
                                             <div class="form-group2">
                                                 <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
@@ -353,11 +399,268 @@
                                             </div>
                                             </div>
                                         </form>
+                                        <script>
+                                            function abrirNuevaVentana5() {
+                                                window.open("{{ route('pagosqr.pagos') }}?plan=" + encodeURIComponent('Mes Noche (17:00PM - 22:00PM)') + "&espacio=" + encodeURIComponent({{ $idDeSitio }}) + "&horas=" + encodeURIComponent('1') + "&reserva=" + encodeURIComponent({{$idreserva}})+ "&costo=" + encodeURIComponent('570'), "_blank");
+                                            }
+                                        </script>
+                                    <div style="text-align: left;">
+                                            <button class="btn btn-primary" onclick="abrirNuevaVentana5()" style="background-color:#324855; border-color:#324855">Ir a Pagar</button>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
                             </div>
                         <!---->
+
+                        <!--PLAN MES Nocturno-->
+                        <div class="modal fade" id="modal6" tabindex="-1" role="dialog" aria-labelledby="modal6Label" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modal6Label">Plan Mes Nocturno</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/storeMesNoc" method="POST" role="form">
+                                        {{csrf_field()}}
+                                            <div class="card-body" >
+                                                <div class="form-group" style="text-align: left;">
+                                                    <label for="meeting-time">Fecha Ingreso:</label>
+                                                    <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso" min="{{ $now->format('Y-m-d') }}" value="{{ $now->format('Y-m-d') }}"></input>
+                                                </div>
+                                                <div class="row">
+                                                <div class="col-md-6">
+                                                <div class="form-group" style="text-align: left;">
+                                                    <label for="">Hora ingreso:</label>
+                                                    <input type="time" class="form-control"value="22:00" disabled></input>
+                                                    <input type="hidden" class="form-control" name="hora_ingreso" id="hora_ingreso" value="22:00"></input>
+                                                </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                <div class="form-group" style="text-align: left;">
+                                                    <label for="">Hora salida:</label>
+                                                    <input type="time" class="form-control"value="06:00" disabled></input>
+                                                    <input type="hidden" class="form-control" name="hora_salida" id="hora_salida" value="06:00" ></input>
+                                                </div>
+                                                </div>
+                                                </div>
+                                                <div class="form-group" style="text-align: left;">
+                                                    <label for="">CI Cliente:</label>
+                                                    <input type="text" class="form-control" name="ciCliente" id="ciCliente"></input>
+                                                </div>
+                                                <div class="form-group" style="text-align: left;">
+                                                    <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
+                                                </div>
+                                                <hr>
+                                            <div class="form-group2">
+                                                <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
+                                                <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
+                                            </div>
+                                            </div>
+                                        </form>
+                                        <script>
+                                            function abrirNuevaVentana6() {
+                                                window.open("{{ route('pagosqr.pagos') }}?plan=" + encodeURIComponent('Mes Nocturno (22:00PM - 06:00AM)') + "&espacio=" + encodeURIComponent({{ $idDeSitio }}) + "&horas=" + encodeURIComponent('1') + "&reserva=" + encodeURIComponent({{$idreserva}})+ "&costo=" + encodeURIComponent('900'), "_blank");
+                                            }
+                                        </script>
+                                    <div style="text-align: left;">
+                                            <button class="btn btn-primary" onclick="abrirNuevaVentana6()" style="background-color:#324855; border-color:#324855">Ir a Pagar</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        <!---->
+
+                        <!--PLAN MES Completo-->
+                        <div class="modal fade" id="modal7" tabindex="-1" role="dialog" aria-labelledby="modal7Label" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modal7Label">Plan Mes Completo</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/storeMesCompleto" method="POST" role="form">
+                                        {{csrf_field()}}
+                                            <div class="card-body" >
+                                                <div class="form-group" style="text-align: left;">
+                                                    <label for="meeting-time">Fecha Ingreso:</label>
+                                                    <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso" min="{{ $now->format('Y-m-d') }}" value="{{ $now->format('Y-m-d') }}"></input>
+                                                </div>
+                                                <div class="row">
+                                                <div class="col-md-6">
+                                                <div class="form-group" style="text-align: left;">
+                                                    <label for="">Hora ingreso:</label>
+                                                    <input type="time" class="form-control"value="06:00" disabled></input>
+                                                    <input type="hidden" class="form-control" name="hora_ingreso" id="hora_ingreso" value="06:00"></input>
+                                                </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                <div class="form-group" style="text-align: left;">
+                                                    <label for="">Hora salida:</label>
+                                                    <input type="time" class="form-control"value="22:00" disabled></input>
+                                                    <input type="hidden" class="form-control" name="hora_salida" id="hora_salida" value="22:00" ></input>
+                                                </div>
+                                                </div>
+                                                </div>
+                                                <div class="form-group" style="text-align: left;">
+                                                    <label for="">CI Cliente:</label>
+                                                    <input type="text" class="form-control" name="ciCliente" id="ciCliente"></input>
+                                                </div>
+                                                <div class="form-group" style="text-align: left;">
+                                                    <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
+                                                </div>
+                                                <hr>
+                                            <div class="form-group2">
+                                                <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
+                                                <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
+                                            </div>
+                                            </div>
+                                        </form>
+                                        <script>
+                                            function abrirNuevaVentana7() {
+                                                window.open("{{ route('pagosqr.pagos') }}?plan=" + encodeURIComponent('Mes Completo (06:00PM - 10:00PM)') + "&espacio=" + encodeURIComponent({{ $idDeSitio }}) + "&horas=" + encodeURIComponent('1') + "&reserva=" + encodeURIComponent({{$idreserva}})+ "&costo=" + encodeURIComponent('1700'), "_blank");
+                                            }
+                                        </script>
+                                    <div style="text-align: left;">
+                                            <button class="btn btn-primary" onclick="abrirNuevaVentana7()" style="background-color:#324855; border-color:#324855">Ir a Pagar</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        <!---->
+
+                        <!--PLAN MES 24/5-->
+                        <div class="modal fade" id="modal8" tabindex="-1" role="dialog" aria-labelledby="modal8Label" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modal8Label">Plan Mes 24/5</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/storeMesNum" method="POST" role="form">
+                                        {{csrf_field()}}
+                                            <div class="card-body" >
+                                                <div class="form-group" style="text-align: left;">
+                                                    <label for="meeting-time">Fecha Ingreso:</label>
+                                                    <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso" min="{{ $now->format('Y-m-d') }}" value="{{ $now->format('Y-m-d') }}"></input>
+                                                </div>
+                                                <div class="row">
+                                                <div class="col-md-6">
+                                                <div class="form-group" style="text-align: left;">
+                                                    <label for="">Hora ingreso:</label>
+                                                    <input type="time" class="form-control"value="06:00" disabled></input>
+                                                    <input type="hidden" class="form-control" name="hora_ingreso" id="hora_ingreso" value="06:00"></input>
+                                                </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                <div class="form-group" style="text-align: left;">
+                                                    <label for="">Hora salida:</label>
+                                                    <input type="time" class="form-control"value="06:00" disabled></input>
+                                                    <input type="hidden" class="form-control" name="hora_salida" id="hora_salida" value="06:00" ></input>
+                                                </div>
+                                                </div>
+                                                </div>
+                                                <div class="form-group" style="text-align: left;">
+                                                    <label for="">CI Cliente:</label>
+                                                    <input type="text" class="form-control" name="ciCliente" id="ciCliente"></input>
+                                                </div>
+                                                <div class="form-group" style="text-align: left;">
+                                                    <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
+                                                </div>
+                                                <hr>
+                                            <div class="form-group2">
+                                                <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
+                                                <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
+                                            </div>
+                                            </div>
+                                        </form>
+                                        <script>
+                                            function abrirNuevaVentana8() {
+                                                window.open("{{ route('pagosqr.pagos') }}?plan=" + encodeURIComponent('Mes 24/5 (Todo el dia)') + "&espacio=" + encodeURIComponent({{ $idDeSitio }}) + "&horas=" + encodeURIComponent('1') + "&reserva=" + encodeURIComponent({{$idreserva}})+ "&costo=" + encodeURIComponent('2570'), "_blank");
+                                            }
+                                        </script>
+                                    <div style="text-align: left;">
+                                            <button class="btn btn-primary" onclick="abrirNuevaVentana8()" style="background-color:#324855; border-color:#324855">Ir a Pagar</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        <!---->
+
+                        <!--PLAN MES Sabatico-->
+                        <div class="modal fade" id="modal9" tabindex="-1" role="dialog" aria-labelledby="modal9Label" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modal9Label">Plan Mes Sabatico</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/storeMesSabatico" method="POST" role="form">
+                                        {{csrf_field()}}
+                                            <div class="card-body" >
+                                                <div class="form-group" style="text-align: left;">
+                                                    <label for="meeting-time">Fecha Ingreso:</label>
+                                                    <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso" min="{{ $now->format('Y-m-d') }}" value="{{ $now->format('Y-m-d') }}"></input>
+                                                </div>
+                                                <div class="row">
+                                                <div class="col-md-6">
+                                                <div class="form-group" style="text-align: left;">
+                                                    <label for="">Hora ingreso Sabados:</label>
+                                                    <input type="time" class="form-control"value="06:00" disabled></input>
+                                                    <input type="hidden" class="form-control" name="hora_ingreso" id="hora_ingreso" value="06:00"></input>
+                                                </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                <div class="form-group" style="text-align: left;">
+                                                    <label for="">Hora salida Sabados:</label>
+                                                    <input type="time" class="form-control"value="16:00" disabled></input>
+                                                    <input type="hidden" class="form-control" name="hora_salida" id="hora_salida" value="16:00" ></input>
+                                                </div>
+                                                </div>
+                                                </div>
+                                                <div class="form-group" style="text-align: left;">
+                                                    <label for="">CI Cliente:</label>
+                                                    <input type="text" class="form-control" name="ciCliente" id="ciCliente"></input>
+                                                </div>
+                                                <div class="form-group" style="text-align: left;">
+                                                    <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
+                                                </div>
+                                                <hr>
+                                            <div class="form-group2">
+                                                <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
+                                                <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
+                                            </div>
+                                            </div>
+                                        </form>
+                                        <script>
+                                            function abrirNuevaVentana9() {
+                                                window.open("{{ route('pagosqr.pagos') }}?plan=" + encodeURIComponent('Mes Sabatico(06:00AM - 04:00PM)') + "&espacio=" + encodeURIComponent({{ $idDeSitio }}) + "&horas=" + encodeURIComponent('1') + "&reserva=" + encodeURIComponent({{$idreserva}})+ "&costo=" + encodeURIComponent('220'), "_blank");
+                                            }
+                                        </script>
+                                    <div style="text-align: left;">
+                                            <button class="btn btn-primary" onclick="abrirNuevaVentana9()" style="background-color:#324855; border-color:#324855">Ir a Pagar</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        <!---->
+
                         </div>
                      </div>
                 </div>
@@ -386,6 +689,10 @@ body {
 h2{
     font-family: 'Poppins', sans-serif;
     color: #324855;
+}
+p2{
+    font-family: 'Poppins', sans-serif;
+    font-size :13px;
 }
 .content-wrapper{
     background-color:#D9D9D9;

@@ -45,18 +45,17 @@ Route::get('/cliente/{idCli}/borrarVehiculo/{id}','App\Http\Controllers\vehiculo
 Route::get('/administrador/mapeoParqueo',"App\Http\Controllers\parqueoController@createLista");
 Route::get('/administrador/createAgregarIngreso',"App\Http\Controllers\parqueoController@createAgregarIngreso");
 //pagoscontrollers
-Route::get('/administrador/pagos2',"App\Http\Controllers\PagosController@PController");
-Route::get('/administrador/pagos', function () {
-    return view('pagosqr.pagos');
-})->name('pagosqr.pagos');
+//Route::get('/administrador/pagos2',"App\Http\Controllers\PagosController@PController");
+Route::get('/pagos', function () {return view('pagosqr.pagos');})->name('pagosqr.pagos');
 
-Route::get('/administrador/pagos', function () {
+Route::get('/pagos', function () {
     $plan = request()->query('plan');
     $espacio = request()->query('espacio');
     $horas = request()->query('horas');
     $reserva = request()->query('reserva');
-
-    return view('pagosqr.pagos', compact('plan', 'espacio', 'horas', 'reserva'));
+    $costo= request()->query('costo');
+    
+    return view('pagosqr.pagos', compact('plan', 'espacio', 'horas', 'reserva','costo'));
 })->name('pagosqr.pagos');
 
 Route::get('/administrador/pagoslista',"App\Http\Controllers\PagosController@ListaPagos");
@@ -112,8 +111,16 @@ Route::post('/storeSalida','App\Http\Controllers\parqueoController@storeSalida')
 
 Route::post('/storeReservaDiaria','App\Http\Controllers\reservaController@storeDiario');
 Route::post('/storeSemana','App\Http\Controllers\reservaController@storeSemana');
-Route::post('/storeMesLV','App\Http\Controllers\reservaController@storeMesLV');
-Route::post('/storeMesS','App\Http\Controllers\reservaController@storeMesS');
+Route::post('/storeMesDia','App\Http\Controllers\reservaController@storeMesDia');
+Route::post('/storeMesTarde','App\Http\Controllers\reservaController@storeMesTarde');
+Route::post('/storeMesNoche','App\Http\Controllers\reservaController@storeMesNoche');
+Route::post('/storeMesNoc','App\Http\Controllers\reservaController@storeMesNoc');
+Route::post('/storeMesCompleto','App\Http\Controllers\reservaController@storeMesCompleto');
+Route::post('/storeMesNum','App\Http\Controllers\reservaController@storeMesNum');
+Route::post('/storeMesSabatico','App\Http\Controllers\reservaController@storeMesSabatico');
+//Route::post('/storeMesS','App\Http\Controllers\reservaController@storeMesS');
+
+Route::post('/storePagos','App\Http\Controllers\pagosController@store');
 //Route::get('/storeEvento','App\Http\Controllers\eventoController@store');
 
 //backend
