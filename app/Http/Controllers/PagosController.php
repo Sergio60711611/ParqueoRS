@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Pago;
+use App\Models\Pagos;
 use App\Models\plan_mensual;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
@@ -19,13 +19,13 @@ class PagosController extends Controller
 
     public function store(Request $request)
     {
-        $idpago  = Pago::max('id');
+        $idpago  = Pagos::max('id');
         $idpago = $idpago+1;
 
         $now = Carbon::now(); 
         $now->format('d/m/Y');
 
-        $pago = new Pago();
+        $pago = new Pagos();
         $pago->id = $idpago;
         $pago->fecha_pago = $now;
         $pago->monto_pagado = $request->monto_pagado;
@@ -37,7 +37,7 @@ class PagosController extends Controller
 }
     public function ListaPagos()
     {
-        $lista = Pago::all();
+        $lista = Pagos::all();
         return view('administrador.listapagos', compact('lista'));
     }
 
