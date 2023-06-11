@@ -19,7 +19,8 @@ class CreateEventoTable extends Migration
             $table->string('description');
             $table->datetime('start');
             $table->datetime('end');
-            $table->string('rrule');
+            $table->string('rrule')
+            ->nullable();
             $table->foreignId('id_sitio')
             ->constrained('sitio')
             ->cascadeOnUpdate()

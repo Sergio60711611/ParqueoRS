@@ -17,10 +17,11 @@
     <body class="hold-transition sidebar-mini">
        
 
-        @include('navbar')
+        @include('administrador.navbar')
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
+        @include('administrador.msj')
             <div class="container">
             
             <!--INICIO CRUD -->
@@ -38,15 +39,26 @@
                                     <tr>
                                         <th class = text-center >#</th>
                                         <th class = text-center >Sitio</th>
-                                        <th class = text-center >Horas</th>
                                         <th class = text-center >Monto</th>
-                                        <th class = text-center >Fecha Ingreso</th>
+                                        <th class = text-center >Fecha Pago</th>
                                         
                                     </tr>
-                                </thead>
-                                
-                                    
-                                
+                            </thead>
+                            @php 
+                                $counter2 = 1;
+                            @endphp 
+                            @foreach($lista as $pago)
+                                    <tr>
+                                        <td class = text-center>{{$counter2}}</td>
+                                        @php 
+                                            $counter2=$counter2 +1; 
+                                            
+                                        @endphp
+                                        <td class = text-center>{{$pago->id_sitio}}</td>
+                                        <td class = text-center>{{$pago->monto_pagado}}</td>
+                                        <td class = text-center>{{$pago->fecha_pago}}</td>
+                                    </tr>
+                                @endforeach
                             </table>
                             <img src="{{ asset('/img/parqueo1.png') }}">
                         </div>
