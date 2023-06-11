@@ -118,7 +118,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
-                            <i class="material-icons">credit_card</i>
+                            <i class="nav-icon far fa-credit-card"></i>
                             <p>Pagos <i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
