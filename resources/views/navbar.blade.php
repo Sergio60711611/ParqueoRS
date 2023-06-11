@@ -1,23 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
+<!--MENU-INICIO-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <head>
-    <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Radiador Springs</title>
-        <!-- Google Font: Source Sans Pro -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-        <!-- Theme style -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
-        <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
-        <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/v4-shims.js"></script> 
-        <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/fontawesome.js"> </script>
-        <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
-    </head>
-    <body class="hold-transition sidebar-mini" style="background-color:#D9D9D9 ">
-        <div class="wrapper">
-            <!--MENU-INICIO-->
-                <!-- inicio-navbar -->
+                <div class="wrapper">                
+<!-- inicio-navbar -->
                 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
                 <!-- Left navbar links -->
                 <ul class="navbar-nav">
@@ -64,12 +48,6 @@
                                 <p>Lista de Clientes</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="/administrador/agregarCliente" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-user-plus"></i>
-                                <p>Agregar Cliente</p>
-                                </a>
-                            </li>
                             </ul>
                         </li>
 
@@ -84,12 +62,6 @@
                                 <a href="/administrador/vehiculos" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
                                 <i class="nav-icon fas fa-car"></i>
                                 <p>Lista de automoviles</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/administrador/agregarVehiculo" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-plus-circle"></i>
-                                <p>Agregar Automovil</p>
                                 </a>
                             </li>
                             </ul>
@@ -109,11 +81,27 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/administrador/createAgregarIngreso" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-podcast"></i>
-                                <p>Asignar espacio</p>
+                                <a href="/administrador/reservas" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
+                                <i class="nav-icon fas fa-list"></i>
+                                <p>Lista de Reservas</p>
                                 </a>
                             </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
+                            <i class="material-icons">credit_card</i>
+                            <p>Pagos <i class="right fas fa-angle-left"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/administrador/pagoslista" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
+                                <i class="nav-icon fas fa-map"></i>
+                                <p>Historial de Pagos</p>
+                                </a>
+                            </li>
+                            
                             </ul>
                         </li>
 
@@ -137,20 +125,13 @@
                             </li>
                             </ul>
                         </li>
-
+                        
                         <li class="nav-item">
-                            <a href="#" class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
-                            <i class="nav-icon fas fa-calendar-alt"></i>
-                            <p>Reservar <i class="right fas fa-angle-left"></i></p>
+                            <a href=".." class="nav-link active" style="background-color: #FD968E; color:#324855; margin-top: 3px;">
+                            <i class="material-icons">exit_to_app</i>
+                            <p>Cerrar Sesion<i class="right fas fa-angle-left"></i></p>
                             </a>
-                            <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="/administrador/reserva" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-plus-circle"></i>
-                                <p>Agregar reserva</p>
-                                </a>
-                            </li>
-                            </ul>
+                            
                         </li>
 
                         </ul>
@@ -167,96 +148,3 @@
                     <p>Esta es la vista para el usuario administrador</p>
                     </div>
                 </aside>
-                <!-- fin-control-sidebar -->
-                <!--MENU-FIN-->
-
-        <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper" style="background-color:#D9D9D9; padding: 20px;">
-                <div class="container-xl">
-                <div class="table-title">
-                     <div class="row">
-                            <div class="col-sm-8"><h2><b>Buzon de Sugerencias/Reclamos</b></h2></div>
-                     </div>
-                </div>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
-
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4>Sugerencia/Reclamos</h4>
-                                    </div>
-                                    @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
-
-<form action="{{ route('reclamos.store') }}" method="POST">
-    @csrf
-
-    <div class="card-body" >
-        <div class="form-row">
-        
-    </div>
-
-    
-
-    <div class="form-group">
-        <label for="mensaje">Mensaje:</label>
-        <textarea name="mensaje" id="mensaje" placeholder="Escriba su mensaje de reclamos/sugerencias "class="form-control" rows="5" required></textarea>
-    </div>
-
-    <div class="form-group2">
-    <button  type="submit" class="btn btn-primary" id="btn_enviar" style="background-color:#53A790; border-color:#53A790;">Enviar</button>
-    </div>
-    </div>
-        <img src="{{ asset('/img/sugerencias.png') }}">
-    </div>
-</form>
-        <!-- /.content-wrapper -->
-        </div>
-        
-        <!-- jQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <!-- Bootstrap 4 -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-        <!-- AdminLTE App -->
-        <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
-        
-    </body>
-<style>
-    .container-xl{
-        width: auto;
-        background: #ffff;
-        padding: 40px;
-        box-shadow: 0 1px 1px rgba(0,0,0,.05);
-        border-radius: 10px;
-        margin-top: 1%;
-    }
-    h2{
-        font-family: 'Poppins', sans-serif;
-        color: #324855;
-    }
-    .card{
-        margin-top: 5px;
-        border: 5px solid #53A790;
-        border-radius : 15px;
-        margin-bottom: 0%;
-    }
-    .card-header{
-        background-color:#53A790;
-        color: #ffffff;
-    }
-    img {
-        width: 35%;
-        height:auto;
-        margin-top: -4%;
-        margin-left: 35%;
-        margin-bottom: -1%;
-    }
-    input{
-        margin-top: -1%;
-    }
-</style>
-</html>

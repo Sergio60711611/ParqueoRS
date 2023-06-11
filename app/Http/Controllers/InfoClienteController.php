@@ -4,27 +4,53 @@ namespace App\Http\Controllers;
 use App\Models\Anuncios;
 use App\Models\Tarifa;
 use App\Models\Horario;
+use App\Models\Reserva;
 use Illuminate\Http\Request;
+use App\Models\Cliente;
 use App\Models\PlanMensual;
 use App\Models\PreguntasFrecuentes;
 
 class InfoClienteController extends Controller
 {
-    public function see()
+    public function seeReservas($id)
     {
-        return view('administrador.infoCliente');
+       $cliente = Cliente::find($id);
+       $id2 = $id;
+       return view('cliente.reservaInfo', compact('cliente', 'id2'));
     }
-    public function seeConsultas()
+    
+    public function getReservas(Request $request)
     {
-        return view('administrador.consultas');
+        // Recuperar los anuncios según tus criterios
+        $reserva = Reserva::all();
+
+        // Devolver los datos en formato JSON
+        return response()->json($reserva);
+}
+
+    public function see($id)
+    {
+       $cliente = Cliente::find($id);
+       $id2 = $id;
+       return view('cliente.infoCliente', compact('cliente', 'id2'));
     }
-    public function seeAnuncios()
+    public function seeConsultas($id)
     {
-        return view('administrador.anuncios');
+        $cliente = Cliente::find($id);
+       $id2 = $id;
+        return view('cliente.consultas', compact('cliente', 'id2'));
     }
-    public function seePreguntas()
+    public function seeAnuncios($id)
     {
-        return view('administrador.preguntasFrecuentes');
+        $cliente = Cliente::find($id);
+       $id2 = $id;
+        return view('cliente.anuncios', compact('cliente', 'id2'));
+    }
+    public function seePreguntas($id)
+    {
+        $cliente = Cliente::find($id);
+       $id2 = $id;
+        return view('cliente.preguntasFrecuentes', compact('cliente', 'id2'));
     }
     
     public function getPreguntas(Request $request)
@@ -44,12 +70,14 @@ class InfoClienteController extends Controller
         return response()->json($anuncios);
 }
 
-    public function seeHorarios()
+    public function seeHorarios($id)
 {
+    $cliente = Cliente::find($id);
+    $id2 = $id;
     $lista1 = PlanMensual::all();
     $lista2 = Tarifa::all();
     $lista3 = Horario::all();
-    return view('administrador.horarioInfo', compact('lista1', 'lista2','lista3'));
+    return view('cliente.horarioInfo', compact('lista1', 'lista2','lista3','cliente', 'id2'));
 }
 
 
