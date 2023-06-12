@@ -46,6 +46,19 @@ Route::get('/administrador/mapeoParqueo',"App\Http\Controllers\parqueoController
 Route::get('/cliente/{id}/mapeoParqueo',"App\Http\Controllers\parqueoController@createListaCli");
 Route::get('/guardia/{id}/mapeoParqueo',"App\Http\Controllers\parqueoController@createListaGu");
 Route::get('/administrador/createAgregarIngreso',"App\Http\Controllers\parqueoController@createAgregarIngreso");
+
+Route::get('/administrador/agregarHorario', 'App\Http\Controllers\horarioController@createHorario');
+Route::get('/administrador/agregarHorarioEmergencia', 'App\Http\Controllers\horario_emergenciaController@createHorario_emergencia');
+Route::get('/administrador/horarios', 'App\Http\Controllers\horarioController@createLista');
+Route::get('/administrador/editarHorario/{id}', 'App\Http\Controllers\horarioController@createEditar');
+Route::get('/administrador/borrarHorario/{id}', 'App\Http\Controllers\horarioController@createBorrar');
+
+Route::get('/administrador/guardias', 'App\Http\Controllers\guardiaController@createLista');
+Route::get('/administrador/agregarGuardia', 'App\Http\Controllers\guardiaController@createGuardia');
+Route::get('/administrador/editarGuardia/{id}', 'App\Http\Controllers\guardiaController@editarGuardia');
+Route::get('/administrador/borrarGuardia/{id}', 'App\Http\Controllers\guardiaController@borrarGuardia');
+
+Route::get('/administrador/mensaje', 'App\Http\Controllers\mensajeController@Index');
 //pagoscontrollers
 //Route::get('/administrador/pagos2',"App\Http\Controllers\PagosController@PController");
 Route::get('/pagos', function () {return view('pagosqr.pagos');})->name('pagosqr.pagos');
@@ -189,13 +202,14 @@ Route::get('/guardia',"App\Http\Controllers\guardiaController@obtenerhorario"); 
 Route::post('/guardiacreado',"App\Http\Controllers\guardiaController@store"); //crear un registro
 Route::get('/guardia/{id}','App\Http\Controllers\guardiaController@show'); //para mostrarlos los registros
 Route::put('/guardia/{id}','App\Http\Controllers\guardiaController@update'); //actualizar un registro
-Route::delete('/guardia/{id}','App\Http\Controllers\guardiaController@destroy'); //borrar un registro
+Route::delete('/borrarguardia/{id}','App\Http\Controllers\guardiaController@destroy'); //borrar un registro
 
-Route::get('/horario_emergencia',"App\Http\Controllers\horario_emergenciaController@obtenerhorario"); //para tener todos los registros y mostrarlos
-Route::post('/horario_emergenciacreado',"App\Http\Controllers\horario_emergenciaController@store"); //crear un registro
+Route::get('/horario_emergencia','App\Http\Controllers\horario_emergenciaController@obtenerhorario'); //para tener todos los registros y mostrarlos
+Route::post('/horario_emergenciacreado','App\Http\Controllers\horario_emergenciaController@store'); //crear un registro
 Route::get('/horario_emergencia/{id}','App\Http\Controllers\horario_emergenciaController@show'); //para mostrarlos los registros
 Route::put('/horario_emergencia/{id}','App\Http\Controllers\horario_emergenciaController@update'); //actualizar un registro
 Route::delete('/horario_emergencia/{id}','App\Http\Controllers\horario_emergenciaController@destroy'); //borrar un registro
+
 
 Route::get('/sitio_emergencia',"App\Http\Controllers\sitio_emergenciaController@obtenerparqueo"); //para tener todos los registros y mostrarlos
 Route::post('/sitio_emergenciacreado',"App\Http\Controllers\sitio_emergenciaController@store"); //crear un registro
@@ -228,3 +242,5 @@ Route::post('/createPregunta',"App\Http\Controllers\PreguntasFrecuentesControlle
 Route::post('/guardia/createPreguntaG',"App\Http\Controllers\PreguntasFrecuentesController@storeG")->name('createPreguntaG');
 Route::put('/updatePregunta/{id}',"App\Http\Controllers\PreguntasFrecuentesController@update");
 Route::delete('/deletePregunta/{id}',"App\Http\Controllers\PreguntasFrecuentesController@delete");
+
+Route::get('/clientem', "App\Http\Controllers\mensajeController@index");//buscar un cliente
