@@ -9,7 +9,7 @@
 </head>
 <body>
     <a href="https://docs.google.com/spreadsheets/d/1coiiOl7X8jvyJHfHHhlNeNocOllCW87XzBzhJG5RGBw/edit#gid=233398817" target="_blank" rel="noopener noreferrer">
-        <div class="editlink">Cambialo<br />Aqui</div>
+        <div class="editlink">Modificar<br />Precios</div>
     </a>
     <div id="app">
         <section id="specialssection" class="specials-container" v-if="menuItems_L" :style="menuStyle">
@@ -51,7 +51,7 @@
                     
                 </div>
             </div>
-            <button class="btn-corner" onclick="window.location.href = '..'">Atras</button>
+            <button class="btn-corner" style="border-radius: 20px; border: 1px solid #ff4b2b; background: #ff4b2b; color: #fff; font-size: 12px; font-weight: bold; padding: 12px 45px; letter-spacing: 1px; text-transform: uppercase; transition: transform 80ms ease-in;" onclick="window.location.href = '..'">Atras</button>
         </section>
         
     </div>
@@ -68,7 +68,8 @@
     }
     
     .editlink {
-        background-color: cyan;
+        background-color: #ff4b2b;
+        color: #fff;
         border-radius: 50%;
         height: 100px;
         width: 100px;
@@ -83,7 +84,7 @@
         font-family: Quicksand,
             sans-serif;
         font-weight: 600;
-        transform: rotate(12deg);
+        
         box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
         cursor: pointer;
     }

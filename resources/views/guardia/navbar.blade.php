@@ -86,7 +86,7 @@
                         </li>
 
 
-                        <li class="nav-item">
+                        <!--<li class="nav-item">
                             <a href="{{url ('/guardia/'. $id2 .'/preguntas')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
                             <i class="nav-icon fas fa-question"></i>
                             <p>Preguntas</p>
@@ -98,7 +98,7 @@
                             <i class="nav-icon fas fa-bullhorn"></i>
                             <p>Anuncios</p>
                             </a>
-                        </li>
+                        </li>-->
 
 
                         <li class="nav-item">
