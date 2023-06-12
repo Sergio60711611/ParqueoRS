@@ -38,7 +38,7 @@
                                 @foreach($pago as $pago)
                                     <tr>
                                         <td class = text-center>{{$pago->id}}</td>
-                                        <td class = text-center>{{$pago->monto_pagado}}</td>
+                                        <td class = text-center>{{$pago->monto_pagado}} Bs</td>
                                     </tr>
                                     @endforeach
                                 
