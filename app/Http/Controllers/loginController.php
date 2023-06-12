@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Login;
 use App\Models\Cliente;
-use App\Models\Guardia;
+use App\Models\guardia;
 use App\Models\Administrador;
 use App\Models\Vehiculo;
 use Illuminate\Support\Facades\Validator;
