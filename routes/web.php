@@ -62,6 +62,7 @@ Route::get('/administrador/borrarGuardia/{id}', 'App\Http\Controllers\guardiaCon
 Route::get('/administrador/mensaje', 'App\Http\Controllers\mensajeController@Index');
 
 Route::get('/administrador/reporte',"App\Http\Controllers\ingresoController@reporte");
+Route::get('/administrador/reportess',"App\Http\Controllers\pagoController@tabla");
 //pagoscontrollers
 //Route::get('/administrador/pagos2',"App\Http\Controllers\PagosController@PController");
 Route::get('/pagos', function () {return view('pagosqr.pagos');})->name('pagosqr.pagos');
