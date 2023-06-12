@@ -131,9 +131,9 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
-                            <i class="nav-icon fas fa-book"></i>
-                            <p>Reportes <i class="right fas fa-angle-left"></i></p>
+                            <a href="/administrador/anuncios"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
+                            <i class="nav-icon fas fa-bullhorn"></i>
+                            <p>Reportes</p>
                             </a>
                             <ul class="nav nav-treeview">
                             <li class="nav-item">

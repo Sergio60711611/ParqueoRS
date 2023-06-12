@@ -111,7 +111,7 @@ h5{
             height: 600px;
             border-radius: 10px;
             position: relative;
-            margin: auto;
+            left: 220px;
             top: 30px;
             
         }

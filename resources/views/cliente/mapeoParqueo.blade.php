@@ -96,12 +96,12 @@
                                                             <div class="modal-body">
                                                             <!--Botones de calendario-->
                                                             <div class = "container Botones">
-                                                                <a href= "#" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
-                                                                    Ver Calendario  <i class="nav-icon fas fa-calendar-alt"></i>
-                                                                </a>
-                                                                <a href= "#" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
+                                                            <a href= "{{url ('/cliente/'. $id .'/reserva/calendario', $sitiosMapeo->id)}}" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
+                                                                            Ver Calendario  <i class="nav-icon fas fa-calendar-alt"></i>
+                                                                        </a>
+                                                                <!--<a href= "#" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
                                                                     Lista de reservas  <i class="nav-icon fas fa-list-alt"></i>
-                                                                </a>
+                                                                </a>-->
                                                             </div>
                                                             <!--Fin Botones de calendario-->
                                                             </div>
@@ -131,10 +131,10 @@
                                                             <div class="modal-body">
                                                                 <!--Botones de calendario-->
                                                                 <div class = "container Botones">
-                                                                    <a href= "#" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
-                                                                        Ver Calendario  <i class="nav-icon fas fa-calendar-alt"></i>
-                                                                    </a>
-                                                                    <a href= "#" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
+                                                                        <a href= "{{url ('/cliente/'. $id .'/reserva/calendario', $sitiosMapeo->id)}}" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
+                                                                            Ver Calendario  <i class="nav-icon fas fa-calendar-alt"></i>
+                                                                        </a>
+                                                                    <!--<a href= "#" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
                                                                         Lista de reservas  <i class="nav-icon fas fa-list-alt"></i>
                                                                     </a>
                                                                 </div>

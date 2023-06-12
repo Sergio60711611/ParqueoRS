@@ -35,7 +35,7 @@
     </aside>
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper" style="background-color:#D9D9D9;  padding: 20px;">
-           @include('cliente.msj')
+            @include('guardia.msj')
                 <div class="container container-blanco">
                     <!-- Contenido dentro del container -->
                             <h2>Bienvenido a </h2>
@@ -90,6 +90,7 @@ img {
     width: 100%;
     height:auto;
     margin-top: -19vw;
+    margin-left: 425px;
     
 }
 .box {

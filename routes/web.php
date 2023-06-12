@@ -43,6 +43,8 @@ Route::get('/cliente/{id}/agregarVehiculo/','App\Http\Controllers\vehiculoContro
 Route::get('/cliente/{idCli}/borrarVehiculo/{id}','App\Http\Controllers\vehiculoController@createborrarCli');
 
 Route::get('/administrador/mapeoParqueo',"App\Http\Controllers\parqueoController@createLista");
+Route::get('/cliente/{id}/mapeoParqueo',"App\Http\Controllers\parqueoController@createListaCli");
+Route::get('/guardia/{id}/mapeoParqueo',"App\Http\Controllers\parqueoController@createListaGu");
 Route::get('/administrador/createAgregarIngreso',"App\Http\Controllers\parqueoController@createAgregarIngreso");
 //pagoscontrollers
 //Route::get('/administrador/pagos2',"App\Http\Controllers\PagosController@PController");
@@ -88,10 +90,10 @@ Route::get('/administrador/reportes',"App\Http\Controllers\peticionController@cr
 
 Route::get('/cliente/{id}/info/reclamos', "App\Http\Controllers\clamosController@create")->name('reclamos.create');
 Route::post('/cliente/info/reclamos', "App\Http\Controllers\clamosController@store")->name('reclamos.store');
-Route::get('/cliente/{id}/mapeoParqueo',"App\Http\Controllers\parqueoController@createListaCli");
 
 Route::get('/administrador/reserva/calendario/{id}','App\Http\Controllers\eventoController@createCalendar');
 Route::get('/cliente/{idCli}/reserva/calendario/{id}','App\Http\Controllers\eventoController@createCalendarCli');
+Route::get('/guardia/{idGu}/reserva/calendario/{id}','App\Http\Controllers\eventoController@createCalendarGu');
 
 Route::get('/administrador/reservaSitio/{id}/','App\Http\Controllers\reservaController@createListaSitio');
 Route::get('/administrador/reservasCliente/{id}/','App\Http\Controllers\reservaController@createListaCliente');
@@ -116,8 +118,11 @@ Route::delete('/deleteVCli/{id}/{idCli}','App\Http\Controllers\vehiculoControlle
 Route::post('/aumentarSitio','App\Http\Controllers\parqueoController@aumentarSitio');
 Route::post('/quitarSitio','App\Http\Controllers\parqueoController@quitarSitio');
 Route::post('/storeIngreso','App\Http\Controllers\parqueoController@storeIngreso');
+Route::post('/storeIngresoGu','App\Http\Controllers\parqueoController@storeIngresoGu');
 Route::post('/storeSalida','App\Http\Controllers\parqueoController@storeSalida');
+Route::post('/storeSalidaGu','App\Http\Controllers\parqueoController@storeSalidaGu');
 
+//Admin
 Route::post('/storeReservaDiaria','App\Http\Controllers\reservaController@storeDiario');
 Route::post('/storeSemana','App\Http\Controllers\reservaController@storeSemana');
 Route::post('/storeMesDia','App\Http\Controllers\reservaController@storeMesDia');
@@ -127,6 +132,26 @@ Route::post('/storeMesNoc','App\Http\Controllers\reservaController@storeMesNoc')
 Route::post('/storeMesCompleto','App\Http\Controllers\reservaController@storeMesCompleto');
 Route::post('/storeMesNum','App\Http\Controllers\reservaController@storeMesNum');
 Route::post('/storeMesSabatico','App\Http\Controllers\reservaController@storeMesSabatico');
+//Cliente
+Route::post('/storeReservaDiariaCli','App\Http\Controllers\reservaController@storeDiarioCli');
+Route::post('/storeSemanaCli','App\Http\Controllers\reservaController@storeSemanaCli');
+Route::post('/storeMesDiaCli','App\Http\Controllers\reservaController@storeMesDiaCli');
+Route::post('/storeMesTardeCli','App\Http\Controllers\reservaController@storeMesTardeCli');
+Route::post('/storeMesNocheCli','App\Http\Controllers\reservaController@storeMesNocheCli');
+Route::post('/storeMesNocCli','App\Http\Controllers\reservaController@storeMesNocCli');
+Route::post('/storeMesCompletoCli','App\Http\Controllers\reservaController@storeMesCompletoCli');
+Route::post('/storeMesNumCli','App\Http\Controllers\reservaController@storeMesNumCli');
+Route::post('/storeMesSabaticoCli','App\Http\Controllers\reservaController@storeMesSabaticoCli');
+//Guardia
+Route::post('/storeReservaDiariaGu','App\Http\Controllers\reservaController@storeDiarioGu');
+Route::post('/storeSemanaGu','App\Http\Controllers\reservaController@storeSemanaGu');
+Route::post('/storeMesDiaGu','App\Http\Controllers\reservaController@storeMesDiaGu');
+Route::post('/storeMesTardeGu','App\Http\Controllers\reservaController@storeMesTardeGu');
+Route::post('/storeMesNocheGu','App\Http\Controllers\reservaController@storeMesNocheGu');
+Route::post('/storeMesNocGu','App\Http\Controllers\reservaController@storeMesNocGu');
+Route::post('/storeMesCompletoGu','App\Http\Controllers\reservaController@storeMesCompletoGu');
+Route::post('/storeMesNumGu','App\Http\Controllers\reservaController@storeMesNumGu');
+Route::post('/storeMesSabaticoGu','App\Http\Controllers\reservaController@storeMesSabaticoGu');
 //Route::post('/storeMesS','App\Http\Controllers\reservaController@storeMesS');
 
 Route::post('/storePagos','App\Http\Controllers\pagosController@store');
