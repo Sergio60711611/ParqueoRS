@@ -69,6 +69,22 @@
                                 </a>
                             </li>
                             </ul>
+                            <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{url ('/guardia/'. $id2 .'/reservas')}}" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
+                                <i class="nav-icon fas fa-list"></i>
+                                <p>Lista de Reservas</p>
+                                </a>
+                            </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{url ('/guardia/'. $id2 .'/vehiculos')}}" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
+                                <i class="nav-icon fas fa-car"></i>
+                                <p>Lista de Vehiculos</p>
+                                </a>
+                            </li>
+                            </ul>
                         </li>
 
                         <!--<li class="nav-item">

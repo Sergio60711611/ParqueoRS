@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\Reserva;
 use App\Models\evento;
+use App\Models\guardia;
 use App\Models\Pago;
 use Illuminate\Support\Facades\Validator;
 use \administracionparqueo;
@@ -58,6 +59,13 @@ class reservaController extends Controller
         $lista = Reserva::where('id_cliente', $id)->get();
 
         return view('cliente.reservas', compact('lista','cliente'));
+    
+    }
+    public function createListaGu($id){
+        $guardia = Guardia::find($id);
+        $lista = Reserva::all();
+
+        return view('guardia.reservas', compact('lista','guardia'));
     
     }
     //ADMIN

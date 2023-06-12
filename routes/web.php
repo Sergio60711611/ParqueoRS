@@ -41,6 +41,7 @@ Route::get('/administrador/borrarVehiculo/{id}','App\Http\Controllers\vehiculoCo
 Route::get('/cliente/{id}/vehiculos/','App\Http\Controllers\vehiculoController@createListaClienteCli');
 Route::get('/cliente/{id}/agregarVehiculo/','App\Http\Controllers\vehiculoController@createAgregarClienteCli');
 Route::get('/cliente/{idCli}/borrarVehiculo/{id}','App\Http\Controllers\vehiculoController@createborrarCli');
+Route::get('/guardia/{id}/vehiculos/','App\Http\Controllers\vehiculoController@createListaGu');
 
 Route::get('/administrador/mapeoParqueo',"App\Http\Controllers\parqueoController@createLista");
 Route::get('/cliente/{id}/mapeoParqueo',"App\Http\Controllers\parqueoController@createListaCli");
@@ -112,6 +113,7 @@ Route::get('/administrador/reservaSitio/{id}/','App\Http\Controllers\reservaCont
 Route::get('/administrador/reservasCliente/{id}/','App\Http\Controllers\reservaController@createListaCliente');
 Route::get('/administrador/reservas','App\Http\Controllers\reservaController@createLista');
 Route::get('/cliente/{id}/reservas/','App\Http\Controllers\reservaController@createListaCli');
+Route::get('/guardia/{id}/reservas/','App\Http\Controllers\reservaController@createListaGu');
 //vistaControl
 Route::get('/show/{id}','App\Http\Controllers\eventoController@show');
 //b

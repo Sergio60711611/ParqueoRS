@@ -5,12 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Vehiculo;
 use App\Models\Cliente;
+use App\Models\guardia;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\BD;
 use \administracionparqueo;
 
 class vehiculoController extends Controller
 {       
+    public function createListaGu($id){
+        $listav = Vehiculo::all();
+        $guardia = Guardia::find($id);
+        return view('guardia.vehiculos', compact('listav', 'guardia'));
+
+    }
     public function createLista(){
         $listav = Vehiculo::all();
         $idClientesv = $listav->pluck('id_cliente');
