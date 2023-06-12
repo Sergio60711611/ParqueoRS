@@ -65,12 +65,7 @@
                                                <p1 class="error-message">{{ $message }}</p1>
                                  @enderror
                                 </div>
-                                <div class="form-group">
-                                <input type="hidden" class="form-control" name="id_parqueo"   value="1">
-                                @error('id_parqueo')
-                                <p1 class="error-message">{{ $message }}</p1>
-                                @enderror
-                                </div>
+                                
                                 <div class="form-group">
                                     <button class="btn btn-success" id="btn_editar" style="background-color:#53A790; border-color:#53A790;">Actualizar</button>
                                     <a href="/administrador/anuncios" class="btn btn-default" style="background-color:#53A790;border-color:#53A790;color:#FFFFFF;" >Cancelar</a>

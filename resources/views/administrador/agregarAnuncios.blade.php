@@ -64,12 +64,7 @@
                 <p1 class="error-message">{{ $message }}</p1>
             @enderror
         </div>
-        <div class="form-group">
-            <input type="hidden" class="form-control" name="id_parqueo"   value="1">
-            @error('id_parqueo')
-                <p1 class="error-message">{{ $message }}</p1>
-            @enderror
-        </div>
+       
         <div class="form-group2">
             <button  type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#53A790; border-color:#53A790;">Guardar</button>
             <a href="/administrador/anuncios" class="btn btn-default" style="background-color:#53A790;border-color:#53A790;color:#FFFFFF;">Cancelar</a>
