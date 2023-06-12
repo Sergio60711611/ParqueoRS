@@ -106,7 +106,7 @@
 	<script type='text/javascript'>
 
     $(document).ready(function() {
-    var token="GA230604195112";
+    var token="GA230612041158";
 		var api ="https://script.google.com/macros/s/AKfycbyoBhxuklU5D3LTguTcYAS85klwFINHxxd-FroauC4CmFVvS0ua/exec";
 		$("#txt_archivo").change(function() {
 			subirFoto("txt_archivo");
