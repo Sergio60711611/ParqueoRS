@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Guardia;
+use App\Models\guardia;
 use Illuminate\Support\Facades\Validator;
 use \PARQUEORS;
 
