@@ -71,12 +71,28 @@
         </script>
     </head>
     <body class="hold-transition sidebar-mini">
-    @include('administrador.navbar')
+    @php
+        $id = $cliente['id'];
+        $nombre = $cliente['nombre'];    
+        $apellido = $cliente['apellido'];
+        $correo = $cliente['correo_electronico'];
+        $celular = $cliente['celular'];
+        $password = $cliente['password'];
+        $ci = $cliente['ci'];
+    @endphp
+
+    @include('cliente.navbar', ['id' => $id])
+    <aside class="control-sidebar control-sidebar-dark">
+        <div class="p-3">
+        <h5>Cliente: </h5>
+        <p>Esta es la vista para el usuario de apellido : {{$apellido}}</p>
+        </div>
+    </aside>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <div class="container-xl">
-                @include('administrador.msj')
+                @include('cliente.msj')
                 <div class="title">
                      <div class="row">
                         <div class="col-sm-8">
@@ -139,8 +155,7 @@
                                                     </script>
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
-                                                    <label for="">CI Cliente:</label>
-                                                    <input type="text" class="form-control" name="ciCliente" id="ciCliente"></input>
+                                                    <input type="hidden" class="form-control" name="ciCliente" id="ciCliente"value="{{ $ci }}"></input>
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
@@ -207,8 +222,7 @@
                                                 </script>
                                             </div>
                                             <div class="form-group" style="text-align: left;">
-                                                <label for="">CI Cliente:</label>
-                                                <input type="text" class="form-control" name="ciCliente" id="ciCliente"></input>
+                                                    <input type="hidden" class="form-control" name="ciCliente" id="ciCliente"value="{{ $ci }}"></input>
                                             </div>
                                             <div class="form-group" style="text-align: left;">
                                                 <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
@@ -274,8 +288,7 @@
                                             </div>
                                             </div>
                                             <div class="form-group" style="text-align: left;">
-                                                <label for="">CI Cliente:</label>
-                                                <input type="text" class="form-control" name="ciCliente" id="ciCliente"></input>
+                                                    <input type="hidden" class="form-control" name="ciCliente" id="ciCliente"value="{{ $ci }}"></input>
                                             </div>
                                             <div class="form-group" style="text-align: left;">
                                                 <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
@@ -338,8 +351,7 @@
                                             </div>
                                             </div>
                                             <div class="form-group" style="text-align: left;">
-                                                <label for="">CI Cliente:</label>
-                                                <input type="text" class="form-control" name="ciCliente" id="ciCliente"></input>
+                                                    <input type="hidden" class="form-control" name="ciCliente" id="ciCliente"value="{{ $ci }}"></input>
                                             </div>
                                             <div class="form-group" style="text-align: left;">
                                                 <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
@@ -403,8 +415,7 @@
                                                 </div>
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
-                                                    <label for="">CI Cliente:</label>
-                                                    <input type="text" class="form-control" name="ciCliente" id="ciCliente"></input>
+                                                    <input type="hidden" class="form-control" name="ciCliente" id="ciCliente"value="{{ $ci }}"></input>
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
@@ -469,8 +480,7 @@
                                                 </div>
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
-                                                    <label for="">CI Cliente:</label>
-                                                    <input type="text" class="form-control" name="ciCliente" id="ciCliente"></input>
+                                                    <input type="hidden" class="form-control" name="ciCliente" id="ciCliente"value="{{ $ci }}"></input>
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
@@ -535,8 +545,7 @@
                                                 </div>
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
-                                                    <label for="">CI Cliente:</label>
-                                                    <input type="text" class="form-control" name="ciCliente" id="ciCliente"></input>
+                                                    <input type="hidden" class="form-control" name="ciCliente" id="ciCliente"value="{{ $ci }}"></input>
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
@@ -601,8 +610,7 @@
                                                 </div>
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
-                                                    <label for="">CI Cliente:</label>
-                                                    <input type="text" class="form-control" name="ciCliente" id="ciCliente"></input>
+                                                    <input type="hidden" class="form-control" name="ciCliente" id="ciCliente"value="{{ $ci }}"></input>
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
@@ -667,8 +675,7 @@
                                                 </div>
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
-                                                    <label for="">CI Cliente:</label>
-                                                    <input type="text" class="form-control" name="ciCliente" id="ciCliente"></input>
+                                                    <input type="hidden" class="form-control" name="ciCliente" id="ciCliente"value="{{ $ci }}"></input>
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>

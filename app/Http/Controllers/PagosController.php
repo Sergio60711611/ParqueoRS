@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Pago;
+use App\Models\pago;
+use App\Models\cliente;
 use App\Models\plan_mensual;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
@@ -39,6 +40,12 @@ class PagosController extends Controller
     {
         $lista = Pago::all();
         return view('administrador.listapagos', compact('lista'));
+    }
+    public function ListaPagosCli($id)
+    {
+        $lista = Pago::all();
+        $cliente = Cliente::find($id);
+        return view('cliente.pagos', compact('lista','cliente'));
     }
 
 }

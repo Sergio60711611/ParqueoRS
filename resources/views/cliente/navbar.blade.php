@@ -79,9 +79,9 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{url ('/cliente/'. $id2 .'/vehiculos')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: -3px;">
+                            <a href="{{url ('/cliente/'. $id2 .'/pagoslista')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
                             <i class="nav-icon fas fa-credit-card"></i>
-                            <p>Pagos</p>
+                            <p>Mis Pagos</p>
                             </a>
                         </li>
 
@@ -94,7 +94,7 @@
 
 
                         <li class="nav-item">
-                            <a href="{{url ('/cliente/'. $id2 .'/info')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
+                            <a href=""  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
                             <i class="nav-icon fas fa-question"></i>
                             <p>Ayuda</p>
                             </a>
