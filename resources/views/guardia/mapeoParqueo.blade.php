@@ -82,7 +82,7 @@
                                                                 <form action="/storeIngresoGu" method="POST" role="form">
                                                                 {{csrf_field()}}
                                                                     <div class="card-body" >
-                                                                        <div class="form-group"style="text-align: left;">
+                                                                    <div class="form-group"style="text-align: left;">
                                                                             <label for="selectOpcion">Selecciona una opción:</label>
                                                                             <select class="form-control" id="selectOpcion" name="selectOpcion">
                                                                             <option value="1">Ingreso Cliente Registrado</option>
@@ -92,7 +92,7 @@
                                                                         </div>
                                                                         <hr>
                                                                         <div style="text-align: right;">
-                                                                        <label class="" style="text-right" id ="inputletra" >Registre el ingreso a este sitio</label>
+                                                                        <label class="" style="text-right" id ="inputletra" >En caso de haber seleccionado : "Cliente Registrado"</label>
                                                                         </div>
                                                                         <div class="form-group" style="text-align: left;">
                                                                             <input type="hidden" class="form-control" name="id_sitio" id = "id_sitio" value="{{$sitiosMapeo->id}}"></input>
@@ -108,37 +108,43 @@
                                                                             <label for="" id ="inputplacaVehiculo">Placa*</label>
                                                                             <input type="text" class="form-control" name="placaVehiculo" id="placaVehiculo" placeholder="Ingrese la placa del vehiculo que ingresara"></input>
                                                                         </div>
+                                                                        <div style="text-align: right;">
+                                                                        <label class="" style="text-right" id ="inputletra" >En caso de haber seleccionado : "Cliente No Registrado"</label>
+                                                                        </div>
                                                                         <div class="form-group" style="text-align: left;">
-                                                                            <label for="" id ="inputnombreCli"style="display: none;">Nombre del Cliente:</label>
-                                                                            <input type="text" class="form-control" name="nombreCli" id="nombreCli" placeholder="Ingrese el nombre del cliente no registrado" value="{{ old('nombreCli') }}" style="display: none;"></input>
+                                                                            <label for="" id ="inputnombreCli">Nombre del Cliente:</label>
+                                                                            <input type="text" class="form-control" name="nombreCli" id="nombreCli" placeholder="Ingrese el nombre del cliente no registrado" value="{{ old('nombreCli') }}"></input>
                                                                             @error('nombreCli')
                                                                                 <p1 class="error-message">{{ $message }}</p1>
                                                                             @enderror
                                                                         </div>
                                                                         <div class="form-group" style="text-align: left;">
-                                                                            <label for="" id ="inputapellidoCli" style="display: none;" >Apellido del Cliente:</label>
-                                                                            <input type="text" class="form-control" name="apellidoCli" id="apellidoCli" placeholder="Ingrese el apellido del cliente no registrado" value="{{ old('apellidoCli') }}" style="display: none;"></input>
+                                                                            <label for="" id ="inputapellidoCli" >Apellido del Cliente:</label>
+                                                                            <input type="text" class="form-control" name="apellidoCli" id="apellidoCli" placeholder="Ingrese el apellido del cliente no registrado" value="{{ old('apellidoCli') }}"></input>
                                                                             @error('apellidoCli')
                                                                                 <p1 class="error-message">{{ $message }}</p1>
                                                                             @enderror
                                                                         </div>
                                                                         <div class="form-group" style="text-align: left;">
-                                                                            <label for="" id ="inputciCli" style="display: none;" >Ci del Cliente:</label>
-                                                                            <input type="text" class="form-control" name="ciCli" id="ciCli" placeholder="Ingrese el ci del cliente no registrado" value="{{ old('ciCli') }}" style="display: none;"></input>
+                                                                            <label for="" id ="inputciCli" >Ci del Cliente:</label>
+                                                                            <input type="text" class="form-control" name="ciCli" id="ciCli" placeholder="Ingrese el ci del cliente no registrado" value="{{ old('ciCli') }}"></input>
                                                                             @error('ciCli')
                                                                                 <p1 class="error-message">{{ $message }}</p1>
                                                                             @enderror
                                                                         </div>
                                                                         <div class="form-group" style="text-align: left;">
-                                                                            <label for="" id ="inputplacaCli" style="display: none;">Placa del Cliente:</label>
-                                                                            <input type="text" class="form-control" name="placaCli" id="placaCli" placeholder="Ingrese la placa del vehiculo del cliente no registrado" value="{{ old('placaCli') }}" style="display: none;"></input>
+                                                                            <label for="" id ="inputplacaCli">Placa del Cliente:</label>
+                                                                            <input type="text" class="form-control" name="placaCli" id="placaCli" placeholder="Ingrese la placa del vehiculo del cliente no registrado" value="{{ old('placaCli') }}"></input>
                                                                         </div>
                                                                         <div class="form-group" style="text-align: left;">
-                                                                            <label for="" id ="inputhoras" style="display: none;">Horas en parqueo:</label>
-                                                                            <input type="number" class="form-control" name="horas" id="horas" placeholder="Ingrese el numero de horas por los que se quedara" value="{{ old('horas') }}" style="display: none;"></input>
+                                                                            <label for="" id ="inputhoras">Horas en parqueo:</label>
+                                                                            <input type="number" class="form-control" name="horas" id="horas" placeholder="Ingrese el numero de horas por los que se quedara" value="{{ old('horas') }}"></input>
                                                                             @error('horas')
                                                                                 <p1 class="error-message">{{ $message }}</p1>
                                                                             @enderror
+                                                                        </div>
+                                                                        <div style="text-align: right;">
+                                                                        <label class="" style="text-right" id ="inputletra" >En caso de haber seleccionado : "Reservado"</label>
                                                                         </div>
                                                                         <hr id="hr">
                                                                     <div class="form-group2">
