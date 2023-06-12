@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\Reserva;
-use App\Models\Evento;
+use App\Models\evento;
 use App\Models\Pago;
 use Illuminate\Support\Facades\Validator;
 use \administracionparqueo;
