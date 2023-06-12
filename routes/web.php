@@ -60,8 +60,8 @@ Route::get('/pagos', function () {
     return view('pagosqr.pagos', compact('plan', 'espacio', 'horas', 'reserva','costo'));
 })->name('pagosqr.pagos');
 
-Route::get('/administrador/pagoslista',"App\Http\Controllers\pagosController@ListaPagos");
-Route::get('/cliente/{id}/pagoslista',"App\Http\Controllers\pagosController@ListaPagosCli");
+Route::get('/administrador/pagoslista',"App\Http\Controllers\PagosController@ListaPagos");
+Route::get('/cliente/{id}/pagoslista',"App\Http\Controllers\PagosController@ListaPagosCli");
 
 Route::get('/ayudaprecios',"App\Http\Controllers\ayudaController@AController");
 
@@ -154,7 +154,7 @@ Route::post('/storeMesNumGu','App\Http\Controllers\reservaController@storeMesNum
 Route::post('/storeMesSabaticoGu','App\Http\Controllers\reservaController@storeMesSabaticoGu');
 //Route::post('/storeMesS','App\Http\Controllers\reservaController@storeMesS');
 
-Route::post('/storePagos','App\Http\Controllers\pagosController@store');
+Route::post('/storePagos','App\Http\Controllers\PagosController@store');
 //Route::get('/storeEvento','App\Http\Controllers\eventoController@store');
 
 //backend
