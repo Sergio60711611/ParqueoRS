@@ -69,45 +69,133 @@ class reservaController extends Controller
             return redirect('/administrador/reserva/calendario/'.$idSitio)->with('msjdelete', 'No existe un cliente con id : ('.$ciCliente.')');
         }else{
             //Verifica si es posible reservar
-            $seSuperpone = false;
+                $horaIngresoS = Carbon::parse($request->hora_ingreso);
+                $horasS = $request->horas1;
 
-            $horaIngreso1 = Carbon::parse($request->hora_ingreso);
-            $horas1 = $request->horas;
-            $horaNueva1 = $horaIngreso1->addHours($horas1);
-            $horaNueva1 = Carbon::parse($horaNueva1);
-            $horaNueva1 = $horaNueva1->format('H:i:s');
+                $horaNuevaS = $horaIngresoS->addHours($horasS);
+                $horaFormateadaS = $horaNuevaS->format('H:i:s');
 
-            $fi= $request->fecha_ingreso;
-            $hi=$request->hora_ingreso;
+                //Diario
+                $eventos = Reserva::where('fecha_ingreso', $request->fecha_ingreso)
+                            ->where('hora_ingreso', '<=', $request->hora_ingreso)
+                            ->where('hora_salida', '>=', $horaFormateadaS)
+                            ->where('dias', '1')
+                            ->where('id_sitio', $request->id_sitio)
+                            ->get();
+                $eventos1 = Reserva::where('fecha_ingreso', $request->fecha_ingreso)
+                            ->where('hora_ingreso', '>=', $request->hora_ingreso)
+                            ->where('hora_ingreso', '<=', $horaFormateadaS)    
+                            ->where('hora_salida', '>=', $horaFormateadaS)
+                                ->where('dias', '1')
+                                ->where('id_sitio', $request->id_sitio)
+                            ->get();
+                $eventos2 = Reserva::where('fecha_ingreso', $request->fecha_ingreso)
+                            ->where('hora_ingreso', '<=', $request->hora_ingreso)
+                            ->where('hora_salida', '>=', $request->hora_ingreso)    
+                            ->where('hora_salida', '<=', $horaFormateadaS)
+                                ->where('dias', '1')
+                                ->where('id_sitio', $request->id_sitio)
+                            ->get();
 
-            $fechaHoraIngreso = Carbon::parse($fi)->setTimeFromTimeString($hi);
-            $fechaHoraSalida = Carbon::parse($fi)->setTimeFromTimeString($horaNueva1);
-
-            $fechaInicioInicial = Carbon::parse($fechaHoraIngreso);
-            $fechaFinInicial = Carbon::parse($fechaHoraSalida);
-
-            $lista = evento::where('id_sitio', $request->id_sitio)->get();
-
-            foreach ($lista as $reserva) {
-                $fechaInicioExistente = Carbon::parse($reserva->start);
-                $fechaFinExistente = Carbon::parse($reserva->end);
-
-                if (($fechaInicioExistente->lte($fechaFinInicial) && $fechaFinExistente->gte($fechaInicioInicial)) || ($fechaInicioInicial->lte($fechaFinExistente) && $fechaFinInicial->gte($fechaInicioExistente))){
-                    $seSuperpone = true;
-
-                    break;
+                //Semana
+                $eventos3 = Reserva::where('fecha_ingreso', '<=', $request->fecha_ingreso)
+                        ->where('fecha_salida', '>=', $request->fecha_ingreso)
+                        ->where('hora_ingreso', '<=', $request->hora_ingreso)
+                        ->where('hora_salida', '>=', $horaFormateadaS)
+                        ->where('dias', '7')
+                        ->where('id_sitio', $request->id_sitio)
+                        ->get();
+                $eventos4 = Reserva::where('fecha_ingreso', '<=', $request->fecha_ingreso)
+                        ->where('fecha_salida', '>=', $request->fecha_ingreso)
+                        ->where('hora_ingreso', '>=', $request->hora_ingreso)
+                        ->where('hora_ingreso', '<=', $horaFormateadaS)    
+                        ->where('hora_salida', '>=', $horaFormateadaS)
+                        ->where('dias', '7')
+                        ->where('id_sitio', $request->id_sitio)
+                        ->get();
+                $eventos5 = Reserva::where('fecha_ingreso', '<=', $request->fecha_ingreso)
+                        ->where('fecha_salida', '>=', $request->fecha_ingreso)
+                        ->where('hora_ingreso', '<=', $request->hora_ingreso)
+                        ->where('hora_salida', '>=', $request->hora_ingreso)    
+                        ->where('hora_salida', '<=', $horaFormateadaS)
+                        ->where('dias', '7')
+                        ->where('id_sitio', $request->id_sitio)
+                        ->get();
+                //MesDia
+                
+                if($request->hora_ingreso >= '06:00:00' && $request->hora_ingreso <= '11:00:00' || $horaFormateadaS >= '06:00:00' && $horaFormateadaS <= '11:00:00'){
+                        $eventos6 = Reserva::where('fecha_ingreso', '<=', $request->fecha_ingreso)
+                        ->where('fecha_salida', '>=', $request->fecha_ingreso)
+                        //->whereTime('hora_ingreso', '06:00:00')
+                        ->where('cantidad_de_horas', '5')
+                        ->where('dias', '30')
+                        ->where('id_sitio', $request->id_sitio)
+                        ->get();
+                }else{
+                    $eventos6 = collect(array_fill(0, 0, null));
                 }
-            }
-            //Fin Verifica si es posible reservar
+                //MesTarde
+                if($request->hora_ingreso >= '11:00:00' && $request->hora_ingreso <= '17:00:00' || $horaFormateadaS >= '11:00:00' && $horaFormateadaS <= '17:00:00'){
+                    $eventos7 = Reserva::where('fecha_ingreso', '<=', $request->fecha_ingreso)
+                    ->where('fecha_salida', '>=', $request->fecha_ingreso)
+                    ->where('cantidad_de_horas', '6')
+                    ->where('dias', '30')
+                    ->where('id_sitio', $request->id_sitio)
+                    ->get();
+                }else{
+                    $eventos7 = collect(array_fill(0, 0, null));
+                }
+                //MesNoche
+                if($request->hora_ingreso >= '17:00:00' && $request->hora_ingreso <= '22:00:00' || $horaFormateadaS >= '17:00:00' && $horaFormateadaS <= '22:00:00'){
+                    $eventos8 = Reserva::where('fecha_ingreso', '<=', $request->fecha_ingreso)
+                    ->where('fecha_salida', '>=', $request->fecha_ingreso)
+                    ->whereTime('hora_ingreso', '17:00:00')
+                    ->where('cantidad_de_horas', '5')
+                    ->where('dias', '30')
+                    ->where('id_sitio', $request->id_sitio)
+                    ->get();
+                }else{
+                    $eventos8 = collect(array_fill(0, 0, null));
+                }
+                //MesNocturno
+                if($request->hora_ingreso >= '22:00:00' && $request->hora_ingreso <= '24:00:00' || $horaFormateadaS >= '22:00:00' && $horaFormateadaS <= '24:00:00'){
+                    $eventos9 = Reserva::where('fecha_ingreso', '<=', $request->fecha_ingreso)
+                    ->where('fecha_salida', '>=', $request->fecha_ingreso)
+                    ->where('cantidad_de_horas', '8')
+                    ->where('dias', '30')
+                    ->where('id_sitio', $request->id_sitio)
+                    ->get();
+                }else{
+                    $eventos9 = collect(array_fill(0, 0, null));
+                }
+                //MesCompleto
+                if($request->hora_ingreso >= '06:00:00' && $request->hora_ingreso <= '22:00:00'|| $horaFormateadaS >= '06:00:00' && $horaFormateadaS <= '22:00:00'){
+                    $eventos10 = Reserva::where('fecha_ingreso', '<=', $request->fecha_ingreso)
+                    ->where('fecha_salida', '>=', $request->fecha_ingreso)
+                    ->where('cantidad_de_horas', '16')
+                    ->where('dias', '30')
+                    ->where('id_sitio', $request->id_sitio)
+                    ->get();
+                }else{
+                    $eventos10 = collect(array_fill(0, 0, null));
+                }
+                //Mes24/5
+                $eventos11 = Reserva::where('fecha_ingreso', '<=', $request->fecha_ingreso)
+                    ->where('fecha_salida', '>=', $request->fecha_ingreso)
+                    ->where('cantidad_de_horas', '24')
+                    ->where('dias', '30')
+                    ->where('id_sitio', $request->id_sitio)
+                    ->get();
 
-            if($seSuperpone == False){
+            if(count($eventos) != 0 || count($eventos1) != 0 || count($eventos2) != 0 || count($eventos3) != 0 || count($eventos4) != 0 || count($eventos5) != 0 ||
+                count($eventos6) != 0 || count($eventos7) != 0 || count($eventos8) != 0 || count($eventos9) != 0 || count($eventos10) != 0 || count($eventos11) != 0){
                 return redirect('/administrador/reserva/calendario/'.$idSitio)->with('msjdelete', 'Ya existe una reserva en la fecha y hora indicada.');
             }else{
                 $idcliente = $cliente->pluck('id');
                 $idclienteNum = $idcliente->implode(" ");
                 
                 $horaIngreso = Carbon::parse($request->hora_ingreso);
-                $horas = $request->horas;
+                $horas = $request->horas1;
 
                 $horaNueva = $horaIngreso->addHours($horas);
                 $horaFormateada = $horaNueva->format('H:i');
@@ -116,11 +204,12 @@ class reservaController extends Controller
                 $idreserva = $idreserva+1;
                 
                 $reserva=new Reserva();
-                $reserva->id = $request->$idreserva;
+                $reserva->id = $idreserva;
                 $reserva->fecha_ingreso = $request->fecha_ingreso;
                 $reserva->fecha_salida = $request->fecha_ingreso;
                 $reserva->hora_ingreso = $request->hora_ingreso;
                 $reserva->hora_salida = $horaFormateada;
+                $reserva->cantidad_de_horas = '1';
                 $reserva->dias= 1;
                 $reserva->id_sitio = $request->id_sitio;
                 $reserva->id_cliente = $idclienteNum;
@@ -166,7 +255,7 @@ class reservaController extends Controller
             $idclienteNum = $idcliente->implode(" ");
             
             $horaIngreso = Carbon::parse($request->hora_ingreso);
-            $horas = $request->horas;
+            $horas = $request->horas2;
 
             $horaNueva = $horaIngreso->addHours($horas);
             $horaFormateada = $horaNueva->format('H:i');
@@ -175,11 +264,16 @@ class reservaController extends Controller
             $fechaSalida = $fechaIngreso->addDays(7);
             $fechaSalida = $fechaSalida->format('Y-m-d');
 
+            $idreserva  = Reserva::max('id');
+            $idreserva = $idreserva+1;
+            
             $reserva=new Reserva();
+            $reserva->id = $idreserva;
             $reserva->fecha_ingreso = $request->fecha_ingreso;
             $reserva->fecha_salida = $fechaSalida;
             $reserva->hora_ingreso = $request->hora_ingreso;
             $reserva->hora_salida = $horaFormateada;
+            $reserva->cantidad_de_horas = '2';
             $reserva->cantidad_de_horas = $horas;
             $reserva->dias= 7;
             $reserva->id_cliente = $idclienteNum;
@@ -196,8 +290,6 @@ class reservaController extends Controller
 
             $fechaIngreso2 = Carbon::parse($request->fecha_ingreso);
             $fechaNueva = $fechaIngreso2->format('Y-m-d');
-            //$startDe = $horaI->format('H:i:s');
-            //$fechaNuevaS = $fechaSalida->format('Y-m-d');
             
             $dtstartf = Carbon::createFromFormat('Y-m-d', $fechaNueva)->format('Ymd');
             $dtstarth = Carbon::createFromFormat('H:i:s', $horaI)->format('His');
@@ -239,12 +331,8 @@ class reservaController extends Controller
         if(count($cliente) === 0){
             return redirect('/administrador/reserva/calendario/'.$idsitio)->with('msjdelete', 'No existe un cliente con id : ('.$ciCliente.')');
         }else{
-            $rese = Reserva::where('hora_ingreso', $request->hora_ingreso)
-                ->where('cantidad_de_horas', '5')
-                ->where('dias', '30')
-                ->where('id_sitio', $request->id_sitio)
-                ->get();
-            if(count($rese) == 0){
+            $rese = true;
+            if($rese){
                 $idcliente = $cliente->pluck('id');
                 $idclienteNum = $idcliente->implode(" ");
 
@@ -252,7 +340,11 @@ class reservaController extends Controller
                 $fechaSalida = $fechaIngreso->addDays(30);
                 $fechaSalida = $fechaSalida->format('Y-m-d');
 
+                $idreserva  = Reserva::max('id');
+                $idreserva = $idreserva+1;
+                
                 $reserva=new Reserva();
+                $reserva->id = $idreserva;
                 $reserva->fecha_ingreso = $request->fecha_ingreso;
                 $reserva->fecha_salida = $fechaSalida;
                 $reserva->hora_ingreso = $request->hora_ingreso;
@@ -312,12 +404,8 @@ class reservaController extends Controller
         if(count($cliente) === 0){
             return redirect('/administrador/reserva/calendario/'.$idsitio)->with('msjdelete', 'No existe un cliente con id : ('.$ciCliente.')');
         }else{
-            $rese = Reserva::where('hora_ingreso', $request->hora_ingreso)
-                ->where('cantidad_de_horas', '6')
-                ->where('dias', '30')
-                ->where('id_sitio', $request->id_sitio)
-                ->get();
-            if(count($rese) == 0){
+            $rese = true;
+            if($rese){
                 $idcliente = $cliente->pluck('id');
                 $idclienteNum = $idcliente->implode(" ");
 
@@ -325,7 +413,11 @@ class reservaController extends Controller
                 $fechaSalida = $fechaIngreso->addDays(30);
                 $fechaSalida = $fechaSalida->format('Y-m-d');
 
+                $idreserva  = Reserva::max('id');
+                $idreserva = $idreserva+1;
+                
                 $reserva=new Reserva();
+                $reserva->id = $idreserva;
                 $reserva->fecha_ingreso = $request->fecha_ingreso;
                 $reserva->fecha_salida = $fechaSalida;
                 $reserva->hora_ingreso = $request->hora_ingreso;
@@ -385,12 +477,8 @@ class reservaController extends Controller
         if(count($cliente) === 0){
             return redirect('/administrador/reserva/calendario/'.$idsitio)->with('msjdelete', 'No existe un cliente con id : ('.$ciCliente.')');
         }else{
-            $rese = Reserva::where('hora_ingreso', $request->hora_ingreso)
-                ->where('cantidad_de_horas', '5')
-                ->where('dias', '30')
-                ->where('id_sitio', $request->id_sitio)
-                ->get();
-            if(count($rese) == 0){
+            $rese = true;
+            if($rese){
                 $idcliente = $cliente->pluck('id');
                 $idclienteNum = $idcliente->implode(" ");
 
@@ -398,7 +486,11 @@ class reservaController extends Controller
                 $fechaSalida = $fechaIngreso->addDays(30);
                 $fechaSalida = $fechaSalida->format('Y-m-d');
 
+                $idreserva  = Reserva::max('id');
+                $idreserva = $idreserva+1;
+                
                 $reserva=new Reserva();
+                $reserva->id = $idreserva;
                 $reserva->fecha_ingreso = $request->fecha_ingreso;
                 $reserva->fecha_salida = $fechaSalida;
                 $reserva->hora_ingreso = $request->hora_ingreso;
@@ -459,12 +551,8 @@ class reservaController extends Controller
         if(count($cliente) === 0){
             return redirect('/administrador/reserva/calendario/'.$idsitio)->with('msjdelete', 'No existe un cliente con id : ('.$ciCliente.')');
         }else{
-            $rese = Reserva::where('hora_ingreso', $request->hora_ingreso)
-                ->where('cantidad_de_horas', '8')
-                ->where('dias', '30')
-                ->where('id_sitio', $request->id_sitio)
-                ->get();
-            if(count($rese) == 0){
+            $rese = true;
+            if($rese){
                 $idcliente = $cliente->pluck('id');
                 $idclienteNum = $idcliente->implode(" ");
 
@@ -472,7 +560,11 @@ class reservaController extends Controller
                 $fechaSalida = $fechaIngreso->addDays(30);
                 $fechaSalida = $fechaSalida->format('Y-m-d');
 
+                $idreserva  = Reserva::max('id');
+                $idreserva = $idreserva+1;
+                
                 $reserva=new Reserva();
+                $reserva->id = $idreserva;
                 $reserva->fecha_ingreso = $request->fecha_ingreso;
                 $reserva->fecha_salida = $fechaSalida;
                 $reserva->hora_ingreso = $request->hora_ingreso;
@@ -533,12 +625,13 @@ class reservaController extends Controller
         if(count($cliente) === 0){
             return redirect('/administrador/reserva/calendario/'.$idsitio)->with('msjdelete', 'No existe un cliente con id : ('.$ciCliente.')');
         }else{
-            $rese = Reserva::where('hora_ingreso', $request->hora_ingreso)
+            /*$rese = Reserva::where('hora_ingreso', $request->hora_ingreso)
                 ->where('cantidad_de_horas', '16')
                 ->where('dias', '30')
                 ->where('id_sitio', $request->id_sitio)
-                ->get();
-            if(count($rese) == 1){
+                ->get();*/
+            $rese = true;
+            if($rese){
                 $idcliente = $cliente->pluck('id');
                 $idclienteNum = $idcliente->implode(" ");
 
@@ -546,7 +639,11 @@ class reservaController extends Controller
                 $fechaSalida = $fechaIngreso->addDays(30);
                 $fechaSalida = $fechaSalida->format('Y-m-d');
 
+                $idreserva  = Reserva::max('id');
+                $idreserva = $idreserva+1;
+                
                 $reserva=new Reserva();
+                $reserva->id = $idreserva;
                 $reserva->fecha_ingreso = $request->fecha_ingreso;
                 $reserva->fecha_salida = $fechaSalida;
                 $reserva->hora_ingreso = $request->hora_ingreso;
@@ -607,12 +704,8 @@ class reservaController extends Controller
         if(count($cliente) === 0){
             return redirect('/administrador/reserva/calendario/'.$idsitio)->with('msjdelete', 'No existe un cliente con id : ('.$ciCliente.')');
         }else{
-            $rese = Reserva::where('hora_ingreso', $request->hora_ingreso)
-                ->where('cantidad_de_horas', '24')
-                ->where('dias', '30')
-                ->where('id_sitio', $request->id_sitio)
-                ->get();
-            if(count($rese) == 0){
+            $rese = true;
+            if($rese){
                 $idcliente = $cliente->pluck('id');
                 $idclienteNum = $idcliente->implode(" ");
 
@@ -620,7 +713,11 @@ class reservaController extends Controller
                 $fechaSalida = $fechaIngreso->addDays(30);
                 $fechaSalida = $fechaSalida->format('Y-m-d');
 
+                $idreserva  = Reserva::max('id');
+                $idreserva = $idreserva+1;
+                
                 $reserva=new Reserva();
+                $reserva->id = $idreserva;
                 $reserva->fecha_ingreso = $request->fecha_ingreso;
                 $reserva->fecha_salida = $fechaSalida;
                 $reserva->hora_ingreso = $request->hora_ingreso;
@@ -681,12 +778,8 @@ class reservaController extends Controller
         if(count($cliente) === 0){
             return redirect('/administrador/reserva/calendario/'.$idsitio)->with('msjdelete', 'No existe un cliente con id : ('.$ciCliente.')');
         }else{
-            $rese = Reserva::where('hora_ingreso', $request->hora_ingreso)
-                ->where('cantidad_de_horas', '10')
-                ->where('dias', '30')
-                ->where('id_sitio', $request->id_sitio)
-                ->get();
-            if(count($rese) == 0){
+            $rese = true;
+            if($rese){
                 $idcliente = $cliente->pluck('id');
                 $idclienteNum = $idcliente->implode(" ");
 
@@ -694,7 +787,11 @@ class reservaController extends Controller
                 $fechaSalida = $fechaIngreso->addDays(30);
                 $fechaSalida = $fechaSalida->format('Y-m-d');
 
+                $idreserva  = Reserva::max('id');
+                $idreserva = $idreserva+1;
+                
                 $reserva=new Reserva();
+                $reserva->id = $idreserva;
                 $reserva->fecha_ingreso = $request->fecha_ingreso;
                 $reserva->fecha_salida = $fechaSalida;
                 $reserva->hora_ingreso = $request->hora_ingreso;

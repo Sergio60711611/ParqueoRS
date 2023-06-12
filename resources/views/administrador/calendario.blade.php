@@ -145,6 +145,11 @@
                                                 <div class="form-group" style="text-align: left;">
                                                     <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
                                                 </div>
+                                                <hr>
+                                                <div style="text-align: center;">
+                                                    <p2>Revise los detalles de su reserva. Y recuerde pagar antes de continuar.</p2>
+                                                </div>
+                                                <hr>
                                             <div class="form-group2">
                                                 <button type="submit" form="formulario1" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
                                                 <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
@@ -186,7 +191,7 @@
                                             </div>
                                             <div class="form-group" style="text-align: left;">
                                                 <label for="">Hora Ingreso los dias del plan:</label>
-                                                <input type="time" class="form-control" name="hora_ingreso" id="hora_ingreso" min="{{ $now->format('H:i') }}" value="{{ $now->format('H:i') }}"></input>
+                                                <input type="time" class="form-control" name="hora_ingreso" id="hora_ingreso" value="{{ $now->format('H:i') }}"></input>
                                             </div>
                                             <div class="form-group" style="text-align: left;">
                                             <label for="">Horas reservadas:</label>
@@ -209,6 +214,10 @@
                                                 <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
                                             </div>
                                             <hr>
+                                                <div style="text-align: center;">
+                                                    <p2>Revise los detalles de su reserva. Y recuerde pagar antes de continuar.</p2>
+                                                </div>
+                                                <hr>
                                         <div class="form-group2">
                                             <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
                                             <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
@@ -272,6 +281,10 @@
                                                 <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
                                             </div>
                                             <hr>
+                                                <div style="text-align: center;">
+                                                    <p2>Revise los detalles de su reserva. Y recuerde pagar antes de continuar.</p2>
+                                                </div>
+                                                <hr>
                                         <div class="form-group2">
                                             <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
                                             <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
@@ -332,6 +345,10 @@
                                                 <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
                                             </div>
                                             <hr>
+                                                <div style="text-align: center;">
+                                                    <p2>Revise los detalles de su reserva. Y recuerde pagar antes de continuar.</p2>
+                                                </div>
+                                                <hr>
                                         <div class="form-group2">
                                             <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
                                             <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
@@ -391,6 +408,10 @@
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
+                                                </div>
+                                                <hr>
+                                                <div style="text-align: center;">
+                                                    <p2>Revise los detalles de su reserva. Y recuerde pagar antes de continuar.</p2>
                                                 </div>
                                                 <hr>
                                             <div class="form-group2">
@@ -455,6 +476,10 @@
                                                     <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
                                                 </div>
                                                 <hr>
+                                                <div style="text-align: center;">
+                                                    <p2>Revise los detalles de su reserva. Y recuerde pagar antes de continuar.</p2>
+                                                </div>
+                                                <hr>
                                             <div class="form-group2">
                                                 <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
                                                 <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
@@ -515,6 +540,10 @@
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
+                                                </div>
+                                                <hr>
+                                                <div style="text-align: center;">
+                                                    <p2>Revise los detalles de su reserva. Y recuerde pagar antes de continuar.</p2>
                                                 </div>
                                                 <hr>
                                             <div class="form-group2">
@@ -579,6 +608,10 @@
                                                     <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
                                                 </div>
                                                 <hr>
+                                                <div style="text-align: center;">
+                                                    <p2>Revise los detalles de su reserva. Y recuerde pagar antes de continuar.</p2>
+                                                </div>
+                                                <hr>
                                             <div class="form-group2">
                                                 <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#31747D; border-color:#31747D;">Confirmar</button>
                                                 <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #567C93; border-color: #567C93" >Cancelar</button>
@@ -639,6 +672,10 @@
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
+                                                </div>
+                                                <hr>
+                                                <div style="text-align: center;">
+                                                    <p2>Revise los detalles de su reserva. Y recuerde pagar antes de continuar.</p2>
                                                 </div>
                                                 <hr>
                                             <div class="form-group2">
