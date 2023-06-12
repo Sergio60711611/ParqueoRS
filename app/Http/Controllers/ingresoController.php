@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ingreso;
+use App\Models\Ingreso;
 use App\Models\vehiculo;
 use App\Models\sitio;
 use App\Models\salida;
