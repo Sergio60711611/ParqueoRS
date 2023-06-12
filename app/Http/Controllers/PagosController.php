@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pago;
-use App\Models\cliente;
-use App\Models\plan_mensual;
+use App\Models\Cliente;
+use App\Models\PlanMensual;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use \administracionparqueo;
