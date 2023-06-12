@@ -84,6 +84,8 @@ Route::get('/administrador/borrarPreguntas/{id}',"App\Http\Controllers\Preguntas
 Route::get('/guardia/{id}/preguntas',"App\Http\Controllers\PreguntasFrecuentesController@createListaG");
 Route::get('/guardia/{id}/agregarPreguntas',"App\Http\Controllers\PreguntasFrecuentesController@createAgregarG");
 
+Route::get('/administrador/reportes',"App\Http\Controllers\peticionController@createLista");
+
 Route::get('/cliente/{id}/info/reclamos', "App\Http\Controllers\clamosController@create")->name('reclamos.create');
 Route::post('/cliente/info/reclamos', "App\Http\Controllers\clamosController@store")->name('reclamos.store');
 Route::get('/cliente/{id}/mapeoParqueo',"App\Http\Controllers\parqueoController@createListaCli");
