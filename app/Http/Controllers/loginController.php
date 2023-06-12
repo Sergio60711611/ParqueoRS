@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Login;
 use App\Models\Cliente;
 use App\Models\guardia;
-use App\Models\Administrador;
+use App\Models\administrador;
 use App\Models\Vehiculo;
 use Illuminate\Support\Facades\Validator;
 use \administracionparqueo;
