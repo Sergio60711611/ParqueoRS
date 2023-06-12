@@ -58,7 +58,8 @@ Route::get('/pagos', function () {
     return view('pagosqr.pagos', compact('plan', 'espacio', 'horas', 'reserva','costo'));
 })->name('pagosqr.pagos');
 
-Route::get('/administrador/pagoslista',"App\Http\Controllers\PagosController@ListaPagos");
+Route::get('/administrador/pagoslista',"App\Http\Controllers\pagosController@ListaPagos");
+Route::get('/cliente/{id}/pagoslista',"App\Http\Controllers\pagosController@ListaPagosCli");
 
 Route::get('/ayudaprecios',"App\Http\Controllers\ayudaController@AController");
 
@@ -83,6 +84,7 @@ Route::post('/administrador/reclamos', "App\Http\Controllers\clamosController@st
 Route::get('/cliente/{id}/mapeoParqueo',"App\Http\Controllers\parqueoController@createListaCli");
 
 Route::get('/administrador/reserva/calendario/{id}','App\Http\Controllers\eventoController@createCalendar');
+Route::get('/cliente/{idCli}/reserva/calendario/{id}','App\Http\Controllers\eventoController@createCalendarCli');
 
 Route::get('/administrador/reservaSitio/{id}/','App\Http\Controllers\reservaController@createListaSitio');
 Route::get('/administrador/reservasCliente/{id}/','App\Http\Controllers\reservaController@createListaCliente');

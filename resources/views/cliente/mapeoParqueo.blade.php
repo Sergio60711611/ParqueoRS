@@ -29,7 +29,7 @@
     @include('cliente.navbar', ['id' => $id])
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper" style="background-color:#D9D9D9; padding: 20px;">
-            @include('administrador.msj')
+        @include('cliente.msj')
             <div class="container-xl">
                 <div class="table-title">
                      <div class="row">
@@ -61,12 +61,12 @@
                                                             <div class="modal-body">
                                                             <!--Botones de calendario-->
                                                             <div class = "container Botones">
-                                                                        <a href= "#" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
+                                                                        <a href= "{{url ('/cliente/'. $id .'/reserva/calendario', $sitiosMapeo->id)}}" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
                                                                             Ver Calendario  <i class="nav-icon fas fa-calendar-alt"></i>
                                                                         </a>
-                                                                        <a href= "#" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
+                                                                        <!--<a href= "#" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
                                                                             Lista de reservas  <i class="nav-icon fas fa-list-alt"></i>
-                                                                        </a>
+                                                                        </a>-->
                                                                     </div>
                                                             <!--Fin Botones de calendario-->
                                                             </div>
