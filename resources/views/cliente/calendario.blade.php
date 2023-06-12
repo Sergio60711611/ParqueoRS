@@ -200,7 +200,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="/storeSemana" method="POST" role="form">
+                                    <form action="/storeSemanaCli" method="POST" role="form">
                                     {{csrf_field()}}
                                         <div class="card-body" >
                                             <div class="form-group" style="text-align: left;">
@@ -270,7 +270,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                <form action="/storeMesDia" method="POST" role="form">
+                                <form action="/storeMesDiaCli" method="POST" role="form">
                                     {{csrf_field()}}
                                         <div class="card-body" >
                                             <div class="form-group" style="text-align: left;">
@@ -336,7 +336,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                <form action="/storeMesTarde" method="POST" role="form">
+                                <form action="/storeMesTardeCli" method="POST" role="form">
                                     {{csrf_field()}}
                                         <div class="card-body" >
                                             <div class="form-group" style="text-align: left;">
@@ -403,7 +403,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/storeMesNoche" method="POST" role="form">
+                                        <form action="/storeMesNocheCli" method="POST" role="form">
                                         {{csrf_field()}}
                                             <div class="card-body" >
                                                 <div class="form-group" style="text-align: left;">
@@ -471,7 +471,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/storeMesNoc" method="POST" role="form">
+                                        <form action="/storeMesNocCli" method="POST" role="form">
                                         {{csrf_field()}}
                                             <div class="card-body" >
                                                 <div class="form-group" style="text-align: left;">
@@ -539,7 +539,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/storeMesCompleto" method="POST" role="form">
+                                        <form action="/storeMesCompletoCli" method="POST" role="form">
                                         {{csrf_field()}}
                                             <div class="card-body" >
                                                 <div class="form-group" style="text-align: left;">
@@ -607,7 +607,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/storeMesNum" method="POST" role="form">
+                                        <form action="/storeMesNumCli" method="POST" role="form">
                                         {{csrf_field()}}
                                             <div class="card-body" >
                                                 <div class="form-group" style="text-align: left;">
@@ -675,7 +675,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/storeMesSabatico" method="POST" role="form">
+                                        <form action="/storeMesSabaticoCli" method="POST" role="form">
                                         {{csrf_field()}}
                                             <div class="card-body" >
                                                 <div class="form-group" style="text-align: left;">
