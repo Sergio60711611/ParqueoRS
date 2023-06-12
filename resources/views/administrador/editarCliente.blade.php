@@ -38,14 +38,14 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="">Nombres</label>
-                                    <input type="text" class="form-control" id="nombres" name="nombres" value="{{$cliente->nombres}}">
+                                    <input type="text" class="form-control" id="nombres" name="nombres" value="{{$cliente->nombre}}">
                                     @error('nombres')
                                                 <p1 class="error-message">{{ $message }}</p1>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="">Apellidos</label>
-                                    <input type="text" class="form-control" id="apellidos" name="apellidos" value="{{$cliente->apellidos}}">
+                                    <input type="text" class="form-control" id="apellidos" name="apellidos" value="{{$cliente->apellido}}">
                                     @error('apellidos')
                                                 <p1 class="error-message">{{ $message }}</p1>
                                     @enderror
@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="">Correo</label>
-                                    <input type="email" class="form-control" id="correo" name="correo" value="{{$cliente->correo}}">
+                                    <input type="email" class="form-control" id="correo" name="correo" value="{{$cliente->correo_electronico}}">
                                     @error('correo')
                                                 <p1 class="error-message">{{ $message }}</p1>
                                     @enderror
