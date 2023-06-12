@@ -121,4 +121,16 @@ class eventoController extends Controller
 
         return view('cliente.calendario', compact('id','now','idreserva','cliente'));
     }
+    public function createCalendarGu($idGu,$id){
+        
+        $now = Carbon::now(); 
+        $now->format('d/m/Y');
+
+        $idreserva  = Reserva::max('id');
+        $idreserva = $idreserva+1;
+
+        $guardia = Cliente::find($idGu);
+
+        return view('guardia.calendario', compact('id','now','idreserva','guardia'));
+    }
 }

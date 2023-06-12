@@ -131,7 +131,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                    <form action="/storeReservaDiaria" id="formulario1" method="POST" role="form">
+                                    <form action="/storeReservaDiariaGu" id="formulario1" method="POST" role="form">
                                         {{csrf_field()}}
                                             <div class="card-body">
                                                 <div class="form-group" style="text-align: left;">
@@ -161,6 +161,9 @@
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
+                                                </div>
+                                                <div class="form-group" style="text-align: left;">
+                                                    <input type="hidden" class="form-control" name="idGu" id="idGu" value="{{ $id}}"></input>
                                                 </div>
                                                 <hr>
                                                 <div style="text-align: center;">
@@ -199,7 +202,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="/storeSemana" method="POST" role="form">
+                                    <form action="/storeSemanaGu" method="POST" role="form">
                                     {{csrf_field()}}
                                         <div class="card-body" >
                                             <div class="form-group" style="text-align: left;">
@@ -230,6 +233,9 @@
                                             <div class="form-group" style="text-align: left;">
                                                 <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
                                             </div>
+                                            <div class="form-group" style="text-align: left;">
+                                                    <input type="hidden" class="form-control" name="idGu" id="idGu" value="{{ $id}}"></input>
+                                                </div>
                                             <hr>
                                                 <div style="text-align: center;">
                                                     <p2>Revise los detalles de su reserva. Y recuerde pagar antes de continuar.</p2>
@@ -267,7 +273,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                <form action="/storeMesDia" method="POST" role="form">
+                                <form action="/storeMesDiaGu" method="POST" role="form">
                                     {{csrf_field()}}
                                         <div class="card-body" >
                                             <div class="form-group" style="text-align: left;">
@@ -297,6 +303,9 @@
                                             <div class="form-group" style="text-align: left;">
                                                 <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
                                             </div>
+                                            <div class="form-group" style="text-align: left;">
+                                                    <input type="hidden" class="form-control" name="idGu" id="idGu" value="{{ $id}}"></input>
+                                                </div>
                                             <hr>
                                                 <div style="text-align: center;">
                                                     <p2>Revise los detalles de su reserva. Y recuerde pagar antes de continuar.</p2>
@@ -331,7 +340,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                <form action="/storeMesTarde" method="POST" role="form">
+                                <form action="/storeMesTardeGu" method="POST" role="form">
                                     {{csrf_field()}}
                                         <div class="card-body" >
                                             <div class="form-group" style="text-align: left;">
@@ -361,6 +370,9 @@
                                             <div class="form-group" style="text-align: left;">
                                                 <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
                                             </div>
+                                            <div class="form-group" style="text-align: left;">
+                                                    <input type="hidden" class="form-control" name="idGu" id="idGu" value="{{ $id}}"></input>
+                                                </div>
                                             <hr>
                                                 <div style="text-align: center;">
                                                     <p2>Revise los detalles de su reserva. Y recuerde pagar antes de continuar.</p2>
@@ -396,7 +408,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/storeMesNoche" method="POST" role="form">
+                                        <form action="/storeMesNocheGu" method="POST" role="form">
                                         {{csrf_field()}}
                                             <div class="card-body" >
                                                 <div class="form-group" style="text-align: left;">
@@ -425,6 +437,9 @@
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
+                                                </div>
+                                                <div class="form-group" style="text-align: left;">
+                                                    <input type="hidden" class="form-control" name="idGu" id="idGu" value="{{ $id}}"></input>
                                                 </div>
                                                 <hr>
                                                 <div style="text-align: center;">
@@ -462,7 +477,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/storeMesNoc" method="POST" role="form">
+                                        <form action="/storeMesNocGu" method="POST" role="form">
                                         {{csrf_field()}}
                                             <div class="card-body" >
                                                 <div class="form-group" style="text-align: left;">
@@ -491,6 +506,9 @@
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
+                                                </div>
+                                                <div class="form-group" style="text-align: left;">
+                                                    <input type="hidden" class="form-control" name="idGu" id="idGu" value="{{ $id}}"></input>
                                                 </div>
                                                 <hr>
                                                 <div style="text-align: center;">
@@ -528,7 +546,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/storeMesCompleto" method="POST" role="form">
+                                        <form action="/storeMesCompletoGu" method="POST" role="form">
                                         {{csrf_field()}}
                                             <div class="card-body" >
                                                 <div class="form-group" style="text-align: left;">
@@ -557,6 +575,9 @@
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
+                                                </div>
+                                                <div class="form-group" style="text-align: left;">
+                                                    <input type="hidden" class="form-control" name="idGu" id="idGu" value="{{ $id}}"></input>
                                                 </div>
                                                 <hr>
                                                 <div style="text-align: center;">
@@ -594,7 +615,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/storeMesNum" method="POST" role="form">
+                                        <form action="/storeMesNumGu" method="POST" role="form">
                                         {{csrf_field()}}
                                             <div class="card-body" >
                                                 <div class="form-group" style="text-align: left;">
@@ -623,6 +644,9 @@
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
+                                                </div>
+                                                <div class="form-group" style="text-align: left;">
+                                                    <input type="hidden" class="form-control" name="idGu" id="idGu" value="{{ $id}}"></input>
                                                 </div>
                                                 <hr>
                                                 <div style="text-align: center;">
@@ -660,7 +684,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/storeMesSabatico" method="POST" role="form">
+                                        <form action="/storeMesSabaticoGu" method="POST" role="form">
                                         {{csrf_field()}}
                                             <div class="card-body" >
                                                 <div class="form-group" style="text-align: left;">
@@ -689,6 +713,9 @@
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <input type="hidden" class="form-control" name="id_sitio" id="id_sitio" value="{{ $idDeSitio }}"></input>
+                                                </div>
+                                                <div class="form-group" style="text-align: left;">
+                                                    <input type="hidden" class="form-control" name="idGu" id="idGu" value="{{ $id}}"></input>
                                                 </div>
                                                 <hr>
                                                 <div style="text-align: center;">
