@@ -72,8 +72,10 @@ img {
     width: 100%;
     height:auto;
     margin-top: -19vw;
+    margin-left: 425px;
     
 }
+
 .box {
   display: inline-block;
   width: 35vw; 
