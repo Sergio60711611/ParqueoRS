@@ -138,7 +138,10 @@ class loginController extends Controller
                 $difference = $passwordcliente->diff($passSesions);
 
                 if($difference->isEmpty()){
-                    return redirect('/administrador/home');
+                    $guardia = $clientesCi->pluck('id');
+                    $idGu = $guardia->first();
+
+                    return redirect('/guardia/'.($idGu).'/home')->with(compact('guardia'));
                 }else{
                     session()->flash('alert', 'Contraseña incorrecta. Vuelve a intentarlo');
                     return redirect('/inicio/loginGuardia');
