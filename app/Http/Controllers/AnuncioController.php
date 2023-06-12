@@ -34,7 +34,6 @@ class AnuncioController extends Controller
             'comunicado' => 'required | min:3 | max:1000',
             'emitido' => 'required',
             'vencimiento' => 'required ',
-            'id_parqueo'=>'required',
         ]);
 
         $anuncio=new Anuncios();
@@ -42,7 +41,6 @@ class AnuncioController extends Controller
         $anuncio->comunicado = $request->comunicado;
         $anuncio->emitido = $request->emitido;
         $anuncio->vencimiento= $request->vencimiento;
-        $anuncio->id_parqueo = $request->id_parqueo;
         $anuncio->save();
         return redirect('/administrador/anuncios')->with('message', 'Felicitaciones .! El anuncio fue publicado con exito ...');
     }
@@ -54,7 +52,6 @@ class AnuncioController extends Controller
             'comunicado' => 'required | min:3 | max:1000',
             'emitido' => 'required',
             'vencimiento' => 'required ',
-            'id_parqueo'=>'required',
         ]);
 
         $anuncio = Anuncios::findOrFail($request->id);
@@ -62,7 +59,6 @@ class AnuncioController extends Controller
         $anuncio->comunicado = $request->comunicado;
         $anuncio->emitido = $request->emitido;
         $anuncio->vencimiento= $request->vencimiento;
-        $anuncio->id_parqueo = $request->id_parqueo;
 
         $anuncio->save();
         return redirect('/administrador/anuncios')->with('msjupdate', 'El anuncio fue actualizado Correctamente.');
