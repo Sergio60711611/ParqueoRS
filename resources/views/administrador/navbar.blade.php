@@ -25,7 +25,7 @@
                 </nav>
                 <!-- fin-navbar -->
                 <!-- inicio-main-sidebar-container -->
-                <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color:#324855">
+                <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color:#324855; position:fixed">
                     <!-- Brand Logo -->
                     <a href="/administrador/home" class="brand-link"  style="margin-top: 5px; margin-bottom: 5px;" >
                     <img src="{{ asset('/img/logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -44,8 +44,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/administrador/clientes"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
-                            <i class="fas fa-security"></i>
+                            <a href="/administrador/guardias"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
+                            <i class="nav-icon fas fa-id-badge"></i>
                             <p>Guardias</p>
                             </a>
                         </li>
@@ -90,18 +90,24 @@
                             </a>
                             <ul class="nav nav-treeview">
                             <li class="nav-item">
-                            <a href="#" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
+                            <a href="/administrador/horarios" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
                                 <i class="nav-icon far fa-clock"></i>
-                                <p>Horario Normal</p>
+                                <p>Horarios</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                            <a href="#" class="nav-link active" style="background-color: #395261; color:#FFFFFF; font-size:14px">
+                            <a href="/administrador/agregarHorarioEmergencia" class="nav-link active" style="background-color: #395261; color:#FFFFFF; font-size:14px">
                                 <i class="nav-icon fas  fa-exclamation"></i>
                                 <p>Horario de emergencia</p>
                                 </a>
                             </li>
                             </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/administrador/mensaje" class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px; ">
+                            <i class="nav-icon far fa-envelope"></i>
+                            <p>Mensaje <i class="right fas fa-angle-left"></i></p>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a href="/administrador/preguntas"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
