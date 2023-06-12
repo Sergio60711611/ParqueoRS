@@ -136,7 +136,7 @@
                                                                         </a>
                                                                     <!--<a href= "#" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
                                                                         Lista de reservas  <i class="nav-icon fas fa-list-alt"></i>
-                                                                    </a>-->
+                                                                    </a>
                                                                 </div>
                                                                 <!--Fin Botones de calendario-->
                                                             </div>

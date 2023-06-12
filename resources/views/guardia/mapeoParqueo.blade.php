@@ -73,9 +73,9 @@
                                                                         <a href= "{{url ('/administrador/reserva/calendario', $sitiosMapeo->id)}}" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
                                                                             Ver Calendario  <i class="nav-icon fas fa-calendar-alt"></i>
                                                                         </a>
-                                                                        <a href= "{{url ('/administrador/reservaSitio', $sitiosMapeo->id)}}" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
+                                                                        <!--<a href= "{{url ('/administrador/reservaSitio', $sitiosMapeo->id)}}" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
                                                                             Lista de reservas  <i class="nav-icon fas fa-list-alt"></i>
-                                                                        </a>
+                                                                        </a>-->
                                                                     </div>
                                                                     <!--Fin Botones de calendario-->
                                                                     <hr>
@@ -178,9 +178,9 @@
                                                                         <a href= "{{url ('/administrador/reserva/calendario', $sitiosMapeo->id)}}" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
                                                                             Ver Calendario  <i class="nav-icon fas fa-calendar-alt"></i>
                                                                         </a>
-                                                                        <a href= "{{url ('/administrador/reservaSitio', $sitiosMapeo->id)}}" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
+                                                                        <!--<a href= "{{url ('/administrador/reservaSitio', $sitiosMapeo->id)}}" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
                                                                             Lista de reservas  <i class="nav-icon fas fa-list-alt"></i>
-                                                                        </a>
+                                                                        </a>-->
                                                                     </div>
                                                                     <!--Fin Botones de calendario-->
                                                                     <hr>
@@ -238,9 +238,9 @@
                                                                         <a href= "{{url ('/administrador/reserva/calendario', $sitiosMapeo->id)}}" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
                                                                             Ver Calendario  <i class="nav-icon fas fa-calendar-alt"></i>
                                                                         </a>
-                                                                        <a href= "{{url ('/administrador/reservaSitio', $sitiosMapeo->id)}}" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
+                                                                        <!--<a href= "{{url ('/administrador/reservaSitio', $sitiosMapeo->id)}}" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
                                                                             Lista de reservas  <i class="nav-icon fas fa-list-alt"></i>
-                                                                        </a>
+                                                                        </a>-->
                                                                     </div>
                                                                     <!--Fin Botones de calendario-->
                                                                     <hr>

@@ -91,6 +91,7 @@ Route::post('/cliente/info/reclamos', "App\Http\Controllers\clamosController@sto
 
 Route::get('/administrador/reserva/calendario/{id}','App\Http\Controllers\eventoController@createCalendar');
 Route::get('/cliente/{idCli}/reserva/calendario/{id}','App\Http\Controllers\eventoController@createCalendarCli');
+Route::get('/guardia/{idGu}/reserva/calendario/{id}','App\Http\Controllers\eventoController@createCalendarGu');
 
 Route::get('/administrador/reservaSitio/{id}/','App\Http\Controllers\reservaController@createListaSitio');
 Route::get('/administrador/reservasCliente/{id}/','App\Http\Controllers\reservaController@createListaCliente');

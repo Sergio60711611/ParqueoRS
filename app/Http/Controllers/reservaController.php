@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\Reserva;
 use App\Models\Evento;
+use App\Models\Pago;
 use Illuminate\Support\Facades\Validator;
 use \administracionparqueo;
 use Carbon\Carbon;
@@ -230,16 +231,34 @@ class reservaController extends Controller
                 $evento->end = $endD;
                 $evento->id_sitio = $request->id_sitio;
 
-                
-                $evento->save();
-                $reserva->save();
+                $pagado = 6 * $horas;
+                $pagado2 = Pago::where('monto_pagado', $pagado)
+                            ->whereNull('id_reserva')
+                            ->get();
 
-                $message = 'Tu reserva se ha guardado exitosamente <br>'
-                . 'Dia: (' . $request->fecha_ingreso . '), <br>'
-                . 'Hora Ingreso: (' . $request->hora_ingreso . '), <br>'
-                . 'Hora Salida: (' . $horaFormateada . ')';
-            
-                return redirect('/administrador/reserva/calendario/'.$idSitio)->with('messageTicket', $message);
+                if(count($pagado2)== 0){
+                    return redirect('/administrador/reserva/calendario/'.$idSitio)->with('msjdelete', 'Realie el pago antes de Confirmar una reserva');
+                }else{
+                    $pagado3 = Pago::where('monto_pagado', $pagado)
+                            ->whereNull('id_reserva')
+                            ->first();
+
+                    $idPago = $pagado3->id;
+                    $pago = Pago::findOrFail($idPago);
+
+                    $pago->id_reserva = $idreserva;
+
+                    $evento->save();
+                    $reserva->save();
+                    $pago->save();
+
+                    $message = 'Tu reserva se ha guardado exitosamente <br>'
+                    . 'Dia: (' . $request->fecha_ingreso . '), <br>'
+                    . 'Hora Ingreso: (' . $request->hora_ingreso . '), <br>'
+                    . 'Hora Salida: (' . $horaFormateada . ')';
+                
+                    return redirect('/administrador/reserva/calendario/'.$idSitio)->with('messageTicket', $message);
+                }
             }
         }
     } 
@@ -1018,16 +1037,34 @@ class reservaController extends Controller
                 $evento->end = $endD;
                 $evento->id_sitio = $request->id_sitio;
 
-                
-                $evento->save();
-                $reserva->save();
+                $pagado = 6 * $horas;
+                $pagado2 = Pago::where('monto_pagado', $pagado)
+                            ->whereNull('id_reserva')
+                            ->get();
 
-                $message = 'Tu reserva se ha guardado exitosamente <br>'
-                . 'Dia: (' . $request->fecha_ingreso . '), <br>'
-                . 'Hora Ingreso: (' . $request->hora_ingreso . '), <br>'
-                . 'Hora Salida: (' . $horaFormateada . ')';
-            
-                return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idSitio).'')->with(compact('clinte'))->with('messageTicket', $message);
+                if(count($pagado2)== 0){
+                    return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idSitio).'')->with(compact('clinte'))->with('msjdelete', 'Realie el pago antes de Confirmar una reserva');
+                }else{
+                    $pagado3 = Pago::where('monto_pagado', $pagado)
+                            ->whereNull('id_reserva')
+                            ->first();
+
+                    $idPago = $pagado3->id;
+                    $pago = Pago::findOrFail($idPago);
+
+                    $pago->id_reserva = $idreserva;
+
+                    $evento->save();
+                    $reserva->save();
+                    $pago->save();
+
+                    $message = 'Tu reserva se ha guardado exitosamente <br>'
+                    . 'Dia: (' . $request->fecha_ingreso . '), <br>'
+                    . 'Hora Ingreso: (' . $request->hora_ingreso . '), <br>'
+                    . 'Hora Salida: (' . $horaFormateada . ')';
+                
+                    return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idSitio).'')->with(compact('clinte'))->with('messageTicket', $message);
+                }
             }
         }
     } 
@@ -1102,17 +1139,35 @@ class reservaController extends Controller
                 
             $evento->id_sitio = $request->id_sitio;
 
-            
-            $evento->save();
-            $reserva->save();
+            $pagado = 30 * $horas;
+            $pagado2 = Pago::where('monto_pagado', $pagado)
+                        ->whereNull('id_reserva')
+                        ->get();
 
-            $message = 'Tu reserva se ha guardado exitosamente .Aqui tienes los detalles de tu plan de reserva<br>'
-           . 'Dia Inicio del plan : (' . $fechaNueva. '), <br>'
-           . 'Dia Fin del plan : (' . $fechaSalida . '), <br>'
-           . 'Hora Ingreso Diario: (' . $request->hora_ingreso . '), <br>'
-           . 'Hora Salida Diaria: (' . $horaFormateada . ')';
-        
-            return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('messageTicket', $message);
+            if(count($pagado2)== 0){
+                return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('msjdelete', 'Realie el pago antes de Confirmar una reserva');
+            }else{
+                $pagado3 = Pago::where('monto_pagado', $pagado)
+                        ->whereNull('id_reserva')
+                        ->first();
+
+                $idPago = $pagado3->id;
+                $pago = Pago::findOrFail($idPago);
+
+                $pago->id_reserva = $idreserva;
+
+                $evento->save();
+                $reserva->save();
+                $pago->save();
+
+                $message = 'Tu reserva se ha guardado exitosamente .Aqui tienes los detalles de tu plan de reserva<br>'
+                . 'Dia Inicio del plan : (' . $fechaNueva. '), <br>'
+                . 'Dia Fin del plan : (' . $fechaSalida . '), <br>'
+                . 'Hora Ingreso Diario: (' . $request->hora_ingreso . '), <br>'
+                . 'Hora Salida Diaria: (' . $horaFormateada . ')';
+            
+                return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('messageTicket', $message);
+            }
         }
     } 
     public function storeMesDiaCli(Request $request)
@@ -1175,17 +1230,35 @@ class reservaController extends Controller
                 $evento->rrule= $resultado;
                 //$evento->rrule = "DTSTART:20230601T103000Z\nRRULE:FREQ=WEEKLY;INTERVAL=1;UNTIL=20230801;BYDAY=MO,TU,WE,TH,FR,SA";
                 $evento->id_sitio = $request->id_sitio;
-                
-                $evento->save();
-                $reserva->save();
 
-                $message = 'Tu reserva se ha guardado exitosamente .Aqui tienes los detalles de tu plan de reserva<br>'
-                . 'Dia Inicio del plan : (' . $request->fecha_ingreso. '), <br>'
-                . 'Dia Fin del plan : (' . $fechaSalida . '), <br>'
-                . 'Hora Ingreso Diario: (' . $request->hora_ingreso . '), <br>'
-                . 'Hora Salida Diaria: (' . $request->hora_salida . ')';
+                $pagado = 570;
+                $pagado2 = Pago::where('monto_pagado', $pagado)
+                                ->whereNull('id_reserva')
+                                ->get();
+                if(count($pagado2)== 0){
+                    return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('msjdelete', 'Realie el pago antes de Confirmar una reserva');
+                }else{
+                    $pagado3 = Pago::where('monto_pagado', $pagado)
+                            ->whereNull('id_reserva')
+                            ->first();
+
+                    $idPago = $pagado3->id;
+                    $pago = Pago::findOrFail($idPago);
+
+                    $pago->id_reserva = $idreserva;                               
                 
-                return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('messageTicket', $message);
+                    $evento->save();
+                    $reserva->save();
+                    $pago->save();
+
+                    $message = 'Tu reserva se ha guardado exitosamente .Aqui tienes los detalles de tu plan de reserva<br>'
+                    . 'Dia Inicio del plan : (' . $request->fecha_ingreso. '), <br>'
+                    . 'Dia Fin del plan : (' . $fechaSalida . '), <br>'
+                    . 'Hora Ingreso Diario: (' . $request->hora_ingreso . '), <br>'
+                    . 'Hora Salida Diaria: (' . $request->hora_salida . ')';
+                    
+                    return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('messageTicket', $message);
+                }
             }else{
                 return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('msjdelete', 'Ya existe una reserva en la fecha y hora indicada.');
             }
@@ -1252,16 +1325,34 @@ class reservaController extends Controller
                 //$evento->rrule = "DTSTART:20230601T103000Z\nRRULE:FREQ=WEEKLY;INTERVAL=1;UNTIL=20230801;BYDAY=MO,TU,WE,TH,FR,SA";
                 $evento->id_sitio = $request->id_sitio;
                 
-                $evento->save();
-                $reserva->save();
+                $pagado = 680;
+                $pagado2 = Pago::where('monto_pagado', $pagado)
+                                ->whereNull('id_reserva')
+                                ->get();
+                if(count($pagado2)== 0){
+                    return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('msjdelete', 'Realie el pago antes de Confirmar una reserva');
+                }else{
+                    $pagado3 = Pago::where('monto_pagado', $pagado)
+                            ->whereNull('id_reserva')
+                            ->first();
 
-                $message = 'Tu reserva se ha guardado exitosamente .Aqui tienes los detalles de tu plan de reserva<br>'
-                . 'Dia Inicio del plan : (' . $request->fecha_ingreso. '), <br>'
-                . 'Dia Fin del plan : (' . $fechaSalida . '), <br>'
-                . 'Hora Ingreso Diario: (' . $request->hora_ingreso . '), <br>'
-                . 'Hora Salida Diaria: (' . $request->hora_salida . ')';
+                    $idPago = $pagado3->id;
+                    $pago = Pago::findOrFail($idPago);
+
+                    $pago->id_reserva = $idreserva;                               
                 
-                return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('messageTicket', $message);
+                    $evento->save();
+                    $reserva->save();
+                    $pago->save();
+
+                    $message = 'Tu reserva se ha guardado exitosamente .Aqui tienes los detalles de tu plan de reserva<br>'
+                    . 'Dia Inicio del plan : (' . $request->fecha_ingreso. '), <br>'
+                    . 'Dia Fin del plan : (' . $fechaSalida . '), <br>'
+                    . 'Hora Ingreso Diario: (' . $request->hora_ingreso . '), <br>'
+                    . 'Hora Salida Diaria: (' . $request->hora_salida . ')';
+                    
+                    return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('messageTicket', $message);
+                }
             }else{
                 return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('msjdelete', 'Ya existe una reserva en la fecha y hora indicada.');
             }
@@ -1329,16 +1420,34 @@ class reservaController extends Controller
                 //$evento->rrule = "DTSTART:20230601T103000Z\nRRULE:FREQ=WEEKLY;INTERVAL=1;UNTIL=20230801;BYDAY=MO,TU,WE,TH,FR,SA";
                 $evento->id_sitio = $request->id_sitio;
                 
-                $evento->save();
-                $reserva->save();
+                $pagado = 570;
+                $pagado2 = Pago::where('monto_pagado', $pagado)
+                                ->whereNull('id_reserva')
+                                ->get();
+                if(count($pagado2)== 0){
+                    return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('msjdelete', 'Realie el pago antes de Confirmar una reserva');
+                }else{
+                    $pagado3 = Pago::where('monto_pagado', $pagado)
+                            ->whereNull('id_reserva')
+                            ->first();
 
-                $message = 'Tu reserva se ha guardado exitosamente .Aqui tienes los detalles de tu plan de reserva<br>'
-                . 'Dia Inicio del plan : (' . $request->fecha_ingreso. '), <br>'
-                . 'Dia Fin del plan : (' . $fechaSalida . '), <br>'
-                . 'Hora Ingreso Diario: (' . $request->hora_ingreso . '), <br>'
-                . 'Hora Salida Diaria: (' . $request->hora_salida . ')';
+                    $idPago = $pagado3->id;
+                    $pago = Pago::findOrFail($idPago);
+
+                    $pago->id_reserva = $idreserva;                               
                 
-                return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('messageTicket', $message);
+                    $evento->save();
+                    $reserva->save();
+                    $pago->save();
+
+                    $message = 'Tu reserva se ha guardado exitosamente .Aqui tienes los detalles de tu plan de reserva<br>'
+                    . 'Dia Inicio del plan : (' . $request->fecha_ingreso. '), <br>'
+                    . 'Dia Fin del plan : (' . $fechaSalida . '), <br>'
+                    . 'Hora Ingreso Diario: (' . $request->hora_ingreso . '), <br>'
+                    . 'Hora Salida Diaria: (' . $request->hora_salida . ')';
+                    
+                    return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('messageTicket', $message);
+                }
             }else{
                 return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('msjdelete', 'Ya existe una reserva en la fecha y hora indicada.');
             }
@@ -1404,16 +1513,34 @@ class reservaController extends Controller
                 //$evento->rrule = "DTSTART:20230601T103000Z\nRRULE:FREQ=WEEKLY;INTERVAL=1;UNTIL=20230801;BYDAY=MO,TU,WE,TH,FR,SA";
                 $evento->id_sitio = $request->id_sitio;
                 
-                $evento->save();
-                $reserva->save();
+                $pagado = 900;
+                $pagado2 = Pago::where('monto_pagado', $pagado)
+                                ->whereNull('id_reserva')
+                                ->get();
+                if(count($pagado2)== 0){
+                    return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('msjdelete', 'Realie el pago antes de Confirmar una reserva');
+                }else{
+                    $pagado3 = Pago::where('monto_pagado', $pagado)
+                            ->whereNull('id_reserva')
+                            ->first();
 
-                $message = 'Tu reserva se ha guardado exitosamente .Aqui tienes los detalles de tu plan de reserva<br>'
-                . 'Dia Inicio del plan : (' . $request->fecha_ingreso. '), <br>'
-                . 'Dia Fin del plan : (' . $fechaSalida . '), <br>'
-                . 'Hora Ingreso Diario: (' . $request->hora_ingreso . '), <br>'
-                . 'Hora Salida Diaria: (' . $request->hora_salida . ')';
+                    $idPago = $pagado3->id;
+                    $pago = Pago::findOrFail($idPago);
+
+                    $pago->id_reserva = $idreserva;                               
                 
-                return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('messageTicket', $message);
+                    $evento->save();
+                    $reserva->save();
+                    $pago->save();
+
+                    $message = 'Tu reserva se ha guardado exitosamente .Aqui tienes los detalles de tu plan de reserva<br>'
+                    . 'Dia Inicio del plan : (' . $request->fecha_ingreso. '), <br>'
+                    . 'Dia Fin del plan : (' . $fechaSalida . '), <br>'
+                    . 'Hora Ingreso Diario: (' . $request->hora_ingreso . '), <br>'
+                    . 'Hora Salida Diaria: (' . $request->hora_salida . ')';
+                    
+                    return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('messageTicket', $message);
+                }
             }else{
                 return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('msjdelete', 'Ya existe una reserva en la fecha y hora indicada.');
             }
@@ -1485,16 +1612,34 @@ class reservaController extends Controller
                 //$evento->rrule = "DTSTART:20230601T103000Z\nRRULE:FREQ=WEEKLY;INTERVAL=1;UNTIL=20230801;BYDAY=MO,TU,WE,TH,FR,SA";
                 $evento->id_sitio = $request->id_sitio;
                 
-                $evento->save();
-                $reserva->save();
+                $pagado = 1700;
+                $pagado2 = Pago::where('monto_pagado', $pagado)
+                                ->whereNull('id_reserva')
+                                ->get();
+                if(count($pagado2)== 0){
+                    return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('msjdelete', 'Realie el pago antes de Confirmar una reserva');
+                }else{
+                    $pagado3 = Pago::where('monto_pagado', $pagado)
+                            ->whereNull('id_reserva')
+                            ->first();
 
-                $message = 'Tu reserva se ha guardado exitosamente .Aqui tienes los detalles de tu plan de reserva<br>'
-                . 'Dia Inicio del plan : (' . $request->fecha_ingreso. '), <br>'
-                . 'Dia Fin del plan : (' . $fechaSalida . '), <br>'
-                . 'Hora Ingreso Diario: (' . $request->hora_ingreso . '), <br>'
-                . 'Hora Salida Diaria: (' . $request->hora_salida . ')';
+                    $idPago = $pagado3->id;
+                    $pago = Pago::findOrFail($idPago);
+
+                    $pago->id_reserva = $idreserva;                               
                 
-                return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('messageTicket', $message);
+                    $evento->save();
+                    $reserva->save();
+                    $pago->save();
+
+                    $message = 'Tu reserva se ha guardado exitosamente .Aqui tienes los detalles de tu plan de reserva<br>'
+                    . 'Dia Inicio del plan : (' . $request->fecha_ingreso. '), <br>'
+                    . 'Dia Fin del plan : (' . $fechaSalida . '), <br>'
+                    . 'Hora Ingreso Diario: (' . $request->hora_ingreso . '), <br>'
+                    . 'Hora Salida Diaria: (' . $request->hora_salida . ')';
+                    
+                    return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('messageTicket', $message);
+                }
             }else{
                 return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('msjdelete', 'Ya existe una reserva en la fecha y hora indicada.');
             }
@@ -1562,16 +1707,34 @@ class reservaController extends Controller
                 //$evento->rrule = "DTSTART:20230601T103000Z\nRRULE:FREQ=WEEKLY;INTERVAL=1;UNTIL=20230801;BYDAY=MO,TU,WE,TH,FR,SA";
                 $evento->id_sitio = $request->id_sitio;
                 
-                $evento->save();
-                $reserva->save();
+                $pagado = 2570;
+                $pagado2 = Pago::where('monto_pagado', $pagado)
+                                ->whereNull('id_reserva')
+                                ->get();
+                if(count($pagado2)== 0){
+                    return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('msjdelete', 'Realie el pago antes de Confirmar una reserva');
+                }else{
+                    $pagado3 = Pago::where('monto_pagado', $pagado)
+                            ->whereNull('id_reserva')
+                            ->first();
 
-                $message = 'Tu reserva se ha guardado exitosamente .Aqui tienes los detalles de tu plan de reserva<br>'
-                . 'Dia Inicio del plan : (' . $request->fecha_ingreso. '), <br>'
-                . 'Dia Fin del plan : (' . $fechaSalida . '), <br>'
-                . 'Hora Ingreso Diario: (' . $request->hora_ingreso . '), <br>'
-                . 'Hora Salida Diaria: (' . $request->hora_salida . ')';
+                    $idPago = $pagado3->id;
+                    $pago = Pago::findOrFail($idPago);
+
+                    $pago->id_reserva = $idreserva;                               
                 
-                return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('messageTicket', $message);
+                    $evento->save();
+                    $reserva->save();
+                    $pago->save();
+
+                    $message = 'Tu reserva se ha guardado exitosamente .Aqui tienes los detalles de tu plan de reserva<br>'
+                    . 'Dia Inicio del plan : (' . $request->fecha_ingreso. '), <br>'
+                    . 'Dia Fin del plan : (' . $fechaSalida . '), <br>'
+                    . 'Hora Ingreso Diario: (' . $request->hora_ingreso . '), <br>'
+                    . 'Hora Salida Diaria: (' . $request->hora_salida . ')';
+                    
+                    return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('messageTicket', $message);
+                }
             }else{
                 return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('msjdelete', 'Ya existe una reserva en la fecha y hora indicada.');
             }
@@ -1637,16 +1800,34 @@ class reservaController extends Controller
                 //$evento->rrule = "DTSTART:20230601T103000Z\nRRULE:FREQ=WEEKLY;INTERVAL=1;UNTIL=20230801;BYDAY=MO,TU,WE,TH,FR,SA";
                 $evento->id_sitio = $request->id_sitio;
                 
-                $evento->save();
-                $reserva->save();
+                $pagado = 220;
+                $pagado2 = Pago::where('monto_pagado', $pagado)
+                                ->whereNull('id_reserva')
+                                ->get();
+                if(count($pagado2)== 0){
+                    return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('msjdelete', 'Realie el pago antes de Confirmar una reserva');
+                }else{
+                    $pagado3 = Pago::where('monto_pagado', $pagado)
+                            ->whereNull('id_reserva')
+                            ->first();
 
-                $message = 'Tu reserva se ha guardado exitosamente .Aqui tienes los detalles de tu plan de reserva<br>'
-                . 'Dia Inicio del plan : (' . $request->fecha_ingreso. '), <br>'
-                . 'Dia Fin del plan : (' . $fechaSalida . '), <br>'
-                . 'Hora Ingreso Sabados: (' . $request->hora_ingreso . '), <br>'
-                . 'Hora Salida Sabados: (' . $request->hora_salida . ')';
+                    $idPago = $pagado3->id;
+                    $pago = Pago::findOrFail($idPago);
+
+                    $pago->id_reserva = $idreserva;                               
                 
-                return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('messageTicket', $message);
+                    $evento->save();
+                    $reserva->save();
+                    $pago->save();
+
+                    $message = 'Tu reserva se ha guardado exitosamente .Aqui tienes los detalles de tu plan de reserva<br>'
+                    . 'Dia Inicio del plan : (' . $request->fecha_ingreso. '), <br>'
+                    . 'Dia Fin del plan : (' . $fechaSalida . '), <br>'
+                    . 'Hora Ingreso Sabados: (' . $request->hora_ingreso . '), <br>'
+                    . 'Hora Salida Sabados: (' . $request->hora_salida . ')';
+                    
+                    return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('messageTicket', $message);
+                }
             }else{
                 return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('msjdelete', 'Ya existe una reserva en la fecha y hora indicada.');
             }
