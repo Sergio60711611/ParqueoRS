@@ -149,6 +149,14 @@
                                 </a>
                             </li>
                             </ul>
+                            <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/administrador/reporte" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>Horas ingreso/salida</p>
+                                </a>
+                            </li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a href="/" class="nav-link active" style="background-color: #FD968E; color:#324855; margin-top: 3px;">
