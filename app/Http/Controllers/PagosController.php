@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\pago;
+use App\Models\Pago;
 use App\Models\cliente;
 use App\Models\plan_mensual;
 use Carbon\Carbon;
