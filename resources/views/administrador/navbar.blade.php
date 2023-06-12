@@ -133,7 +133,7 @@
                         <li class="nav-item">
                             <a href="/administrador/anuncios"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
                             <i class="nav-icon fas fa-bullhorn"></i>
-                            <p>Reportes<u/p>
+                            <p>Reportes</p>
                             </a>
                         </li>
                         <li class="nav-item">
