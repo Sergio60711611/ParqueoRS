@@ -19,18 +19,7 @@
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper" style="background-color:#D9D9D9;  padding: 20px;">
                 <div class="container container-blanco">
-                    <!-- Contenido dentro del container -->
-                    <h5>Administrador</h5>
-                    <p>Esta es la vista para el usuario administrador</p>
-                    </div>
-                </aside>
-                <!-- fin-control-sidebar -->
-                <!--MENU-FIN-->
-
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <div class="container">
-                
+              
             <!--INICIO CRUD -->
                 <div class="container-xl">
                     <div class="table-responsive">
