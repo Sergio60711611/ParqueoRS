@@ -26,7 +26,6 @@
                 <!-- fin-navbar -->
                 <!-- inicio-main-sidebar-container -->
                 @php
-                        //$id2 = isset($id);
                         $id2 = $id; 
                 @endphp
                 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color:#324855">
@@ -64,7 +63,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{url ('/cliente/'. $id2 .'/mapeoParqueo')}}" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
+                                <a href="{{url ('/guardia/'. $id2 .'/mapeoParqueo')}}" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
                                 <i class="nav-icon fas fa-map"></i>
                                 <p>Mapeo del parqueo</p>
                                 </a>
