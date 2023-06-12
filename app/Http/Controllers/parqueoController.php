@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Parqueo;
 use App\Models\Vehiculo;
 use App\Models\Cliente;
-use App\Models\Guardia;
+use App\Models\guardia;
 use App\Models\Sitio;
 use App\Models\Ingreso;
 use App\Models\ingreso_no_logueados;
