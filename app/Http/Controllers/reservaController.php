@@ -1026,7 +1026,7 @@ class reservaController extends Controller
                 $reserva->fecha_salida = $request->fecha_ingreso;
                 $reserva->hora_ingreso = $request->hora_ingreso;
                 $reserva->hora_salida = $horaFormateada;
-                $reserva->cantidad_de_horas = '1';
+                $reserva->cantidad_de_horas = $request->horas1;
                 $reserva->dias= 1;
                 $reserva->id_sitio = $request->id_sitio;
                 $reserva->id_cliente = $idclienteNum;
@@ -1057,7 +1057,7 @@ class reservaController extends Controller
                     $evento=new Evento();
                     $evento->id = $idEvento;
                     $evento->title = "RESERVADO";
-                    $evento->description = "Ci Cliente:". $ciCliente;
+                    $evento->description = "Ci:". $ciCliente;
                     $evento->start = $startD;
                     $evento->end = $endD;
                     $evento->id_sitio = $request->id_sitio;
