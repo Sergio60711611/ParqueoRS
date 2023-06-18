@@ -96,7 +96,7 @@
                 <div class="title">
                      <div class="row">
                         <div class="col-sm-8">
-                            <h2><b>Calendario de Sitio N° {{ $idDeSitio }}</b></h2>
+                            <h2><b>Calendario de Cuviculo N° {{ $idDeSitio }}</b></h2>
                         </div>   
                         <div class="col-sm-4" style="text-align: right;">
                         <!---->
