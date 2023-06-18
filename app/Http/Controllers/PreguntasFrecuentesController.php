@@ -38,7 +38,7 @@ class PreguntasFrecuentesController extends Controller
         $preguntasFrecuentes = PreguntasFrecuentes::find($id);
         return view('administrador.borrarPreguntas', compact('preguntasFrecuentes'));
     }
-    public function storeG(Request $request)
+    public function storeG(Request $request, $id)
     {
         $validation= $request->validate([
 
