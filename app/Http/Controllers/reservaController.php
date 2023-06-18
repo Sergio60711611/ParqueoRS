@@ -1037,14 +1037,6 @@ class reservaController extends Controller
                 $idmenos  = Evento::max('id');
                 $idEvento = $idmenos+1;
 
-                $evento=new Evento();
-                $evento->id = $idEvento;
-                $evento->title = "RESERVADO";
-                $evento->description = "Ci Cliente:". $ciCliente;
-                $evento->start = $startD;
-                $evento->end = $endD;
-                $evento->id_sitio = $request->id_sitio;
-
                 $pagado = 6 * $horas;
                 $pagado2 = Pago::where('monto_pagado', $pagado)
                             ->whereNull('id_reserva')
@@ -1061,6 +1053,14 @@ class reservaController extends Controller
                     $pago = Pago::findOrFail($idPago);
 
                     $pago->id_reserva = $idreserva;
+
+                    $evento=new Evento();
+                    $evento->id = $idEvento;
+                    $evento->title = "RESERVADO";
+                    $evento->description = "Ci Cliente:". $ciCliente;
+                    $evento->start = $startD;
+                    $evento->end = $endD;
+                    $evento->id_sitio = $request->id_sitio;
 
                     $evento->save();
                     $reserva->save();
@@ -1135,17 +1135,7 @@ class reservaController extends Controller
             $until = Carbon::createFromFormat('Y-m-d', $fechaSalida)->format('Ymd');
 
             $resultado = 'DTSTART:'.$dtstartf.'T'.$dtstarth.'Z\nRRULE:FREQ=WEEKLY;INTERVAL=1;UNTIL='.$until.';BYDAY=MO,TU,WE,TH,FR,SA';
-            
-            $evento=new Evento();
-            $evento->id = $idEvento;
-            $evento->title = "- $horaFormateada RESERVADO $horas hrs";
-            $evento->description = "Ci Cliente:". $ciCliente;
-            $evento->start = $startD;
-            $evento->end = $horaNueva;
-            $evento->rrule= $resultado;
-            //$evento->rrule = "DTSTART:20230601T103000Z\nRRULE:FREQ=WEEKLY;INTERVAL=1;UNTIL=20230801;BYDAY=MO,TU,WE,TH,FR,SA";
-                
-            $evento->id_sitio = $request->id_sitio;
+
 
             $pagado = 30 * $horas;
             $pagado2 = Pago::where('monto_pagado', $pagado)
@@ -1164,7 +1154,18 @@ class reservaController extends Controller
 
                 $pago->id_reserva = $idreserva;
 
+
+                $evento=new Evento(); 
+                $evento->id = $idEvento;
+                $evento->title = "- $horaFormateada RESERVADO $horas hrs";
+                $evento->description = "Ci Cliente:". $ciCliente;
+                $evento->start = $startD;
+                $evento->end = $horaNueva;
+                $evento->rrule= $resultado;
+                $evento->id_sitio = $request->id_sitio;
                 $evento->save();
+
+
                 $reserva->save();
                 $pago->save();
 
