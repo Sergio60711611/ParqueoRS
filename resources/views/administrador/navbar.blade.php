@@ -136,37 +136,34 @@
                             </li>
                             </ul>
                         </li>
+
                         <li class="nav-item">
-                            <a href="/administrador/anuncios"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
+                            <a href="#" class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
                             <i class="nav-icon fas fa-bullhorn"></i>
-                            <p>Reportes<u/p>
+                            <p>Reportes <i class="right fas fa-angle-left"></i></p>
                             </a>
-                        </li>
-                        <ul class="nav nav-treeview">
+                            <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="/administrador/reportes" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>Clientes Registrados</p>
                                 </a>
                             </li>
-                            </ul>
-                            <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="/administrador/reporte" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>Horas ingreso/salida</p>
                                 </a>
                             </li>
-                            </ul>
-                            <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="/administrador/reportess" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
+                               <a href="/administrador/reportess" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>Ingresos</p>
                                 </a>
                             </li>
                             </ul>
                         </li>
+                        
                         <li class="nav-item">
                             <a href=".." class="nav-link active" style="background-color: #FD968E; color:#324855; margin-top: 3px;">
                             <i class="nav-icon fas fa-sign-out-alt"></i>
