@@ -25,6 +25,10 @@ class CreateEventoTable extends Migration
             ->constrained('sitio')
             ->cascadeOnUpdate()
             ->cascadeOnDelete();
+            $table->foreignId('id_reserva')
+            ->constrained('reserva')
+            ->cascadeOnUpdate()
+            ->cascadeOnDelete();
             $table->timestamps();
         });
     }

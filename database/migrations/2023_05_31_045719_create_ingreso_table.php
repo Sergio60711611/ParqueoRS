@@ -17,6 +17,7 @@ class CreateIngresoTable extends Migration
                 $table->id();
                 $table->dateTime('fecha_hora_ingreso');
                 $table->string('estado_ingreso');
+                $table->integer('cantidad_horas');
                 $table->foreignId('id_sitio')
                       ->constrained('sitio')
                       ->cascadeOnUpdate()
@@ -25,6 +26,10 @@ class CreateIngresoTable extends Migration
                 $table->foreign('id_sitio_emergencia')->references('id')->on('sitio_emergencia');
                 $table->foreignId('id_vehiculo')
                       ->constrained('vehiculo')
+                      ->cascadeOnUpdate()
+                      ->cascadeOnDelete();
+                $table->foreignId('id_reserva')
+                      ->constrained('reserva')
                       ->cascadeOnUpdate()
                       ->cascadeOnDelete();
                 $table->timestamps();

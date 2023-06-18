@@ -28,6 +28,12 @@
     @endphp
 
     @include('guardia.navbar', ['id' => $id])
+    <aside class="control-sidebar control-sidebar-dark">
+        <div class="p-3">
+        <h5>Guardia: </h5>
+        <p>Esta es la vista para el guardia de apellido : {{$apellido}}</p>
+        </div>
+    </aside>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper" style="background-color:#D9D9D9; padding: 20px;">
             @include('guardia.msj')

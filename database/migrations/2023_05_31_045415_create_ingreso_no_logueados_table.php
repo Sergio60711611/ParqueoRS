@@ -19,7 +19,7 @@ class CreateIngresoNoLogueadosTable extends Migration
             $table->String('nombre');
             $table->String('apellido');
             $table->integer('ci')->unique()->nullable();;
-            $table->integer('placa')->unique()->nullable();;
+            $table->String('placa');
             $table->decimal('monto', $precision = 8, $scale = 2);
             $table->integer('cantidad_horas');
             $table->time('hora_salida');
