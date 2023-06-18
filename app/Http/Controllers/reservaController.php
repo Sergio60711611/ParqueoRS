@@ -875,7 +875,16 @@ class reservaController extends Controller
     public function hayEventos($dataTimeFecha, $dataTimeFechaSalida, $idSitio)
     {
         $eventos = Evento::where('start', '<=', $dataTimeFecha)
+                        ->where('start', '<=', $dataTimeFechaSalida)
+                        ->where('end', '>=',  $dataTimeFecha)
                         ->where('end', '>=', $dataTimeFechaSalida)
+                        ->where('id_sitio', $idSitio)
+                        ->get();
+        
+        $eventos = Evento::where('start', '>=', $dataTimeFecha)
+                        ->where('start', '<=', $dataTimeFechaSalida)
+                        ->where('end', '>=',  $dataTimeFecha)
+                        ->where('end', '<=', $dataTimeFechaSalida)
                         ->where('id_sitio', $idSitio)
                         ->get();
 
@@ -1136,9 +1145,23 @@ class reservaController extends Controller
             return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('msjdelete', 'No existe un cliente con id : ('.$ciCliente.')');
         }else{
             $hay = true;
+            //Verifica si es posible reservar
+            $dataTimeFecha = Carbon::parse($request->fecha_ingreso . ' ' . $request->hora_ingreso);
+                
+            $horaIngresoR = Carbon::parse($request->hora_ingreso);
+            $horaNuevaR = $horaIngresoR->addHours(5);
+            $horaFormateadaR = $horaNuevaR->format('H:i:s');
+            $dataTimeFechaSalida = Carbon::parse($request->fecha_ingreso . ' ' . $horaFormateadaR);
 
-
-
+            for ($i = 0; $i < 7; $i++) {
+                $hay = $this->hayEventos($dataTimeFecha, $dataTimeFechaSalida, $request->id_sitio);
+                if ($hay) {
+                    break;
+                }
+                $dataTimeFecha->addDay();
+                $dataTimeFechaSalida->addDay();
+            }  
+            
             if($hay == false){
                 $idcliente = $cliente->pluck('id');
                 $idclienteNum = $idcliente->implode(" ");
@@ -1220,7 +1243,7 @@ class reservaController extends Controller
                     . 'Dia Fin del plan : (' . $fechaSalida . '), <br>'
                     . 'Hora Ingreso Diario: (' . $request->hora_ingreso . '), <br>'
                     . 'Hora Salida Diaria: (' . $request->hora_salida . ')';
-                    //.$coleccion. '<br>'
+                    //.$dataTimeFecha. '<br>'
                     //.$fechaHoraIngresoRCli1.'<br>'
                     //.$fechaHoraSalidaDiariaCli1.'<br>';
                     
