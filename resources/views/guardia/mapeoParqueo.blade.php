@@ -110,6 +110,12 @@
                                                                             <label for="meeting-time" id ="inputfechaText">Fecha/Hora Ingreso</label>
                                                                             <input type="datetime-local" class="form-control" name="fecha_hora_ingreso" id="fecha_hora_ingreso" value="{{$now}}" >
                                                                         </div>
+
+                                                                        <div class="form-group" style="text-align: left;">
+                                                                            <label for="id_reserva" id="inputReserva">Nro. de Reserva</label>
+                                                                            <input type="text" class="form-control" name="id_reserva" id="id_reserva" placeholder="Ingrese el número de reserva">
+                                                                        </div>
+
                                                                         <div class="form-group" style="text-align: left;">
                                                                             <label for="" id ="inputplacaVehiculo">Placa*</label>
                                                                             <input type="text" class="form-control" name="placaVehiculo" id="placaVehiculo" placeholder="Ingrese la placa del vehiculo que ingresara"></input>
