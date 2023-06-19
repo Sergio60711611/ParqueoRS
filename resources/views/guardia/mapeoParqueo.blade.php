@@ -193,7 +193,7 @@
                                                             <div class="modal-body">
                                                                 <!--Botones de calendario-->
                                                             <div class = "container Botones">
-                                                                        <a href= "{{url ('/administrador/reserva/calendario', $sitiosMapeo->id)}}" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
+                                                                        <a href="{{url ('/guardia/'. $id .'/reserva/calendario', $sitiosMapeo->id)}}" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
                                                                             Ver Calendario  <i class="nav-icon fas fa-calendar-alt"></i>
                                                                         </a>
                                                                         <!--<a href= "{{url ('/administrador/reservaSitio', $sitiosMapeo->id)}}" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
@@ -253,7 +253,7 @@
                                                             <div class="modal-body">
                                                                 <!--Botones de calendario-->
                                                             <div class = "container Botones">
-                                                                        <a href= "{{url ('/administrador/reserva/calendario', $sitiosMapeo->id)}}" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
+                                                                        <a href="{{url ('/guardia/'. $id .'/reserva/calendario', $sitiosMapeo->id)}}" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">
                                                                             Ver Calendario  <i class="nav-icon fas fa-calendar-alt"></i>
                                                                         </a>
                                                                         <!--<a href= "{{url ('/administrador/reservaSitio', $sitiosMapeo->id)}}" class="btn btn-primary" style="background-color:#31747D; border-color:#31747D;">

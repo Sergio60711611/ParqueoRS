@@ -91,6 +91,7 @@
                                             <br class = text>Hora Salida:{{$reserva->hora_salida}}
                                             <br class = text>Cantidad de horas diarias:{{$reserva->cantidad_de_horas}}
                                             <br class = text>Cantidad de dias reservados:{{$reserva->dias}}</td>
+                                            <br class = text>Sitio N°:{{$reserva->id_sitio}}
                                     </tr>
                                 @endforeach
                             </table>

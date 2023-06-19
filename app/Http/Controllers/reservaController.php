@@ -908,24 +908,6 @@ class reservaController extends Controller
             return false;
         }
     }
-    public function verificarSePuedeReservaDiaria($fecha_ingreso, $hora_ingreso, $horas1, $id_sitio)
-    {
-        $dataTimeFecha = Carbon::parse($fecha_ingreso . ' ' . $hora_ingreso);
-                    
-        $horaIngresoR = Carbon::parse($hora_ingreso);
-        $horasR = $horas1;
-        $horaNuevaR = $horaIngresoR->addHours($horasR);
-        $horaFormateadaR = $horaNuevaR->format('H:i:s');
-        $dataTimeFechaSalida = Carbon::parse($fecha_ingreso . ' ' . $horaFormateadaR);
-
-        $hay = $this->hayEventos($dataTimeFecha, $dataTimeFechaSalida, $id_sitio);
-
-        if($hay){
-            return false;
-        }else{
-            return true;
-        }
-    }
 
     //CLIENTE
     public function storeDiarioCli(Request $request)

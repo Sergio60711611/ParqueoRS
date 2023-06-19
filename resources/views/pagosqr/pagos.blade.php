@@ -52,6 +52,12 @@
                                     <input type="hidden" class="form-control" name="id_reserva" id = "id_reserva" value="{{$reserva}}"></input>
                                 </div>
                                 <div class="form-group" style="text-align: left;">
+                                    <input type="hidden" class="form-control" name="fecha_ingreso" id = "fecha_ingreso" value="{{$fecha_ingreso}}"></input>
+                                </div>
+                                <div class="form-group" style="text-align: left;">
+                                    <input type="hidden" class="form-control" name="hora_ingreso" id = "hora_ingreso" value="{{$hora_ingreso}}"></input>
+                                </div>
+                                <div class="form-group" style="text-align: left;">
                                     <input type="hidden" class="form-control" name="monto_pagado" id = "monto_pagado" value="{{$pagar}}"></input>
                                 </div>
                         <button type="submit" class="btn btn-primary" id="btn_guardar" style="background-color:#53A790;border-color:#53A790;color:#FFFFFF;

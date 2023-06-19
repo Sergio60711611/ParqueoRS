@@ -71,9 +71,11 @@ Route::get('/pagos', function () {
     $espacio = request()->query('espacio');
     $horas = request()->query('horas');
     $reserva = request()->query('reserva');
+    $fecha_ingreso = request()->query('fecha_ingreso');
+    $hora_ingreso = request()->query('hora_ingreso');
     $costo= request()->query('costo');
     
-    return view('pagosqr.pagos', compact('plan', 'espacio', 'horas', 'reserva','costo'));
+    return view('pagosqr.pagos', compact('plan', 'espacio', 'horas', 'reserva','fecha_ingreso','hora_ingreso','costo'));
 })->name('pagosqr.pagos');
 
 Route::get('/administrador/pagoslista',"App\Http\Controllers\PagosController@ListaPagos");
@@ -174,6 +176,8 @@ Route::post('/storeMesNocCli','App\Http\Controllers\reservaController@storeMesNo
 Route::post('/storeMesCompletoCli','App\Http\Controllers\reservaController@storeMesCompletoCli');
 Route::post('/storeMesNumCli','App\Http\Controllers\reservaController@storeMesNumCli');
 Route::post('/storeMesSabaticoCli','App\Http\Controllers\reservaController@storeMesSabaticoCli');
+
+
 //Guardia
 Route::post('/storeReservaDiariaGu','App\Http\Controllers\reservaController@storeDiarioGu');
 Route::post('/storeSemanaGu','App\Http\Controllers\reservaController@storeSemanaGu');
