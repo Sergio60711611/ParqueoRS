@@ -63,7 +63,7 @@
                                         @endphp
                                         <td class = text-center>{{$pago->nro_sitio}}</td>
                                         <td class = text-center>{{$pago->fecha_pago}}</td>
-                                        <td class = text-center>{{$pago->monto_pagado}}</td>
+                                        <td class = text-center>{{$pago->monto_pagado}} Bs</td>
                                     </tr>
                                     <?php
                                         $totalMonto += $pago->monto_pagado;
@@ -72,7 +72,7 @@
                                     @endforeach
                                     <tr>
                                     <td class="text-right" colspan="3">Total Monto:</td>
-                                    <td class="text-center">{{ $totalMonto }}</td>
+                                    <td class="text-center">{{ $totalMonto }} Bs</td>
                                     </tr>
                                     </table>
                                 
@@ -96,7 +96,7 @@
                                         <td class = text-center>{{$pagos->id}}</td>
                                         <td class = text-center>{{$pagos->nro_sitio}}</td>
                                         <td class = text-center>{{$pagos->fecha_ingreso}}</td>
-                                        <td class = text-center>{{$pagos->monto}}</td>
+                                        <td class = text-center>{{$pagos->monto}} Bs</td>
                                         <?php
                                         $totalMonto2 += $pagos->monto;
                                         ?>
@@ -104,7 +104,7 @@
                                     @endforeach
                                     <tr>
                                     <td class="text-right" colspan="3">Total Monto:</td>
-                                    <td class="text-center">{{ $totalMonto2 }}</td>
+                                    <td class="text-center">{{ $totalMonto2 }} Bs</td>
                                     </tr>
                                     @php
                                     $totalMontoTotal = 0;
@@ -115,7 +115,7 @@
                                     ?>
                                     <tr>
                                     <td class="text-right" colspan="3">Monto total parqueo:</td>
-                                    <td class="text-center">{{ $totalMontoTotal }}</td>
+                                    <td class="text-center">{{ $totalMontoTotal }} Bs</td>
                                     </tr>
 
 
