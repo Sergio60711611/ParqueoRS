@@ -2820,7 +2820,7 @@ class reservaController extends Controller
   
         return view('guardia.reservas',  compact('result','guardia'));
     }
-    public function buscar($id, Request $request)
+    public function buscar5($id, Request $request)
 {
     $guardia = Guardia::find($id);
     $cliente = $request->input('reserva');

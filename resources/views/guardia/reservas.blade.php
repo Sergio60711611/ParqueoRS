@@ -48,7 +48,7 @@
                                     <div class="col-sm-8"><h2><b>Lista de Reservas</b></h2></div>
                                 </div>
                             </div>
-                            <form action="{{ route('buscar', ['id' => $guardia->id]) }}" method="POST">
+                            <form action="{{ route('buscar5', ['id' => $guardia->id]) }}" method="POST">
                             @csrf
                                 <input class="cajab" type="text" name="reserva" placeholder="Ingrese nombre o apellido o ci">
                                 <button class="button" type="submit">Buscar</button>
