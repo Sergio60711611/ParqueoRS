@@ -153,6 +153,14 @@
                                                             var input1Value = document.getElementById("horas1").value;
                                                             document.getElementById("hrs").value = input1Value;
                                                         }
+                                                        function copyValueFI() {
+                                                            var input111Value = document.getElementById("fecha_ingreso").value;
+                                                            document.getElementById("fech").value = input111Value;
+                                                        }
+                                                        function copyValueHI() {
+                                                            var input112Value = document.getElementById("hora_ingreso").value;
+                                                            document.getElementById("hrI").value = input112Value;
+                                                        }
                                                     </script>
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
@@ -178,10 +186,17 @@
                                         </form>
                                         <script>
                                             function abrirNuevaVentana1() {
+                                                console.log("Función abrirNuevaVentana1 ejecutada");
                                                 var input1Value = document.getElementById("horas1").value;
                                                 var hrs = input1Value;
+
+                                                var input111Value = document.getElementById("fecha_ingreso").value;
+                                                var fech = input111Value;
+
+                                                var input112Value = document.getElementById("hora_ingreso").value;
+                                                var hrI = input112Value;
                                                 
-                                                window.open("{{ route('pagosqr.pagos') }}?plan=" + encodeURIComponent('Diario') + "&espacio=" + encodeURIComponent({{ $idDeSitio }}) + "&horas=" + encodeURIComponent(hrs) + "&reserva=" + encodeURIComponent({{$idreserva}})+ "&costo=" + encodeURIComponent('6'), "_blank");
+                                                window.open("{{ route('pagosqr.pagos') }}?plan=" + encodeURIComponent('Diario') + "&espacio=" + encodeURIComponent({{ $idDeSitio }}) + "&horas=" + encodeURIComponent(hrs) + "&reserva=" + encodeURIComponent({{$idreserva}}) + "&fecha_ingreso=" + encodeURIComponent(fech) + "&hora_ingreso=" + encodeURIComponent(hrI) + "&costo=" + encodeURIComponent('6'), "_blank");
                                             }
                                         </script>
                                         <div style="text-align: left;">
@@ -224,7 +239,7 @@
                                                         var input2Value = document.getElementById("horas2").value;
                                                         document.getElementById("hrs2").value = input2Value;
                                                     }
-                                                </script>
+                                                </>
                                             </div>
                                             <div class="form-group" style="text-align: left;">
                                                 <label for="">CI Cliente:</label>
