@@ -40,7 +40,9 @@
 <div class="row">
                                     <div class="col-sm-8"><h2><b>Clientes registrados</b></h2></div>
                                 </div>
-
+                            @php 
+                                $counter = 1;
+                            @endphp
                             <table class="table table-bordered" id="table table-bordered">
                             <thead>
                                     <tr>
@@ -55,7 +57,10 @@
                                 @endphp
                                 @foreach($result as $pago)
                                     <tr>
-                                        <td class = text-center>{{$pago->id}}</td>
+                                    <td class = text-center>{{$counter}}</td>
+                                        @php 
+                                            $counter=$counter +1;
+                                        @endphp
                                         <td class = text-center>{{$pago->nro_sitio}}</td>
                                         <td class = text-center>{{$pago->fecha_pago}}</td>
                                         <td class = text-center>{{$pago->monto_pagado}}</td>
