@@ -83,11 +83,11 @@
                             <h2><b>Calendario de Cuviculo N° {{ $idDeSitio }}</b></h2>
                         </div>   
                         <div class="col-sm-4" style="text-align: right;">
-                        <!---->
+                        
                             <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:#324855; border-color:#324855">
+                        <!--    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:#324855; border-color:#324855">
                                 Reservar
-                            </button>
+                            </button>-->
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal1">Plan Diario</a>
                                 <div class="dropdown-divider"></div>
