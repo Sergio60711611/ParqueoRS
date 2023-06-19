@@ -40,7 +40,7 @@
                     <option value="5">Viernes</option>
                     <option value="6">Sabado</option>
                 </select>
-                <input type="hidden" class="dia_horario" name="dia_horario" id="dia_horario"></input> 
+                <input type="hidden" class="dia_horario" name="dia_horario" id="dia_horario" value="{{$horario->dia_horario}}"></input>  
                 @error('dia_horario')
                 <p1 class="error-message">{{ $message }}</p1>
                 @enderror

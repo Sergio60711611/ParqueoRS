@@ -49,7 +49,9 @@
     <input class="cajab" type="date" name="fecha_fin">
     <button class="button" type="submit">Buscar</button>
 </form>
-
+                            @php 
+                                $counter = 1;
+                            @endphp
                             <table class="table table-bordered" id="table table-bordered">
                             <thead>
                                     <tr>
@@ -62,7 +64,10 @@
                                 </thead>
                                 @foreach($lista as $cliente)
                                     <tr>
-                                        <td class = text-center>{{$cliente->id}}</td>
+                                    <td class = text-center>{{$counter}}</td>
+                                        @php 
+                                            $counter=$counter +1;
+                                        @endphp
                                         <td class = text-center>{{$cliente->nombre}}</td>
                                         <td class = text-center>{{$cliente->apellido}}</td>
                                         <td class = text-center>{{$cliente->ci}}</td>

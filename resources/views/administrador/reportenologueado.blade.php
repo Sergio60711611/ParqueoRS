@@ -50,7 +50,9 @@
     <button class="button" type="submit">Buscar</button>
     <a class="button" href="{{url ('/administrador/reporte')}}">Clientes registrados</a>
 </form>
-
+                            @php 
+                                $counter = 1;
+                            @endphp
                             <table class="table table-bordered" id="table table-bordered">
                             <thead>
                                     <tr>
@@ -64,7 +66,10 @@
                                 </thead>
                                 @foreach($result as $ingreso)
                                     <tr>
-                                        <td class = text-center>{{$ingreso->id}}</td>
+                                    <td class = text-center>{{$counter}}</td>
+                                        @php 
+                                            $counter=$counter +1;
+                                        @endphp
                                         <td class = text-center>{{$ingreso->fecha_hora_ingreso}}</td>
                                         <td class = text-center>{{$ingreso->fecha_hora_salida}}</td>
                                         <td class = text-center>{{$ingreso->placa}}</td>
