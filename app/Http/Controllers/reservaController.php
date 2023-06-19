@@ -928,7 +928,7 @@ class reservaController extends Controller
                 
                 $horaIngresoR = Carbon::parse($request->hora_ingreso);
                 $horasR = $request->horas1;
-                $horaNuevaR = $horaIngresoR->addHours($horasR);
+                $horaNuevaR = $horaIngresoR->addHoursNoOverflow($horasR);;
                 $horaFormateadaR = $horaNuevaR->format('H:i:s');
                 $dataTimeFechaSalida = Carbon::parse($request->fecha_ingreso . ' ' . $horaFormateadaR);
 
@@ -943,7 +943,7 @@ class reservaController extends Controller
                 $horaIngreso = Carbon::parse($request->hora_ingreso);
                 $horas = $request->horas1;
 
-                $horaNueva = $horaIngreso->addHours($horas);
+                $horaNueva = $horaIngreso->addHoursNoOverflow($horas);
                 $horaFormateada = $horaNueva->format('H:i');
 
                 $idreserva  = Reserva::max('id');
@@ -1026,7 +1026,7 @@ class reservaController extends Controller
             $horaIngreso = Carbon::parse($request->hora_ingreso);
             $horas = $request->horas2;
 
-            $horaNueva = $horaIngreso->addHours($horas);
+            $horaNueva = $horaIngreso->addHoursNoOverflow($horas);
             $horaFormateada = $horaNueva->format('H:i');
 
             $fechaIngreso = Carbon::parse($request->fecha_ingreso);
@@ -1066,7 +1066,7 @@ class reservaController extends Controller
                     $fechaHoraIngresoRCli = $fechaCarbonCli->setTimeFrom($horaRRCli);
 
                     $horasRCli = $request->horas2;
-                    $fechaHoraSalidaDiariaCli = $fechaHoraIngresoRCli->copy()->addHours($horasRCli);
+                    $fechaHoraSalidaDiariaCli = $fechaHoraIngresoRCli->copy()->addHoursNoOverflow($horasRCli);;
 
                     for ($i = 0; $i < 7; $i++) {
                         $hay = $this->hayEventos($fechaHoraIngresoRCli, $fechaHoraSalidaDiariaCli, $request->id_sitio);
@@ -1095,7 +1095,7 @@ class reservaController extends Controller
                     $fechaHoraIngresoR = $fechaCarbon->setTimeFrom($horaRR);
 
                     $horasR = $request->horas2;
-                    $fechaHoraSalidaDiaria = $fechaHoraIngresoR->copy()->addHours($horasR);
+                    $fechaHoraSalidaDiaria = $fechaHoraIngresoR->copy()->addHoursNoOverflow($horasR);
 
                     for ($i = 0; $i < 7; $i++) {
                         if ($fechaHoraIngresoR->isSunday()) {
@@ -1149,7 +1149,7 @@ class reservaController extends Controller
             $dataTimeFecha = Carbon::parse($request->fecha_ingreso . ' ' . $request->hora_ingreso);
                 
             $horaIngresoR = Carbon::parse($request->hora_ingreso);
-            $horaNuevaR = $horaIngresoR->addHours(5);
+            $horaNuevaR = $horaIngresoR->addHoursNoOverflow(5);
             $horaFormateadaR = $horaNuevaR->format('H:i:s');
             $dataTimeFechaSalida = Carbon::parse($request->fecha_ingreso . ' ' . $horaFormateadaR);
 
@@ -1215,7 +1215,7 @@ class reservaController extends Controller
                     $fechaCarbon = Carbon::createFromFormat('Y-m-d', $fecha);
                     $fechaHoraIngresoR = $fechaCarbon->setTimeFrom($horaRR);
 
-                    $fechaHoraSalidaDiaria = $fechaHoraIngresoR->copy()->addHours(5);
+                    $fechaHoraSalidaDiaria = $fechaHoraIngresoR->copy()->addHoursNoOverflow(5);;
 
                     for ($i = 0; $i < 30; $i++) {
                         if ($fechaHoraIngresoR->isSunday() || $fechaHoraIngresoR->isSaturday()) {
