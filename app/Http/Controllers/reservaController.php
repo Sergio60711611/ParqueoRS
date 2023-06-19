@@ -2937,7 +2937,7 @@ class reservaController extends Controller
                 $startD = Carbon::parse($request->fecha_ingreso . ' ' . $request->hora_ingreso);
                 $endD = Carbon::parse($fechaSalida . ' ' . $request->hora_salida);
 
-
+                //Comentario
                 $idmenos  = Evento::max('id');
                 $idEvento = $idmenos+1;
                 
