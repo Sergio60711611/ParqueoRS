@@ -3,15 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\cliente;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ReclamoSugerenciaMail;
 
 class clamosController extends Controller
 {
-    public function create()
+    public function createReclamo($id)
     {
-        return view('administrador.reclamos');
+        $cliente = Cliente::find($id);
+        return view('cliente.reclamos', compact('cliente'));
     }
+    
 
     public function store(Request $request)
     {

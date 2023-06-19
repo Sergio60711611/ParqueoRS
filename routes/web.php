@@ -119,7 +119,7 @@ Route::post('/administrador/reportes', 'App\Http\Controllers\\reportesController
 Route::get('/administrador/reportess',"App\Http\Controllers\\reportesController@reporte4");
 Route::get('/administrador/reportess', 'App\Http\Controllers\\reportesController@buscar4')->name('buscar3');
 
-Route::get('/cliente/{id}/info/reclamos', "App\Http\Controllers\clamosController@create")->name('reclamos.create');
+Route::get('/cliente/{id}/info/reclamos', "App\Http\Controllers\clamosController@createReclamo")->name('reclamos.create');
 Route::post('/cliente/info/reclamos', "App\Http\Controllers\clamosController@store")->name('reclamos.store');
 
 Route::get('/administrador/reserva/calendario/{id}','App\Http\Controllers\eventoController@createCalendar');

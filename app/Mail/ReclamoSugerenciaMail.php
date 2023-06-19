@@ -31,7 +31,7 @@ class ReclamoSugerenciaMail extends Mailable
      */
     public function build()
     {
-        return $this->view('administrador.reclamo_sugerencia')
+        return $this->view('cliente.reclamo_sugerencia')
                     ->subject('Nuevo reclamo o sugerencia');
     }
 }
