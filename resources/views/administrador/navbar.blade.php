@@ -139,7 +139,7 @@
 
                         <li class="nav-item">
                             <a href="/administrador/reportegeneral" class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
-                            <i class="nav-icon fas fa-bullhorn"></i>
+                            <i class="nav-icon fa fa-file-text-o"></i>
                             <p>Reportes</p>
                             </a>
 
