@@ -1153,7 +1153,7 @@ class reservaController extends Controller
             $horaFormateadaR = $horaNuevaR->format('H:i:s');
             $dataTimeFechaSalida = Carbon::parse($request->fecha_ingreso . ' ' . $horaFormateadaR);
 
-            for ($i = 0; $i < 7; $i++) {
+            for ($i = 0; $i < 30; $i++) {
                 $hay = $this->hayEventos($dataTimeFecha, $dataTimeFechaSalida, $request->id_sitio);
                 if ($hay) {
                     break;
@@ -1267,8 +1267,25 @@ class reservaController extends Controller
         if(count($cliente) === 0){
             return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('msjdelete', 'No existe un cliente con id : ('.$ciCliente.')');
         }else{
-            $rese = true;
-            if($rese){
+            $hay = true;
+            //Verifica si es posible reservar
+            $dataTimeFecha = Carbon::parse($request->fecha_ingreso . ' ' . $request->hora_ingreso);
+                
+            $horaIngresoR = Carbon::parse($request->hora_ingreso);
+            $horaNuevaR = $horaIngresoR->addHours(6);
+            $horaFormateadaR = $horaNuevaR->format('H:i:s');
+            $dataTimeFechaSalida = Carbon::parse($request->fecha_ingreso . ' ' . $horaFormateadaR);
+
+            for ($i = 0; $i < 30; $i++) {
+                $hay = $this->hayEventos($dataTimeFecha, $dataTimeFechaSalida, $request->id_sitio);
+                if ($hay) {
+                    break;
+                }
+                $dataTimeFecha->addDay();
+                $dataTimeFechaSalida->addDay();
+            }  
+            
+            if($hay == false){
                 $idcliente = $cliente->pluck('id');
                 $idclienteNum = $idcliente->implode(" ");
 
@@ -1370,8 +1387,25 @@ class reservaController extends Controller
         if(count($cliente) === 0){
             return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('msjdelete', 'No existe un cliente con id : ('.$ciCliente.')');
         }else{
-            $rese = true;
-            if($rese){
+            $hay = true;
+            //Verifica si es posible reservar
+            $dataTimeFecha = Carbon::parse($request->fecha_ingreso . ' ' . $request->hora_ingreso);
+                
+            $horaIngresoR = Carbon::parse($request->hora_ingreso);
+            $horaNuevaR = $horaIngresoR->addHours(5);
+            $horaFormateadaR = $horaNuevaR->format('H:i:s');
+            $dataTimeFechaSalida = Carbon::parse($request->fecha_ingreso . ' ' . $horaFormateadaR);
+
+            for ($i = 0; $i < 30; $i++) {
+                $hay = $this->hayEventos($dataTimeFecha, $dataTimeFechaSalida, $request->id_sitio);
+                if ($hay) {
+                    break;
+                }
+                $dataTimeFecha->addDay();
+                $dataTimeFechaSalida->addDay();
+            }  
+            
+            if($hay == false){
                 $idcliente = $cliente->pluck('id');
                 $idclienteNum = $idcliente->implode(" ");
 
@@ -1472,8 +1506,25 @@ class reservaController extends Controller
         if(count($cliente) === 0){
             return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('msjdelete', 'No existe un cliente con id : ('.$ciCliente.')');
         }else{
-            $rese = true;
-            if($rese){
+            $hay = true;
+            //Verifica si es posible reservar
+            $dataTimeFecha = Carbon::parse($request->fecha_ingreso . ' ' . $request->hora_ingreso);
+                
+            $horaIngresoR = Carbon::parse($request->hora_ingreso);
+            $horaNuevaR = $horaIngresoR->addHours(8);
+            $horaFormateadaR = $horaNuevaR->format('H:i:s');
+            $dataTimeFechaSalida = Carbon::parse($request->fecha_ingreso . ' ' . $horaFormateadaR);
+
+            for ($i = 0; $i < 30; $i++) {
+                $hay = $this->hayEventos($dataTimeFecha, $dataTimeFechaSalida, $request->id_sitio);
+                if ($hay) {
+                    break;
+                }
+                $dataTimeFecha->addDay();
+                $dataTimeFechaSalida->addDay();
+            }  
+            
+            if($hay == false){
                 $idcliente = $cliente->pluck('id');
                 $idclienteNum = $idcliente->implode(" ");
 
@@ -1575,13 +1626,25 @@ class reservaController extends Controller
         if(count($cliente) === 0){
             return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('msjdelete', 'No existe un cliente con id : ('.$ciCliente.')');
         }else{
-            /*$rese = Reserva::where('hora_ingreso', $request->hora_ingreso)
-                ->where('cantidad_de_horas', '16')
-                ->where('dias', '30')
-                ->where('id_sitio', $request->id_sitio)
-                ->get();*/
-            $rese = true;
-            if($rese){
+            $hay = true;
+            //Verifica si es posible reservar
+            $dataTimeFecha = Carbon::parse($request->fecha_ingreso . ' ' . $request->hora_ingreso);
+                
+            $horaIngresoR = Carbon::parse($request->hora_ingreso);
+            $horaNuevaR = $horaIngresoR->addHours(16);
+            $horaFormateadaR = $horaNuevaR->format('H:i:s');
+            $dataTimeFechaSalida = Carbon::parse($request->fecha_ingreso . ' ' . $horaFormateadaR);
+
+            for ($i = 0; $i < 30; $i++) {
+                $hay = $this->hayEventos($dataTimeFecha, $dataTimeFechaSalida, $request->id_sitio);
+                if ($hay) {
+                    break;
+                }
+                $dataTimeFecha->addDay();
+                $dataTimeFechaSalida->addDay();
+            }  
+            
+            if($hay == false){
                 $idcliente = $cliente->pluck('id');
                 $idclienteNum = $idcliente->implode(" ");
 
@@ -1684,8 +1747,25 @@ class reservaController extends Controller
         if(count($cliente) === 0){
             return redirect('/cliente/'.($idCli).'/reserva/calendario/'.($idsitio).'')->with(compact('clinte'))->with('msjdelete', 'No existe un cliente con id : ('.$ciCliente.')');
         }else{
-            $rese = true;
-            if($rese){
+            $hay = true;
+            //Verifica si es posible reservar
+            $dataTimeFecha = Carbon::parse($request->fecha_ingreso . ' ' . $request->hora_ingreso);
+                
+            $horaIngresoR = Carbon::parse($request->hora_ingreso);
+            $horaNuevaR = $horaIngresoR->addHours(24);
+            $horaFormateadaR = $horaNuevaR->format('H:i:s');
+            $dataTimeFechaSalida = Carbon::parse($request->fecha_ingreso . ' ' . $horaFormateadaR);
+
+            for ($i = 0; $i < 30; $i++) {
+                $hay = $this->hayEventos($dataTimeFecha, $dataTimeFechaSalida, $request->id_sitio);
+                if ($hay) {
+                    break;
+                }
+                $dataTimeFecha->addDay();
+                $dataTimeFechaSalida->addDay();
+            }  
+            
+            if($hay == false){
                 $idcliente = $cliente->pluck('id');
                 $idclienteNum = $idcliente->implode(" ");
 
