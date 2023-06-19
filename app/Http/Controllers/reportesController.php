@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ingreso;
-use App\Models\vehiculo;
-use App\Models\sitio;
-use App\Models\salida;
+use App\Models\Ingreso;
+use App\Models\Vehiculo;
+use App\Models\Sitio;
+use App\Models\Salida;
 use App\Models\Cliente;
 use App\Models\Pago;
-use App\Models\Ingreso_no_logueados;
+use App\Models\ingreso_no_logueados;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use \administracionparqueo;
