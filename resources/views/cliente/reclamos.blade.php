@@ -32,11 +32,10 @@
         <p>Esta es la vista para el usuario de apellido : {{$apellido}}</p>
         </div>
     </aside>
+    
             <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper" style="background-color:#D9D9D9;  padding: 20px;">
-            @include('cliente.msj') 
-                <div class="container container-blanco">
-                    <!-- Contenido dentro del container -->
+<div class="content-wrapper" style="background-color:#D9D9D9; padding: 20px;">
+                <div class="container-xl">
                 <div class="table-title">
                      <div class="row">
                             <div class="col-sm-8"><h2><b>Buzon de Sugerencias/Reclamos</b></h2></div>
@@ -90,28 +89,14 @@
         
     </body>
 <style>
-    body {
-    color: #566787;
-    font-family: 'Poppins', sans-serif;
-    background-color: #D9D9D9; 
-    height:auto;
-}
-    .content-wrapper{
-    background-color: #D9D9D9;
-    margin-top: 2.5vw;
-}
-
-.container{
-    background-color: #FFFFFF;
-    padding:0px;
-}
-.container-blanco {
-    width: 95%;
-    height: 95%;
-    background-color: #ffffff;
-    border: 1px solid #ffffff;
-    padding: 20px;
-}
+    .container-xl{
+        width: auto;
+        background: #ffff;
+        padding: 40px;
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        border-radius: 10px;
+        margin-top: 1%;
+    }
     h2{
         font-family: 'Poppins', sans-serif;
         color: #324855;
