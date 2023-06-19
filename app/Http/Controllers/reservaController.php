@@ -3035,14 +3035,18 @@ class reservaController extends Controller
         ->select('reserva.id', 'reserva.fecha_ingreso', 'reserva.fecha_salida', 'reserva.hora_ingreso', 'reserva.hora_salida', 'reserva.id_sitio', 'cliente.nombre', 'cliente.apellido', 'cliente.ci');
 
     if (!empty($cliente)) {
-        $query->where('cliente.nombre', 'like', '%' . $cliente . '%')
-                ->orWhere('cliente.apellido', 'like', '%' . $cliente . '%')
-                ->orWhere('cliente.ci', 'like', '%' . $cliente . '%');
-        }
-        if (!empty($fechaInicio) && !empty($fechaFin)) {
-            $query->whereBetween('reserva.fecha_ingreso', [$fechaInicio, $fechaFin])
-                  ->whereBetween('reserva.fecha_salida', [$fechaInicio, $fechaFin]);
-        }
+        $query->where(function ($q) use ($cliente) {
+            $q->where('cliente.nombre', 'like', '%' . $cliente . '%')
+                ->orWhere('apellido', 'like', '%' . $cliente . '%')
+                ->orWhere('ci', 'like', '%' . $cliente . '%');
+        });
+    }
+
+    if (!empty($fechaInicio) && !empty($fechaFin)) {
+        $query->whereDate('reserva.fecha_ingreso', '>=', $fechaInicio)
+            ->whereDate('reserva.fecha_salida', '<=', $fechaFin);
+    }
+
     $result = $query->get();
 
     return view('guardia.reservas', compact('result', 'guardia'));
