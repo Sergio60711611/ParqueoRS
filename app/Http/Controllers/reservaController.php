@@ -881,28 +881,28 @@ class reservaController extends Controller
                         ->where('id_sitio', $idSitio)
                         ->get();
         
-        $eventos = Evento::where('start', '>=', $dataTimeFecha)
+        $eventos1 = Evento::where('start', '>=', $dataTimeFecha)
                         ->where('start', '<=', $dataTimeFechaSalida)
                         ->where('end', '>=',  $dataTimeFecha)
                         ->where('end', '<=', $dataTimeFechaSalida)
                         ->where('id_sitio', $idSitio)
                         ->get();
 
-        $eventos1 = Evento::where('start', '>=', $dataTimeFecha)
+        $eventos2 = Evento::where('start', '>=', $dataTimeFecha)
                         ->where('start', '<=', $dataTimeFechaSalida)    
                         ->where('end', '>=', $dataTimeFecha)
                         ->where('end', '>=', $dataTimeFechaSalida)
                         ->where('id_sitio', $idSitio)
                         ->get();
 
-        $eventos2 = Evento::where('start', '<=', $dataTimeFecha)
+        $eventos3 = Evento::where('start', '<=', $dataTimeFecha)
                         ->where('start', '<=', $dataTimeFechaSalida)    
                         ->where('end', '>=', $dataTimeFecha)
                         ->where('end', '<=', $dataTimeFechaSalida)
                         ->where('id_sitio', $idSitio)
                         ->get();
 
-        if (count($eventos) != 0 || count($eventos1) != 0 || count($eventos2) != 0) {
+        if (count($eventos) != 0 || count($eventos1) != 0 || count($eventos2) != 0 || count($eventos3) != 0) {
             return true;
         } else {
             return false;
