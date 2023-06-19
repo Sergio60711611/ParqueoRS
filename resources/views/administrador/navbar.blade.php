@@ -165,7 +165,7 @@
                         </li>
                         
                         <li class="nav-item">
-                            <a href=".." class="nav-link active" style="background-color: #FD968E; color:#324855; margin-top: 3px;">
+                            <a href="/" class="nav-link active" style="background-color: #FD968E; color:#324855; margin-top: 3px;">
                             <i class="nav-icon fas fa-sign-out-alt"></i>
                             <p>Cerrar Sesion</p>
                             </a>
