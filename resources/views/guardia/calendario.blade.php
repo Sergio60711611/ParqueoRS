@@ -136,11 +136,11 @@
                                             <div class="card-body">
                                                 <div class="form-group" style="text-align: left;">
                                                     <label for="meeting-time">Fecha Ingreso:</label>
-                                                    <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso" value="{{ $now->format('Y-m-d') }}"></input>
+                                                    <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso" value="{{ $now->format('Y-m-d') }}" onkeyup="copyValueFI()"></input>
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <label for="">Hora Ingreso:</label>
-                                                    <input type="time" class="form-control" name="hora_ingreso" id="hora_ingreso" value="{{ $now->format('H:i') }}"></input>
+                                                    <input type="time" class="form-control" name="hora_ingreso" id="hora_ingreso" value="{{ $now->format('H:i') }}" onkeyup="copyValueHI()"></input>
                                                 </div>
                                                 <div class="form-group" style="text-align: left;">
                                                     <label for="">Horas reservadas:</label>
@@ -152,6 +152,14 @@
                                                         function copyValue() {
                                                             var input1Value = document.getElementById("horas1").value;
                                                             document.getElementById("hrs").value = input1Value;
+                                                        }
+                                                        function copyValueFI() {
+                                                            var input111Value = document.getElementById("fecha_ingreso").value;
+                                                            document.getElementById("fech").value = input111Value;
+                                                        }
+                                                        function copyValueHI() {
+                                                            var input112Value = document.getElementById("hora_ingreso").value;
+                                                            document.getElementById("hrI").value = input112Value;
                                                         }
                                                     </script>
                                                 </div>
@@ -178,10 +186,17 @@
                                         </form>
                                         <script>
                                             function abrirNuevaVentana1() {
+                                                console.log("Función abrirNuevaVentana1 ejecutada");
                                                 var input1Value = document.getElementById("horas1").value;
                                                 var hrs = input1Value;
+
+                                                var input111Value = document.getElementById("fecha_ingreso").value;
+                                                var fech = input111Value;
+
+                                                var input112Value = document.getElementById("hora_ingreso").value;
+                                                var hrI = input112Value;
                                                 
-                                                window.open("{{ route('pagosqr.pagos') }}?plan=" + encodeURIComponent('Diario') + "&espacio=" + encodeURIComponent({{ $idDeSitio }}) + "&horas=" + encodeURIComponent(hrs) + "&reserva=" + encodeURIComponent({{$idreserva}})+ "&costo=" + encodeURIComponent('6'), "_blank");
+                                                window.open("{{ route('pagosqr.pagos') }}?plan=" + encodeURIComponent('Diario') + "&espacio=" + encodeURIComponent({{ $idDeSitio }}) + "&horas=" + encodeURIComponent(hrs) + "&reserva=" + encodeURIComponent({{$idreserva}}) + "&fecha_ingreso=" + encodeURIComponent(fech) + "&hora_ingreso=" + encodeURIComponent(hrI) + "&costo=" + encodeURIComponent('6'), "_blank");
                                             }
                                         </script>
                                         <div style="text-align: left;">
