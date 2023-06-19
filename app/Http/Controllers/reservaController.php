@@ -2811,4 +2811,35 @@ class reservaController extends Controller
             }
         }
     }
+
+    public function tablareservas($id){
+        $guardia = Guardia::find($id);
+        $result = reserva::join('cliente', 'reserva.id_cliente', '=', 'cliente.id')
+        ->select('reserva.id', 'reserva.fecha_ingreso', 'reserva.fecha_salida', 'reserva.hora_ingreso', 'reserva.hora_salida','reserva.id_sitio', 'cliente.nombre', 'cliente.apellido', 'cliente.ci')
+        ->get();
+  
+        return view('guardia.reservas',  compact('result','guardia'));
+    }
+    public function buscar($id, Request $request)
+{
+    $guardia = Guardia::find($id);
+    $cliente = $request->input('reserva');
+    
+    $query = reserva::join('cliente', 'reserva.id_cliente', '=', 'cliente.id')
+        ->select('reserva.id', 'reserva.fecha_ingreso', 'reserva.fecha_salida', 'reserva.hora_ingreso', 'reserva.hora_salida', 'reserva.id_sitio', 'cliente.nombre', 'cliente.apellido', 'cliente.ci');
+
+    if (!empty($cliente)) {
+        $query->where(function ($q) use ($cliente) {
+            $q->where('cliente.nombre', 'like', '%' . $cliente . '%')
+                ->orWhere('cliente.apellido', 'like', '%' . $cliente . '%')
+                ->orWhere('cliente.ci', 'like', '%' . $cliente . '%');
+        });
+    }
+
+    $result = $query->get();
+
+    return view('guardia.reservas', compact('result', 'guardia'));
+}
+
+
 }

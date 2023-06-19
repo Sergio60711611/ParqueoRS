@@ -128,7 +128,9 @@ Route::get('/administrador/reservaSitio/{id}/','App\Http\Controllers\reservaCont
 Route::get('/administrador/reservasCliente/{id}/','App\Http\Controllers\reservaController@createListaCliente');
 Route::get('/administrador/reservas','App\Http\Controllers\reservaController@createLista');
 Route::get('/cliente/{id}/reservas/','App\Http\Controllers\reservaController@createListaCli');
-Route::get('/guardia/{id}/reservas/','App\Http\Controllers\reservaController@createListaGu');
+Route::get('/guardia/{id}/reservas/','App\Http\Controllers\reservaController@tablareservas');
+Route::post('/guardia/{id}/reservas/', 'App\Http\Controllers\reservaController@buscar')->name('buscar');
+
 //vistaControl
 Route::get('/show/{id}','App\Http\Controllers\eventoController@show');
 //b

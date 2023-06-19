@@ -44,37 +44,38 @@
                     <div class="table">
                         <div class="table-wrapper">
                             <div class="table-title">
-                            @php 
-                                    $counter = 1;
-                            @endphp
                                 <div class="row">
                                     <div class="col-sm-8"><h2><b>Lista de Reservas</b></h2></div>
                                 </div>
                             </div>
+                            <form action="{{ route('buscar', ['id' => $guardia->id]) }}" method="POST">
+                            @csrf
+                                <input class="cajab" type="text" name="reserva" placeholder="Ingrese nombre o apellido o ci">
+                                <button class="button" type="submit">Buscar</button>
+                            </form>
                             <table class="table table-bordered">
                             <thead>
                                     <tr>
-                                        <th class = text-center >#</th>
+                                        <th class = text-center >Codigo de reserva</th>
                                         <th class = text-center >Fecha Ingreso:</th>
-                                        <th class = text-center >Hora Ingreso:</th>
                                         <th class = text-center >Fecha Salida:</th>
-                                        <th class = text-center >Hora Salida:</th>
-                                        <th class = text-center >Cantidad de horas diarias:</th>
-                                        <th class = text-center >Cantidad de dias reservados:</th>
+                                        <th class = text-center >Horas:</th>
+                                        <th class = text-center >Nombre:</th>
+                                        <th class = text-center >Apellido:</th>
+                                        <th class = text-center >Ci:</th>
+                                        <th class = text-center >Sitio:</th>
                                     </tr>
                                 </thead>
-                                @foreach($lista as $reserva)
+                                @foreach($result as $reserva)
                                     <tr>
-                                        <td class = text-center>{{$counter}}</td>
-                                        @php 
-                                            $counter=$counter +1;
-                                        @endphp
+                                        <td class = text-center>{{$reserva->id}}</td>
                                         <td class = text>{{$reserva->fecha_ingreso}}</td>
-                                        <td class = text>{{$reserva->hora_ingreso}}</td>
                                         <td class = text>{{$reserva->fecha_salida}}</td>
-                                        <td class = text>{{$reserva->hora_salida}}</td>
-                                        <td class = text>{{$reserva->cantidad_de_horas}}</td>
-                                        <td class = text>{{$reserva->dias}}</td>
+                                        <td class = text-center>{{ substr($reserva->hora_ingreso, 0, 5) }} - {{ substr($reserva->hora_salida, 0, 5) }}</td>
+                                        <td class = text>{{$reserva->nombre}}</td>
+                                        <td class = text>{{$reserva->apellido}}</td>
+                                        <td class = text>{{$reserva->ci}}</td>
+                                        <td class = text>{{$reserva->id_sitio}}</td>
                                     </tr>
                                 @endforeach
                             </table>
@@ -157,6 +158,28 @@ img {
     margin-top: 2%;
     margin-left: 81%;
     margin-bottom: -1%;
+}
+.button {
+  display: inline-block;
+  padding:10px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color:#2A4858;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom:10px;
+  margin-left: 5%;
+}
+.cajab{
+    position: relative;
+    width: 30%;
+    left: 2%;
+    margin-top: 2%;
+    text-align: center;
 }
 </style>
 </html>
