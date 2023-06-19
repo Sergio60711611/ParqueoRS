@@ -61,8 +61,7 @@ Route::get('/administrador/borrarGuardia/{id}', 'App\Http\Controllers\guardiaCon
 
 Route::get('/administrador/mensaje', 'App\Http\Controllers\mensajeController@Index');
 
-Route::get('/administrador/reporte',"App\Http\Controllers\ingresoController@reporte");
-Route::get('/administrador/reportess',"App\Http\Controllers\pagoController@tabla");
+
 //pagoscontrollers
 //Route::get('/administrador/pagos2',"App\Http\Controllers\PagosController@PController");
 Route::get('/pagos', function () {return view('pagosqr.pagos');})->name('pagosqr.pagos');
@@ -72,9 +71,11 @@ Route::get('/pagos', function () {
     $espacio = request()->query('espacio');
     $horas = request()->query('horas');
     $reserva = request()->query('reserva');
+    $fecha_ingreso = request()->query('fecha_ingreso');
+    $hora_ingreso = request()->query('hora_ingreso');
     $costo= request()->query('costo');
     
-    return view('pagosqr.pagos', compact('plan', 'espacio', 'horas', 'reserva','costo'));
+    return view('pagosqr.pagos', compact('plan', 'espacio', 'horas', 'reserva','fecha_ingreso','hora_ingreso','costo'));
 })->name('pagosqr.pagos');
 
 Route::get('/administrador/pagoslista',"App\Http\Controllers\PagosController@ListaPagos");
@@ -103,7 +104,20 @@ Route::get('/administrador/borrarPreguntas/{id}',"App\Http\Controllers\Preguntas
 Route::get('/guardia/{id}/preguntas',"App\Http\Controllers\PreguntasFrecuentesController@createListaG");
 Route::get('/guardia/{id}/agregarPreguntas',"App\Http\Controllers\PreguntasFrecuentesController@createAgregarG");
 
-Route::get('/administrador/reportes',"App\Http\Controllers\peticionController@createLista");
+Route::get('/administrador/reportegeneral',"App\Http\Controllers\\reportesController@see");
+
+Route::get('/administrador/reporte',"App\Http\Controllers\\reportesController@reporte");
+Route::post('/administrador/reporte', 'App\Http\Controllers\\reportesController@buscar')->name('buscar');
+
+Route::get('/administrador/reportenologueado',"App\Http\Controllers\\reportesController@reporte2");
+Route::post('/administrador/reportenologueado', 'App\Http\Controllers\\reportesController@buscar2')->name('buscar2');
+
+Route::get('/administrador/reportes',"App\Http\Controllers\\reportesController@reporte3");
+Route::post('/administrador/reportes', 'App\Http\Controllers\\reportesController@buscar3')->name('buscar1');
+
+
+Route::get('/administrador/reportess',"App\Http\Controllers\\reportesController@reporte4");
+Route::get('/administrador/reportess', 'App\Http\Controllers\\reportesController@buscar4')->name('buscar3');
 
 Route::get('/cliente/{id}/info/reclamos', "App\Http\Controllers\clamosController@create")->name('reclamos.create');
 Route::post('/cliente/info/reclamos', "App\Http\Controllers\clamosController@store")->name('reclamos.store');
@@ -116,7 +130,9 @@ Route::get('/administrador/reservaSitio/{id}/','App\Http\Controllers\reservaCont
 Route::get('/administrador/reservasCliente/{id}/','App\Http\Controllers\reservaController@createListaCliente');
 Route::get('/administrador/reservas','App\Http\Controllers\reservaController@createLista');
 Route::get('/cliente/{id}/reservas/','App\Http\Controllers\reservaController@createListaCli');
-Route::get('/guardia/{id}/reservas/','App\Http\Controllers\reservaController@createListaGu');
+Route::get('/guardia/{id}/reservas/','App\Http\Controllers\reservaController@tablareservas');
+Route::post('/guardia/{id}/reservas/', 'App\Http\Controllers\reservaController@buscar5')->name('buscar5');
+
 //vistaControl
 Route::get('/show/{id}','App\Http\Controllers\eventoController@show');
 //b
@@ -160,6 +176,8 @@ Route::post('/storeMesNocCli','App\Http\Controllers\reservaController@storeMesNo
 Route::post('/storeMesCompletoCli','App\Http\Controllers\reservaController@storeMesCompletoCli');
 Route::post('/storeMesNumCli','App\Http\Controllers\reservaController@storeMesNumCli');
 Route::post('/storeMesSabaticoCli','App\Http\Controllers\reservaController@storeMesSabaticoCli');
+
+
 //Guardia
 Route::post('/storeReservaDiariaGu','App\Http\Controllers\reservaController@storeDiarioGu');
 Route::post('/storeSemanaGu','App\Http\Controllers\reservaController@storeSemanaGu');

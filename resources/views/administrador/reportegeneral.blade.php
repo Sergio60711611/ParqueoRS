@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
-<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <head>
-        <meta charset="utf-8">
+    <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Radiador Springs</title>
         <!-- Google Font: Source Sans Pro -->
@@ -15,75 +15,32 @@
         <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
     </head>
     <body class="hold-transition sidebar-mini">
-    @php
-        $id = $cliente['id'];
-        $nombre = $cliente['nombre'];    
-        $apellido = $cliente['apellido'];
-        $correo = $cliente['correo_electronico'];
-        $celular = $cliente['celular'];
-        $password = $cliente['password'];
-        $ci = $cliente['ci'];
-    @endphp
-
-    @include('cliente.navbar', ['id' => $id])
-    <aside class="control-sidebar control-sidebar-dark">
-        <div class="p-3">
-        <h5>Cliente: </h5>
-        <p>Esta es la vista para el usuario de apellido : {{$apellido}}</p>
-        </div>
-    </aside>
+        <div class="wrapper">
+        @include('administrador.navbar')
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper" style="background-color:#D9D9D9;  padding: 20px;">
-            @include('cliente.msj') 
+             
                 <div class="container container-blanco">
                     <!-- Contenido dentro del container -->
-                        <h2>¿Cómo podemos ayudarte?</h2>
+                        <h2>Reportes</h2>
                         <div class="box">
                         <ul>
-                        <li><a class="dropdown-item" href="{{url ('/cliente/'. $id2 .'/info/reservas')}}">
-                        <i class="nav-icon far fa-calendar-plus"></i>
-                        <span class="text">Mis Reservas</span>
+                        <li><a class="dropdown-item" href="{{url ('/administrador/reportess')}}">
+                        <i class="nav-icon fa fa-usd"></i>
+                        <span class="text">Reporte de ingresos monetarios</span>
                         </a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{url ('/cliente/'. $id2 .'/info/horarios')}}">
-                        <i class="nav-icon far fa-clock"></i>
-                        <span class="text">Horario de Atención/Tarifas</span>
+                        <li><a class="dropdown-item" href="{{url ('/administrador/reporte')}}">
+                        <i class="nav-icon fa fa-car"></i>
+                        <span class="text">Reporte de ingresos y salidas de vehiculos</span>
                         </a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{url ('/cliente/'. $id2 .'/info/anuncios')}}">
-                        <i class="nav-icon fa fa-bullhorn"></i>
-                        <span class="text">Anuncios</span>
-                        </a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{url ('/cliente/'. $id2 .'/perfil')}}">
-                        <i class="nav-icon fas fa-user"></i>
-                        <span class="text">Mi perfil</span>
-                        </a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{url ('/cliente/'. $id2 .'/info/preguntas')}}">
-                        <i class="nav-icon fas fa-question-circle"></i>
-                        <span class="text">Preguntas Frecuentes</span>
-                        </a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{url ('/cliente/'. $id2 .'/info/reclamos')}}">
-                        <i class="nav-icon far fa-envelope"></i>
-                        <span class="text">Buzon de Sugerencias/Reclamos</span>
-                        </a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="https://chat.whatsapp.com/CxJYIKpu0SzAYonNf4wzGa" target="_blank">
-                        <i class="nav-icon fa fa-whatsapp"></i>
-                        <span class="text">Grupo de Whatsapp</span>
-                        </a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="https://t.me/RADIADORSPRINGS_bot">
-                        <i class="nav-icon fas fa-ellipsis-h"></i>
-                        <span class="text">Otras consultas</span>
+                        <li><a class="dropdown-item" href="{{url ('/administrador/reportes')}}">
+                        <i class="nav-icon fa fa-user-circle"></i>
+                        <span class="text">Registro de clientes</span>
                         </a></li>
                         </ul>
-                        </div>
-                        <div class="box">
-                        <img src="{{ asset('/img/apoyo.png') }}" >
-                        <h1>Esperamos que esto sea de ayuda</h1>
+                        <img src="{{ asset('/img/reporte.png') }}" >
                         </div>
                 </div>
             </div>
@@ -116,6 +73,7 @@
     padding:0px;
 }
 .container-blanco {
+    justify-content:space-between;
     width: 95%;
     height: 95%;
     background-color: #ffffff;
@@ -160,18 +118,19 @@ h2{
    color: #000000;
 }
 .box {
-  display: inline-block;
+  justify-content:space-between;
+  display: flex;
   width: 35vw; 
   height: auto;
   text-align: center;
 }
 .box img {
-  display: block;
-  margin: 0 auto;
-  width: 50%;
-  height: 50%;
-  left: 902px;
-  top: 216px;
+  display: flex;
+  margin: 10%;
+  width: 40%;
+  height: 40%;
+  left: 10%;
+  top: 10%;
   margin-top:1%;
 }
 

@@ -34,6 +34,7 @@
       <a href="#"><i class="uil uil-facebook-f"></i></a>
       <a href="#"><i class="uil uil-instagram"></i></a>
       <a href="#"><i class="uil uil-twitter"></i></a>
+      <a href="https://chat.whatsapp.com/CxJYIKpu0SzAYonNf4wzGa" target="_blank"><i class="uil uil-whatsapp"></i></a>
     </div>
 
     <div class="swiper bg-slider">

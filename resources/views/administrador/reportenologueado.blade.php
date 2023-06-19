@@ -15,90 +15,72 @@
         <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
     </head>
     <body class="hold-transition sidebar-mini">
-    @php
-        $id = $guardia['id'];
-        $nombre = $guardia['nombre'];    
-        $apellido = $guardia['apellido'];
-        $correo = $guardia['correo_electronico'];
-        $celular = $guardia['celular'];
-        $turno=$guardia['turno'];
-        $password = $guardia['password'];
-        $ci = $guardia['ci'];
-    @endphp
-
-    @include('guardia.navbar', ['id' => $id])
-    <aside class="control-sidebar control-sidebar-dark">
-        <div class="p-3">
-        <h5>Guardia: </h5>
-        <p>Esta es la vista para el guardia de apellido : {{$apellido}}</p>
-        </div>
-    </aside>
+        <div class="wrapper">
+        @include('administrador.navbar')
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <div class="container">
-            @include('guardia.msj') 
+                
             <!--INICIO CRUD -->
                 <div class="container-xl">
-                <div class="table-responsive">
-                    <div class="table">
+                    <div class="table-responsive">
                         <div class="table-wrapper">
                             <div class="table-title">
                                 <div class="row">
-                                    <div class="col-sm-8"><h2><b>Lista de Reservas</b></h2></div>
+                                    <div class="col-sm-8"><h2><b>Ingresos y Salidas de vehiculos no Registrados</b></h2></div>
                                 </div>
                             </div>
-                            <form action="{{ route('buscar5', ['id' => $guardia->id]) }}" method="POST">
-                            @csrf
-                                <input class="cajab" type="text" name="reserva" placeholder="Ingrese nombre o apellido o ci">
-                                <input class="cajab" type="date" style="width: 20%;" name="fecha_inicio">
-                                <input class="cajab" type="date" style="width: 20%;" name="fecha_fin">
-                                <button class="button" type="submit">Buscar</button>
-                            </form>
-                            <table class="table table-bordered">
+                            <!--<form action="/administrador/reporte" method="GET">
+    <div class="form-group">
+        <label for="fecha_hora_ingreso">Fecha de inicio:</label>
+        <input type="datetime-local" name="fecha_hora_ingreso" class="form-control" value="{{ request('fecha_hora_ingreso') }}">
+    </div>
+    <div class="form-group">
+        <label for="fecha_hora_salida">Fecha de fin:</label>
+        <input type="datetime-local" name="fecha_hora_salida" class="form-control" value="{{ request('fecha_hora_salida') }}">
+    </div>
+    <button type="submit" class="btn btn-primary">Buscar</button>
+</form>-->
+<form action="{{ route('buscar2') }}" method="POST">
+    @csrf
+    <input class="cajab" type="text" name="placa" placeholder="Ingrese la placa">
+    <input class="cajab" type="date" name="fecha_inicio">
+    <input class="cajab" type="date" name="fecha_fin">
+    <button class="button" type="submit">Buscar</button>
+    <a class="button" href="{{url ('/administrador/reporte')}}">Clientes registrados</a>
+</form>
+                            @php 
+                                $counter = 1;
+                            @endphp
+                            <table class="table table-bordered" id="table table-bordered">
                             <thead>
                                     <tr>
-                                        <th class = text-center >Codigo de reserva</th>
-                                        <th class = text-center >Fecha Ingreso:</th>
-                                        <th class = text-center >Fecha Salida:</th>
-                                        <th class = text-center >Horas:</th>
-                                        <th class = text-center >Nombre:</th>
-                                        <th class = text-center >Apellido:</th>
-                                        <th class = text-center >Ci:</th>
-                                        <th class = text-center >Sitio:</th>
+                                        <th class = text-center >#</th>
+                                        <th class = text-center >Fecha y Hora de Ingreso</th>
+                                        <th class = text-center >Hora Salida</th>
+                                        <th class = text-center >Placa</th>
+                                        <th class = text-center >Tiempo Estacionado</th>
+                                        <th class = text-center >Monto Cobrado</th>
                                     </tr>
                                 </thead>
-                                @foreach($result as $reserva)
+                                @foreach($result as $ingreso)
                                     <tr>
-                                        <td class = text-center>{{$counter}}</td>
+                                    <td class = text-center>{{$counter}}</td>
                                         @php 
                                             $counter=$counter +1;
-
-                                            
-                                            $fechaHoraSalida = strtotime($reserva->fecha_salida . ' ' . $reserva->hora_salida);
-                                            $fechaHoraIngreso = strtotime($reserva->fecha_ingreso . ' ' . $reserva->hora_ingreso);
-                                            $ahora_timestamp = time();
-
-                                            if ($fechaHoraSalida < $ahora_timestamp) {
-                                                @endphp
-                                                <td class = text-center>Finalizado</td>
-                                                @php
-                                                //echo "La fecha ya ha pasado.";
-                                            } else if($fechaHoraIngreso > $ahora_timestamp){
-                                                @endphp
-                                                <td class = text-center>Sin iniciar</td>
-                                                @php
-                                                //echo "La fecha Inicio aun no ha llegado.";
-                                            }else{
-                                                @endphp
-                                                <td class = text-center>En Curso</td>
-                                                @php
-                                                //echo "La fecha Fin aún no ha llegado.";
-                                            }                                               
                                         @endphp
+                                        <td class = text-center>{{$ingreso->fecha_hora_ingreso}}</td>
+                                        <td class = text-center>{{$ingreso->fecha_hora_salida}}</td>
+                                        <td class = text-center>{{$ingreso->placa}}</td>
+                                        <td style="text-align:center;" class="diferencia-horas"></td>
+                                        <td style="text-align:center;" class="monto"></td>
+                                    </tr>
+                                    @endforeach
+                                
                             </table>
                             <img src="{{ asset('/img/parqueo1.png') }}">
-                        </div>
+                            <a class="button" href="{{url ('/administrador/reportegeneral')}}">Atras</a>
                         </div>
                     </div>  
                 </div>
@@ -113,6 +95,20 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
         <!-- AdminLTE App -->
         <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+        <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var filas = document.querySelectorAll("tbody tr");
+        filas.forEach(function(fila) {
+            var fecha_hora_ingreso = new Date(fila.cells[1].textContent);
+            var fecha_hora_salida = new Date(fila.cells[2].textContent);
+            var diferenciaHoras = Math.abs(fecha_hora_salida - fecha_hora_ingreso) /60000;
+            var diferenciaHoras2 =Math.abs(fecha_hora_salida - fecha_hora_ingreso)/3600000;
+            var monto=Math.abs(diferenciaHoras2*6);
+            fila.querySelector(".diferencia-horas").textContent = diferenciaHoras.toFixed(0) +" Min";
+            fila.querySelector(".monto").textContent = monto.toFixed(2) +" Bs";
+        });
+    });
+</script>
     </body>
 
 <style>
@@ -177,6 +173,23 @@ img {
     margin-left: 81%;
     margin-bottom: -1%;
 }
+td img{
+    width: 50%;
+    height:50%;
+    margin-top: 1%;
+    margin-left: 10%;
+    margin-bottom:-2%;
+}
+.imag{
+    width: 100px;
+    height: 50px;
+}
+.form-group {
+  display: inline-block;
+  width: 35vw; 
+  height: auto;
+  text-align: center;
+}
 .button {
   display: inline-block;
   padding:10px;
@@ -194,7 +207,7 @@ img {
 }
 .cajab{
     position: relative;
-    width: 30%;
+    width: 20%;
     left: 2%;
     margin-top: 2%;
     text-align: center;

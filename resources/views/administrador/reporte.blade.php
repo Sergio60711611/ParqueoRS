@@ -15,21 +15,22 @@
         <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
     </head>
     <body class="hold-transition sidebar-mini">
-    @include('administrador.navbar')
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper" style="background-color:#D9D9D9;  padding: 20px;">
-                <div class="container container-blanco">
-              
+        <div class="wrapper">
+        @include('administrador.navbar')
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <div class="container">
+                
             <!--INICIO CRUD -->
                 <div class="container-xl">
                     <div class="table-responsive">
                         <div class="table-wrapper">
                             <div class="table-title">
                                 <div class="row">
-                                    <div class="col-sm-8"><h2><b>Sitio</b></h2></div>
+                                    <div class="col-sm-8"><h2><b>Ingresos y Salidas de vehiculos Registrados</b></h2></div>
                                 </div>
                             </div>
-                            <form action="/administrador/reporte" method="GET">
+                            <!--<form action="/administrador/reporte" method="GET">
     <div class="form-group">
         <label for="fecha_hora_ingreso">Fecha de inicio:</label>
         <input type="datetime-local" name="fecha_hora_ingreso" class="form-control" value="{{ request('fecha_hora_ingreso') }}">
@@ -39,8 +40,18 @@
         <input type="datetime-local" name="fecha_hora_salida" class="form-control" value="{{ request('fecha_hora_salida') }}">
     </div>
     <button type="submit" class="btn btn-primary">Buscar</button>
+</form>-->
+<form action="{{ route('buscar') }}" method="POST">
+    @csrf
+    <input class="cajab" type="text" name="placa" placeholder="Ingrese la placa">
+    <input class="cajab" type="date" name="fecha_inicio">
+    <input class="cajab" type="date" name="fecha_fin">
+    <button class="button" type="submit">Buscar</button>
+    <a class="button" href="{{url ('/administrador/reportenologueado')}}">Clientes no registrados</a>
 </form>
-
+                            @php 
+                                $counter = 1;
+                            @endphp
                             <table class="table table-bordered" id="table table-bordered">
                             <thead>
                                     <tr>
@@ -54,7 +65,10 @@
                                 </thead>
                                 @foreach($result as $ingreso)
                                     <tr>
-                                        <td class = text-center>{{$ingreso->id}}</td>
+                                    <td class = text-center>{{$counter}}</td>
+                                        @php 
+                                            $counter=$counter +1;
+                                        @endphp
                                         <td class = text-center>{{$ingreso->fecha_hora_ingreso}}</td>
                                         <td class = text-center>{{$ingreso->fecha_hora_salida}}</td>
                                         <td class = text-center>{{$ingreso->placa}}</td>
@@ -65,6 +79,7 @@
                                 
                             </table>
                             <img src="{{ asset('/img/parqueo1.png') }}">
+                            <a class="button" href="{{url ('/administrador/reportegeneral')}}">Atras</a>
                         </div>
                     </div>  
                 </div>
@@ -173,6 +188,28 @@ td img{
   width: 35vw; 
   height: auto;
   text-align: center;
+}
+.button {
+  display: inline-block;
+  padding:10px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color:#2A4858;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom:10px;
+  margin-left: 5%;
+}
+.cajab{
+    position: relative;
+    width: 20%;
+    left: 2%;
+    margin-top: 2%;
+    text-align: center;
 }
 </style>
 </html>

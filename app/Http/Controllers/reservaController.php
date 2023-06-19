@@ -908,24 +908,6 @@ class reservaController extends Controller
             return false;
         }
     }
-    public function verificarSePuedeReservaDiaria($fecha_ingreso, $hora_ingreso, $horas1, $id_sitio)
-    {
-        $dataTimeFecha = Carbon::parse($fecha_ingreso . ' ' . $hora_ingreso);
-                    
-        $horaIngresoR = Carbon::parse($hora_ingreso);
-        $horasR = $horas1;
-        $horaNuevaR = $horaIngresoR->addHours($horasR);
-        $horaFormateadaR = $horaNuevaR->format('H:i:s');
-        $dataTimeFechaSalida = Carbon::parse($fecha_ingreso . ' ' . $horaFormateadaR);
-
-        $hay = $this->hayEventos($dataTimeFecha, $dataTimeFechaSalida, $id_sitio);
-
-        if($hay){
-            return false;
-        }else{
-            return true;
-        }
-    }
 
     //CLIENTE
     public function storeDiarioCli(Request $request)
@@ -3015,4 +2997,42 @@ class reservaController extends Controller
             }
         }
     }
+
+    public function tablareservas($id){
+        $guardia = Guardia::find($id);
+        $result = reserva::join('cliente', 'reserva.id_cliente', '=', 'cliente.id')
+        ->select('reserva.id', 'reserva.fecha_ingreso', 'reserva.fecha_salida', 'reserva.hora_ingreso', 'reserva.hora_salida','reserva.id_sitio', 'cliente.nombre', 'cliente.apellido', 'cliente.ci')
+        ->get();
+  
+        return view('guardia.reservas',  compact('result','guardia'));
+    }
+    public function buscar5($id, Request $request)
+{
+    $guardia = Guardia::find($id);
+    $cliente = $request->input('reserva');
+    $fechaInicio = $request->input('fecha_inicio');
+    $fechaFin = $request->input('fecha_fin');
+
+    $query = reserva::join('cliente', 'reserva.id_cliente', '=', 'cliente.id')
+        ->select('reserva.id', 'reserva.fecha_ingreso', 'reserva.fecha_salida', 'reserva.hora_ingreso', 'reserva.hora_salida', 'reserva.id_sitio', 'cliente.nombre', 'cliente.apellido', 'cliente.ci');
+
+    if (!empty($cliente)) {
+        $query->where(function ($q) use ($cliente) {
+            $q->where('cliente.nombre', 'like', '%' . $cliente . '%')
+                ->orWhere('apellido', 'like', '%' . $cliente . '%')
+                ->orWhere('ci', 'like', '%' . $cliente . '%');
+        });
+    }
+
+    if (!empty($fechaInicio) && !empty($fechaFin)) {
+        $query->whereDate('reserva.fecha_ingreso', '>=', $fechaInicio)
+            ->whereDate('reserva.fecha_salida', '<=', $fechaFin);
+    }
+
+    $result = $query->get();
+
+    return view('guardia.reservas', compact('result', 'guardia'));
+}
+
+
 }

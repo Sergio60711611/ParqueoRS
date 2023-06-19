@@ -77,7 +77,15 @@ class parqueoController extends Controller
             return redirect('/administrador/mapeoParqueo')->with('msjdelete', 'El sitio: '.$cantSitios.' se encuentra Reservado.');
         } 
     }
+public function calcularCantidadHoras($fechaInicio, $fechaFin)
+{
+    $fechaHoraInicio = Carbon::createFromFormat('Y-m-d H:i:s', $fechaInicio);
+    $fechaHoraFin = Carbon::createFromFormat('Y-m-d H:i:s', $fechaFin);
 
+    $diferenciaHoras = $fechaHoraInicio->diffInHours($fechaHoraFin);
+
+    return $diferenciaHoras;
+}
     public function storeIngreso(Request $request)
     {   
         $tipoCli = $request->input('selectOpcion');
@@ -97,7 +105,7 @@ if (count($vehiculos) === 0) {
         if ($reserva) {
             $fechaHoraIngreso = Carbon::createFromFormat('Y-m-d H:i:s', $reserva->fecha_ingreso . ' ' . $reserva->hora_ingreso);
             $fechaHoraSalida = Carbon::createFromFormat('Y-m-d H:i:s', $reserva->fecha_salida . ' ' . $reserva->hora_salida);
-            $cantidadHoras = $reserva->cantidad_de_horas;
+            $cantidadHoras = $this->calcularCantidadHoras($fechaHoraIngreso, $fechaHoraSalida);
 
             if ($request->id_sitio != $reserva->id_sitio) {
                 return redirect('/administrador/mapeoParqueo')->with('msjdelete', 'El sitio seleccionado no coincide con la reserva');
@@ -214,51 +222,55 @@ if (count($vehiculos) === 0) {
             $placaVehiculo = $request->placaVehiculo;
 $vehiculos = Vehiculo::where('placa', $placaVehiculo)->get();
 
-
-// Verificar los datos enviados en el formulario
-dd($request->all());
-
 if (count($vehiculos) === 0) {
-    return redirect('/guardia/'.($idGu).'/mapeoParqueo')->with(compact('guardia'))->with('msjdelete', 'La placa '.$placaVehiculo.' No se encuentra registrada');
+    return redirect('/administrador/mapeoParqueo')->with('msjdelete', 'La placa '.$placaVehiculo.' no se encuentra registrada');
 } else {
-    $now = Carbon::now();
+    try {
+        $now = Carbon::now();
 
-    $reserva = Reserva::find($request->id_reserva);
+        $reserva = Reserva::find($request->id_reserva);
 
-    if ($reserva) {
-        $fechaHoraIngreso = Carbon::createFromFormat('Y-m-d H:i', $reserva->fecha_ingreso . ' ' . $reserva->hora_ingreso);
-        $fechaHoraSalida = Carbon::createFromFormat('Y-m-d H:i', $reserva->fecha_salida . ' ' . $reserva->hora_salida);
+        if ($reserva) {
+            $fechaHoraIngreso = Carbon::createFromFormat('Y-m-d H:i:s', $reserva->fecha_ingreso . ' ' . $reserva->hora_ingreso);
+            $fechaHoraSalida = Carbon::createFromFormat('Y-m-d H:i:s', $reserva->fecha_salida . ' ' . $reserva->hora_salida);
+            $cantidadHoras = $this->calcularCantidadHoras($fechaHoraIngreso, $fechaHoraSalida);
 
-// Imprimir las variables
-dd($now, $fechaHoraIngreso, $fechaHoraSalida);
+            if ($request->id_sitio != $reserva->id_sitio) {
+                return redirect('/administrador/mapeoParqueo')->with('msjdelete', 'El sitio seleccionado no coincide con la reserva');
+            }
 
-        if ($now >= $fechaHoraIngreso && $now <= $fechaHoraSalida) {
-            $ingreso = new Ingreso();
-            $ingreso->estado_ingreso = "Pendiente";
-            $ingreso->fecha_hora_ingreso = $now;
-            $ingreso->id_sitio = $request->id_sitio;
-            $ingreso->id_vehiculo = $vehiculos[0]->id;
-            $ingreso->id_reserva = $request->id_reserva;
-            $ingreso->save();
+            if ($now >= $fechaHoraIngreso && $now <= $fechaHoraSalida) {
+                $ingreso = new Ingreso();
+                $ingreso->estado_ingreso = "Pendiente";
+                $ingreso->fecha_hora_ingreso = $now;
+                $ingreso->id_sitio = $request->id_sitio;
+                $ingreso->id_vehiculo = $vehiculos[0]->id;
+                $ingreso->id_reserva = $request->id_reserva;
+                $ingreso->cantidad_horas = $cantidadHoras;
+                $ingreso->save();
 
-            $sitio = Sitio::findOrFail($request->id_sitio);
-            $sitio->estado = "Ocupado";
-            $sitio->save();
+                $sitio = Sitio::findOrFail($request->id_sitio);
+                $sitio->estado = "Ocupado";
+                $sitio->save();
 
-            $salida = new Salida();
-            $salida->estado_salida = "Pendiente";
-            $salida->fecha_hora_salida = $now;
-            $salida->id_ingreso = $ingreso->id;
-            $salida->save();
+                $salida = new Salida();
+                $salida->estado_salida = "Pendiente";
+                $salida->fecha_hora_salida = $now;
+                $salida->id_ingreso = $ingreso->id;
+                $salida->save();
 
-            return redirect('/guardia/'.($idGu).'/mapeoParqueo')->with(compact('guardia'))->with('message', 'Ingreso de cliente Logueado registrado correctamente');
+                return redirect('/guardia/'.($idGu).'/mapeoParqueo')->with('message', 'Ingreso de cliente logueado registrado correctamente');
+            } else {
+                return redirect('/guardia/'.($idGu).'/mapeoParqueo')->with('msjdelete', 'El ingreso está fuera del rango permitido para esta reserva');
+            }
         } else {
-            return redirect('/guardia/'.($idGu).'/mapeoParqueo')->with(compact('guardia'))->with('msjdelete', 'El ingreso está fuera del rango permitido para esta reserva');
+            return redirect('/guardia/'.($idGu).'/mapeoParqueo')->with('msjdelete', 'La reserva no existe');
         }
-    } else {
-        return redirect('/guardia/'.($idGu).'/mapeoParqueo')->with(compact('guardia'))->with('msjdelete', 'La reserva no existe');
+    } catch (Exception $e) {
+        dd($e->getMessage());
     }
 }
+
         }else if($tipoCli == 2){
             $validation= $request->validate([
                 'nombreCli' => 'required | min:3 | max: 30',

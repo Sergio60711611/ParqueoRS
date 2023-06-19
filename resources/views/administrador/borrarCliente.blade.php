@@ -41,11 +41,11 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="">Nombres</label>
-                                        <input type="text" class="form-control" id="nombres" name="nombres" value="{{$cliente->nombres}}" disabled>
+                                        <input type="text" class="form-control" id="nombres" name="nombres" value="{{$cliente->nombre}}" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label for="">Apellidos</label>
-                                        <input type="text" class="form-control" id="apellidos" name="apellidos" value="{{$cliente->apellidos}}" disabled>
+                                        <input type="text" class="form-control" id="apellidos" name="apellidos" value="{{$cliente->apellido}}" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label for="">Ci</label>
@@ -53,7 +53,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="">Correo</label>
-                                        <input type="email" class="form-control" id="correo" name="correo" value="{{$cliente->correo}}" disabled>
+                                        <input type="email" class="form-control" id="correo" name="correo" value="{{$cliente->correo_electronico}}" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label for="">Celular</label>
