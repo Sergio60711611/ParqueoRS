@@ -77,7 +77,15 @@ class parqueoController extends Controller
             return redirect('/administrador/mapeoParqueo')->with('msjdelete', 'El sitio: '.$cantSitios.' se encuentra Reservado.');
         } 
     }
+public function calcularCantidadHoras($fechaInicio, $fechaFin)
+{
+    $fechaHoraInicio = Carbon::createFromFormat('Y-m-d H:i:s', $fechaInicio);
+    $fechaHoraFin = Carbon::createFromFormat('Y-m-d H:i:s', $fechaFin);
 
+    $diferenciaHoras = $fechaHoraInicio->diffInHours($fechaHoraFin);
+
+    return $diferenciaHoras;
+}
     public function storeIngreso(Request $request)
     {   
         $tipoCli = $request->input('selectOpcion');
@@ -97,7 +105,7 @@ if (count($vehiculos) === 0) {
         if ($reserva) {
             $fechaHoraIngreso = Carbon::createFromFormat('Y-m-d H:i:s', $reserva->fecha_ingreso . ' ' . $reserva->hora_ingreso);
             $fechaHoraSalida = Carbon::createFromFormat('Y-m-d H:i:s', $reserva->fecha_salida . ' ' . $reserva->hora_salida);
-            $cantidadHoras = $reserva->cantidad_de_horas;
+            $cantidadHoras = $this->calcularCantidadHoras($fechaHoraIngreso, $fechaHoraSalida);
 
             if ($request->id_sitio != $reserva->id_sitio) {
                 return redirect('/administrador/mapeoParqueo')->with('msjdelete', 'El sitio seleccionado no coincide con la reserva');
