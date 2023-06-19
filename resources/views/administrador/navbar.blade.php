@@ -106,7 +106,7 @@
                         <li class="nav-item">
                             <a href="/administrador/mensaje" class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px; ">
                             <i class="nav-icon far fa-envelope"></i>
-                            <p>Mensaje <i class="right fas fa-angle-left"></i></p>
+                            <p>Mensaje</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -146,7 +146,7 @@
                         </li>
                         
                         <li class="nav-item">
-                            <a href=".." class="nav-link active" style="background-color: #FD968E; color:#324855; margin-top: 3px;">
+                            <a href="/" class="nav-link active" style="background-color: #FD968E; color:#324855; margin-top: 3px;">
                             <i class="nav-icon fas fa-sign-out-alt"></i>
                             <p>Cerrar Sesion</p>
                             </a>
