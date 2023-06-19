@@ -44,6 +44,9 @@
                     <div class="table">
                         <div class="table-wrapper">
                             <div class="table-title">
+                            @php 
+                                    $counter = 1;
+                            @endphp
                                 <div class="row">
                                     <div class="col-sm-8"><h2><b>Lista de Reservas</b></h2></div>
                                 </div>
@@ -59,12 +62,11 @@
                             <thead>
                                     <tr>
                                         <th class = text-center >Codigo de reserva</th>
+                                        <th class = text-center >Estado</th>
                                         <th class = text-center >Fecha Ingreso:</th>
                                         <th class = text-center >Fecha Salida:</th>
                                         <th class = text-center >Horas:</th>
-                                        <th class = text-center >Nombre:</th>
-                                        <th class = text-center >Apellido:</th>
-                                        <th class = text-center >Ci:</th>
+                                        <th class = text-center >Cliente:</th>
                                         <th class = text-center >Sitio:</th>
                                     </tr>
                                 </thead>
@@ -96,6 +98,14 @@
                                                 //echo "La fecha Fin aún no ha llegado.";
                                             }                                               
                                         @endphp
+
+                                        <td class = text-center>{{$reserva->fecha_ingreso}}</td>
+                                        <td class = text-center>{{$reserva->fecha_salida}}</td>
+                                        <td class = text-center>{{$reserva->cantidad_de_horas}}</td>
+                                        <td class = text-center>{{$reserva->id_cliente}}</td>
+                                        <td class = text-center>{{$reserva->id_sitio}}</td>
+                                    </tr>
+                                    @endforeach
                             </table>
                             <img src="{{ asset('/img/parqueo1.png') }}">
                         </div>
