@@ -46,6 +46,12 @@
                         {{csrf_field()}}
                                 <hr>
                                 <div class="form-group" style="text-align: left;">
+                                    <input type="hidden" class="form-control" name="plan" id = "plan" value="{{$plan}}"></input>
+                                </div>
+                                <div class="form-group" style="text-align: left;">
+                                    <input type="hidden" class="form-control" name="horas" id = "horas" value="{{$horas}}"></input>
+                                </div>
+                                <div class="form-group" style="text-align: left;">
                                     <input type="hidden" class="form-control" name="id_sitio" id = "id_sitio" value="{{$espacio}}"></input>
                                 </div>
                                 <div class="form-group" style="text-align: left;">
