@@ -86,7 +86,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{url ('/cliente/'. $id2 .'/reservas')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
+                            <a href="{{url ('/cliente/'. $id2 .'/info/reservas')}}"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
                             <i class="nav-icon fas fa-calendar-check"></i>
                             <p>Mis Reservas</p>
                             </a>
