@@ -15,35 +15,108 @@
         <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
     </head>
     <body class="hold-transition sidebar-mini">
-    @include('administrador.navbar')
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper" style="background-color:#D9D9D9;  padding: 20px;">
-                <div class="container container-blanco">
-<!--INICIO CRUD -->
-<div class="container-xl">
+        <div class="wrapper">
+        @include('administrador.navbar')
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <div class="container">
+            <!--INICIO CRUD -->
+                <div class="container-xl">
                     <div class="table-responsive">
                         <div class="table-wrapper">
                             <div class="table-title">
-                                <div class="row">
-                                    <div class="col-sm-8"><h2><b>Ingresos</b></h2></div>
+                            <div class="row">
+                                    <div class="col-sm-8"><h2><b>Reporte de ingresos</b></h2></div>
                                 </div>
                             </div>
+                            <form action="{{ route('buscar3') }}" method="GET">
+   
+    <input class="cajab" type="text" name="sitio" placeholder="Ingrese el sitio">
+    <input class="cajab" type="date" name="fecha_inicio">
+    <input class="cajab" type="date" name="fecha_fin">
+    <button class="button" type="submit">Buscar</button>
+</form>
+<div class="row">
+                                    <div class="col-sm-8"><h2><b>Clientes registrados</b></h2></div>
+                                </div>
+
                             <table class="table table-bordered" id="table table-bordered">
                             <thead>
                                     <tr>
                                         <th class = text-center >#</th>
-                                        <th class = text-center >Ingresos</th>
+                                        <th class = text-center >Sitio</th>
+                                        <th class = text-center >Fecha de Pago</th>
+                                        <th class = text-center >Monto</th>
                                     </tr>
                                 </thead>
-                                @foreach($pago as $pago)
+                                @php
+                                $totalMonto = 0;
+                                @endphp
+                                @foreach($result as $pago)
                                     <tr>
                                         <td class = text-center>{{$pago->id}}</td>
-                                        <td class = text-center>{{$pago->monto_pagado}} Bs</td>
+                                        <td class = text-center>{{$pago->nro_sitio}}</td>
+                                        <td class = text-center>{{$pago->fecha_pago}}</td>
+                                        <td class = text-center>{{$pago->monto_pagado}}</td>
                                     </tr>
+                                    <?php
+                                        $totalMonto += $pago->monto_pagado;
+                                        ?>
+                                        </tr>
                                     @endforeach
+                                    <tr>
+                                    <td class="text-right" colspan="3">Total Monto:</td>
+                                    <td class="text-center">{{ $totalMonto }}</td>
+                                    </tr>
+                                    </table>
                                 
+                                <table class="table table-bordered" id="table table-bordered">
+                                <div class="col-sm-8"><h2><b>Clientes no registrados</b></h2></div>
+                                    <thead>
+                                    <tr>
+                                        <th class = text-center >#</th>
+                                        <th class = text-center >Sitio</th>
+                                        <th class = text-center >Fecha de Pago</th>
+                                        <th class = text-center >Monto</th>
+                                    </tr>
+                                
+                                </thead>
+                                @php
+                                $totalMonto2 = 0;
+                                @endphp
+                                @foreach($results as $pagos)
+                                    
+                                    <tr>
+                                        <td class = text-center>{{$pagos->id}}</td>
+                                        <td class = text-center>{{$pagos->nro_sitio}}</td>
+                                        <td class = text-center>{{$pagos->fecha_ingreso}}</td>
+                                        <td class = text-center>{{$pagos->monto}}</td>
+                                        <?php
+                                        $totalMonto2 += $pagos->monto;
+                                        ?>
+                                        </tr>
+                                    @endforeach
+                                    <tr>
+                                    <td class="text-right" colspan="3">Total Monto:</td>
+                                    <td class="text-center">{{ $totalMonto2 }}</td>
+                                    </tr>
+                                    @php
+                                    $totalMontoTotal = 0;
+                                    @endphp
+                                    <!-- Calcular la suma total de montos de ambas tablas-->
+                                    <?php
+                                    $totalMontoTotal = $totalMonto + $totalMonto2;
+                                    ?>
+                                    <tr>
+                                    <td class="text-right" colspan="3">Monto total parqueo:</td>
+                                    <td class="text-center">{{ $totalMontoTotal }}</td>
+                                    </tr>
+
+
                             </table>
                             <img src="{{ asset('/img/parqueo1.png') }}">
+                            <a class="button" href="{{url ('/administrador/reportegeneral')}}">Atras</a>
                         </div>
                     </div>  
                 </div>
@@ -138,6 +211,28 @@ td img{
   width: 35vw; 
   height: auto;
   text-align: center;
+}
+.button {
+  display: inline-block;
+  padding:10px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color:#2A4858;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom:10px;
+  margin-left: 5%;
+}
+.cajab{
+    position: relative;
+    width: 20%;
+    left: 2%;
+    margin-top: 2%;
+    text-align: center;
 }
 </style>
 </html>

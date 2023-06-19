@@ -61,8 +61,7 @@ Route::get('/administrador/borrarGuardia/{id}', 'App\Http\Controllers\guardiaCon
 
 Route::get('/administrador/mensaje', 'App\Http\Controllers\mensajeController@Index');
 
-Route::get('/administrador/reporte',"App\Http\Controllers\ingresoController@reporte");
-Route::get('/administrador/reportess',"App\Http\Controllers\pagoController@tabla");
+
 //pagoscontrollers
 //Route::get('/administrador/pagos2',"App\Http\Controllers\PagosController@PController");
 Route::get('/pagos', function () {return view('pagosqr.pagos');})->name('pagosqr.pagos');
@@ -103,7 +102,20 @@ Route::get('/administrador/borrarPreguntas/{id}',"App\Http\Controllers\Preguntas
 Route::get('/guardia/{id}/preguntas',"App\Http\Controllers\PreguntasFrecuentesController@createListaG");
 Route::get('/guardia/{id}/agregarPreguntas',"App\Http\Controllers\PreguntasFrecuentesController@createAgregarG");
 
-Route::get('/administrador/reportes',"App\Http\Controllers\peticionController@createLista");
+Route::get('/administrador/reportegeneral',"App\Http\Controllers\\reportesController@see");
+
+Route::get('/administrador/reporte',"App\Http\Controllers\\reportesController@reporte");
+Route::post('/administrador/reporte', 'App\Http\Controllers\\reportesController@buscar')->name('buscar');
+
+Route::get('/administrador/reportenologueado',"App\Http\Controllers\\reportesController@reporte2");
+Route::post('/administrador/reportenologueado', 'App\Http\Controllers\\reportesController@buscar2')->name('buscar2');
+
+Route::get('/administrador/reportes',"App\Http\Controllers\\reportesController@reporte3");
+Route::post('/administrador/reportes', 'App\Http\Controllers\\reportesController@buscar3')->name('buscar1');
+
+
+Route::get('/administrador/reportess',"App\Http\Controllers\\reportesController@reporte4");
+Route::get('/administrador/reportess', 'App\Http\Controllers\\reportesController@buscar4')->name('buscar3');
 
 Route::get('/cliente/{id}/info/reclamos', "App\Http\Controllers\clamosController@create")->name('reclamos.create');
 Route::post('/cliente/info/reclamos', "App\Http\Controllers\clamosController@store")->name('reclamos.store');

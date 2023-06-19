@@ -17,6 +17,7 @@
     <body class="hold-transition sidebar-mini">
         <div class="wrapper">
         @include('administrador.navbar')
+
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <div class="container">
@@ -27,7 +28,7 @@
                         <div class="table-wrapper">
                             <div class="table-title">
                                 <div class="row">
-                                    <div class="col-sm-8"><h2><b>Ingresos y Salidas de vehiculos Registrados</b></h2></div>
+                                    <div class="col-sm-8"><h2><b>Ingresos y Salidas de vehiculos no Registrados</b></h2></div>
                                 </div>
                             </div>
                             <!--<form action="/administrador/reporte" method="GET">
@@ -41,13 +42,13 @@
     </div>
     <button type="submit" class="btn btn-primary">Buscar</button>
 </form>-->
-<form action="{{ route('buscar') }}" method="POST">
+<form action="{{ route('buscar2') }}" method="POST">
     @csrf
     <input class="cajab" type="text" name="placa" placeholder="Ingrese la placa">
     <input class="cajab" type="date" name="fecha_inicio">
     <input class="cajab" type="date" name="fecha_fin">
     <button class="button" type="submit">Buscar</button>
-    <a class="button" href="{{url ('/administrador/reportenologueado')}}">Clientes no registrados</a>
+    <a class="button" href="{{url ('/administrador/reporte')}}">Clientes registrados</a>
 </form>
 
                             <table class="table table-bordered" id="table table-bordered">

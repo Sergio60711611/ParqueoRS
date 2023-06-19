@@ -138,30 +138,11 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
+                            <a href="/administrador/reportegeneral" class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
                             <i class="nav-icon fas fa-bullhorn"></i>
-                            <p>Reportes <i class="right fas fa-angle-left"></i></p>
+                            <p>Reportes</p>
                             </a>
-                            <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="/administrador/reportes" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>Clientes Registrados</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/administrador/reporte" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>Horas ingreso/salida</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                               <a href="/administrador/reportess" class="nav-link active" style="background-color: #395261; color:#FFFFFF">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>Ingresos</p>
-                                </a>
-                            </li>
-                            </ul>
+
                         </li>
                         
                         <li class="nav-item">
