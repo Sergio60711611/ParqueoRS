@@ -51,6 +51,8 @@
                             <form action="{{ route('buscar5', ['id' => $guardia->id]) }}" method="POST">
                             @csrf
                                 <input class="cajab" type="text" name="reserva" placeholder="Ingrese nombre o apellido o ci">
+                                <input class="cajab" type="date" style="width: 20%;" name="fecha_inicio">
+                                <input class="cajab" type="date" style="width: 20%;" name="fecha_fin">
                                 <button class="button" type="submit">Buscar</button>
                             </form>
                             <table class="table table-bordered">

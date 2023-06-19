@@ -3028,18 +3028,21 @@ class reservaController extends Controller
 {
     $guardia = Guardia::find($id);
     $cliente = $request->input('reserva');
-    
+    $fechaInicio = $request->input('fecha_inicio');
+    $fechaFin = $request->input('fecha_fin');
+
     $query = reserva::join('cliente', 'reserva.id_cliente', '=', 'cliente.id')
         ->select('reserva.id', 'reserva.fecha_ingreso', 'reserva.fecha_salida', 'reserva.hora_ingreso', 'reserva.hora_salida', 'reserva.id_sitio', 'cliente.nombre', 'cliente.apellido', 'cliente.ci');
 
     if (!empty($cliente)) {
-        $query->where(function ($q) use ($cliente) {
-            $q->where('cliente.nombre', 'like', '%' . $cliente . '%')
+        $query->where('cliente.nombre', 'like', '%' . $cliente . '%')
                 ->orWhere('cliente.apellido', 'like', '%' . $cliente . '%')
                 ->orWhere('cliente.ci', 'like', '%' . $cliente . '%');
-        });
-    }
-
+        }
+        if (!empty($fechaInicio) && !empty($fechaFin)) {
+            $query->whereBetween('reserva.fecha_ingreso', [$fechaInicio, $fechaFin])
+                  ->whereBetween('reserva.fecha_salida', [$fechaInicio, $fechaFin]);
+        }
     $result = $query->get();
 
     return view('guardia.reservas', compact('result', 'guardia'));
