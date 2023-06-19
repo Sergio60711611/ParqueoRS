@@ -80,7 +80,7 @@
                                     <option><strong>Madrugada(Lunes-Viernes)</strong>  (10:00 AM - 06:00 AM)</option>
                                     <option><strong>Sabado</strong>  (08:00 AM - 04:00 PM)</option>
                                 </select>
-                                <input type="hidden" class="turno" name="turno" id="turno"></input>
+                                <input type="hidden" class="turno" name="turno" id="turno" value="{{$guardia->turno}}"></input>
 
                                 </div>
                                 <!--
