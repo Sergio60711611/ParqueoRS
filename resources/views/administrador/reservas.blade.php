@@ -53,16 +53,17 @@
                                         @php 
                                             $counter=$counter +1;
 
-                                            $fecha_timestamp = strtotime($reserva->fecha_salida);
-                                            $fecha_timestamp2 = strtotime($reserva->fecha_ingreso);
+                                            
+                                            $fechaHoraSalida = strtotime($reserva->fecha_salida . ' ' . $reserva->hora_salida);
+                                            $fechaHoraIngreso = strtotime($reserva->fecha_ingreso . ' ' . $reserva->hora_ingreso);
                                             $ahora_timestamp = time();
 
-                                            if ($fecha_timestamp < $ahora_timestamp) {
+                                            if ($fechaHoraSalida < $ahora_timestamp) {
                                                 @endphp
                                                 <td class = text-center>Finalizado</td>
                                                 @php
                                                 //echo "La fecha ya ha pasado.";
-                                            } else if($fecha_timestamp2 > $ahora_timestamp){
+                                            } else if($fechaHoraIngreso > $ahora_timestamp){
                                                 @endphp
                                                 <td class = text-center>Sin iniciar</td>
                                                 @php
