@@ -86,7 +86,7 @@ class clientesController extends Controller
         $cliente->correo_electronico = $request->correo;
         $cliente->celular = $request->celular;
         $cliente->ci = $request->ci;
-        $cliente->password = $request->contraseña;
+        $cliente->password = $request->password;
 
         $cliente->save();
         return redirect('/administrador/clientes')->with('msjupdate', 'El cliente con ci ('.$request->ci.') Fue actualizado Correctamente.');
