@@ -1215,7 +1215,7 @@ class reservaController extends Controller
                     $fechaCarbon = Carbon::createFromFormat('Y-m-d', $fecha);
                     $fechaHoraIngresoR = $fechaCarbon->setTimeFrom($horaRR);
 
-                    $fechaHoraSalidaDiaria = $fechaHoraIngresoR->copy()->addHoursNoOverflow(5);;
+                    $fechaHoraSalidaDiaria = $fechaHoraIngresoR->copy()->addHoursNoOverflow(5);
 
                     for ($i = 0; $i < 30; $i++) {
                         if ($fechaHoraIngresoR->isSunday() || $fechaHoraIngresoR->isSaturday()) {
