@@ -94,31 +94,31 @@
                         @endif
 
                         <form action="{{ route('reclamos.store') }}" method="POST">
-                            @csrf
-                            <div class="card-body">
-                                <div class="form-row"></div>
-                                <div class="form-group">
-                                    <label for="mensaje">Mensaje:</label>
-                                    <textarea name="mensaje" id="mensaje" placeholder="Escriba su mensaje de reclamos/sugerencias" class="form-control" rows="5" required></textarea>
-                                </div>
-                                <div class="form-group2">
-                                    <button type="submit" class="btn btn-primary" id="btn_enviar" style="background-color:#53A790; border-color:#53A790;">Enviar</button>
-                                </div>
+                        @csrf
+                        <div class="card-body">
+                            <div class="form-row"></div>
+                            <div class="form-group">
+                                <label for="mensaje">Mensaje:</label>
+                                <textarea name="mensaje" id="mensaje" placeholder="Escriba su mensaje de reclamos/sugerencias" class="form-control" rows="5" required></textarea>
                             </div>
-                            <img src="{{ secure_asset('img/sugerencias.png') }}">
-                        </form>
-                    </div>
-                    <!-- /.content-wrapper -->
+                            <div class="form-group2">
+                                <button type="submit" class="btn btn-primary" id="btn_enviar" style="background-color:#53A790; border-color:#53A790;">Enviar</button>
+                            </div>
+                        </div>
+                        <img src="{{ secure_asset('img/sugerencias.png') }}">
+                    </form>
                 </div>
+                <!-- /.content-wrapper -->
             </div>
         </div>
-        <!-- jQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <!-- Bootstrap 4 -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-        <!-- AdminLTE App -->
-        <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
     </div>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+</div>
 </div>
 </body>
 </html>
