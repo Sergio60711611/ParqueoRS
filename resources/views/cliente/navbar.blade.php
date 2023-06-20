@@ -31,7 +31,7 @@
                 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color:#324855">
                     <!-- Brand Logo -->
                     <a href="{{url ('/cliente/'. $id2 .'/home')}}" class="brand-link"  style="margin-top: 5px; margin-bottom: 5px;" >
-                    <img src="{{ asset('/img/logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                    <img src="{{ secure_asset('/img/logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                     <span class="brand-text font-weight-light">Radiador Springs</span>
                     </a>
                     <!-- inicio-sidebar -->
