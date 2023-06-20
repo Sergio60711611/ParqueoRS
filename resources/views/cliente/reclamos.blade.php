@@ -93,7 +93,8 @@
                             </div>
                         @endif
 
-                        <form action="{{ route('reclamos.store') }}" method="POST">
+                        <form action="{{ secure_url('reclamos/store') }}" method="POST">
+
                         @csrf
                         <div class="card-body">
                             <div class="form-row"></div>
