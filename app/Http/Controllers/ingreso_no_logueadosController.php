@@ -28,8 +28,7 @@ class ingreso_no_logueadosController extends Controller
         ->orWhere('nombre','LIKE','%'.$texto.'%')
         ->orWhere('apellido','LIKE','%'.$texto.'%')
         ->orWhere('placa','LIKE','%'.$texto.'%')
-        ->orderBy('apellido','asc')
-        ->paginate(5);
+        ->orderBy('apellido','asc');
         return view('administrador.clientesnologueados',compact('lista','texto'));
     }
 
