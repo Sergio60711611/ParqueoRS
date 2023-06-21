@@ -67,18 +67,22 @@
                                 @endif
                             </tbody>
                         </table>
-                        {{$clientes->links()}}
+                        <div class="pagination-container">
+                           <!-- Renderizado de los enlaces de paginación -->
+                            {{ $clientes->links() }}
+                        </div>
                     <!--Formulario-->
+                    <div class="box">
                         <form class="formulario2">
                             {{csrf_field()}}
-                                <div class="celular">
+                                <div class="form-group">
                                 <label class = "celularr" name="ccelular" id="ccelular" for="">Celular<font color="red">*</font></label>
                                 <input type="text" class="ccelular" id="txt_celular" name="celularr" placeholder="Ingrese el celular ejm(591xxxxxxx)"></input>
                                 @error('celularr')
                                 <p1 class="error-message">{{ $message }}</p1>
                                 @enderror
                                 </div>
-                                <div class="mensaje">
+                                <div class="form-group">
                                 <label class = "mensajee" for="">Mensaje*</label>
                                 <input type="text" class="cmensaje" id="txt_documento" name="mensajee" placeholder="Ingrese el mensaje a enviar"></input>
                                 @error('mensajee')
@@ -88,7 +92,10 @@
                             <button type="submit"  class="boton" id = "btn_notificar">Enviar</button>
                             <a href="/administrador/home" class="boton">Cancelar</a>
                             </form>
-                            <img class = "auto" src="{{ asset('/img/parqueo3.jpg') }}" alt="">                    
+                            </div>
+                            <div class="imag">
+                            <img class = "auto" src="{{ asset('/img/parqueo3.jpg') }}" alt="">  
+                            </div>                  
                             </div>
                 </div>
                 </div>
@@ -243,11 +250,16 @@ h2{
     margin-bottom: 0%;
     color: white;
 }
+.imag{
+    width:100%;
+    margin-left: 80%; 
+}
 
 .auto{
-    left: 80%;
+    left: 10%;
     width: 15%;
     top: 75%;
+    margin-bottom: 4%;
 }
 .cajab{
     position: relative;
@@ -255,11 +267,6 @@ h2{
     left: 2%;
     margin-top: 2%;
     text-align: center;
-}
-
-.celular{
-    position: relative;
-    left: 2%;
 }
 .ccelular{
     left: 5%;
@@ -317,6 +324,10 @@ h2{
     margin-top: 2%;
     margin-bottom: 20px;
     
+}
+.box{
+    width:100%;
+    margin-left:2%;
 }
 .botons {
     display: inline-block;
@@ -397,7 +408,35 @@ thead th, tbody th, tbody td {
   
   border: 3px solid #53A790;
 }
-    
+    /* Ejemplo de estilos CSS para la paginación */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+}
+
+.pagination li {
+    margin-right: 5px;
+}
+
+.pagination li a {
+    padding: 5px 10px;
+    background-color: #ddd;
+    color: #333;
+    text-decoration: none;
+}
+
+.pagination li a:hover {
+    background-color: #aaa;
+    color: #fff;
+}
+
 
 </style>
 </html>
