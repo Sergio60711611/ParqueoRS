@@ -1,40 +1,36 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <head>
-    <meta charset="utf-8">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Radiador Springs</title>
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
         <!-- Theme style -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
         <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/v4-shims.js"></script> 
         <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/fontawesome.js"> </script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        
-    
+   
     </head>
-    <body class="hold-transition sidebar-mini" style="background-color:#D9D9D9 ">
+    <body class="hold-transition sidebar-mini">
     @include('administrador.navbar')
-
-                <!-- Content Wrapper. Contains page content -->
-                <div class="borde-formulario">
-                
-                    <h2 class="tituloa"><strong>Enviar Mensaje</strong></h2>
-            
-                <!-- borde 2-->
-                <div class ="borde2-formulario">    
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper" style="background-color:#D9D9D9;  padding: 20px;">
+                <div class="container container-blanco">
+                    <!-- Contenido dentro del container -->
+                    <h2>Enviar Mensaje </h2>
+                    <div class ="borde2-formulario">    
                         <h4 class="titulob">Datos del Mensaje</h4>
                 <div class="formulario">
                         <!--Busqueda-->
                         <form  class = "formualrio1" action="/clientem" method="get">
                             <input type="text" class="cajab" name="texto" placeholder="Ponga el Ci o Apellido a buscar">
-                            <button type="submit" class="botonb" value="Buscar">Buscar</button>
+                            <button type="submit" class="boton" value="Buscar">
+                                <i class="fas fa-search"></i>
+                            </button>
                         </form>
                         <!--Tabla-->
                         <table class="tabla" id="tabla">
@@ -61,10 +57,14 @@
                                     <td>{{$cliente->nombre}}</td>
                                     <td>{{$cliente->celular}}</td>
                                     <td>{{$cliente->ci}}</td>
-                                    <td><button class="botons">Seleccionar</button></td>
+                                    <td> 
+                                        <button class="botons">
+                                          <i class="fas fa-check"></i>
+                                        </button>
+                                    </td>
                                 </tr>
                                 @endforeach
-                                @endif
+                                @endif
                             </tbody>
                         </table>
                         {{$clientes->links()}}
@@ -79,29 +79,31 @@
                                 @enderror
                                 </div>
                                 <div class="mensaje">
-                                <label class = "mensajee" for="">Mensaje<font color="red">*</font></label>
+                                <label class = "mensajee" for="">Mensaje*</label>
                                 <input type="text" class="cmensaje" id="txt_documento" name="mensajee" placeholder="Ingrese el mensaje a enviar"></input>
                                 @error('mensajee')
                                 <p1 class="error-message">{{ $message }}</p1>
                                 @enderror
                                 </div>
-                            <button type="submit"  class="botong" id = "btn_notificar">Enviar</button>
-                            <a href="/administrador/home" class="botonc">Cancelar</a>
+                            <button type="submit"  class="boton" id = "btn_notificar">Enviar</button>
+                            <a href="/administrador/home" class="boton">Cancelar</a>
                             </form>
                             <img class = "auto" src="{{ asset('/img/parqueo3.jpg') }}" alt="">                    
                             </div>
                 </div>
-</div>
-
-  <!-- jQuery -->
+                </div>
+            </div>
+            <!-- /.content-wrapper -->
+        
+        <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <!-- Bootstrap 4 -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
         <!-- AdminLTE App -->
         <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
 
-        <!--JQuery Whatssapp-->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+         <!--JQuery Whatssapp-->
+         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"></script>
 	<script type='text/javascript'>
 
@@ -179,48 +181,61 @@
         $('#tabla').DataTable();
     });
 </script>
-</body>
+    </body>
+
 <style>
-    
-    
-*{
-    margin: 0%;
-    padding: 0%;
+body {
+    color: #566787;
+    font-family: 'Poppins', sans-serif;
+    background-color: #D9D9D9; 
+    height:auto;
 }
-body{
-    background-color: #d9d9d9;
-    font-family:"Poppins", sans-serif ;
+h2{
+    color: #324855;
+    font-family: "Poppins";
+    font-weight: bold;
+    font-size: 2vw;
+    margin-left: 3vw;
+    margin-top: 2vw;
+    text-align: center;
 }
-.borde-formulario{
-    position: fixed;
-    margin: auto;
-    background-color: white;
-    width: 75%;
-    height: 85%;
-    margin-left: 22%;
-    margin-top: 2%;
-    border-radius: 1%;
+
+.content-wrapper{
+    background-color: #D9D9D9;
+    margin-top: 2.5vw;
+}
+
+.container{
+    background-color: #FFFFFF;
+    padding:0px;
+}
+.container-blanco {
+    width: 95%;
+    height: 95%;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 20px;
 }
 .borde2-formulario{
-    position: absolute;
     background-color: #53A790;
     margin: auto;
-    width: 75%;
-    height: 80%;
-    margin-left: 10%;
-    margin-top: 2%;
+    width: 90%; /* Ajusta el ancho a un porcentaje más alto para ocupar más espacio en la pantalla */
+    height: auto; /* Cambia la altura a "auto" para que se ajuste al contenido */
+    margin-left: 5%; /* Ajusta el margen izquierdo para centrar el formulario */
+    margin-right: 5%; /* Ajusta el margen derecho para centrar el formulario */
+    margin-top: 2%; /* Ajusta el margen superior según sea necesario */
     border-radius: 2%;
+    padding: 20px; /* Agrega un relleno interno para separar el contenido del borde */
 }
+
 .formulario{
-    width: 98%;
-    height: 91%;
+    width: 97%;
     background-color: white;
-    position: absolute;
     margin: auto;
     left: 1%;
     border-radius: 2%;
 }
-.titulob{
+.titulob,.tituloa{
     font-size: 'Poppins', sans-serif;
     margin: auto;
     margin-left: 2%;
@@ -228,43 +243,8 @@ body{
     margin-bottom: 0%;
     color: white;
 }
-.tituloa{
-    font-size: 'Poppins', sans-serif;
-    margin: auto;
-    margin-left: 1%;
-    color: #324855;
-}
 
-.botong{
-text-align: center;
-cursor: pointer;
-box-sizing: border-box;
-position: absolute;
-width: 12%;
-height: 6%;
-left: 2%;
-top: 90%;
-background: #53A790;
-border: 1px solid #000000;
-border-radius: 8px;
-color: #FDF7F7;
-}
-.botonc{
-text-align: center;
-cursor: pointer;
-box-sizing: border-box;
-position: absolute;
-width: 12%;
-height: 6%;
-left: 15%;
-top: 90%;
-background: #53A790;
-border: 1px solid #000000;
-border-radius: 8px;
-color: #FDF7F7;
-}
 .auto{
-    position: absolute;
     left: 80%;
     width: 15%;
     top: 75%;
@@ -276,26 +256,12 @@ color: #FDF7F7;
     margin-top: 2%;
     text-align: center;
 }
-.botonb{
-text-align: center;
-cursor: pointer;
-box-sizing: border-box;
-position: relative;
-width: 12%;
-height: 6%;
-left: 3%;
-background: #53A790;
-border: 1px solid #000000;
-border-radius: 8px;
-color: #FDF7F7;
-}
 
 .celular{
     position: relative;
     left: 2%;
 }
 .ccelular{
-    position: relative;
     left: 5%;
     border: 2px solid #53A790;
     text-align: center;
@@ -303,12 +269,10 @@ color: #FDF7F7;
     width: 50%;
 }
 .mensaje{
-    position: relative;
     margin-top: 2%;
     left: 2%;
 }
 .cmensaje{
-    position: relative;
     left: 4%;
     height: 10%;
     width: 50%;
@@ -316,28 +280,64 @@ color: #FDF7F7;
     border: 2px solid #53A790;
     border-radius: 10px;
 }
-.formulario1{
-    margin-top: 2%;
+.formulario1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
-.formulario2{
-    margin-top: 2%;
+
+.cajab {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
-.botons{
-    display: inline-block;
-  padding:10px;
+
+.boton {
+  display: inline-block;
+  padding: 10px 20px;
   font-size: 16px;
   font-weight: bold;
   text-align: center;
   text-decoration: none;
-  background-color:#2A4858;
+  background-color: #2A4858;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
-  margin-bottom:10px;
 }
+
+.boton:hover {
+  background-color: #1C2E3A;
+}
+
+
+.formulario2{
+    margin-top: 2%;
+    margin-bottom: 20px;
+    
+}
+.botons {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #2A4858;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.botons:hover {
+    background-color: #1C2E3A;
+}
+
 table{
-    table-layout: fixed;
     width: 90%;
     height: 10%;
     border-collapse: collapse;
@@ -397,8 +397,7 @@ thead th, tbody th, tbody td {
   
   border: 3px solid #53A790;
 }
-@media  (min-width: 720px) and (max-width: 1080px){
     
-}
+
 </style>
 </html>

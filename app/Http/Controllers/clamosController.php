@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Cliente;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ReclamoSugerenciaMail;
+use Illuminate\Support\Facades\Session;
 
 class clamosController extends Controller
 {
@@ -17,14 +18,18 @@ class clamosController extends Controller
     
 
     public function store(Request $request)
-    {
-        $data = $request->validate([
-            'mensaje' => 'required',
-        ]);
+{
+    $data = $request->validate([
+        'mensaje' => 'required',
+    ]);
 
-        // Envía el correo electrónico
-        Mail::to('radiador7springs@gmail.com')->send(new ReclamoSugerenciaMail($data));
+    // Envía el correo electrónico
+    Mail::to('radiador7springs@gmail.com')->send(new ReclamoSugerenciaMail($data));
 
-        return redirect()->back()->with('message', 'El reclamo o sugerencia ha sido enviado correctamente.');
-    }
+    // Almacena el mensaje en la sesión
+    Session::flash('message', 'El reclamo o sugerencia ha sido enviado correctamente.');
+
+    return redirect()->back();
+}
+    
 }
