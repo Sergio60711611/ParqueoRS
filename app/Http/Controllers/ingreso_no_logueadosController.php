@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Ingreso_no_logueados;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 use \administracioningreso_no_logueados;
 
 class ingreso_no_logueadosController extends Controller
@@ -18,7 +19,20 @@ class ingreso_no_logueadosController extends Controller
         return view('ingreso_no_logueado.create');
     }
 
-   
+    public function index(Request $request){
+        $texto = trim($request -> get('texto'));
+        $lista = DB::table('ingreso_no_logueados') 
+        ->select('nombre','apellido','placa','ci')
+        ->distinct('nombre','apellido')
+        ->where('ci','LIKE','%'.$texto.'%')
+        ->orWhere('nombre','LIKE','%'.$texto.'%')
+        ->orWhere('apellido','LIKE','%'.$texto.'%')
+        ->orWhere('placa','LIKE','%'.$texto.'%')
+        ->orderBy('apellido','asc')
+        ->paginate(5);
+        return view('administrador.clientesnologueados',compact('lista','texto'));
+    }
+
     public function store(Request $request)
     {
        $validation= $request->validate([

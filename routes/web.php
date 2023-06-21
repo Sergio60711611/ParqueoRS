@@ -90,6 +90,9 @@ Route::get('/cliente/{id}/info/preguntas', "App\Http\Controllers\InfoClienteCont
 Route::get('/cliente/{id}/info/horarios', "App\Http\Controllers\InfoClienteController@seeHorarios");
 Route::get('/cliente/{id}/info/reservas', "App\Http\Controllers\InfoClienteController@seeReservas");
 
+Route::get('/administrador/clientesnologueados', "App\Http\Controllers\ingreso_no_logueadosController@Tablanolog");
+Route::get('/administrador/clientesnologueados', "App\Http\Controllers\ingreso_no_logueadosController@index");
+
 Route::get('/administrador/anuncios',"App\Http\Controllers\AnuncioController@createLista");
 Route::get('/administrador/agregarAnuncio',"App\Http\Controllers\AnuncioController@createAgregar");
 Route::get('/administrador/editarAnuncio/{id}',"App\Http\Controllers\AnuncioController@createEditar");

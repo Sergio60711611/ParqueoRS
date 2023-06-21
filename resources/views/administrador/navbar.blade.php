@@ -57,6 +57,13 @@
                         </li>
 
                         <li class="nav-item">
+                            <a href="/administrador/clientesnologueados"  class="nav-link active" style="background-color: #F9FA85; color:#324855; font-size: 14px; margin-top: 3px;">
+                            <i class="fas fa-users mr-2"></i>
+                            <p>Clientes no registrados</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a href="/administrador/vehiculos"  class="nav-link active" style="background-color: #F9FA85; color:#324855; margin-top: 3px;">
                             <i class="fas fa-car mr-2"></i>
                             <p>Automoviles</p>
