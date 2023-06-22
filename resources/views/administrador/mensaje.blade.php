@@ -59,7 +59,7 @@
                                     <td>{{$cliente->ci}}</td>
                                     <td> 
                                         <button class="botons">
-                                          <i class="fas fa-check"></i>
+                                            ✓
                                         </button>
                                     </td>
                                 </tr>
